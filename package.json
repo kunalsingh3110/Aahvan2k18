@@ -1,0 +1,27 @@
+{
+  "name": "aahvan2k18",
+  "version": "1.0.0",
+  "description": "Web app for the sports fest of DTU.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beast-incarnate/Aahvan2k18.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/beast-incarnate/Aahvan2k18/issues"
+  },
+  "homepage": "https://github.com/beast-incarnate/Aahvan2k18#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "jquery": "^3.2.1",
+    "materialize-css": "^0.100.2",
+    "mongoose": "^4.13.6"
+  }
+}
