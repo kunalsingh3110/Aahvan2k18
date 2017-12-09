@@ -4,7 +4,8 @@
   "description": "Web app for the sports fest of DTU.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
     "body-parser": "^1.18.2",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
+    "hbs": "^4.0.1",
     "jquery": "^3.2.1",
     "materialize-css": "^0.100.2",
     "mongoose": "^4.13.6"

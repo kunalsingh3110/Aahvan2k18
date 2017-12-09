@@ -1,4 +1,94 @@
+.navbar {
+	z-index: 3;
+	position: fixed;
+	width: 100%;
+}
 .navbar-nav > li{
   padding-left:20px;
   padding-right:20px;
+}
+
+.slideshow-text{
+	z-index: 2;
+	position: relative;
+	top: 40vh;
+	color:white;/*color will be changed when the images are final*/
+	display: flex;
+	justify-content: space-around;
+	padding: 0 100px;
+}
+
+.slideshow-text h1,p{
+	margin: 0 20px;
+}
+
+
+.slideshow{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 0;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.slideshow li { 
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: 0;
+  animation: imageAnimation 25s linear infinite; 
+}
+
+
+.slideshow li:nth-child(1) { 
+  background-image: url(http://i.imgur.com/K3mPv14.jpg) 
+}
+.slideshow li:nth-child(2) { 
+  background-image: url(http://i.imgur.com/SBEmFpv.jpg);
+  animation-delay: 5s; 
+}
+.slideshow li:nth-child(3) { 
+  background-image: url(http://i.imgur.com/emvhOnb.jpg);
+  animation-delay: 10s; 
+}
+.slideshow li:nth-child(4) { 
+  background-image: url(http://i.imgur.com/2LSMCmJ.jpg);
+  animation-delay: 15s; 
+}
+.slideshow li:nth-child(5) { 
+  background-image: url(http://i.imgur.com/TVGe0Ef.jpg);
+  animation-delay: 20s; 
+}
+
+@keyframes imageAnimation { 
+  0% { 
+    opacity: 0; 
+    animation-timing-function: ease-in;
+    
+  }
+  10% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+    
+  }
+  20% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  40%{
+  	transform: scale(1);
+  }
 }

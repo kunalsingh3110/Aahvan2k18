@@ -3,12 +3,11 @@ var mongoose = require("mongoose");
 var express = require("express");
 var app = express();
 
-mongoose.connect("mongodb://localhost/aahvan2k18");
+mongoose.connect("mongodb://localhost/aahvan2k18",{useMongoClient:true});
 
+app.set("view engine", "ejs");
 
-
-app.set("view engine","ejs");
-app.use(express.static("public"));
+app.use(express.static(__dirname+'/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get("/",function(req,res){
@@ -27,6 +26,8 @@ app.get("/live",function(req,res){
 	res.render("live");
 });
 
-app.listen(3000,function(){
-	console.log("Server started!!");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT,function(){
+	console.log("SERVER STARTED ON:",PORT);
 });
