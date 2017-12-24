@@ -11,7 +11,7 @@
 .slideshow-text{
 	z-index: 2;
 	position: relative;
-	top: 40vh;
+	top: 50vh;
 	color:white;/*color will be changed when the images are final*/
 	display: flex;
 	justify-content: space-around;
