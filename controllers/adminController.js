@@ -50,13 +50,35 @@ exports.scores = function(req,res){
 };
 
 exports.ca = function(req,res){
-	if(req.session.email){
-			 res.render("../views/details",{id: 2});
-	}else{
+	var CampusAmbassador = require("../models/campusAmbassador");
+	CampusAmbassador.find({}).sort({time: -1}).exec(function(err,campusAmbassadors){
+		if(err){
+			console.log(err);
+		}else{
+			if(req.session.email){
+			 res.render("../views/details",{id: 2 , campusAmbassadors: campusAmbassadors});
+		   }else{
 			res.render("../views/admin",{alert: false});
-	}
+			}
+		}
+	});
+
 };
 
+exports.team_leaders = function(req,res){
+	var TeamLeader = require("../models/teamLeader");
+	TeamLeader.find({}).sort({time:-1}).exec(function(err,teamLeaders){
+		if(err){
+			console.log(err);
+		}else{
+			if(req.session.email){
+			 	res.render("../views/details",{id: 3 , teamLeaders: teamLeaders});
+			}else{
+				res.render("../views/admin",{alert: false});
+			}
+		}
+	});
+};
 
 
 

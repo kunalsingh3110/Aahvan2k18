@@ -15,5 +15,4 @@ router.post("/register",home_controller.post_register);
 router.post("/login",home_controller.post_login);
 
 
-
 module.exports = router;

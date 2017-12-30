@@ -1,7 +1,7 @@
 <% include header %>
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-  <a class="navbar-brand" href="/"><img style="max-width:100px; margin-top: -7px;" src="/images/aahvaan_logo.jpg"></a>
+  <a class="navbar-brand" href="/">aahvaan</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -27,6 +27,13 @@
         <li class="nav-item">
       <% } %> 
           <a class="nav-link" id="showCa" href="/admin/showCA">Campus Ambassadors</a>
+        </li>
+         <% if (data==3) { %>
+        <li class="nav-item active">
+      <% } else { %>
+        <li class="nav-item">
+      <% } %> 
+          <a class="nav-link" id="showTeamLeaders" href="/admin/showTeamLeaders">Team Leaders</a>
         </li>
       </ul>
         <ul class="navbar-nav ml-auto">

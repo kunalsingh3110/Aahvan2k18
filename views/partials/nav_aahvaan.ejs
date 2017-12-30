@@ -37,7 +37,7 @@
 		 		<li class="nav-item">
 				<a class = "nav-link" href="/register_teams"><button class="btn btn-outline-success" type="button">Register Teams</button></a>
 			</li>
-		 		<a class = "nav-link" href="/logout"><button class="btn btn-outline-success" type="button" id="name_logout">Hello,<%= username %></button></a>
+		 		<a class = "nav-link" href="/logout"><button class="btn btn-outline-success" type="button" id="name_logout">Hello,<%= (username.substr(0,username.indexOf(' '))).substring(0,6); %></button></a>
 		 	<% } else { %>
 		 	<li class="nav-item">
 				<a class = "nav-link" href="/register"><button class="btn btn-outline-success" type="button">Register Leader</button></a>
