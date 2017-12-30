@@ -1,3 +1,5 @@
+
+
 body{
   padding-top: 70px;
 }
@@ -95,5 +97,127 @@ body{
   40%{
   	transform: scale(1);
   }
+}
+
+.container-main {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to right, #232526, #414345);
+}
+
+.sports {
+  margin: 4rem 2rem;
+  box-shadow: 1rem 1.3rem 3.5rem rgba(0,0,0,.15);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-blend-mode: screen;
+}
+
+.sports-1 {
+  background-image: linear-gradient(to right bottom, #8e8e3d, #afaf36), url(images/athletics.jpg);
+}
+
+.sports-2 {
+  background-image: linear-gradient(to right bottom, #7ed56f, #28b485), url(images/badminton.jpg);
+}
+
+.sports-3 {
+  background-image: linear-gradient(to right bottom, #4BC0C8, #267871), url(images/basketball.jpg);
+}
+
+.sports-4{
+    background-image: linear-gradient(to right bottom,  #eaeaea, #ADA996), url(images/chess.jpg);
+}
+.sports-5{
+    background-image: linear-gradient(to right bottom, #BBD2C5, #536976, #BBD2C5), url(images/cricket.jpg);
+}
+.sports-6{
+    background-image: linear-gradient(to right bottom, #DBD5A4, #649173), url(images/football.jpg);
+}
+.sports-7{
+    background-image: linear-gradient(to right bottom, #304352, #d7d2cc), url(images/handball.jpg);
+}
+.sports-8{
+    background-image: linear-gradient(to right bottom,#abbaab, #ffffff), url(images/kabbadi.jpg);
+}
+.sports-9{
+    background-image: linear-gradient(to right bottom,#EFEFBB, #D4D3DD), url(images/powerlifting.jpg);
+}
+.sports-10{
+    background-image: linear-gradient(to right, #eaeaea, #ADA996), url(images/tabletennis.jpg);
+}
+.sports-11{
+    background-image: linear-gradient(to right bottom, #304352, #d7d2cc), url(images/tennis.jpg);
+}
+.sports-12{
+    background-image: linear-gradient(to right bottom, #304352, #d7d2cc), url(images/volleyball.jpg);
+}
+
+.heading-primary {
+  text-align: center;
+  margin-top: 1.4rem;
+  text-shadow: 0 1.3rem 3.5rem rgba(0,0,0,.5);
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+
+
+}
+
+.heading-secondary {
+  text-transform: uppercase;
+  text-shadow: 0 1.3rem 3.5rem rgba(0,0,0,.5);
+  text-align: center;
+}
+
+.heading-secondary--1 {
+  margin-top: 1rem;
+  text-transform: uppercase;
+  text-shadow: 0 1.3rem 3.5rem rgba(0,0,0,.5);
+}
+
+.categories__type {
+  list-style: none;
+  text-shadow: 0 1rem 2.5rem rgba(0,0,0,.2);
+}
+
+.description {
+  margin-top: 1.3rem;
+}
+
+.description__list {
+  font-weight: 400;
+  text-shadow: .2rem .3rem 1rem rgba(0,0,0,.5);
+}
+
+.u-heading-margin {
+  margin-top: 2rem;
+}
+
+.u-heading-margin-bottom {
+  margin-bottom: 2rem;
+}
+
+.heading-tertiary, .heading-tertiary__1 {
+  text-align: center;
+  text-shadow: 0 1.3rem 3.5rem rgba(0,0,0,.5);
+  
+}
+
+.heading-tertiary__1 {
+  font-size: 1.17rem;
+}
+
+.heading-small {
+  text-align: center;
+  margin-top: 1.8rem;
+  margin-bottom: 1.4rem;
+  text-shadow: 0 1.3rem 3.5rem rgba(0,0,0,.5);
+}
+
+
+.description__list--mod {
+  list-style: none;
+  font-size: 1.2rem;
 }
 
