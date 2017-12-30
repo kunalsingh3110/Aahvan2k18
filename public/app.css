@@ -1,11 +1,15 @@
+body{
+  padding-top: 70px;
+}
+
 .navbar {
 	z-index: 3;
 	position: fixed;
 	width: 100%;
 }
 .navbar-nav > li{
-  padding-left:20px;
-  padding-right:20px;
+  padding-left:10px;
+  padding-right:10px;
 }
 
 .slideshow-text{
@@ -51,7 +55,7 @@
 
 
 .slideshow li:nth-child(1) { 
-  background-image: url(http://i.imgur.com/K3mPv14.jpg) 
+  background-image: url("images/aahvaan_logo.jpg"); 
 }
 .slideshow li:nth-child(2) { 
   background-image: url(http://i.imgur.com/SBEmFpv.jpg);

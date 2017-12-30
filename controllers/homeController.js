@@ -1,12 +1,45 @@
 
 
 exports.index = function(req,res){
-	res.render("../views/home");
+	res.render("../views/home",{username: req.session.username , userid: req.session.userid});
 };
 
 exports.register = function(req,res){
-
+	res.render("../views/register" , {alert: 0});
 };
+
+exports.post_register = function(req,res){
+	var TeamLeader = require("../models/teamLeader");
+	var leader_phone = Number(req.body.leader_number);
+	if(isNaN(leader_phone)){
+		res.render("../views/register",{alert: 1});
+	}else{
+		TeamLeader.create(
+			{name: req.body.leader_name,
+			 college: req.body.leader_college,
+			 number: req.body.leader_number,
+			 email: req.body.leader_email,
+			 password: req.body.leader_password
+			} , function(err,TeamLeader){
+				if(err){
+					res.render("../views/register",{alert: 2});
+				}else{
+					req.session.username = TeamLeader.name;
+					req.session.userid = TeamLeader._id;
+					res.render("../views/home",{username: req.session.username , userid: req.session.userid});
+				}
+			}
+			);
+	}
+};
+
+exports.login = function(req,res){
+	res.render("../views/login",{alert: false});
+};
+
+exports.post_login = function(req,res){
+
+};	
 
 exports.campus_ambassador = function(req,res){
 	res.render("../views/campus_ambassador_form",{alert:false});

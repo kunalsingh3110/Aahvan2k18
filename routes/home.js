@@ -5,9 +5,12 @@ var home_controller = require('../controllers/homeController');
 
 router.get("/",home_controller.index);
 router.get("/register",home_controller.register);
+router.get("/login",home_controller.login);
 router.get("/campus_ambassador",home_controller.campus_ambassador);
 router.get("/live",home_controller.live);
 router.post("/campus_ambassador",home_controller.post_campus_ambassador);
+router.post("/register",home_controller.post_register);
+router.post("/login",home_controller.post_login);
 
 
 module.exports = router;
