@@ -18,7 +18,15 @@
   				</button>
 			</div>
       <% alert=0 %>
-		<% } %>
+		<% }else if(alert==3) { %>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Email already registered!!</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <% alert=0 %>
+      <% } %>
 	</div>
     <div class="card-body" style="margin-left: 5rem; margin-right: 5rem;">
        <form action="/register" method="POST">

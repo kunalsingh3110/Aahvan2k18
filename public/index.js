@@ -1,4 +1,12 @@
 $(document).ready(function(){
+	
+	$('#name_logout').hover(function(){
+		text = $(this).text();
+		$(this).text("Logout");
+	},function(){
+		$(this).text(text);
+	});
+
 	  // $(".nav-link").on("click", function(event) {
    //    $(".nav-link").removeClass("active");
    //    $(this).addClass("active");

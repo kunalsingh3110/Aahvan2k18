@@ -1,7 +1,7 @@
 
 <% include header %>
 			<!-- Navbar -->
-<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-transparent sticky-top navbar-expand-lg navbar-dark">
 	<div class="container">
 	<a class="navbar-brand" href="/">A</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,9 +35,9 @@
 		<ul class="navbar-nav ml-auto">
 		 	<% if(username){ %>
 		 		<li class="nav-item">
-				<a class = "nav-link" href="/registerteams"><button class="btn btn-outline-success" type="button">Register Teams</button></a>
+				<a class = "nav-link" href="/register_teams"><button class="btn btn-outline-success" type="button">Register Teams</button></a>
 			</li>
-		 		<a class = "nav-link" href="/registerteams"><button class="btn btn-outline-success" type="button">Hello,<%= username %></button></a>
+		 		<a class = "nav-link" href="/logout"><button class="btn btn-outline-success" type="button" id="name_logout">Hello,<%= username %></button></a>
 		 	<% } else { %>
 		 	<li class="nav-item">
 				<a class = "nav-link" href="/register"><button class="btn btn-outline-success" type="button">Register Leader</button></a>

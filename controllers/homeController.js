@@ -1,5 +1,5 @@
 
-
+var TeamLeader = require("../models/teamLeader");
 exports.index = function(req,res){
 	res.render("../views/home",{username: req.session.username , userid: req.session.userid});
 };
@@ -9,37 +9,72 @@ exports.register = function(req,res){
 };
 
 exports.post_register = function(req,res){
-	var TeamLeader = require("../models/teamLeader");
 	var leader_phone = Number(req.body.leader_number);
 	if(isNaN(leader_phone)){
 		res.render("../views/register",{alert: 1});
 	}else{
-		TeamLeader.create(
-			{name: req.body.leader_name,
-			 college: req.body.leader_college,
-			 number: req.body.leader_number,
-			 email: req.body.leader_email,
-			 password: req.body.leader_password
-			} , function(err,TeamLeader){
-				if(err){
-					res.render("../views/register",{alert: 2});
-				}else{
-					req.session.username = TeamLeader.name;
-					req.session.userid = TeamLeader._id;
-					res.render("../views/home",{username: req.session.username , userid: req.session.userid});
-				}
+		TeamLeader.findOne({email: req.body.leader_email} , function(err,teamLeader){
+			if(teamLeader){
+				res.render("../views/register",{alert: 3});
+			}else{
+				TeamLeader.create(
+					{name: req.body.leader_name,
+			 		college: req.body.leader_college,
+			 		number: req.body.leader_number,
+			 		email: req.body.leader_email,
+			 		password: req.body.leader_password
+					}, function(err,teamLeader){
+						if(err){
+							res.render("../views/register",{alert: 2});
+						}else{
+							req.session.username = teamLeader.name;
+							req.session.userid = teamLeader._id;
+							res.render("../views/home",{username: req.session.username , userid: req.session.userid});
+						}
+					   }
+					);
 			}
-			);
+		});
+		
 	}
 };
+
+exports.register_teams = function(req,res){
+	if(req.session.username){
+		res.render("../views/register_teams",{username: req.session.username , userid: req.session.userid});
+	}else{
+		res.render("../views/login",{alert:false});
+	}
+}
 
 exports.login = function(req,res){
 	res.render("../views/login",{alert: false});
 };
 
 exports.post_login = function(req,res){
-
+	TeamLeader.findOne({email: req.body.leader_email , password: req.body.leader_password} , function(err,teamLeader){
+			if(err){
+				res.render("../views/login",{alert:true});
+			}else{
+				if(teamLeader){
+					req.session.username = teamLeader.name;
+					req.session.userid = teamLeader._id;
+					res.render("../views/home",{username: req.session.username , userid: req.session.userid});
+				}else{
+					res.render("../views/login",{alert:true});
+				}
+			}
+	});
 };	
+
+
+exports.logout = function(req,res){
+	if(req.session.username){
+		req.session.username = null;
+		req.session.userid = null;	
+	}
+	res.render("../views/home",{username:req.session.username , userid: req.session.userid});
+};
 
 exports.campus_ambassador = function(req,res){
 	res.render("../views/campus_ambassador_form",{alert:false});
@@ -70,5 +105,5 @@ exports.post_campus_ambassador = function(req,res){
 };
 
 exports.live = function(req,res){
-
+	res.render("../views/live");
 };
