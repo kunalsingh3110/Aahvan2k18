@@ -1,7 +1,11 @@
 
 <% include header %>
 			<!-- Navbar -->
+<% if(transparent){ %>
 <nav class="navbar navbar-transparent sticky-top navbar-expand-lg navbar-dark">
+	<% }else{ %>
+	<nav class="navbar navbar-transparent sticky-top navbar-expand-lg navbar-dark bg-dark">
+	<% } %>
 	<div class="container">
 	<a class="navbar-brand" href="/">A</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
