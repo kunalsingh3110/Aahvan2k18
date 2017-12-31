@@ -1,0 +1,18 @@
+<% teamLeaders.forEach(function(teamLeader){ %>
+<br>
+<br>
+<div class="card">
+  <div class="card-header">
+    <%= teamLeader.time.getDate() %>/<%= teamLeader.time.getMonth() %>/<%= teamLeader.time.getFullYear() %>
+    &nbsp <%= teamLeader.time.getHours() %>:<%= teamLeader.time.getMinutes() %>
+  </div>
+  <div class="card-block">
+  	<ul class="list-group list-group-flush">
+    <li class="list-group-item">Name:&nbsp<strong><%= teamLeader.name %></strong></li>
+    <li class="list-group-item">College:&nbsp<%= teamLeader.college %></li>
+    <li class="list-group-item">Contact:&nbsp<%= teamLeader.number %></li>
+    <li class="list-group-item">Email:&nbsp<%= teamLeader.email %></li>
+  </ul>
+  </div>
+</div>
+<% }); %>

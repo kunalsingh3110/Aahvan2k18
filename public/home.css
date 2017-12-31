@@ -1,0 +1,169 @@
+
+.navbar {
+	z-index: 3;
+	position: fixed;
+	width: 100%;
+}
+.navbar-nav > li{
+  padding-left:10px;
+  padding-right:10px;
+}
+
+.slideshow-text{
+	z-index: 2;
+	position: relative;
+	top: 35vh;
+	color:blue;/*color will be changed when the images are final*/
+	display: flex;
+	justify-content: space-around;
+	padding: 0 100px;
+}
+
+.slideshow-text h1,p{
+	margin: 0 20px;
+
+}
+
+@media only screen and (max-width: 900px) {
+  .slideshow-text{
+    top:20vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .slideshow-text h1,p{
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .slideshow-text h1,p{
+    font-size: 12px;
+  }
+}
+
+.slideshow{
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 0;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+  margin-bottom: 70vh;
+}
+
+.slideshow li { 
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top:0px;
+  left:0px;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: 0;
+  animation: imageAnimation 25s linear infinite; 
+}
+
+
+.slideshow li:nth-child(1) { 
+  background-image: url("images/aahvaan_logo.jpg"); 
+}
+.slideshow li:nth-child(2) { 
+  background-image: url(http://i.imgur.com/SBEmFpv.jpg);
+  animation-delay: 5s; 
+}
+.slideshow li:nth-child(3) { 
+  background-image: url(http://i.imgur.com/emvhOnb.jpg);
+  animation-delay: 10s; 
+}
+.slideshow li:nth-child(4) { 
+  background-image: url(http://i.imgur.com/2LSMCmJ.jpg);
+  animation-delay: 15s; 
+}
+.slideshow li:nth-child(5) { 
+  background-image: url(http://i.imgur.com/TVGe0Ef.jpg);
+  animation-delay: 20s; 
+}
+
+@keyframes imageAnimation { 
+  0% { 
+    opacity: 0; 
+    animation-timing-function: ease-in;
+    
+  }
+  10% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+    
+  }
+  20% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  40%{
+  	transform: scale(1);
+  }
+}
+
+.ca,.theme,.lookback{
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 30px;
+}
+
+.ca{
+    background: green;
+}
+
+.theme{
+  background: orange;
+}
+
+.lookback{
+  background: crimson;
+}
+
+.events{
+  color: white;
+  z-index: 2;
+  position: absolute;
+  margin-top: 200px; 
+  padding: 30px;
+  align-content: center;
+  width: 100%;
+}
+
+canvas {
+  display: block;
+  vertical-align: bottom;
+}
+
+/* ---- particles.js container ---- */
+
+#particles-js {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background-color: #2c3e50;
+  background-image: url("");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.item {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  color: #FFF;
+}

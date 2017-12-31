@@ -1,1 +1,13 @@
+	<% var data = id ; %>
 <% include partials/headeradmin %>
+<div class="container" id="showDetails">
+	<% if(id==0) { %>
+	<%- include partials/showTeams %>
+	<% } else if(id==1) { %>
+	<%- include partials/showScores %>
+	<% } else if(id==2) { %>
+	<%- include partials/showCA %>
+	<% } else { %>
+	<%- include partials/showTeamLeaders %>
+	<% } %>
+</div>

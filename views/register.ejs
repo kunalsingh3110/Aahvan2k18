@@ -1,1 +1,53 @@
-<h1>Registration Page</h1>
+<% include partials/header %>
+<div class="card text-center" style="margin-top: 5rem;">
+	<div class="card-header">
+		<h2>Please fill the above information</h2>
+		 <% if(alert==1){ %>
+			<div class="alert alert-warning alert-dismissible fade show" role="alert">
+ 			 	<strong>Wrong credentials!!!</strong>
+ 			 	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+   			 		<span aria-hidden="true">&times;</span>
+  				</button>
+			</div>
+			<% alert=0 %>
+		<% }else if(alert==2){ %>
+			<div class="alert alert-warning alert-dismissible fade show" role="alert">
+ 			 	<strong>Error in registration!!</strong>
+ 			 	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+   			 		<span aria-hidden="true">&times;</span>
+  				</button>
+			</div>
+      <% alert=0 %>
+		<% }else if(alert==3) { %>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Email already registered!!</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <% alert=0 %>
+      <% } %>
+	</div>
+    <div class="card-body" style="margin-left: 5rem; margin-right: 5rem;">
+       <form action="/register" method="POST">
+       	 <div class="form-group">
+    		<input type="text" class="form-control" name="leader_name" placeholder="Enter Name" required="true">
+    	  </div>
+    	   <div class="form-group">
+    		<input type="text" class="form-control" name="leader_college" placeholder="Enter College Name" required="true">
+    	  </div>
+    	  <div class="form-group">
+        <input type="tel" class="form-control" name="leader_number" placeholder="Contact Number(Eg. 8743080047)" required="true" minlength="10" maxlength="10">
+        </div>
+          <div class="form-group">
+    		<input type="email" class="form-control" name="leader_email" aria-describedby="emailHelp" placeholder="Enter email" required="true">
+    	  </div>
+    	  <div class="form-group">
+    		<input type="password" class="form-control" name="leader_password" placeholder=" Choose Password" required="true">
+  		  </div>
+  		  <div class="text-center">
+  		  <button type="submit" class="btn btn-primary col-md-4 text-center">Submit</button>
+     	  </div>
+  		</form>
+    </div>
+</div>

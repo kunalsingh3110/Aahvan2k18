@@ -21,10 +21,10 @@ app.use(session({
 }));
 
 
-var index = require('./routes/index');
+var home = require('./routes/home');
 var admin = require('./routes/admin');
 
-app.use('/',index);
+app.use('/',home);
 app.use('/admin',admin);
 // app.get("/",function(req,res){
 // 	res.render("home");

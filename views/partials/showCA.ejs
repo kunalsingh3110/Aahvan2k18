@@ -1,0 +1,21 @@
+<% campusAmbassadors.forEach(function(campusAmbassador){ %>
+<br>
+<br>
+<div class="card">
+  <div class="card-header">
+    <%= campusAmbassador.time.getDate() %>/<%= campusAmbassador.time.getMonth() %>/<%= campusAmbassador.time.getFullYear() %>
+    &nbsp <%= campusAmbassador.time.getHours() %>:<%= campusAmbassador.time.getMinutes() %>
+  </div>
+  <div class="card-block">
+  	<ul class="list-group list-group-flush">
+    <li class="list-group-item">Name:&nbsp<strong><%= campusAmbassador.name %></strong></li>
+    <li class="list-group-item">College:&nbsp<%= campusAmbassador.college %></li>
+    <li class="list-group-item">Contact:&nbsp<%= campusAmbassador.number %></li>
+     <li class="list-group-item">Email:&nbsp<%= campusAmbassador.email %></li>
+    <li class="list-group-item">Year:&nbsp<%= campusAmbassador.year %></li>
+    <li class="list-group-item">Area of study:&nbsp<%= campusAmbassador.area %></li>
+    <li class="list-group-item">Why do you wish to be a campus ambassador:&nbsp<strong><%= campusAmbassador.why %></strong></li>
+  </ul>
+  </div>
+</div>
+<% }); %>

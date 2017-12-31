@@ -1,21 +1,40 @@
 <% include header %>
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-  <a class="navbar-brand" href="">Aahvan</a>
+  <a class="navbar-brand" href="/">aahvaan</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="/admin/teams">Teams</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/admin/score">Score</a>
-      </li>
+      <% if (data==0) { %>
+        <li class="nav-item active">
+      <% } else { %>
         <li class="nav-item">
-        <a class="nav-link" href="/admin/score">Campus Ambassadors</a>
-      </li>
+      <% } %> 
+          <a class="nav-link" id="showTeams" href="/admin/showTeams">Teams</a>
+        </li>
+      <% if (data==1) { %>
+        <li class="nav-item active">
+      <% } else { %>
+        <li class="nav-item">
+        <% } %> 
+          <a class="nav-link" id="showScores" href = "/admin/showScores">Score</a>
+        </li>
+      <% if (data==2) { %>
+        <li class="nav-item active">
+      <% } else { %>
+        <li class="nav-item">
+      <% } %> 
+          <a class="nav-link" id="showCa" href="/admin/showCA">Campus Ambassadors</a>
+        </li>
+         <% if (data==3) { %>
+        <li class="nav-item active">
+      <% } else { %>
+        <li class="nav-item">
+      <% } %> 
+          <a class="nav-link" id="showTeamLeaders" href="/admin/showTeamLeaders">Team Leaders</a>
+        </li>
       </ul>
         <ul class="navbar-nav ml-auto">
       <li class="nav-item">
