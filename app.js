@@ -14,7 +14,11 @@ app.use(express.static(__dirname+'/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(cookieParser());
-app.use(session({secret: "Secret!!!"}));
+app.use(session({
+	secret: "Secret!!!",
+    resave: false,
+    saveUninitialized: false
+}));
 
 
 var home = require('./routes/home');
