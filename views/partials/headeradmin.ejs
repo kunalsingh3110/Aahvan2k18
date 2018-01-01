@@ -14,12 +14,12 @@
       <% } %> 
           <a class="nav-link" id="showTeams" href="/admin/showTeams">Teams</a>
         </li>
-      <% if (data==1) { %>
+      <% if (data==1 || data==4) { %>
         <li class="nav-item active">
       <% } else { %>
         <li class="nav-item">
         <% } %> 
-          <a class="nav-link" id="showScores" href = "/admin/showScores">Score</a>
+          <a class="nav-link" id="showSports" href = "/admin/showSports">Score</a>
         </li>
       <% if (data==2) { %>
         <li class="nav-item active">

@@ -4,10 +4,12 @@
 	<% if(id==0) { %>
 	<%- include partials/showTeams %>
 	<% } else if(id==1) { %>
-	<%- include partials/showScores %>
+	<%- include partials/showSports %>
 	<% } else if(id==2) { %>
 	<%- include partials/showCA %>
-	<% } else { %>
+	<% } else if(id==3){  %>
 	<%- include partials/showTeamLeaders %>
+	<% } else { %>
+	<%- include partials/showScores %>
 	<% } %>
 </div>

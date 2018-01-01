@@ -41,7 +41,7 @@ exports.teams = function(req,res){
 	}
 };
 
-exports.scores = function(req,res){
+exports.sports = function(req,res){
 	if(req.session.email){
 			 res.render("../views/details",{id: 1});
 	}else{
@@ -80,7 +80,14 @@ exports.team_leaders = function(req,res){
 	});
 };
 
-
+exports.scores = function(req,res){
+	var sports = req.body.sport;
+	if(req.session.email){
+		res.render("../views/details",{id:4});
+	}else{
+		res.render("../views/admin",{alert: false});
+	}
+};
 
 
 

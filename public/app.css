@@ -102,11 +102,9 @@ body{
 .container-main {
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(to right, #232526, #414345);
 }
 
 .sports {
-  margin: 4rem 2rem;
   box-shadow: 1rem 1.3rem 3.5rem rgba(0,0,0,.15);
   background-size: cover;
   background-repeat: no-repeat;
@@ -115,6 +113,7 @@ body{
 }
 
 .sports-1 {
+  margin-top: 0;
   background-image: linear-gradient(to right bottom, #8e8e3d, #afaf36), url(images/athletics.jpg);
 }
 
@@ -221,3 +220,73 @@ body{
   font-size: 1.2rem;
 }
 
+.rectangle{
+  margin-right: 30px;
+  margin-left: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width:200px;
+  height:200px;
+  transition: all 0.3s ease-in;
+}
+
+
+.rectangle-1 {
+  background-image: url(images/athletics.jpg);
+  background-size: cover;
+}
+
+.rectangle-2 {
+  background-image: url(images/badminton.jpg);
+  background-size: cover;
+}
+
+.rectangle-3 {
+  background-image: url(images/basketball.jpg);
+  background-size: cover;
+}
+
+.rectangle-4{
+    background-image: url(images/chess.jpg);
+    background-size: cover;
+}
+.rectangle-5{
+    background-image: url(images/cricket.jpg);
+    background-size: cover;
+}
+.rectangle-6{
+    background-image: url(images/football.jpg);
+    background-size: cover;
+}
+.rectangle-7{
+    background-image: url(images/handball.jpg);
+    background-size: cover;
+}
+.rectangle-8{
+    background-image: url(images/kabbadi.jpg);
+    background-size: cover;
+}
+.rectangle-9{
+    background-image: url(images/powerlifting.jpg);
+    background-size: cover;
+}
+.rectangle-10{
+    background-image: url(images/tabletennis.jpg);
+    background-size: cover;
+}
+.rectangle-11{
+    background-image: url(images/tennis.jpg);
+    background-size: cover;
+}
+.rectangle-12{
+    background-image: url(images/volleyball.jpg);
+    background-size: cover;
+}
+
+.scale-up {
+  transform: scale(1.2);
+}
+.scale-down {
+  transform: scale(0.8);
+  opacity: 0.1;
+}
