@@ -3,10 +3,13 @@ var Schema = mongoose.Schema;
 
 var TeamSchema = new Schema({
 	captain: {type: String , required: true},
+	college: {type: String, required: true},
+	contact: {type: Number , required: true},
 	number_of_players: {type: String , required: true},
 	leader: {type: Schema.Types.ObjectId , ref: 'TeamLeader'},
 	players: [{type:String}],
-	sport: {type:String , required: true}
+	sport: {type:String , required: true},
+	time: {type: Date , default: Date.now}
 });
 
 module.exports = mongoose.model('Team',TeamSchema);

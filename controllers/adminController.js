@@ -1,10 +1,16 @@
-
+var Team = require("../models/team");
 exports.index = function(req,res){
-	 	if(req.session.email){
-			res.render("../views/details",{id: 0});
+	Team.find({}).sort({time: -1}).populate('leader').exec(function(err,teams){
+		if(err){
+			console.log(err);
 		}else{
+			if(req.session.email){
+			 res.render("../views/details",{id: 0 , teams:teams});
+		   }else{
 			res.render("../views/admin",{alert: false});
+			}
 		}
+	});
 };
 
 exports.post_index = function(req,res){
@@ -12,18 +18,36 @@ exports.post_index = function(req,res){
 		var password = req.body.admin_password;
 		if(email=="adminaahvaan@gmail.com"&&password=="password"){
 			req.session.email = email;
-			res.render("../views/details",{id: 0});
+		Team.find({}).sort({time: -1}).populate('leader').exec(function(err,teams){
+			if(err){
+				console.log(err);
+			}else{
+				if(req.session.email){
+			 		res.render("../views/details",{id: 0 , teams:teams});
+		   	}	else{
+					res.render("../views/admin",{alert: false});
+			}
+		}
+	});
 		}else{
 			res.render("../views/admin",{alert: true});
 		}
 };
 
 exports.details = function(req,res){
-		if(req.session.email){
-			res.render("../views/details",{id: 0});
+		var Team = require("../models/team");
+
+	Team.find({}).sort({time: -1}).populate('leader').exec(function(err,teams){
+		if(err){
+			console.log(err);
 		}else{
+			if(req.session.email){
+			 res.render("../views/details",{id: 0 , teams:teams});
+		   }else{
 			res.render("../views/admin",{alert: false});
+			}
 		}
+	});
 };
 
 exports.logout = function(req,res){
@@ -34,11 +58,19 @@ exports.logout = function(req,res){
 };
 
 exports.teams = function(req,res){
-	if(req.session.email){
-		  res.render("../views/details",{id: 0});
-	}else{
-		  res.render("../views/admin",{alert: false});
-	}
+	var Team = require("../models/team");
+
+	Team.find({}).sort({time: -1}).populate('leader').exec(function(err,teams){
+		if(err){
+			console.log(err);
+		}else{
+			if(req.session.email){
+			 res.render("../views/details",{id: 0 , teams:teams});
+		   }else{
+			res.render("../views/admin",{alert: false});
+			}
+		}
+	});
 };
 
 exports.sports = function(req,res){

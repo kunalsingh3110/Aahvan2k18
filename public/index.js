@@ -11,7 +11,19 @@ $(document).ready(function(){
 		$('.col').not(this).toggleClass('scale-down');
 		$(this).toggleClass('scale-up');
 	});
+
+$('#players').on('input',function(){
+  $('.team-players').empty();
+  var players = $(this).val();
+  for(var i=0;i<players;i++){
+    $('.team-players').append("<div class='form-group'><input type='text' class='form-control' id='player"+(i)+"' name='player_name"+(i)+"' placeholder='Enter Player "+(i+1)+" Name' required='true'></div>");
+}
 });
+});
+
+
+// end of document.onready 
+
 
 
 
@@ -19,6 +31,8 @@ $(document).ready(function(){
 AOS.init({
   duration: 1200,
 });
+
+
 
 
 particlesJS("particles-js", {
@@ -181,5 +195,4 @@ particlesJS("particles-js", {
 	// 	});
 		
 	// });
-});
 

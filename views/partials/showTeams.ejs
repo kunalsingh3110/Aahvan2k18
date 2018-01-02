@@ -1,7 +1,23 @@
-<ul>
-	<li> Hello 1</li>
-	<li> Hello 2</li>
-	<li> Hello 3</li>
-	<li> Hello 4</li>
-</ul>
-<h1>Showing Teams</h1>
+<% teams.forEach(function(team){ %>
+<br>
+<div class="card">
+  <div class="card-header">
+    <%= team.time.getDate() %>/<%= team.time.getMonth() %>/<%= team.time.getFullYear() %>
+    &nbsp <%= team.time.getHours() %>:<%= team.time.getMinutes() %>
+  </div>
+  <div class="card-block">
+  	<ul class="list-group list-group-flush">
+    <li class="list-group-item">Contingent Leader Name:&nbsp<strong><a href=""><%= team.leader.name %></strong></li></a>
+     <li class="list-group-item">Team Captain Name:&nbsp<strong><%= team.captain %></strong></li>
+      <li class="list-group-item">Contact:&nbsp<%= team.contact %></li>
+    <li class="list-group-item">College:&nbsp<%= team.college %></li>
+     <li class="list-group-item">Sport:&nbsp<%= team.sport %></li>
+     <li class="list-group-item">Number of Players:&nbsp<%= team.number_of_players %></li>
+    <% for(var i=0;i<team.number_of_players;i++){ %>
+     <li class="list-group-item">Player&nbsp<%= (i+1) %>&nbsp Name:&nbsp<%= team.players[i] %></li>
+    <% } %>
+  </ul>
+  </div>
+</div>
+<br>
+<% }); %>
