@@ -1,9 +1,16 @@
 <% teamLeaders.forEach(function(teamLeader){ %>
 <br>
 <div class="card">
-  <div class="card-header">
+  <% var color = teamLeader.tag %>
+  <div class="card-header" style="background: <%= color %>;">
     <%= teamLeader.time.getDate() %>/<%= teamLeader.time.getMonth() %>/<%= teamLeader.time.getFullYear() %>
     &nbsp <%= teamLeader.time.getHours() %>:<%= teamLeader.time.getMinutes() %>
+    <div class="circle-grey float-right" style="margin-left: 7px;margin-top: 5px;">
+    </div>
+     <div class="circle-green float-right" style="margin-left: 7px;margin-top: 5px;">
+    </div>
+     <div class="circle-red float-right" style="margin-left: 7px;margin-top: 5px;">
+    </div>
   </div>
   <div class="card-block">
   	<ul class="list-group list-group-flush">

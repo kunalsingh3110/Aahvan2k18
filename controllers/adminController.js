@@ -1,4 +1,6 @@
 var Team = require("../models/team");
+var CampusAmbassador = require("../models/campusAmbassador");
+var TeamLeader = require("../models/teamLeader");
 exports.index = function(req,res){
 	Team.find({}).sort({time: -1}).populate('leader').exec(function(err,teams){
 		if(err){
@@ -35,8 +37,6 @@ exports.post_index = function(req,res){
 };
 
 exports.details = function(req,res){
-		var Team = require("../models/team");
-
 	Team.find({}).sort({time: -1}).populate('leader').exec(function(err,teams){
 		if(err){
 			console.log(err);
@@ -58,8 +58,6 @@ exports.logout = function(req,res){
 };
 
 exports.teams = function(req,res){
-	var Team = require("../models/team");
-
 	Team.find({}).sort({time: -1}).populate('leader').exec(function(err,teams){
 		if(err){
 			console.log(err);
@@ -82,7 +80,6 @@ exports.sports = function(req,res){
 };
 
 exports.ca = function(req,res){
-	var CampusAmbassador = require("../models/campusAmbassador");
 	CampusAmbassador.find({}).sort({time: -1}).exec(function(err,campusAmbassadors){
 		if(err){
 			console.log(err);
@@ -98,7 +95,6 @@ exports.ca = function(req,res){
 };
 
 exports.team_leaders = function(req,res){
-	var TeamLeader = require("../models/teamLeader");
 	TeamLeader.find({}).sort({time:-1}).exec(function(err,teamLeaders){
 		if(err){
 			console.log(err);
@@ -121,6 +117,51 @@ exports.scores = function(req,res){
 	}
 };
 
+exports.change_tag_ca = function(req,res){
+	CampusAmbassador.findById(req.body.id,function(err,campusAmbassador){
+			if(err){
+				console.log(err);
+			}else{
+				campusAmbassador.tag = req.body.tag;
+				campusAmbassador.save(function(err){
+					if(err){
+						console.log(err);
+					}
+				});
+			}
+	});	
+};
 
+exports.change_tag_teamLeader = function(req,res){
+	console.log("dd");
+	TeamLeader.findById(req.body.id,function(err,teamLeader){
+		if(err){
+			console.log(err);
+		}else{
+			teamLeader.tag = req.body.tag;
+			teamLeader.save(function(err){
+				if(err){
+					console.log(err);
+				}else{
+					console.log(teamLeader.tag);
+					res.send("");
+				}
+			});
+		}
+	});
+};
 
-
+exports.change_tag_team = function(req,res){
+	Team.findById(req.body.id,function(err,team){
+		if(err){
+			console.log(err);
+		}else{
+			team.tag = req.body.tag;
+			team.save(function(err){
+				if(err){
+					console.log(err);
+				}
+			});
+		}
+	});
+};

@@ -19,6 +19,24 @@ $('#players').on('input',function(){
     $('.team-players').append("<div class='form-group'><input type='text' class='form-control' id='player"+(i)+"' name='player_name"+(i)+"' placeholder='Enter Player "+(i+1)+" Name' required='true'></div>");
 }
 });
+
+$('.circle-grey').on('click',function(){
+    $(this).parent().css("background","grey");
+});
+
+$('.circle-green').on('click',function(){
+    $(this).parent().css("background","#006400");
+});
+
+$('.circle-red').on('click',function(){
+    $(this).parent().css("background","#8B0000");
+});
+
+function change_tag_teamLeader(color){
+    console.log(color);
+}
+
+
 });
 
 

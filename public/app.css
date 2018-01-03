@@ -193,3 +193,26 @@ body{
   transform: scale(0.8);
   opacity: 0.1;
 }
+
+.circle-red {
+ background-color: #FF0000;
+ height: 15px;
+ -moz-border-radius:75px;
+ -webkit-border-radius: 75px;
+ width: 15px;
+}
+.circle-green {
+ background-color: #008000;
+ height: 15px;
+ -moz-border-radius:75px;
+ -webkit-border-radius: 75px;
+ width: 15px;
+}
+
+.circle-grey {
+ background-color: #A9A9A9;
+ height: 15px;
+ -moz-border-radius:75px;
+ -webkit-border-radius: 75px;
+ width: 15px;
+}

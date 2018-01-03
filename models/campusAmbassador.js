@@ -9,7 +9,8 @@ var CampusAmbassadorSchema = new Schema({
 	year: {type: String , required: true},
 	area: {type: String , required: true},
 	why: {type: String , required: true},
-	time: {type: Date , default: Date.now}
+	time: {type: Date , default: Date.now},
+	tag:{type: String , default: "grey"}
 });
 
 module.exports = mongoose.model('CampusAmbassador',CampusAmbassadorSchema);

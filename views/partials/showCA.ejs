@@ -1,9 +1,16 @@
 <% campusAmbassadors.forEach(function(campusAmbassador){ %>
 <br>
 <div class="card">
-  <div class="card-header">
+  <% var color = campusAmbassador.tag; %>
+  <div class="card-header" style="background: '<%= color %>';">
     <%= campusAmbassador.time.getDate() %>/<%= campusAmbassador.time.getMonth() %>/<%= campusAmbassador.time.getFullYear() %>
     &nbsp <%= campusAmbassador.time.getHours() %>:<%= campusAmbassador.time.getMinutes() %>
+    <div class="circle-grey float-right" style="margin-left: 7px;margin-top: 5px;">
+    </div>
+     <div class="circle-green float-right" style="margin-left: 7px;margin-top: 5px;">
+    </div>
+     <div class="circle-red float-right" style="margin-left: 7px;margin-top: 5px;">
+    </div>
   </div>
   <div class="card-block">
   	<ul class="list-group list-group-flush">
