@@ -122,7 +122,7 @@ exports.change_tag_ca = function(req,res){
 			if(err){
 				console.log(err);
 			}else{
-				campusAmbassador.tag = req.body.tag;
+				campusAmbassador.tag = req.body.color;
 				campusAmbassador.save(function(err){
 					if(err){
 						console.log(err);
@@ -152,7 +152,7 @@ exports.change_tag_team = function(req,res){
 		if(err){
 			console.log(err);
 		}else{
-			team.tag = req.body.tag;
+			team.tag = req.body.color;
 			team.save(function(err){
 				if(err){
 					console.log(err);

@@ -91,6 +91,21 @@ $('.circle-red').on('click',function(){
 });
 
 
+// $('#sort').on('change',function(){
+//     var type = $(this).attr('name');
+//     var option = $(this).val();
+//     var route = '';
+//       if(type=="TeamLeader"){
+//       route = "team_leaders";
+//     }else if(type=="Team"){
+//       route = "";
+//     }else if(type=="CampusAmbassador"){
+//       route = "change_tag_ca";
+//     }
+
+
+
+
 });
 
 

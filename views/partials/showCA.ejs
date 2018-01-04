@@ -10,7 +10,7 @@
 <div class="card">
   <% var color = campusAmbassador.tag; %>
    <% var name = campusAmbassador.id+" CampusAmbassador" %>
-  <div class="card-header" style="background: '<%= color %>';" name="<%= name %>">
+  <div class="card-header" style="background: <%= color %>;" name="<%= name %>">
     <%= campusAmbassador.time.getDate() %>/<%= campusAmbassador.time.getMonth() %>/<%= campusAmbassador.time.getFullYear() %>
     &nbsp <%= campusAmbassador.time.getHours() %>:<%= campusAmbassador.time.getMinutes() %>
     <div class="circle-grey float-right" style="margin-left: 7px;margin-top: 5px;">
