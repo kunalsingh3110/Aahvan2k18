@@ -21,20 +21,74 @@ $('#players').on('input',function(){
 });
 
 $('.circle-grey').on('click',function(){
-    $(this).parent().css("background","grey");
+  $(this).parent().css("background","grey");
+    var name = $(this).parent().attr('name');
+    var type = name.split(' ').slice(-1).join(' ');
+    var route = '';
+    if(type=="TeamLeader"){
+      route = "change_tag_teamLeader";
+    }else if(type=="Team"){
+      route = "change_tag_team";
+    }else if(type=="CampusAmbassador"){
+      route = "change_tag_ca";
+    }
+       $.ajax({
+      url: '/admin/'+route,
+      type: 'POST',
+      data: {id: name.split(' ').slice(0, -1).join(' ') , color: "grey"},
+      success: function(data){
+      },
+      error: function(err){
+      }
+    });
+   
 });
 
 $('.circle-green').on('click',function(){
     $(this).parent().css("background","#006400");
+    var name = $(this).parent().attr('name');
+    var type = name.split(' ').slice(-1).join(' ');
+    var route = '';
+    if(type=="TeamLeader"){
+      route = "change_tag_teamLeader";
+    }else if(type=="Team"){
+      route = "change_tag_team";
+    }else if(type=="CampusAmbassador"){
+      route = "change_tag_ca";
+    }
+       $.ajax({
+      url: '/admin/'+route,
+      type: 'POST',
+      data: {id: name.split(' ').slice(0, -1).join(' ') , color: "#006400"},
+      success: function(data){
+      },
+      error: function(err){
+      }
+    });
 });
 
 $('.circle-red').on('click',function(){
     $(this).parent().css("background","#8B0000");
+    var name = $(this).parent().attr('name');
+    var type = name.split(' ').slice(-1).join(' ');
+    var route = '';
+    if(type=="TeamLeader"){
+      route = "change_tag_teamLeader";
+    }else if(type=="Team"){
+      route = "change_tag_team";
+    }else if(type=="CampusAmbassador"){
+      route = "change_tag_ca";
+    }
+       $.ajax({
+      url: '/admin/'+route,
+      type: 'POST',
+      data: {id: name.split(' ').slice(0, -1).join(' ') , color: "#8B0000"},
+      success: function(data){
+      },
+      error: function(err){
+      }
+    });
 });
-
-function change_tag_teamLeader(color){
-    console.log(color);
-}
 
 
 });

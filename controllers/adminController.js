@@ -133,18 +133,14 @@ exports.change_tag_ca = function(req,res){
 };
 
 exports.change_tag_teamLeader = function(req,res){
-	console.log("dd");
 	TeamLeader.findById(req.body.id,function(err,teamLeader){
 		if(err){
 			console.log(err);
 		}else{
-			teamLeader.tag = req.body.tag;
+			teamLeader.tag = req.body.color;
 			teamLeader.save(function(err){
 				if(err){
 					console.log(err);
-				}else{
-					console.log(teamLeader.tag);
-					res.send("");
 				}
 			});
 		}

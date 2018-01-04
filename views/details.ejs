@@ -1,13 +1,6 @@
 	<% var data = id ; %>
 <% include partials/headeradmin %>
 <br>
-<select class="form-control float-right" style="max-width: 100px;margin-right: 30px;">
-	<option value="all">All</option>
-    <option value="one">Grey</option>
-    <option value="two">Green</option>
-    <option value="three">Red</option>
-</select>
-<br>
 <div class="container" id="showDetails">
 	<% if(id==0) { %>
 	<%- include partials/showTeams %>
