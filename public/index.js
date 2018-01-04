@@ -1,5 +1,21 @@
 $(document).ready(function(){
-	$('#name_logout').hover(function(){
+	
+    $('html, body').hide();
+
+        if (window.location.hash) {
+            setTimeout(function() {
+                $('html, body').scrollTop(0).show();
+                $('html, body').animate({
+                    scrollTop: $(window.location.hash).offset().top
+                    }, 1000)
+            }, 0);
+        }
+        else {
+            $('html, body').show();
+        }
+
+
+  $('#name_logout').hover(function(){
 		text = $(this).text();
 		$(this).text("Logout");
 	},function(){
@@ -90,20 +106,29 @@ $('.circle-red').on('click',function(){
     });
 });
 
+  
 
-// $('#sort').on('change',function(){
-//     var type = $(this).attr('name');
-//     var option = $(this).val();
-//     var route = '';
-//       if(type=="TeamLeader"){
-//       route = "team_leaders";
-//     }else if(type=="Team"){
-//       route = "";
-//     }else if(type=="CampusAmbassador"){
-//       route = "change_tag_ca";
-//     }
+$('#sort').on('change',function(){
+    var option = $(this).val();
+    if(option=="all"){
+      $(".grey").show();
+      $(".006400").show();
+      $(".8B0000").show();
+    }else if(option=="#006400"){
+      $(".006400").show();
+      $(".grey").hide();
+      $(".8B0000").hide();
+    }else if(option=="#8B0000"){
+      $(".8B0000").show();
+      $(".grey").hide();
+      $(".006400").hide();
+    }else if(option=="grey"){
+      $(".grey").show();
+      $(".8B0000").hide();
+      $(".006400").hide();
+    }
 
-
+});
 
 
 });

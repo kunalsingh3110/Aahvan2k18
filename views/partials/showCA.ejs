@@ -1,13 +1,19 @@
-<select class="form-control float-right" style="max-width: 100px;margin-right: 30px;">
+<select class="form-control float-right" style="max-width: 100px;margin-right: 30px;" id="sort">
   <option value="all">All</option>
-    <option value="one">Grey</option>
-    <option value="two">Green</option>
-    <option value="three">Red</option>
+    <option value="grey">Grey</option>
+    <option value="#006400">Green</option>
+    <option value="#8B0000">Red</option>
 </select>
 <br>
 <% campusAmbassadors.forEach(function(campusAmbassador){ %>
 <br>
-<div class="card">
+<% var tagclass; %>
+<% if(campusAmbassador.tag!="grey"){ %>
+<%  tagclass = campusAmbassador.tag.substr(1); %>
+<% }else{ %>
+<% tagclass = "grey"; %>
+<% } %>
+<div class="card <%= tagclass %>">
   <% var color = campusAmbassador.tag; %>
    <% var name = campusAmbassador.id+" CampusAmbassador" %>
   <div class="card-header" style="background: <%= color %>;" name="<%= name %>">

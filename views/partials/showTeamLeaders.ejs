@@ -1,13 +1,19 @@
-<select class="form-control float-right" style="max-width: 100px;margin-right: 30px;" name="TeamLeader" id="sort">
+<select class="form-control float-right" style="max-width: 100px;margin-right: 30px;" id="sort">
   <option value="all">All</option>
     <option value="grey">Grey</option>
-    <option value="green">Green</option>
-    <option value="red">Red</option>
+    <option value="#006400">Green</option>
+    <option value="#8B0000">Red</option>
 </select>
 <br>
 <% teamLeaders.forEach(function(teamLeader){ %>
 <br>
-<div class="card">
+<% var tagclass; %>
+<% if(teamLeader.tag!="grey"){ %>
+<%  tagclass = teamLeader.tag.substr(1); %>
+<% }else{ %>
+<% tagclass = "grey"; %>
+<% } %>
+<div class="card <%= tagclass %>" id="<%= teamLeader.id %>">
   <% var color = teamLeader.tag %>
   <% var name = teamLeader.id+" TeamLeader" %>
   <div class="card-header" style="background: <%= color %>;" name="<%= name %>">
