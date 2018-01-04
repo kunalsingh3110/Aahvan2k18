@@ -1,6 +1,6 @@
 <% var transparent = false; %>
 <% include partials/nav_aahvaan %>
-<div class="card" style="margin-top: 5rem;">
+<!-- <div class="card" style="margin-top: 5rem;">
 	<div class="card-header text-center">
 		<h2>Login to register teams</h2>
     <% if(alert){ %>
@@ -34,6 +34,52 @@
       </div>
   		</form>
     </div>
-</div>
+</div> -->
+
+
+ <section class="section-book">
+                <div class="row1">
+                    <div class="book">
+                        <div class="book__form">
+                            <form action="/login" class="form" method="POST">
+                                <div class="u-margin-bottom-medium">
+                                    <h2 class="heading-secondary-main">
+                                       Login to register teams
+                                    </h2>
+                                </div>
+                                <div class="form__group">
+                                    <input type="email"  name="leader_email" class="form__input" placeholder="Email address" id="email" required>
+                                    <label for="email" class="form__label">Email Address</label>
+                                </div>
+                                <div class="form__group">
+                                    <input type="password" name="leader_password" class="form__input" placeholder="Password" id="pass" required>
+                                    <label for="pass" class="form__label">Enter Password</label>
+                                </div>
+                                 
+                                <div class="form__group u-margin-bottom-medium">
+                                    <div class="form__check-group">
+                                      <input type="checkbox" name="showPassword" class="form__check-input" id="reveal_pass" onchange="document.getElementById('user_password').type = this.checked ? 'text' : 'password'">
+                      
+                                        <label for="reveal_pass" class="form__check-label">
+                                            <span class="form__check-button"></span>                
+                                             Show Password
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form__group u-margin-small">
+                                  <a href="">Forgot Password??</a>
+                                </div>
+                                <div class="form__group">
+                                    <button class="butn butn--green">Login &rarr;</button>
+                                </div>
+
+                             </form>
+                         </div>
+                     </div>
+                 </div>
+             </section>
+
+
+
 
 <% include partials/footer %>

@@ -1,5 +1,18 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+
 body{
   padding-top: 70px;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
 }
 
 .container-main {
@@ -216,3 +229,204 @@ body{
  -webkit-border-radius: 75px;
  width: 15px;
 }
+
+
+.section-book {
+  padding: 6.81rem 0;
+  padding-top: 5rem;
+  background-image: linear-gradient(to right bottom, #7ed56f, #28b485); 
+}
+
+.book {
+  background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, transparent 50%), url(/images/sportmain1.jpg);
+  background-size: 100%;
+  border-radius: 3px;
+  box-shadow: 0 0.9rem 2.5rem rgba(0, 0, 0, 0.2);
+  height: 31.2rem; 
+}
+
+.book__form {
+  width: 50%;
+  padding: 3.75rem; 
+}
+
+
+.u-margin-bottom-medium {
+  margin-bottom: 2.5rem !important;
+}
+
+
+.u-margin-small {
+  margin-top: .3rem;
+  margin-bottom: 1rem;
+  margin-left: .5rem;
+}
+
+
+.heading-secondary-main {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  background-image: linear-gradient(to right, #7ed56f, #28b485);
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: all .2s;
+  letter-spacing: .12rem; 
+}
+
+.heading-secondary-main:hover {
+  /*transform: skewY(2deg) skewX(15deg) scale(1.1);*/
+  text-shadow: 0.3rem 0.6rem 1.25rem rgba(0, 0, 0, 0.2); 
+}
+
+
+.form__input {
+  font-size: 0.9rem;
+  font-family: inherit;
+  color: inherit;
+  padding: 0.9rem 1.25rem;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-bottom: 3px solid transparent;
+  width: 90%;
+  display: block;
+  transition: all .3s; 
+}
+
+.form__input:focus {
+  outline: none;
+  box-shadow: 0 0.62rem 1.25rem rgba(0, 0, 0, 0.1);
+  border-bottom: 3px solid #55c57a; 
+}
+
+.form__input:focus:invalid {
+    border-bottom: 3px solid #ff7730; 
+}
+
+.form__input::-webkit-input-placeholder {
+  color: #999; 
+}
+
+.form__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-left: 1.25rem;
+  margin-top: .4rem;
+  display: block;
+  transition: all .3s; 
+}
+
+.form__input:placeholder-shown + .form__label {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-2.5rem); 
+}
+
+.form__check-group {
+  width: 49%;
+  display: inline-block; 
+}
+
+.form__check-input {
+  display: none; 
+}
+
+.form__check-label {
+  font-size: 1rem;
+  cursor: pointer;
+  position: relative;
+  padding-left: 3.1rem; 
+}
+
+.form__check-button {
+  height: 1.87rem;
+  width: 1.87rem;
+  border: 5px solid #55c57a;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: -.25rem; 
+}
+
+.form__check-button::after {
+  content: "";
+  display: block;
+  height: 0.8rem;
+  width: 0.8rem;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #55c57a;
+  opacity: 0;
+  transition: opacity .2s; 
+}
+
+.form__check-input:checked ~ .form__check-label .form__check-button::after {
+  opacity: 1; 
+}
+
+
+.row1 {
+  max-width: 71.25rem;
+  margin: 0 auto; 
+}
+
+.row1:not(:last-child) {
+  margin-bottom: 5rem;
+
+}
+
+.row1::after {
+  content: "";
+  display: table;
+  clear: both; 
+}
+
+
+
+.butn, .butn:link, .butn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.9rem 2.5rem;
+  display: inline-block;
+  border-radius: 6.25rem;
+  transition: all .2s;
+  position: relative;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer; 
+}
+
+.butn:hover, .butn:focus {
+  outline: none;
+  transform: translateY(-3px);
+  box-shadow: 0 0.62rem 1.25rem rgba(0, 0, 0, 0.2); 
+}
+
+.butn:hover::after, .butn:focus::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0; 
+}
+
+.butn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 0.3rem 0.62rem rgba(0, 0, 0, 0.2); 
+}
+
+
+.butn--green {
+  background-color: #55c57a;
+  color: #fff; 
+}
+
+.butn--green::after {
+  background-color: #55c57a; 
+
+}
+
+
