@@ -43,6 +43,20 @@ body{
   background-blend-mode: screen;
 }
 
+.title-sport {
+  text-align: center;
+}
+
+ @media (max-width: 75em) {
+    .title-sport {
+  text-align: center;
+    } }
+
+  @media (max-width: 56.25em) {
+    .title-sport {
+  text-align: center;
+      } }
+
 .sports-1 {
   margin-top: 0;
   background-image: linear-gradient(to right bottom, #8e8e3d, #afaf36), url(images/athletics.jpg);
@@ -107,6 +121,7 @@ body{
 }
 
 .categories__type {
+  text-align: center;
   list-style: none;
   text-shadow: 0 1rem 2.5rem rgba(0,0,0,.2);
 }
