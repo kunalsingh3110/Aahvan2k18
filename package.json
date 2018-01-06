@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/beast-incarnate/Aahvan2k18#readme",
   "dependencies": {
+    "barba-transitions": "^1.1.0",
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "connect-mongo": "^2.0.0",
     "cookie-parser": "^1.4.3",
@@ -29,5 +31,8 @@
     "materialize-css": "^0.100.2",
     "mongoose": "^4.13.6",
     "nodemon": "^1.14.1"
+  },
+  "devDependencies": {
+    "barba.js": "^1.0.0"
   }
 }

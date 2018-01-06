@@ -1,5 +1,7 @@
 
 var TeamLeader = require("../models/teamLeader");
+var bcrypt = require('bcrypt');
+const saltRounds = 10;
 exports.index = function(req,res){
 	res.render("../views/home",{username: req.session.username , userid: req.session.userid});
 };
@@ -24,22 +26,35 @@ exports.post_register = function(req,res){
 			if(teamLeader){
 				res.render("../views/register",{alert: 3 , username: req.session.username , userid: req.session.userid});
 			}else{
-				TeamLeader.create(
-					{name: req.body.leader_name,
-			 		college: req.body.leader_college,
-			 		number: req.body.leader_number,
-			 		email: req.body.leader_email,
-			 		password: req.body.leader_password
-					}, function(err,teamLeader){
+				bcrypt.genSalt(saltRounds,function(err,salt){
+				if(err){
+					res.render("../views/register",{alert: 2 , username: req.session.username , userid: req.session.userid});
+				}else{
+					bcrypt.hash(req.body.leader_password,salt,function(err,hash){
 						if(err){
 							res.render("../views/register",{alert: 2 , username: req.session.username , userid: req.session.userid});
 						}else{
-							req.session.username = teamLeader.name;
-							req.session.userid = teamLeader._id;
-							res.render("../views/home",{username: req.session.username , userid: req.session.userid});
-						}
-					   }
-					);
+						TeamLeader.create(
+							{name: req.body.leader_name,
+			 				college: req.body.leader_college,
+			 				number: req.body.leader_number,
+			 				email: req.body.leader_email,
+			 				password: hash
+							}, function(err,teamLeader){
+									if(err){
+										res.render("../views/register",{alert: 2 , username: req.session.username , userid: req.session.userid});
+									}else{
+										req.session.username = teamLeader.name;
+										req.session.userid = teamLeader._id;
+										res.render("../views/home",{username: req.session.username , userid: req.session.userid});
+									}
+					   			}
+							);
+					}
+					});
+				}
+				});
+				
 			}
 		});
 		
@@ -156,14 +171,20 @@ exports.post_login = function(req,res){
 	if(req.session.username){
 			res.render("../views/home",{username: req.session.username , userid: req.session.userid});
 		}else{
-	TeamLeader.findOne({email: req.body.leader_email , password: req.body.leader_password} , function(err,teamLeader){
+	TeamLeader.findOne({email: req.body.leader_email} , function(err,teamLeader){
 			if(err){
 				res.render("../views/login",{alert:true , username: req.session.username , userid: req.session.userid});
 			}else{
 				if(teamLeader){
-					req.session.username = teamLeader.name;
-					req.session.userid = teamLeader._id;
-					res.render("../views/home",{username: req.session.username , userid: req.session.userid});
+					bcrypt.compare(req.body.leader_password,teamLeader.password,function(err,check){
+						if(check){
+							req.session.username = teamLeader.name;
+							req.session.userid = teamLeader._id;
+							res.render("../views/home",{username: req.session.username , userid: req.session.userid});
+						}else{
+							res.render("../views/login",{alert:true , username: req.session.username , userid: req.session.userid});
+						}
+					});
 				}else{
 					res.render("../views/login",{alert:true , username: req.session.username , userid: req.session.userid});
 				}
@@ -210,5 +231,5 @@ exports.post_campus_ambassador = function(req,res){
 };
 
 exports.live = function(req,res){
-	res.render("../views/live");
+	res.render("../views/live" , {username: req.session.username , userid: req.session.userid});
 };
