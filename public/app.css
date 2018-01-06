@@ -7,11 +7,26 @@
 }
 
 
+html {
+  font-size: 100%;
+
+}
+
+  @media (max-width: 75em) {
+    html {
+      font-size: 90%; } }
+
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 80%; }
+
+  } 
+
+
 body{
   padding-top: 70px;
   position: relative;
   width: 100%;
-  height: 100vh;
   box-sizing: border-box;
 }
 
@@ -230,31 +245,64 @@ body{
  width: 15px;
 }
 
+.credentials {
+  text-align: center;
+}
 
 .section-book {
   padding: 6.81rem 0;
   padding-top: 5rem;
   background-image: linear-gradient(to right bottom, #7ed56f, #28b485); 
+  height: 100%;
 }
+
+@media (max-width: 56.25em) {
+    .section-book {
+      padding: 4.54rem 0; } }
+
 
 .book {
   background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, transparent 50%), url(/images/sportmain1.jpg);
-  background-size: 100%;
+  background-size: cover;
   border-radius: 3px;
   box-shadow: 0 0.9rem 2.5rem rgba(0, 0, 0, 0.2);
-  height: 31.2rem; 
+  
 }
+
+
+
+@media (max-width: 75em) {
+    .book {
+      background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 65%, transparent 65%), url(/images/sportmain1.jpg);
+      background-size: cover; } }
+  @media (max-width: 56.25em) {
+    .book {
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%), url(/images/sportmain1.jpg); } }
 
 .book__form {
   width: 50%;
   padding: 3.75rem; 
 }
 
+@media (max-width: 75em) {
+      .book__form {
+        width: 65%; } }
+    @media (max-width: 56.25em) {
+      .book__form {
+        width: 100%; } }
+
 
 .u-margin-bottom-medium {
   margin-bottom: 2.5rem !important;
 }
 
+@media (max-width: 56.25em) {
+    .u-margin-bottom-medium {
+      margin-bottom: 1.87rem !important; } }
+
+.u-margin-top-medium {
+  margin-top: 2.5rem !important;
+}
 
 .u-margin-small {
   margin-top: .3rem;
@@ -275,6 +323,13 @@ body{
   letter-spacing: .12rem; 
 }
 
+@media (max-width: 56.25em) {
+    .heading-secondary-main {
+      font-size: 1.37rem; } }
+@media (max-width: 37.5em) {
+    .heading-secondary-main {
+      font-size: 1.14rem; } }
+
 .heading-secondary-main:hover {
   /*transform: skewY(2deg) skewX(15deg) scale(1.1);*/
   text-shadow: 0.3rem 0.6rem 1.25rem rgba(0, 0, 0, 0.2); 
@@ -294,6 +349,10 @@ body{
   display: block;
   transition: all .3s; 
 }
+
+@media (max-width: 56.25em) {
+    .form__input {
+      width: 100%; } }
 
 .form__input:focus {
   outline: none;
@@ -328,6 +387,11 @@ body{
   width: 49%;
   display: inline-block; 
 }
+
+@media (max-width: 56.25em) {
+    .form__check-group {
+      width: 100%;
+      margin-bottom: 2rem; } }
 
 .form__check-input {
   display: none; 
@@ -380,6 +444,14 @@ body{
   margin-bottom: 5rem;
 
 }
+
+ @media (max-width: 56.25em) {
+      .row:not(:last-child) {
+        margin-bottom: 3.5rem; } }
+  @media (max-width: 56.25em) {
+    .row {
+      max-width: 31.25rem;
+      padding: 0 2.5rem; } }
 
 .row1::after {
   content: "";

@@ -1,6 +1,6 @@
 <% var transparent = false; %>
 <% include partials/nav_aahvaan %>
-<div class="card" style="margin-top: 5rem;">
+<!-- <div class="card" style="margin-top: 5rem;">
 	<div class="card-header text-center">
 		<h2><%= sports_name %>&nbspTeam Information</h2>
     <% if(alert){ %>
@@ -31,4 +31,41 @@
       </div>
   		</form>
     </div>
-</div>
+</div> -->
+
+<section class="section-book">
+                <div class="row1">
+                    <div class="book">
+                        <div class="book__form">
+                            <form action="/register_sports" class="form" method="POST" id="register_sports">
+                                <div class="u-margin-bottom-medium">
+                                    <h2 class="heading-secondary-main">
+                                       <%= sports_name %>&nbsp;Team Information %>
+                                    </h2>
+                                </div>
+                                <div class="form__group">
+                                    <input type="hidden"  name="sports_name" class="form__input" value='<%= sports_name %>'>
+                              
+                                </div>
+                                <div class="form__group">
+                                    <input type="text" name="captain_name" class="form__input" placeholder="Enter Captain Name" id="captain" required>
+                                    <label for="captain" class="form__label">Captain's Name</label>
+                                </div>
+                                <div class="form__group">
+                                    <input type="tel" name="captain_number" class="form__input" placeholder="Captains Contact Number(Eg. 8743080047)" id="contact" required minlength="10" maxlength="10">
+                                    <label for="contact" class="form__label">Captain's Contact Number</label>
+                                </div>
+                                <div class="form__group">
+                                    <input type="number" name="number_of_players" class="form__input" placeholder="Enter number of players in the team" id="number" required>
+                                    <label for="number" class="form__label">Number of Players</label>
+                                </div>
+
+                                <div class="form__group">
+                                    <button class="butn butn--green">Submit &rarr;</button>
+                                </div>
+
+                             </form>
+                         </div>
+                     </div>
+                 </div>
+             </section>

@@ -1,8 +1,5 @@
 <% var transparent = false; %>
 <% include partials/nav_aahvaan %>
-<div class="card text-center" style="margin-top: 5rem;">
-	<div class="card-header">
-		<h2>Fill in the form below</h2>
     <% if(alert){ %>
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
   <strong>Wrong credentials!!!</strong>
@@ -12,33 +9,54 @@
 </div>
 <% alert = false %>
 <% } %>
-	</div>
-    <div class="card-body" style="margin-left: 5rem; margin-right: 5rem;">
-       <form action="/campus_ambassador" method="POST">
-          <div class="form-group">
-    		<input type="text" class="form-control" name="ca_name" placeholder="Name" required="true">
-    	  </div>
-         <div class="form-group">
-        <input type="tel" class="form-control" name="ca_number" placeholder="Contact Number(Eg. 8743080047)" required="true" minlength="10" maxlength="10">
-        </div>
-         <div class="form-group">
-        <input type="email" class="form-control" name="ca_email" placeholder="Email" required="true">
-        </div>
-         <div class="form-group">
-        <input type="text" class="form-control" name="ca_college" placeholder="College Name" required="true">
-        </div>
-        <div class="form-group">
-        <input type="text" class="form-control" name="ca_year" placeholder="Year of study" required="true">
-        </div>
-        <div class="form-group">
-        <input type="text" class="form-control" name="ca_area" placeholder="Area of study" required="true">
-        </div>
-        <div class="form-group">
-        <textarea class="form-control" rows = "3" name="ca_why" placeholder="Why you want to be a campus ambassador?" required="true"></textarea>
-        </div>
-  		  <button type="submit" class="btn btn-primary">Submit</button>
-  		</form>
-    </div>
-</div>
+	
+<section class="section-book">
+                <div class="row1">
+                    <div class="book">
+                        <div class="book__form">
+                            <form action="/campus_ambassador" class="form" method="POST">
+                                <div class="u-margin-bottom-medium">
+                                    <h2 class="heading-secondary-main">
+                                       Fill in the form below
+                                    </h2>
+                                </div>
+                                <div class="form__group">
+                                    <input type="text"  name="ca_name" class="form__input" placeholder="Enter Name" id="Name" required>
+                                    <label for="Name" class="form__label">Enter Name</label>
+                                </div>
+                                <div class="form__group">
+                                    <input type="tel"  name="ca_number" class="form__input" placeholder="Contact Number(Eg. 8743080047)" id="contact" required minlength="10" maxlength="10">
+                                    <label for="contact" class="form__label">Contact Number(Eg. 8743080047)</label>
+                                </div>
+                                <div class="form__group">
+                                    <input type="email" name="ca_email" class="form__input" placeholder="Enter Email" id="email" required>
+                                    <label for="email" class="form__label">Enter Email</label>
+                                </div>
+                                <div class="form__group">
+                                    <input type="text" name="ca_college" class="form__input" placeholder="College Name" id="college" required>
+                                    <label for="college" class="form__label">College Name</label>
+                                </div>
+                                <div class="form__group">
+                                    <input type="text" name="ca_year" class="form__input" placeholder="Year of study" id="year" required>
+                                    <label for="year" class="form__label">Year of study</label>
+                                </div>
+                                <div class="form__group">
+                                    <input type="text" name="ca_area" class="form__input" placeholder="Area of study" id="area" required>
+                                    <label for="area" class="form__label">Area of study</label>
+                                </div>
+                                <div class="form__group">
+                                    <textarea class="form__input" rows = "3" name="ca_why" placeholder="Why you want to be a campus ambassador?" required="true"></textarea>
+                                </div>
+                                
+                                 
+                                <div class="form__group u-margin-top-medium">
+                                    <button class="butn butn--green">Submit &rarr;</button>
+                                </div>
+
+                             </form>
+                         </div>
+                     </div>
+                 </div>
+             </section>
 
 <% include partials/footer %>
