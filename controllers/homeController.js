@@ -1,5 +1,8 @@
 
 var TeamLeader = require("../models/teamLeader");
+var async = require('async');
+var nodemailer = require('nodemailer');
+var crypto = require('crypto');
 var bcrypt = require('bcrypt');
 const saltRounds = 10;
 exports.index = function(req,res){
@@ -203,32 +206,128 @@ exports.logout = function(req,res){
 };
 
 exports.campus_ambassador = function(req,res){
-	res.render("../views/campus_ambassador_form",{alert:false , username: req.session.username , userid: req.session.userid});
+	res.render("../views/campus_ambassador_form",{alert:0 , username: req.session.username , userid: req.session.userid});
 };
 
 exports.post_campus_ambassador = function(req,res){
 		var CampusAmbassador = require("../models/campusAmbassador");
 		var ca_phone = Number(req.body.ca_number);
 		if(isNaN(ca_phone)){
-			res.render("../views/campus_ambassador_form",{alert:true , username: req.session.username , userid: req.session.userid});
+			res.render("../views/campus_ambassador_form",{alert:1 , username: req.session.username , userid: req.session.userid});
 		}else{
-			CampusAmbassador.create(
-				{name: req.body.ca_name,
-				 number: req.body.ca_number,
-				 email: req.body.ca_email,
-				 college: req.body.ca_college,
-				 year: req.body.ca_year,
-				 area: req.body.ca_area,
-				 why: req.body.ca_why} , function(err,CampusAmbassador){
-				 	if(err){
-				 		res.render("../views/campus_ambassador_form",{alert:true , username: req.session.username , userid: req.session.userid});
-				 	}else{
-				 		res.render("../views/thankyou_campus_ambassador" , {username: req.session.username , userid: req.session.userid});
-				 	}
-				 }
-				);
+			CampusAmbassador.findOne({email: req.body.ca_email},function(err,campusAmbassador){
+				if(err){
+					res.render("../views/campus_ambassador_form",{alert:1 , username: req.session.username , userid: req.session.userid});
+				}else{
+
+					if(campusAmbassador){
+						res.render("../views/campus_ambassador_form",{alert:2 , username: req.session.username , userid: req.session.userid});	
+					}else{
+						CampusAmbassador.create(
+							{name: req.body.ca_name,
+				 			number: req.body.ca_number,
+				 			email: req.body.ca_email,
+							college: req.body.ca_college,
+							year: req.body.ca_year,
+				 			area: req.body.ca_area,
+				 			why: req.body.ca_why} , function(err,CampusAmbassador){
+				 				if(err){
+				 					res.render("../views/campus_ambassador_form",{alert:1 , username: req.session.username , userid: req.session.userid});
+				 				}else{
+				 					res.render("../views/thankyou_campus_ambassador" , {username: req.session.username , userid: req.session.userid});
+				 				}
+				 			}
+						);
+					}
+				}
+			});
+			
 		}
 };
+
+exports.forgot_password = function(req,res){
+	if(req.session.username){
+		res.render("../views/home",{username: req.session.username , userid: req.session.userid});
+	}else{
+		res.render("../views/forgot_password",{alert: 0 , username: req.session.username , userid: req.session.userid});
+	}
+};
+
+exports.send_token = function(req,res){
+	res.render("../views/home",{username: req.session.username , userid: req.session.userid});
+}
+
+exports.post_send_token = function(req,res){
+	var email = req.body.user_email;
+	TeamLeader.findOne({email:email},function(err,teamLeader){
+		if(err){
+			res.render("../views/forgot_password",{alert:1 , username: req.session.username , userid: req.session.userid});
+		}else{
+			if(teamLeader){
+					crypto.randomBytes(20,function(err,buf){
+						if(err){
+							console.log(err);
+						}else{
+						  var token = buf.toString('hex');
+					teamLeader.resetPasswordToken = token;
+					teamLeader.resetPasswordExpires = Date.now() + 3600000;
+
+					teamLeader.save(function(err){
+						if(err){
+							res.render("../views/forgot_password",{alert:1 , username: req.session.username , userid: req.session.userid});
+						}
+					});
+
+					var smtpTransport = nodemailer.createTransport({
+						service: 'Gmail',
+						auth:{
+							user: 'aahvaandtu@gmail.com',
+							pass: process.env.PASSWORD
+						}
+					});
+
+					var mailOptions = {
+						to: teamLeader.email,
+						from: 'aahvaandtu@gmail.com',
+						subject: 'Aahvaan 2k18 Contingent Leader Password Reset',
+						text: 'You are receiving this because you (or someone else) has requested for the reset of the password.'+'\n'+'Please click on the following link or paste into your browser to complete the process.'+'\n'+
+						'http://'+req.headers.host+'/reset_password/'+token+'\n\n'+
+						'If you not request this , please ignore and your password will remain unchanged.'+'\n\n'+
+						'Regards,'+'\n'+
+						'Team Aahvaan' 
+					};
+					smtpTransport.sendMail(mailOptions,function(err){
+						if(err){
+							console.log(err);
+							res.render("../views/forgot_password",{alert:1 , username: req.session.username , userid: req.session.userid});
+						}else{
+							res.render("../views/forgot_password_sent",{useremail:teamLeader.email,username: req.session.username , userid: req.session.userid});
+						}
+					});
+			}
+					});
+			
+			}else{
+				res.render("../views/forgot_password",{alert:2 , username: req.session.username , userid: req.session.userid});
+			}
+		}
+	});
+}
+
+exports.reset_password = function(req,res){
+	TeamLeader.findOne({resetPasswordToken: req.params.token , resetPasswordExpires: {$gt: Date.now()}},function(err,teamLeader){
+		if(err){
+			console.log(err);
+			res.render("../views/forgot_password",{alert:1 , username: req.session.username , userid: req.session.userid});
+		}else{
+			if(teamLeader){
+				res.render("../views/reset_password",{token:req.params.token,username: req.session.username , userid: req.session.userid});
+			}else{
+				res.render("../views/forgot_password",{alert:3 , username: req.session.username , userid: req.session.userid});
+			}
+		}
+	});
+};	
 
 exports.live = function(req,res){
 	res.render("../views/live" , {username: req.session.username , userid: req.session.userid});

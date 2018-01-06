@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/beast-incarnate/Aahvan2k18#readme",
   "dependencies": {
+    "async": "^2.6.0",
     "barba-transitions": "^1.1.0",
     "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
@@ -30,6 +31,7 @@
     "jquery": "^3.2.1",
     "materialize-css": "^0.100.2",
     "mongoose": "^4.13.6",
+    "nodemailer": "^4.4.1",
     "nodemon": "^1.14.1"
   },
   "devDependencies": {
