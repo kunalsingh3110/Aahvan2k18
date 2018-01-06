@@ -28,11 +28,11 @@ $(document).ready(function(){
 		$(this).toggleClass('scale-up');
 	});
 
-$('#players').on('input',function(){
+$('#number').on('input',function(){
   $('.team-players').empty();
   var players = $(this).val();
   for(var i=0;i<players;i++){
-    $('.team-players').append("<div class='form-group'><input type='text' class='form-control' id='player"+(i)+"' name='player_name"+(i)+"' placeholder='Enter Player "+(i+1)+" Name' required='true'></div>");
+    $('.team-players').append("<div class='form__input'><input type='text' class='form-control' id='player"+(i)+"' name='player_name"+(i)+"' placeholder='Enter Player "+(i+1)+" Name' required='true'></div>");
 }
 });
 
