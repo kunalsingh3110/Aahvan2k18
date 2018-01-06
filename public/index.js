@@ -32,7 +32,7 @@ $('#number').on('input',function(){
   $('.team-players').empty();
   var players = $(this).val();
   for(var i=0;i<players;i++){
-    $('.team-players').append("<div class='form__input'><input type='text' class='form-control' id='player"+(i)+"' name='player_name"+(i)+"' placeholder='Enter Player "+(i+1)+" Name' required='true'></div>");
+    $('.team-players').append("<input type='text' class='form__input' id='player"+(i)+"' name='player_name"+(i)+"' placeholder='Enter Player "+(i+1)+" Name' required='true'><label for='number' class='form__label'>Enter Player "+(i+1)+" Name</label>");
 }
 });
 
