@@ -23,10 +23,18 @@
                                     <label for="email" class="form__label">Email Address</label>
                                 </div>
                                 <div class="form__group">
-                                    <input type="password" name="admin_password" class="form__input" placeholder="Password" id="pass" required>
-                                    <label for="pass" class="form__label">Password</label>
+                                    <input type="password" name="admin_password" class="form__input" placeholder="Password" id="admin_pass" required>
+                                    <label for="admin_pass" class="form__label">Password</label>
                                 </div>
-                                 
+                                 <div class="form__group u-margin-bottom-medium">
+                                    <div class="form__check-group">
+                                      <input type="checkbox" name="showPassword" class="form__check-input" id="reveal_pass" onchange="document.getElementById('admin_pass').type = this.checked ? 'text' : 'password'">
+                                        <label for="reveal_pass" class="form__check-label">
+                                            <span class="form__check-button"></span>                
+                                             Show Password
+                                        </label>
+                                    </div>
+                                </div>
                                 <div class="form__group">
                                     <button class="butn butn--green">Login &rarr;</button>
                                 </div>

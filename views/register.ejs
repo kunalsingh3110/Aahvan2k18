@@ -55,6 +55,15 @@
                                     <input type="password" name="leader_password" class="form__input" placeholder="Choose Password" id="year" required>
                                     <label for="year" class="form__label">Choose Password</label>
                                 </div>
+                                <div class="form__group u-margin-bottom-medium">
+                                    <div class="form__check-group">
+                                      <input type="checkbox" name="showPassword" class="form__check-input" id="reveal_pass" onchange="document.getElementById('year').type = this.checked ? 'text' : 'password'">
+                                        <label for="reveal_pass" class="form__check-label">
+                                            <span class="form__check-button"></span>                
+                                             Show Password
+                                        </label>
+                                    </div>
+                                </div>
                                 <div class="form__group">
                                     <button class="butn butn--green">Submit &rarr;</button>
                                 </div>
