@@ -392,6 +392,10 @@ html {
   margin-bottom: 2.5rem !important;
 }
 
+.u-margin-bottom-small {
+  margin-bottom: 1rem !important;
+}
+
 @media (max-width: 56.25em) {
     .u-margin-bottom-medium {
       margin-bottom: 1.87rem !important; } }
@@ -401,8 +405,8 @@ html {
 }
 
 .u-margin-small {
-  margin-top: .3rem;
-  margin-bottom: 1rem;
+  margin-top: 0;
+  margin-bottom: 6rem;
   margin-left: .5rem;
 }
 
