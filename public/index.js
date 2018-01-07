@@ -1,5 +1,34 @@
 $(document).ready(function(){
 
+$('#Events').on("click",function() {
+  jQuery("html, body").animate({scrollTop:  $("#particles-js").offset().top }, 2000);   
+});
+
+$('#Theme').on("click",function() {
+  jQuery("html, body").animate({scrollTop:  $(".theme").offset().top }, 2000);   
+});
+
+$('#Lookback').on("click",function() {
+  jQuery("html, body").animate({scrollTop:  $(".lookback").offset().top }, 2000);   
+});
+
+
+
+
+  window.onscroll = () => {
+    const nav = document.querySelector('.navbar');
+    // console.log(document.body.scrollTop);
+    // console.log(this.scrollY);
+    if(document.body.scrollTop >= 100) nav.classList.add('scroll');
+    else nav.classList.remove('scroll');
+  };
+
+  function zoomIn() {
+    console.log('clicked');
+    alert('sdfa');
+    // document.getElementById("overlay").style.display = "block";
+  }
+
     $('html, body').hide();
 
         if (window.location.hash) {
@@ -130,23 +159,6 @@ $('#sort').on('change',function(){
 
 });
 
-
-});
-
-
-// end of document.onready 
-
-
-
-
-
-AOS.init({
-  duration: 1200,
-});
-
-
-
-
 particlesJS("particles-js", {
   "particles": {
     "number": {
@@ -256,6 +268,63 @@ particlesJS("particles-js", {
     }
   },
   "retina_detect": true
+});
+
+ // var i=0;
+ //  var spread=0;
+ //  var stop=setInterval(()=> {
+
+ //    //if i<1k inc spread by 1
+ //    if(i<100) {
+ //      // console.log('+');
+     
+
+ //      spread+=1;
+ //    }
+ //    if(i>100) {
+ //      spread-=1; 
+ //      // console.log('-');
+ //    }
+ //    if(i===200) {
+ //      i=0;
+ //      // console.log('reset');
+ //      spread=0;
+ //    }
+ //    //if i>1k dec spread by 1
+ //    //if i===2k set spread and i to 0
+
+
+ //    document.getElementById("box").style["boxShadow"] = "1px 1px "+spread+"px white";     
+
+ //    i++;
+
+ //    // console.log(i);
+
+ //  },10);
+
+
+  var lines=anime({
+    targets:'.line',
+    translateY: 45,
+    direction: 'alternate',
+    // easing: 'linear',
+    elasticity:600,
+    loop:true,
+    // easing: 'easeInQuad',
+    // round:5,
+    // rotate: function() { return anime.random(-360, 360); },
+    duration: function(el, i, l) {
+      return 2500 + (i * 800);
+    }
+  });
+
+});
+
+
+// end of document.onready 
+
+AOS.init({
+  duration: 1200,
 });
 
 

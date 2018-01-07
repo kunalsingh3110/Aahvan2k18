@@ -9,6 +9,7 @@
 
 html {
   font-size: 100%;
+  height: 100%;
 
 }
 
@@ -23,12 +24,10 @@ html {
   } 
 
 
-body{
+/*body{
   padding-top: 70px;
   position: relative;
-  width: 100%;
-  box-sizing: border-box;
-}
+}*/
 
 .container-main {
   width: 100%;
@@ -264,17 +263,99 @@ body{
   text-align: center;
 }
 
+.card__view {
+  margin: 0 27rem;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 991px) {
+  .card__view {
+    margin: 0 5rem;
+  }
+}
+
+.space {
+  margin-top: 5rem !important;
+  margin-bottom: 0 !important;
+   padding: 2rem 0;
+  font-size: 5rem;
+  text-align: center;
+   background-color: rgba(255, 255, 255, 0.8);
+   border-radius: 3px;
+  /*box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);*/
+  /*background-image: linear-gradient(to right bottom, #7ed56f, #28b485); */
+  height: 100%;
+}
+
+
+.green-space {
+  background-image: linear-gradient(to right bottom, #7ed56f, #28b485); 
+}
+
+.main-form {
+  padding-top: 4rem;
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+}
+
 .section-book {
   padding: 6.81rem 0;
   padding-top: 5rem;
+
   background-image: linear-gradient(to right bottom, #7ed56f, #28b485); 
   height: 100%;
+ 
+}
+
+.section-block {
+  margin-top: 3.4rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  padding-bottom: 40vh;
+  height: 100%;
+  box-shadow: .5rem 1rem 2rem rgba(0,0,0, .2);
+  background-image: linear-gradient(to right bottom, rgba(126,213,111, .7), rgba(40,180,133, .7)), url(images/sportmain2.jpg);
+  background-size: cover;
+  background-repeat: no-repeat; 
+}
+
+.feature-box__icon {
+    font-size: 6rem;
+    margin-bottom: .5rem;
+    background-image: linear-gradient(to right, #7ed56f, #28b485);
+    -webkit-background-clip: text;
+    color: transparent; }
+    @media (max-width: 56.25em) {
+      .feature-box__icon {
+        margin-bottom: 0; } }
+
+
+.heading-tertiary--mid {
+  vertical-align: middle;
+  padding: 3rem 0;
 }
 
 @media (max-width: 56.25em) {
     .section-book {
       padding: 4.54rem 0; } }
 
+
+@media (max-width: 56.25em) {
+  .section-block {
+    
+    padding-bottom: 30vh;
+  }
+}
+
+@media (max-width: 37.5em) {
+  .section-block {
+    margin-top: 5rem;
+    margin-left: 0;
+    margin-right: 0;
+    padding-bottom: 30vh;
+  }
+}
 
 .book {
   background-image: linear-gradient(95deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, transparent 50%), url(/images/sportmain1.jpg);
@@ -311,6 +392,10 @@ body{
   margin-bottom: 2.5rem !important;
 }
 
+.u-margin-bottom-small {
+  margin-bottom: 1rem !important;
+}
+
 @media (max-width: 56.25em) {
     .u-margin-bottom-medium {
       margin-bottom: 1.87rem !important; } }
@@ -320,8 +405,8 @@ body{
 }
 
 .u-margin-small {
-  margin-top: .3rem;
-  margin-bottom: 1rem;
+  margin-top: 0;
+  margin-bottom: 6rem;
   margin-left: .5rem;
 }
 
