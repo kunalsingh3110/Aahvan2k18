@@ -166,7 +166,7 @@ exports.login = function(req,res){
 	if(req.session.username){
 			res.render("../views/home",{username: req.session.username , userid: req.session.userid});
 		}else{
-	res.render("../views/login",{alert: false , username: req.session.username , userid: req.session.userid});
+	res.render("../views/login",{alert: 0 , username: req.session.username , userid: req.session.userid});
 	}
 };
 
@@ -176,7 +176,7 @@ exports.post_login = function(req,res){
 		}else{
 	TeamLeader.findOne({email: req.body.leader_email} , function(err,teamLeader){
 			if(err){
-				res.render("../views/login",{alert:true , username: req.session.username , userid: req.session.userid});
+				res.render("../views/login",{alert:1 , username: req.session.username , userid: req.session.userid});
 			}else{
 				if(teamLeader){
 					bcrypt.compare(req.body.leader_password,teamLeader.password,function(err,check){
@@ -185,11 +185,11 @@ exports.post_login = function(req,res){
 							req.session.userid = teamLeader._id;
 							res.render("../views/home",{username: req.session.username , userid: req.session.userid});
 						}else{
-							res.render("../views/login",{alert:true , username: req.session.username , userid: req.session.userid});
+							res.render("../views/login",{alert:1 , username: req.session.username , userid: req.session.userid});
 						}
 					});
 				}else{
-					res.render("../views/login",{alert:true , username: req.session.username , userid: req.session.userid});
+					res.render("../views/login",{alert:1 , username: req.session.username , userid: req.session.userid});
 				}
 			}
 	});
@@ -321,13 +321,55 @@ exports.reset_password = function(req,res){
 			res.render("../views/forgot_password",{alert:1 , username: req.session.username , userid: req.session.userid});
 		}else{
 			if(teamLeader){
-				res.render("../views/reset_password",{token:req.params.token,username: req.session.username , userid: req.session.userid});
+				res.render("../views/reset_password",{alert: 0 , token:req.params.token,username: req.session.username , userid: req.session.userid});
 			}else{
 				res.render("../views/forgot_password",{alert:3 , username: req.session.username , userid: req.session.userid});
 			}
 		}
 	});
 };	
+
+exports.post_reset_password = function(req,res){
+	if(req.body.leader_password != req.body.leader_password_confirm){
+			res.render("../views/reset_password",{alert: 1 , token:req.body.token,username: req.session.username , userid: req.session.userid});
+	}else{
+	TeamLeader.findOne({resetPasswordToken: req.body.token , resetPasswordExpires: {$gt: Date.now()}},function(err,teamLeader){
+		if(err){
+			console.log(err);
+			res.render("../views/forgot_password",{alert:1 , username: req.session.username , userid: req.session.userid});
+		}else{
+			if(teamLeader){
+				bcrypt.genSalt(saltRounds,function(err,salt){
+				if(err){
+					res.render("../views/forgot_password",{alert: 1 , username: req.session.username , userid: req.session.userid});
+				}else{
+					bcrypt.hash(req.body.leader_password,salt,function(err,hash){
+						if(err){
+							res.render("../views/forgot_password",{alert: 1 , username: req.session.username , userid: req.session.userid});
+						}else{
+							teamLeader.password = hash;
+							teamLeader.resetPasswordToken = undefined;
+							teamLeader.resetPasswordExpires = undefined;
+
+							teamLeader.save(function(err){
+								if(err){
+									res.render("../views/forgot_password",{alert: 1 , username: req.session.username , userid: req.session.userid});
+								}else{
+									res.render("../views/login",{alert: 2 , username:req.session.username , userid: req.session.userid});
+								}
+							});
+						}
+					});
+			}});
+			}else{
+				res.render("../views/forgot_password",{alert:3 , username: req.session.username , userid: req.session.userid});
+			}
+		}
+	});
+
+}
+
+};
 
 exports.live = function(req,res){
 	res.render("../views/live" , {username: req.session.username , userid: req.session.userid});
