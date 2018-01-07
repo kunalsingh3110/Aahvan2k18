@@ -24,14 +24,10 @@ html {
   } 
 
 
-body{
+/*body{
   padding-top: 70px;
   position: relative;
-  /*height: 100%;*/
-  width: 100%;
- 
-  box-sizing: border-box;
-}
+}*/
 
 .container-main {
   width: 100%;
@@ -296,12 +292,20 @@ body{
   background-image: linear-gradient(to right bottom, #7ed56f, #28b485); 
 }
 
+.main-form {
+  padding-top: 4rem;
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+}
+
 .section-book {
   padding: 6.81rem 0;
   padding-top: 5rem;
 
   background-image: linear-gradient(to right bottom, #7ed56f, #28b485); 
   height: 100%;
+ 
 }
 
 .section-block {
