@@ -87,19 +87,19 @@ body{
   background-image: url("images/aahvaan_logo.jpg"); 
 }
 .slideshow li:nth-child(2) { 
-  background-image: url('home-images/8.jpg');
+  background-image: url('images/8.jpg');
   animation-delay: 5s; 
 }
 .slideshow li:nth-child(3) { 
-  background-image: url('home-images/22.jpg');
+  background-image: url('images/22.jpg');
   animation-delay: 10s; 
 }
 .slideshow li:nth-child(4) { 
-  background-image: url('home-images/6.jpg');
+  background-image: url('images/6.jpg');
   animation-delay: 15s; 
 }
 .slideshow li:nth-child(5) { 
-  background-image: url('home-images/21.jpg');
+  background-image: url('images/21.jpg');
   animation-delay: 20s; 
 }
 
