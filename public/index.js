@@ -1,5 +1,46 @@
 $(document).ready(function(){
 
+var images=Array.from(document.querySelectorAll('.img-elem'));
+
+images.forEach((img)=> {
+  $(img).on('click',()=>{
+    console.log('add');
+    document.querySelector('.cancel-btn-container').classList.add('overlay');
+    document.querySelector('.cancel-btn').classList.add('btndis');
+    img.classList.add('overlay');
+    img.classList.add('remOpacity');
+    img.children[0].classList.add('imgPos');
+    img.children[0].style.width="50%";
+      $('.cancel-btn').on('click',()=> {
+        console.log('remove');
+        document.querySelector('.cancel-btn-container').classList.remove('overlay');
+        document.querySelector('.cancel-btn').classList.remove('btndis');
+        img.classList.remove('overlay');
+        img.classList.remove('remOpacity');
+        img.children[0].classList.remove('imgPos');
+        img.children[0].style.width="100%";
+      });
+  });
+});
+
+// images.forEach((elem)=> {
+//   elem.addEventListener('click',()=> {
+//     console.log('add');
+    // elem.classList.add('overlay');
+    // elem.classList.add('remOpacity');
+    // elem.children[0].classList.add('imgPos');
+    // elem.children[0].style.width="50%";
+
+      // document.querySelector('.overlay').addEventListener('click',()=> {
+      //   elem.classList.remove('overlay');
+      //   elem.classList.remove('remOpacity');
+      //   elem.children[0].classList.remove('imgPos');
+      //   elem.children[0].style.width="100%";
+      // });
+//   });
+// });
+
+
 $('#Events').on("click",function() {
   jQuery("html, body").animate({scrollTop:  $("#particles-js").offset().top }, 2000);   
 });
@@ -270,110 +311,9 @@ particlesJS("particles-js", {
   "retina_detect": true
 });
 
- // var i=0;
- //  var spread=0;
- //  var stop=setInterval(()=> {
-
- //    //if i<1k inc spread by 1
- //    if(i<100) {
- //      // console.log('+');
-     
-
- //      spread+=1;
- //    }
- //    if(i>100) {
- //      spread-=1; 
- //      // console.log('-');
- //    }
- //    if(i===200) {
- //      i=0;
- //      // console.log('reset');
- //      spread=0;
- //    }
- //    //if i>1k dec spread by 1
- //    //if i===2k set spread and i to 0
-
-
- //    document.getElementById("box").style["boxShadow"] = "1px 1px "+spread+"px white";     
-
- //    i++;
-
- //    // console.log(i);
-
- //  },10);
-
-
-  var lines=anime({
-    targets:'.line',
-    translateY: 45,
-    direction: 'alternate',
-    // easing: 'linear',
-    elasticity:600,
-    loop:true,
-    // easing: 'easeInQuad',
-    // round:5,
-    // rotate: function() { return anime.random(-360, 360); },
-    duration: function(el, i, l) {
-      return 2500 + (i * 800);
-    }
-  });
-
-});
-
-
-// end of document.onready 
-
 AOS.init({
   duration: 1200,
 });
 
-
-/* ---- stats.js config ---- */
-
-// var count_particles, stats, update;
-// stats = new Stats;
-// stats.setMode(0);
-// stats.domElement.style.position = 'absolute';
-// stats.domElement.style.left = '0px';
-// stats.domElement.style.top = '0px';
-// document.body.appendChild(stats.domElement);
-// count_particles = document.querySelector('.js-count-particles');
-// update = function() {
-//   stats.begin();
-//   stats.end();
-//   if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
-//     count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
-//   }
-//   requestAnimationFrame(update);
-// };
-// requestAnimationFrame(update);
-
-
-
-
-
-
-	  // $(".nav-link").on("click", function(event) {
-   //    $(".nav-link").removeClass("active");
-   //    $(this).addClass("active");
-   //  });
-	// $("#showTeams").on("click" , function(event){
- //  		event.preventDefault();
-	// 	event.stopPropagation();
-	// 	$.ajax({
-	// 		url: "http://localhost:3000/admin/showTeams" , 
-	// 		cache: false , 
-	// 		data: {
-	// 			"password" : "3110"
-	// 		},
-	// 		dataType: 'json' ,
-	// 		success: function(html){
-	// 			$("#showDetails").html(html);
-	// 		},
-	// 		failure: function(err){
-	// 			console.log(err);
-	// 		}
-	// 	});
-		
-	// });
+});
 

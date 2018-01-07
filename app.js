@@ -7,7 +7,6 @@ var cookieParser = require('cookie-parser');
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost/aahvan2k18",{useMongoClient:true});
 
-
 app.set("view engine", "ejs");
 
 app.use(express.static(__dirname+'/public'));

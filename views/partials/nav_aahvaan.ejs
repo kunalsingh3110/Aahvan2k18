@@ -44,10 +44,13 @@
 		</ul>
 		<ul class="navbar-nav ml-auto">
 		 	<% if(username){ %>
-		 		<li class="nav-item">
+		 	<li class="nav-item reg-btn">
 				<a class = "nav-link" href="/register_teams"><button class="btn btn-outline-warning btn-sm" type="button">Register Teams</button></a>
 			</li>
-		 		<a class = "nav-link" href="/logout"><button class="btn btn-sm btn-outline-warning" type="button" id="name_logout">Hello,<%= (username.substr(0,username.indexOf(' '))).substring(0,6); %></button></a>
+			<li class="nav-item reg-btn">
+				<a class = "nav-link reg-btn" href="/logout"><button class="btn btn-sm btn-outline-warning" type="button" id="name_logout">Hello,<%= (username.substr(0,username.indexOf(' '))).substring(0,6); %></button></a>
+			</li>
+
 		 	<% } else { %>
 		 	<li class="nav-item reg-btn">
 				<a class = "nav-link" href="/register"><button class="btn btn-sm btn-outline-warning btn-sm" type="button">Register Leader</button></a>

@@ -1,7 +1,7 @@
 <div class = "content">
 <% var transparent = true ; %>
 <% include partials/nav_aahvaan %>
-
+<div class="home">
 		<div class="slideshow-text">
 			<h1>
 				AAHAVAN 2K18
@@ -22,13 +22,14 @@
 
 
 
-
+	
 	<div id="particles-js">
+		<h2 class="events-heading">Events</h2>
 		<div class="events">
 			<h4 class="item" data-aos="fade-left"> Legen-Wait for it-Dary. Stay tuned on this page for exciting events soon!</h4>
 		</div>
 	</div>
-
+	<h2 class="heading">Campus Ambassador</h2>
 	<div class="ca">
 		<h4 class="item" data-aos="fade-down">
 			Steve Wozniak's tech wasn't the "Apple" of anyone's eye without Steve Jobs' charisma. 
@@ -37,11 +38,19 @@
 		</h4>
 		<br><br>
 	</div>
-
+	<h2 class="heading">Theme</h2>
 	<div class="theme">
 		<h4 class="item" data-aos="fade-up">
 			Theme: Our fest is a product of heart and soul. Stay tuned as we bring you this year's theme soon.
 		</h4>
+	</div>
+	<h2 class="heading">Lookback</h2>
+	<div class="lookback-text">
+		<p data-aos="zoom-in">
+			4 days. 12 sports. India's top rock band. 1 Social cause. 300 volunteers. Over 40 colleges. Delhi's first Color Run. DTU's first Sufi night. 
+			Whether it was the sports infrastructure or sporting culture, AAHVAAN stood true to its meaning: a revolution. 
+			This year, we go big. 
+		</p>
 	</div>
 	<div class="lookback">
 		<div data-aos="fade-right">
@@ -57,27 +66,18 @@
 		</div>
 
 	</div>
-	<div class="lookback-text">
-		<p data-aos="zoom-in">
-			4 days. 12 sports. India's top rock band. 1 Social cause. 300 volunteers. Over 40 colleges. Delhi's first Color Run. DTU's first Sufi night. 
-			Whether it was the sports infrastructure or sporting culture, AAHVAAN stood true to its meaning: a revolution. 
-			This year, we go big. 
-		</p>
-	</div>
-	<h4 class="lookback-title">Lookback gallery</h4>
-	<div class="row">
+	<h2 class="heading">Lookback gallery</h2>
+	<div id="row">
 		
-		<div class="column" data-aos="zoom-in">
-			<div class="img-elem"><img src="images/25.jpeg">
-				 <button onclick="zoomIn()"><i class="fa fa-search" aria-hidden="true"></i></button>
-			</div>
+		<div id="column">
+			<div class="img-elem"><img src="images/25.jpeg"><i class="fa fa-search" aria-hidden="true"></i></div>
 			<div class="img-elem"><img src="images/26.jpeg"><i class="fa fa-search" aria-hidden="true"></i></div>
 			<div class="img-elem"><img src="images/27.jpeg"><i class="fa fa-search" aria-hidden="true"></i></div>
 			<div class="img-elem"><img src="images/28.jpeg"><i class="fa fa-search" aria-hidden="true"></i></div>
 			<div class="img-elem"><img  src="images/5.jpg"><i class="fa fa-search" aria-hidden="true"></i></div>
 		</div>
 
-		<div class="column" data-aos="zoom-in">
+		<div id="column">
 			<div class="img-elem"><img  src="images/11.jpg"><i class="fa fa-search" aria-hidden="true"></i></div>
 			<div class="img-elem"><img  src="images/12.jpg"><i class="fa fa-search" aria-hidden="true"></i></div>
 			<div class="img-elem"><img  src="images/13.jpg"><i class="fa fa-search" aria-hidden="true"></i></div>
@@ -85,21 +85,25 @@
 			<div class="img-elem"><img  src="images/9.jpg"><i class="fa fa-search" aria-hidden="true"></i></div>
 		</div>
 
-		<div class="column" data-aos="zoom-in">
+		<div id="column">
 			<div class="img-elem"><img  src="images/15.jpg"><i class="fa fa-search" aria-hidden="true"></i></div>
 			<div class="img-elem"><img  src="images/16.jpg"><i class="fa fa-search" aria-hidden="true"></i></div>
 			<div class="img-elem"><img  src="images/17.jpg"><i class="fa fa-search" aria-hidden="true"></i></div>
 			<div class="img-elem"><img  src="images/18.jpg"><i class="fa fa-search" aria-hidden="true"></i></div>
 		</div>
 
-		<div class="column" data-aos="zoom-in">
+		<div id="column">
 			<div class="img-elem"><img  src="images/1.jpg"><i class="fa fa-search" aria-hidden="true"></i></div>
 			<div class="img-elem"><img  src="images/2.jpg"><i class="fa fa-search" aria-hidden="true"></i></div>
 			<div class="img-elem"><img  src="images/3.jpg"><i class="fa fa-search" aria-hidden="true"></i></div>
 			<div class="img-elem"><img  src="images/4.jpg"><i class="fa fa-search" aria-hidden="true"></i></div>
 		</div>
 	</div>
-
+	<div class="cancel-btn-container">
+		<button class="cancel-btn">X</button>
+	</div>
+	
+</div>
 <% include partials/footer %>
 </div>
 
