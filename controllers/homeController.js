@@ -373,6 +373,15 @@ exports.post_reset_password = function(req,res){
 
 };
 
+
+exports.thankyou = function(req,res){
+	res.render("../views/thankyou",{username: req.session.username , userid: req.session.userid});
+};
+
+exports.thankyou_ca = function(req,res){
+	res.render("../views/thankyou_campus_ambassador",{username: req.session.username , userid: req.session.userid});
+};
+
 exports.live = function(req,res){
 	res.render("../views/live" , {username: req.session.username , userid: req.session.userid});
 };
