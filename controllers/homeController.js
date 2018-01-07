@@ -290,9 +290,11 @@ exports.post_send_token = function(req,res){
 						to: teamLeader.email,
 						from: 'aahvaandtu@gmail.com',
 						subject: 'Aahvaan 2k18 Contingent Leader Password Reset',
-						text: 'You are receiving this because you (or someone else) has requested for the reset of the password.'+'\n'+'Please click on the following link or paste into your browser to complete the process.'+'\n'+
+						text: 'You are receiving this because you (or someone else) has requested for the reset of the password.'+'\n'+
+						'Please click on the following link or paste into your browser to complete the process.'+'\n'+
 						'http://'+req.headers.host+'/reset_password/'+token+'\n\n'+
-						'If you not request this , please ignore and your password will remain unchanged.'+'\n\n'+
+						'If you not request this , please ignore and your password will remain unchanged.'+'\n'+
+						'This token is valid only for one hour.'+'\n\n'+
 						'Regards,'+'\n'+
 						'Team Aahvaan' 
 					};
@@ -371,6 +373,25 @@ exports.post_reset_password = function(req,res){
 
 };
 
+
+exports.thankyou = function(req,res){
+	res.render("../views/thankyou",{username: req.session.username , userid: req.session.userid});
+};
+
+exports.thankyou_ca = function(req,res){
+	res.render("../views/thankyou_campus_ambassador",{username: req.session.username , userid: req.session.userid});
+};
+
 exports.live = function(req,res){
 	res.render("../views/live" , {username: req.session.username , userid: req.session.userid});
 };
+
+
+
+
+
+
+
+
+
+

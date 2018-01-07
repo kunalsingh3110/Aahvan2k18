@@ -15,13 +15,14 @@ router.get("/register_sports",home_controller.register_sports);
 router.get("/forgot_password",home_controller.forgot_password);
 router.get("/send_token",home_controller.send_token);
 router.get("/reset_password/:token",home_controller.reset_password);
+router.get("/thankyou",home_controller.thankyou);
+router.get("/thankyou_ca",home_controller.thankyou_ca);
 router.post("/reset_password",home_controller.post_reset_password);
 router.post("/register_sports",home_controller.post_register_sports);
 router.post("/campus_ambassador",home_controller.post_campus_ambassador);
 router.post("/register",home_controller.post_register);
 router.post("/login",home_controller.post_login);
 router.post("/send_token",home_controller.post_send_token);
-
 
 
 module.exports = router;

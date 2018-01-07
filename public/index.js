@@ -42,14 +42,17 @@ images.forEach((img)=> {
 
 
 $('#Events').on("click",function() {
+  console.log(window.location.href);
   jQuery("html, body").animate({scrollTop:  $("#particles-js").offset().top }, 2000);   
 });
 
 $('#Theme').on("click",function() {
+    console.log(window.location.href);
   jQuery("html, body").animate({scrollTop:  $(".theme").offset().top }, 2000);   
 });
 
 $('#Lookback').on("click",function() {
+    console.log(window.location.href);
   jQuery("html, body").animate({scrollTop:  $(".lookback").offset().top }, 2000);   
 });
 
