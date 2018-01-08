@@ -7,7 +7,7 @@ var cookieParser = require('cookie-parser');
 //mongoose.connect("mongodb://localhost/aahvan2k18",{useMongoClient:true});
 
 global.mongoose = require('mongoose');
-var uri = process.env.DATABASE_URL||"mongodb://localhost/aahvan2k18";
+var uri = 'mongodb://kunalsingh2:test1234@ds245287.mlab.com:45287/aahvaan2k18';
 global.db = mongoose.connect(uri);
 global.Schema = mongoose.Schema;
 
