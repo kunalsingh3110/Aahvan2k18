@@ -1,77 +1,57 @@
 $(document).ready(function(){
 
-var images=Array.from(document.querySelectorAll('.img-elem'));
+// var images=Array.from(document.querySelectorAll('.img-elem'));
 
-images.forEach((img)=> {
-  $(img).on('click',()=>{
-    console.log('add');
-    document.querySelector('.cancel-btn-container').classList.add('overlay');
-    document.querySelector('.cancel-btn').classList.add('btndis');
-    img.classList.add('overlay');
-    img.classList.add('remOpacity');
-    img.children[0].classList.add('imgPos');
-    img.children[0].style.width="50%";
-      $('.cancel-btn').on('click',()=> {
-        console.log('remove');
-        document.querySelector('.cancel-btn-container').classList.remove('overlay');
-        document.querySelector('.cancel-btn').classList.remove('btndis');
-        img.classList.remove('overlay');
-        img.classList.remove('remOpacity');
-        img.children[0].classList.remove('imgPos');
-        img.children[0].style.width="100%";
-      });
-  });
-});
-
-// images.forEach((elem)=> {
-//   elem.addEventListener('click',()=> {
+// images.forEach((img)=> {
+//   $(img).on('click',()=>{
 //     console.log('add');
-    // elem.classList.add('overlay');
-    // elem.classList.add('remOpacity');
-    // elem.children[0].classList.add('imgPos');
-    // elem.children[0].style.width="50%";
-
-      // document.querySelector('.overlay').addEventListener('click',()=> {
-      //   elem.classList.remove('overlay');
-      //   elem.classList.remove('remOpacity');
-      //   elem.children[0].classList.remove('imgPos');
-      //   elem.children[0].style.width="100%";
-      // });
+//     document.querySelector('.cancel-btn-container').classList.add('overlay');
+//     document.querySelector('.cancel-btn').classList.add('btndis');
+//     img.classList.add('overlay');
+//     img.classList.add('remOpacity');
+//     img.children[0].classList.add('imgPos');
+//     img.children[0].style.width="50%";
+//       $('.cancel-btn').on('click',()=> {
+//         console.log('remove');
+//         document.querySelector('.cancel-btn-container').classList.remove('overlay');
+//         document.querySelector('.cancel-btn').classList.remove('btndis');
+//         img.classList.remove('overlay');
+//         img.classList.remove('remOpacity');
+//         img.children[0].classList.remove('imgPos');
+//         img.children[0].style.width="100%";
+//       });
 //   });
 // });
 
 
+
 $('#Events').on("click",function() {
-  console.log(window.location.href);
-  jQuery("html, body").animate({scrollTop:  $("#particles-js").offset().top }, 2000);   
+  jQuery("#home").animate({scrollTop:  $(".events").offset().top }, 1000);   
 });
 
 $('#Theme').on("click",function() {
-    console.log(window.location.href);
-  jQuery("html, body").animate({scrollTop:  $(".theme").offset().top }, 2000);   
+  jQuery("#home").animate({scrollTop:  $(".theme").offset().top }, 2000);   
+});
+
+$('#CA').on("click",function() {
+  jQuery("#home").animate({scrollTop:  $("#campus").offset().top }, 2000);   
 });
 
 $('#Lookback').on("click",function() {
-    console.log(window.location.href);
-  jQuery("html, body").animate({scrollTop:  $(".lookback").offset().top }, 2000);   
+  jQuery("#home").animate({scrollTop:  $(".lookback-text").offset().top }, 2000);   
 });
 
 
 
 
-  window.onscroll = () => {
-    const nav = document.querySelector('.navbar');
-    // console.log(document.body.scrollTop);
-    // console.log(this.scrollY);
-    if(document.body.scrollTop >= 100) nav.classList.add('scroll');
-    else nav.classList.remove('scroll');
-  };
+  // window.onscroll = () => {
+  //   const nav = document.querySelector('.navbar');
+  //   // console.log(document.body.scrollTop);
+  //   // console.log(this.scrollY);
+  //   if(document.body.scrollTop >= 100) nav.classList.add('scroll');
+  //   else nav.classList.remove('scroll');
+  // };
 
-  function zoomIn() {
-    console.log('clicked');
-    alert('sdfa');
-    // document.getElementById("overlay").style.display = "block";
-  }
 
     $('html, body').hide();
 
@@ -203,119 +183,119 @@ $('#sort').on('change',function(){
 
 });
 
-particlesJS("particles-js", {
-  "particles": {
-    "number": {
-      "value": 50,
-      "density": {
-        "enable": true,
-        "value_area": 800
-      }
-    },
-    "color": {
-      "value": "#ffffff"
-    },
-    "shape": {
-      "type": "circle",
-      "stroke": {
-        "width": 0,
-        "color": "#000000"
-      },
-      "polygon": {
-        "nb_sides": 5
-      },
-      "image": {
-        "src": "img/github.svg",
-        "width": 100,
-        "height": 100
-      }
-    },
-    "opacity": {
-      "value": 0.5,
-      "random": false,
-      "anim": {
-        "enable": false,
-        "speed": 1,
-        "opacity_min": 0.1,
-        "sync": false
-      }
-    },
-    "size": {
-      "value": 3,
-      "random": true,
-      "anim": {
-        "enable": false,
-        "speed": 40,
-        "size_min": 0.1,
-        "sync": false
-      }
-    },
-    "line_linked": {
-      "enable": true,
-      "distance": 150,
-      "color": "#ffffff",
-      "opacity": 0.4,
-      "width": 1
-    },
-    "move": {
-      "enable": true,
-      "speed": 6,
-      "direction": "none",
-      "random": false,
-      "straight": false,
-      "out_mode": "out",
-      "bounce": false,
-      "attract": {
-        "enable": false,
-        "rotateX": 600,
-        "rotateY": 1200
-      }
-    }
-  },
-  "interactivity": {
-    "detect_on": "canvas",
-    "events": {
-      "onhover": {
-        "enable": true,
-        "mode": "grab"
-      },
-      "onclick": {
-        "enable": true,
-        "mode": "push"
-      },
-      "resize": true
-    },
-    "modes": {
-      "grab": {
-        "distance": 140,
-        "line_linked": {
-          "opacity": 1
-        }
-      },
-      "bubble": {
-        "distance": 400,
-        "size": 40,
-        "duration": 2,
-        "opacity": 8,
-        "speed": 3
-      },
-      "repulse": {
-        "distance": 200,
-        "duration": 0.4
-      },
-      "push": {
-        "particles_nb": 4
-      },
-      "remove": {
-        "particles_nb": 2
-      }
-    }
-  },
-  "retina_detect": true
-});
+// particlesJS("particles-js", {
+//   "particles": {
+//     "number": {
+//       "value": 50,
+//       "density": {
+//         "enable": true,
+//         "value_area": 800
+//       }
+//     },
+//     "color": {
+//       "value": "#ffffff"
+//     },
+//     "shape": {
+//       "type": "circle",
+//       "stroke": {
+//         "width": 0,
+//         "color": "#000000"
+//       },
+//       "polygon": {
+//         "nb_sides": 5
+//       },
+//       "image": {
+//         "src": "img/github.svg",
+//         "width": 100,
+//         "height": 100
+//       }
+//     },
+//     "opacity": {
+//       "value": 0.5,
+//       "random": false,
+//       "anim": {
+//         "enable": false,
+//         "speed": 1,
+//         "opacity_min": 0.1,
+//         "sync": false
+//       }
+//     },
+//     "size": {
+//       "value": 3,
+//       "random": true,
+//       "anim": {
+//         "enable": false,
+//         "speed": 40,
+//         "size_min": 0.1,
+//         "sync": false
+//       }
+//     },
+//     "line_linked": {
+//       "enable": true,
+//       "distance": 150,
+//       "color": "#ffffff",
+//       "opacity": 0.4,
+//       "width": 1
+//     },
+//     "move": {
+//       "enable": true,
+//       "speed": 6,
+//       "direction": "none",
+//       "random": false,
+//       "straight": false,
+//       "out_mode": "out",
+//       "bounce": false,
+//       "attract": {
+//         "enable": false,
+//         "rotateX": 600,
+//         "rotateY": 1200
+//       }
+//     }
+//   },
+//   "interactivity": {
+//     "detect_on": "canvas",
+//     "events": {
+//       "onhover": {
+//         "enable": true,
+//         "mode": "grab"
+//       },
+//       "onclick": {
+//         "enable": true,
+//         "mode": "push"
+//       },
+//       "resize": true
+//     },
+//     "modes": {
+//       "grab": {
+//         "distance": 140,
+//         "line_linked": {
+//           "opacity": 1
+//         }
+//       },
+//       "bubble": {
+//         "distance": 400,
+//         "size": 40,
+//         "duration": 2,
+//         "opacity": 8,
+//         "speed": 3
+//       },
+//       "repulse": {
+//         "distance": 200,
+//         "duration": 0.4
+//       },
+//       "push": {
+//         "particles_nb": 4
+//       },
+//       "remove": {
+//         "particles_nb": 2
+//       }
+//     }
+//   },
+//   "retina_detect": true
+// });
 
 AOS.init({
-  duration: 1200,
+  duration: 600,
 });
 
 });
