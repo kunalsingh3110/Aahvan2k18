@@ -2,9 +2,9 @@
 <% include header %>
 			<!-- Navbar -->
 <% if(transparent){ %>
-<nav class="navbar navbar-transparent sticky-top navbar-expand-lg navbar-dark">
+<nav class="navbar navbar-transparent sticky-top navbar-expand-lg navbar-dark bg-dark" id="homenav">
 	<% }else{ %>
-	<nav class="navbar navbar-transparent sticky-top navbar-expand-lg navbar-dark bg-dark">
+	<nav class="navbar navbar-transparent sticky-top navbar-expand-lg navbar-dark bg-dark" id="homenav">
 	<% } %>
 	<div class="container">
 		<div class="square" id="box">
@@ -20,23 +20,39 @@
 	<div class="collapse navbar-collapse" id="navbarNav">
 		<ul class="navbar-nav">
 			<li class="nav-item">
-				<a class="nav-link" id="Events" href="#">Events</a>
+				<% if(transparent){ %>
+				<a class="nav-link" id="Events">Events</a>
+				<% }else{ %>
+				<a class="nav-link" id="Events" href="/">Events</a>
+				<% } %>
 			</li>
 			 <li class="nav-item">
 				<a class="nav-link" href="/campus_ambassador">Campus Ambassador</a>
 			</li>
 			 <li class="nav-item">
-				<a class="nav-link" id="Theme" href="#">Theme</a>
+			 	<% if(transparent){ %>
+				<a class="nav-link" id="Theme">Theme</a>
+				<% }else{ %>
+				<a class="nav-link" id="Theme" href="/">Theme</a>
+				<% } %>
 			</li>
 			 <li class="nav-item">
-				<a class="nav-link" id="Lookback" href="#">Lookback</a>
+			 	<% if(transparent){ %>
+				<a class="nav-link" id="Lookback">Lookback</a>
+				<% }else{ %>
+				<a class="nav-link" id="Lookback" href="/">Lookback</a>
+				<% } %>
 			</li>
 
 <!-- 			 <li class="nav-item">
 				<a class="nav-link" href="#">Sponsors</a>
 			</li> -->
 			 <li class="nav-item">
-				<a class="nav-link" href="#">Live</a>
+			 	<% if(transparent){ %>
+				<a class="nav-link" id="Live">Live</a>
+				<% }else{ %>
+				<a class="nav-link" id="Live" href="/">Live</a>
+				<% } %>
 			</li>
 			</li>
 <!-- 			 <li class="nav-item">
@@ -46,18 +62,18 @@
 		<ul class="navbar-nav ml-auto">
 		 	<% if(username){ %>
 		 	<li class="nav-item reg-btn">
-				<a class = "nav-link" href="/register_teams"><button class="btn btn-outline-warning btn-sm" type="button">Register Teams</button></a>
+				<a href="/register_teams"><button class="btn btn-outline-warning btn-sm" type="button">Register Teams</button></a>
 			</li>
 			<li class="nav-item reg-btn">
-				<a class = "nav-link reg-btn" href="/logout"><button class="btn btn-sm btn-outline-warning" type="button" id="name_logout">Hello,<%= (username.substr(0,username.indexOf(' '))).substring(0,6); %></button></a>
+				<a href="/logout"><button class="btn btn-sm btn-outline-warning" type="button" id="name_logout">Hello,<%= (username.substr(0,username.indexOf(' '))).substring(0,6); %></button></a>
 			</li>
 
 		 	<% } else { %>
 		 	<li class="nav-item reg-btn">
-				<a class = "nav-link" href="/register"><button class="btn btn-sm btn-outline-warning btn-sm" type="button">Register Leader</button></a>
+				<a href="/register"><button class="btn btn-sm btn-outline-warning btn-sm" type="button">Register Leader</button></a>
 			</li>
 			<li class="nav-item reg-btn">
-				<a class = "nav-link" href="/login"><button class="btn btn-sm btn-outline-warning" type="button">
+				<a href="/login"><button class="btn btn-sm btn-outline-warning" type="button">
 				Log In</button></a>
 			<% } %>
 			</li>

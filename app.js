@@ -5,7 +5,7 @@ var app = express();
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost/aahvan2k18",{useMongoClient:true});
+mongoose.connect(process.env.DATABASE_URL||"mongodb://localhost/aahvan2k18",{useMongoClient:true});
 
 app.set("view engine", "ejs");
 
@@ -29,6 +29,6 @@ app.use('/admin',admin);
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(3000,'0.0.0.0',function(){
+app.listen(PORT,process.env.IP,function(){
 	console.log("SERVER STARTED ON:",PORT);
 });

@@ -1,21 +1,19 @@
  
 body{
-  font-family: monospace;
   margin: 0 auto;
 }
 .navbar {
 	z-index: 3;
 	position: fixed;
 	width: 100%;
-  border: 1px solid white;
   padding-bottom: 80px;
   transition:background 0.4s ease-in-out;
-   background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.8);
 }
 
 .navbar-brand img{
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   margin-top: -20px;
   filter: brightness(200%);
   box-shadow: 5px 5px 10px black;
@@ -27,8 +25,15 @@ body{
 }
 
 .navbar-nav li{
-  margin: 0 50px;
+  margin: 0 70px;
   position: relative;
+  color: white;
+}
+
+.nav-link:hover{
+   background-color: orange;
+   border: 2px solid orange;
+     border-radius: 5px;
 }
 
 .navbar-nav .reg-btn{
@@ -244,6 +249,30 @@ canvas {
   margin-top: -100px;
 }
 
+#particles-js-two {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background-color: rgb(255, 102, 0);
+  background-image: url("");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  margin-top: -100px;
+}
+
+#particles-js-three {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background-color: rgb(255, 102, 0);
+  background-image: url("");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  margin-top: -100px;
+}
+
 .item {
   position: absolute;
   width: 100%;
@@ -291,7 +320,7 @@ canvas {
 }
 
 .footer button{
-  width: 70px;
+  width: 50px;
   height: 50px;
   outline: none; 
   border:none;
