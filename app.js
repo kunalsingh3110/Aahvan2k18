@@ -5,7 +5,7 @@ var app = express();
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost/aahvan2k18",{useMongoClient:true});
+// mongoose.connect("mongodb://localhost/aahvan2k18",{useMongoClient:true});
 
 app.set("view engine", "ejs");
 
