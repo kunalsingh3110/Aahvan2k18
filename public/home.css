@@ -1,91 +1,3 @@
-<<<<<<< HEAD
- 
-body{
-  margin: 0 auto;
-}
-.navbar {
-	z-index: 3;
-	position: fixed;
-	width: 100%;
-  padding-bottom: 80px;
-  transition:background 0.4s ease-in-out;
-  background: rgba(0,0,0,0.8);
-}
-
-.navbar-brand img{
-  width: 60px;
-  height: 60px;
-  margin-top: -20px;
-  filter: brightness(200%);
-  box-shadow: 5px 5px 10px black;
-}
-
-.scroll{
-  background: rgba(0,0,0,0.9);
-  box-shadow: 1px 1px 100px #010816;
-}
-
-.navbar-nav li{
-  margin: 0 70px;
-  position: relative;
-  color: white;
-}
-
-.nav-link:hover{
-   background-color: orange;
-   border: 2px solid orange;
-     border-radius: 5px;
-}
-
-.navbar-nav .reg-btn{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.slideshow-text{
-	z-index: 2;
-	position: relative;
-	top: 35vh;
-	color:white;/*color will be changed when the images are final*/
-	display: flex;
-	justify-content: space-around;
-	padding: 0 100px;
-  letter-spacing: 2px;
-  background: rgba(0,0,0,0.6);
-  box-shadow: 1px 1px 10px rgba(0,0,0,0.6);
-  /*padding: 5px 0;*/
-}
-
-.slideshow-text h1,p{
-
-  font-family: monospace;
-  margin: 10px 5px;
-}
-
-/*@media only screen and (max-height: 600px) {
-
-  nav{
-    margin-bottom: 20px;
-  }
-
-}*/
-
-
-.slideshow{
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	z-index: 0;
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-
-.slideshow li { 
-=======
-
 .home-body{
   position: fixed;
   margin: 0;
@@ -97,7 +9,6 @@ body{
 
 .home-page{
   position: relative;
->>>>>>> 7938e686afd1d9549804afaa301819b72aa39c70
   width: 100%;
   height: 100%;
   background: url("images/25.jpeg");
@@ -162,40 +73,8 @@ body{
   height: 30px;
 }
 
-<<<<<<< HEAD
-#particles-js-two {
-  position: relative;
-  width: 100%;
-  height: 500px;
-  background-color: rgb(255, 102, 0);
-  background-image: url("");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50% 50%;
-  margin-top: -100px;
-}
-
-#particles-js-three {
-  position: relative;
-  width: 100%;
-  height: 500px;
-  background-color: rgb(255, 102, 0);
-  background-image: url("");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50% 50%;
-  margin-top: -100px;
-}
-
-.item {
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  color: #FFF;
-=======
 #CA{
   padding-bottom: 18px;
->>>>>>> 7938e686afd1d9549804afaa301819b72aa39c70
 }
 
 .home-nav .middle{
@@ -205,11 +84,7 @@ body{
   top: 42vh;
 }
 
-<<<<<<< HEAD
-.footer button{
-=======
 .home-nav .middle img{
->>>>>>> 7938e686afd1d9549804afaa301819b72aa39c70
   width: 50px;
   height: 50px;
 }
