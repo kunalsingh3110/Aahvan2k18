@@ -1,56 +1,96 @@
 $(document).ready(function(){
 
-// var images=Array.from(document.querySelectorAll('.img-elem'));
+var images=Array.from(document.querySelectorAll('.img-elem'));
 
-// images.forEach((img)=> {
-//   $(img).on('click',()=>{
-//     console.log('add');
-//     document.querySelector('.cancel-btn-container').classList.add('overlay');
-//     document.querySelector('.cancel-btn').classList.add('btndis');
-//     img.classList.add('overlay');
-//     img.classList.add('remOpacity');
-//     img.children[0].classList.add('imgPos');
-//     img.children[0].style.width="50%";
-//       $('.cancel-btn').on('click',()=> {
-//         console.log('remove');
-//         document.querySelector('.cancel-btn-container').classList.remove('overlay');
-//         document.querySelector('.cancel-btn').classList.remove('btndis');
-//         img.classList.remove('overlay');
-//         img.classList.remove('remOpacity');
-//         img.children[0].classList.remove('imgPos');
-//         img.children[0].style.width="100%";
-//       });
-//   });
-// });
+images.forEach((img)=> {
+  $(img).on('click',()=>{
+    // console.log('add');
+    document.querySelector('.cancel-btn-container').classList.add('overlay');
+    document.querySelector('.cancel-btn').classList.add('btndis');
+    img.classList.add('overlay');
+    img.classList.add('remOpacity');
+    img.children[0].classList.add('imgPos');
+    img.children[0].style.width="50%";
+      $('.cancel-btn').on('click',()=> {
+        // console.log('remove');
+        document.querySelector('.cancel-btn-container').classList.remove('overlay');
+        document.querySelector('.cancel-btn').classList.remove('btndis');
+        img.classList.remove('overlay');
+        img.classList.remove('remOpacity');
+        img.children[0].classList.remove('imgPos');
+        img.children[0].style.width="100%";
+      });
+  });
+});
 
+var center=document.querySelector('.center span');
+
+$('#home').scroll(()=>{
+  // console.log($('#home').scrollTop());
+  if($('#home').scrollTop()>140 && $('#home').scrollTop()<1000) {
+    var landingText=document.querySelector('.landing-text h2');
+    changeHeading(landingText);
+  }
+
+  if($('#home').scrollTop()>1240 && $('#home').scrollTop()<1830) {
+    var events=document.querySelector(".events h2");
+    changeHeading(events);
+  }
+
+  if($('#home').scrollTop()>2100 && $('#home').scrollTop()<2800) {
+    var campusAmbassador=document.querySelector(".campus-ambassador h2");
+    changeHeading(campusAmbassador);
+  }
+
+  if($('#home').scrollTop()>3140 && $('#home').scrollTop()<3700) {
+    var theme=document.querySelector(".theme h2");
+    changeHeading(theme);
+  }
+
+  if($('#home').scrollTop()>4000 && $('#home').scrollTop()<4700) {
+    var lookbackText=document.querySelector(".lookback-text h2");
+    changeHeading(lookbackText);
+  }
+
+  if($('#home').scrollTop()<140 || $('#home').scrollTop()>4700) {
+    center.innerText='AAHAVAN';
+  }
+});
+
+
+
+function changeHeading(newHeader) {
+  center.innerText=newHeader.innerText;
+}
 
 
 $('#Events').on("click",function() {
-  jQuery("#home").animate({scrollTop:  $(".events").offset().top }, 1000);   
+  var events=document.querySelector(".events");
+  events.scrollIntoView({
+      behavior: "smooth", block: "center", inline: "nearest"
+    }); 
 });
 
 $('#Theme').on("click",function() {
-  jQuery("#home").animate({scrollTop:  $(".theme").offset().top }, 2000);   
+  var theme=document.querySelector(".theme");
+  theme.scrollIntoView({
+    behavior: "smooth", block: "center", inline: "nearest"
+  });   
 });
 
 $('#CA').on("click",function() {
-  jQuery("#home").animate({scrollTop:  $("#campus").offset().top }, 2000);   
+  var CA=document.querySelector(".campus-ambassador");
+  CA.scrollIntoView({
+      behavior: "smooth", block: "center", inline: "nearest"
+    });   
 });
 
 $('#Lookback').on("click",function() {
-  jQuery("#home").animate({scrollTop:  $(".lookback-text").offset().top }, 2000);   
+  var lookback=document.querySelector(".lookback-text");
+  lookback.scrollIntoView({
+      behavior: "smooth", block: "center", inline: "nearest"
+    });   
 });
-
-
-
-
-  // window.onscroll = () => {
-  //   const nav = document.querySelector('.navbar');
-  //   // console.log(document.body.scrollTop);
-  //   // console.log(this.scrollY);
-  //   if(document.body.scrollTop >= 100) nav.classList.add('scroll');
-  //   else nav.classList.remove('scroll');
-  // };
 
 
     $('html, body').hide();
@@ -294,8 +334,8 @@ $('#sort').on('change',function(){
 //   "retina_detect": true
 // });
 
-AOS.init({
-  duration: 600,
-});
+// AOS.init({
+//   duration: 600,
+// });
 
 });

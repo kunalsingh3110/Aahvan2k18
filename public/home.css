@@ -11,7 +11,7 @@
   position: relative;
   width: 100%;
   height: 100%;
-  background: url("images/25.jpeg");
+  background: url("images/6.jpg");
   background-attachment: fixed;
   background-size: cover;
   background-position: 50% 50%;
@@ -41,6 +41,12 @@
   /*display: none;*/
 }
 
+/*.landing-text h2,.events h2,.campus-ambassador h2,.theme h2,.lookback-text h2,.lookback-video h2{
+  position: -webkit-sticky;
+  position: sticky; 
+  top: 0; 
+}*/
+
 .home-nav{
   position: fixed;
 }
@@ -50,6 +56,7 @@
   z-index: 1;
   top: 0;
   left: 45vw;
+  display: flex;
 }
 
 .home-nav .center span{
@@ -57,6 +64,8 @@
   background:#ff5c2b;
   color: white;
   font-size: 22px;
+  text-align: center;
+  transition-delay: 1s; 
 }
 
 .home-nav .top{
@@ -88,7 +97,7 @@
   width: 50px;
   height: 50px;
   filter: brightness(200%);
-  box-shadow: 5px 5px 10px black;
+  box-shadow: 1px 1px 10px black;
 }
 
 .home-nav .bottom{
@@ -129,7 +138,25 @@
   padding: 6px 4px;
 }
 
+.home-nav button:hover,.home-footer button:hover{
+  background:#ff5c2b;
+  color: white; 
+}
 
+
+.campus-ambassador button{
+  outline: none; 
+  border:none;
+  cursor: pointer;
+  background: #ff5c2b;
+  color: white;
+  padding: 4px 3px;
+}
+
+.campus-ambassador a{
+  color: white;
+  text-decoration: none;
+}
 
 
 /*nav_ahvaan navbar*/
@@ -203,16 +230,125 @@
     height: 12px;
     width: 12px;
     background: rgba(41, 61, 61,1);
+    /*display: none;*/
 }
 
 ::-webkit-scrollbar-thumb {
     background: tomato;
-    /*-webkit-border-radius: 1ex;*/
+    -webkit-border-radius: 1ex;
     -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
 }
 
 ::-webkit-scrollbar-corner {
     background: rgba(41, 61, 61,1);
+}
+
+
+/*lookback gallery*/
+
+#row {
+    margin:200px auto;
+    /*box-shadow: 1px 1px 100px black;*/
+    /*border-radius: 5px;*/
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+    overflow: scroll;
+    width: 75%;
+    height: 500px;
+}
+
+#column {
+    flex: 20%;
+    padding: 0 4px;
+}
+
+#column img {
+    width: 100%;
+    vertical-align: middle;
+    box-shadow: 1px 1px 10px black;
+}
+
+.img-elem{
+  margin: 9px;
+  position: relative;
+  background: rgba(41, 61, 61,1);
+}
+
+i.fa.fa-search{
+  color: white;
+  position: absolute;
+  top:50%;
+  left:50%; 
+  transform:translate(-50%,-50%) scale(0);  
+  transition: all 1000ms cubic-bezier(0.115, 0.375, 0.280, 1.280);
+}
+
+.img-elem:hover img{
+  opacity: 0.5;
+}
+
+.img-elem button{
+  border: 0;
+  outline: none;
+}
+
+.img-elem*{  
+  transition: all 0.35s linear; 
+}
+
+.img-elem:hover i{
+  transform:translate(-50%,-50%) scale(1); 
+  transition: all 500ms cubic-bezier(0.115, 0.375, 0.280, 1.280);
+}
+
+.cancel-btn{
+  outline: none; 
+  border:none;
+  cursor: pointer;
+  color: white;
+  padding: 10px 30px;
+  background: rgba(41, 61, 61,1);
+  display: none;
+}
+
+.overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(41, 61, 61, 0.1);
+    z-index: 2;
+    cursor: pointer;
+    display: block;
+}
+
+.btndis{
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 80%;
+    transform: translate(-50%,-50%);
+}
+
+.imgPos{
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+}
+
+.remOpacity:hover img{
+    opacity: 1;
+}
+
+.remOpacity:hover i{
+  display: none;
 }
 
 @media only screen and (max-width: 600px) {
@@ -233,16 +369,16 @@
   }
 
   .home-nav .center{
-    left: 45vw;
+    left: 42vw;
   }
 
   .home-nav .center span{
-    padding: 2px 3px;
-    font-size: 12px;
+    padding: 2px 5px;
+    font-size: 10px;
   }
 
   .home-nav .middle{
-    top: 53vh;
+    top: 48vh;
   }
 
   .landing-text,.events,.campus-ambassador,.theme,.lookback-text,.lookback-video{
@@ -276,5 +412,14 @@
     width: 40px;
     height: 30px;
   }
-  
+  .btndis{
+    top: 75%;
+  }
+  #row{
+    height: 200px;
+  }
+  #column {
+    flex: 35%;
+    padding: 0;
+  }
 }
