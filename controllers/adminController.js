@@ -1,6 +1,14 @@
 var Team = require("../models/team");
 var CampusAmbassador = require("../models/campusAmbassador");
 var TeamLeader = require("../models/teamLeader");
+var fs = require('fs');
+fs.writeFile('./public/file.csv', 'test' , function(err){
+    if(err) {
+        return console.log(err);
+    }else{
+    	console.log("hrllo");
+    }
+}); 
 exports.index = function(req,res){
 	Team.find({}).sort({time: -1}).populate('leader').exec(function(err,teams){
 		if(err){
@@ -18,7 +26,7 @@ exports.index = function(req,res){
 exports.post_index = function(req,res){
 		var email = req.body.admin_email;
 		var password = req.body.admin_password;
-		if(email=="aahvaandtu@gmail.com"&&password==process.env.ADMIN_PASSWORD){
+		if(email=="aahvaandtu@gmail.com"&&password=="aahvaandtu2k18"){
 			req.session.email = email;
 		Team.find({}).sort({time: -1}).populate('leader').exec(function(err,teams){
 			if(err){
