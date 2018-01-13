@@ -23,24 +23,51 @@ images.forEach((img)=> {
   });
 });
 
+
 var center=document.querySelector('.center span');
+center.classList.add('fadeInOnLoad');
+
+function changeHeading(newHeader) {
+  center.innerText=newHeader.innerText;
+}
 
 $('#home').scroll(()=>{
   // console.log($('#home').scrollTop());
   if($('#home').scrollTop()>140 && $('#home').scrollTop()<1000) {
     var landingText=document.querySelector('.landing-text h2');
+    $(center).removeClass("fadeInOnLoad").addClass("fadeIn");
     changeHeading(landingText);
-    if($('#home').scrollTop()>=500) {
-      // console.log('hell');
-      document.querySelector('.landing-text').classList.add('animate-up');
+    // console.log(Math.round($('#home').scrollTop()));
+    if($('#home').scrollTop()>=300) {
+      
+      var distance = $('.landing-text').offset().top;      
+      if(distance<=90) {
+        document.querySelector('.landing-text').classList.remove('animate-up');
+        document.querySelector('.landing-text').classList.add('animate-disappear');
+      }else{
+         document.querySelector('.landing-text').classList.remove('animate-disappear');
+         document.querySelector('.landing-text').classList.add('animate-up');
+      }
+     
     }
   }
 
   if($('#home').scrollTop()>1240 && $('#home').scrollTop()<1830) {
+    $('.center span').removeClass("fadeIn").addClass("fadeIn1");
+    // center.classList.remove('fadeIn');
+    // center.classList.add('fadeIn');
+    
     var events=document.querySelector(".events h2");
     changeHeading(events);
     if($('#home').scrollTop()>=1400) {
-    document.querySelector('.events').classList.add('animate-up');
+      var distance = $('.events').offset().top;      
+      if(distance<=90) {
+        document.querySelector('.events').classList.remove('animate-up');
+        document.querySelector('.events').classList.add('animate-disappear');
+      }else{
+        document.querySelector('.events').classList.add('animate-up');
+        document.querySelector('.events').classList.remove('animate-disappear');
+      }
     }
   }
 
@@ -48,7 +75,15 @@ $('#home').scroll(()=>{
     var campusAmbassador=document.querySelector(".campus-ambassador h2");
     changeHeading(campusAmbassador);
     if($('#home').scrollTop()>=2400 ) {
-    document.querySelector('.campus-ambassador').classList.add('animate-up');
+      var distance = $('.campus-ambassador').offset().top;      
+      if(distance<=90) {
+        document.querySelector('.campus-ambassador').classList.remove('animate-up');
+        document.querySelector('.campus-ambassador').classList.add('animate-disappear');
+      }else{
+        document.querySelector('.campus-ambassador').classList.add('animate-up');
+        document.querySelector('.campus-ambassador').classList.remove('animate-disappear');
+      }
+   
     }
   }
 
@@ -56,7 +91,15 @@ $('#home').scroll(()=>{
     var theme=document.querySelector(".theme h2");
     changeHeading(theme);
     if($('#home').scrollTop()>=3300) {
-    document.querySelector('.theme').classList.add('animate-up');
+      var distance = $('.theme').offset().top;      
+      if(distance<=90) {
+        document.querySelector('.theme').classList.remove('animate-up');
+        document.querySelector('.theme').classList.add('animate-disappear');
+      }else{
+        document.querySelector('.theme').classList.add('animate-up');
+        document.querySelector('.theme').classList.remove('animate-disappear');
+      }
+   
     }
   }
 
@@ -64,21 +107,22 @@ $('#home').scroll(()=>{
     var lookbackText=document.querySelector(".lookback-text h2");
     changeHeading(lookbackText);
     if($('#home').scrollTop()>=4300) {
-    document.querySelector('.lookback-text').classList.add('animate-up');
+      var distance = $('.lookback-text').offset().top;      
+      if(distance<=90) {
+        document.querySelector('.lookback-text').classList.remove('animate-up');
+        document.querySelector('.lookback-text').classList.add('animate-disappear');
+      }else{
+        document.querySelector('.lookback-text').classList.add('animate-up');
+        document.querySelector('.lookback-text').classList.remove('animate-disappear');
+      }
     }
   }
 
   if($('#home').scrollTop()<140 || $('#home').scrollTop()>4700) {
-    center.innerText='AAHAVAN';
+    center.innerText='AAHVAAN';
   }
 
 });
-
-
-
-function changeHeading(newHeader) {
-  center.innerText=newHeader.innerText;
-}
 
 
 $('#Events').on("click",function() {
@@ -127,17 +171,17 @@ $('#Lookback').on("click",function() {
 
 
   $('#name_logout').hover(function(){
-		text = $(this).text();
-		$(this).text("Logout");
-	},function(){
-		$(this).text(text);
-	});
+    text = $(this).text();
+    $(this).text("Logout");
+  },function(){
+    $(this).text(text);
+  });
 
 
-	$('.col').hover(function(){
-		$('.col').not(this).toggleClass('scale-down');
-		$(this).toggleClass('scale-up');
-	});
+  $('.col').hover(function(){
+    $('.col').not(this).toggleClass('scale-down');
+    $(this).toggleClass('scale-up');
+  });
 
 $('#number').on('input',function(){
   $('.team-players').empty();
@@ -357,4 +401,3 @@ $('#sort').on('change',function(){
 // });
 
 });
-

@@ -1,11 +1,17 @@
 var bodyParser = require("body-parser");
-var mongoose = require("mongoose");
 var express = require("express");
 var app = express();
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
-mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost/aahvan2k18",{useMongoClient:true});
+
+
+//mongoose.connect("mongodb://localhost/aahvan2k18",{useMongoClient:true});
+
+global.mongoose = require('mongoose');
+var uri = 'mongodb://kunalsingh2:test1234@ds245287.mlab.com:45287/aahvaan2k18';
+global.db = mongoose.connect(uri);
+global.Schema = mongoose.Schema;
+
 
 app.set("view engine", "ejs");
 
@@ -29,6 +35,6 @@ app.use('/admin',admin);
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(3000,'0.0.0.0',function(){
+app.listen(PORT,process.env.IP,function(){
 	console.log("SERVER STARTED ON:",PORT);
 });

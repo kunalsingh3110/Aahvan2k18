@@ -282,7 +282,7 @@ exports.post_send_token = function(req,res){
 						service: 'Gmail',
 						auth:{
 							user: 'aahvaandtu@gmail.com',
-							pass: process.env.PASSWORD
+							pass: process.env.PASSWORD 
 						}
 					});
 
@@ -375,11 +375,11 @@ exports.post_reset_password = function(req,res){
 
 
 exports.thankyou = function(req,res){
-	res.render("../views/thankyou",{username: req.session.username , userid: req.session.userid});
+	res.render("../views/home",{username: req.session.username , userid: req.session.userid});
 };
 
 exports.thankyou_ca = function(req,res){
-	res.render("../views/thankyou_campus_ambassador",{username: req.session.username , userid: req.session.userid});
+	res.render("../views/home",{username: req.session.username , userid: req.session.userid});
 };
 
 exports.live = function(req,res){
