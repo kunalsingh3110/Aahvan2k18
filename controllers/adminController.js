@@ -2,13 +2,7 @@ var Team = require("../models/team");
 var CampusAmbassador = require("../models/campusAmbassador");
 var TeamLeader = require("../models/teamLeader");
 var fs = require('fs');
-fs.writeFile('./public/file.csv', 'test' , function(err){
-    if(err) {
-        return console.log(err);
-    }else{
-    	console.log("hrllo");
-    }
-}); 
+var json2csv = require('json2csv');
 exports.index = function(req,res){
 	Team.find({}).sort({time: -1}).populate('leader').exec(function(err,teams){
 		if(err){
@@ -26,7 +20,7 @@ exports.index = function(req,res){
 exports.post_index = function(req,res){
 		var email = req.body.admin_email;
 		var password = req.body.admin_password;
-		if(email=="aahvaandtu@gmail.com"&&password=="aahvaandtu2k18"){
+		if(email=="aahvaandtu@gmail.com"&&password==process.env.admin_password){
 			req.session.email = email;
 		Team.find({}).sort({time: -1}).populate('leader').exec(function(err,teams){
 			if(err){
@@ -125,49 +119,110 @@ exports.scores = function(req,res){
 	}
 };
 
-exports.change_tag_ca = function(req,res){
-	CampusAmbassador.findById(req.body.id,function(err,campusAmbassador){
-			if(err){
-				console.log(err);
-			}else{
-				campusAmbassador.tag = req.body.color;
-				campusAmbassador.save(function(err){
-					if(err){
-						console.log(err);
-					}
+
+
+exports.download_ca = function(req,res){
+	CampusAmbassador.find({}).sort({time: -1}).exec(function(err,campusAmbassadors){
+		if(err){
+			console.log(err);
+		}else{
+			if(req.session.email){
+				var fields = ['college','name','number','email','year','area','why'];
+				json2csv({ data: campusAmbassadors, fields: fields }, function(err, csv) {
+    			res.setHeader('Content-disposition', 'attachment; filename=data.csv');
+    			res.set('Content-Type', 'text/csv');
+    			res.status(200).send(csv);
 				});
 			}
-	});	
+		}
+  });
 };
 
-exports.change_tag_teamLeader = function(req,res){
-	TeamLeader.findById(req.body.id,function(err,teamLeader){
+exports.download_teamLeader = function(req,res){
+	TeamLeader.find({}).sort({time:-1}).exec(function(err,teamLeaders){
 		if(err){
 			console.log(err);
 		}else{
-			teamLeader.tag = req.body.color;
-			teamLeader.save(function(err){
-				if(err){
-					console.log(err);
-				}
-			});
+			if(req.session.email){
+				var fields = ['college','name','number','email'];
+				json2csv({ data: teamLeaders, fields: fields }, function(err, csv) {
+    			res.setHeader('Content-disposition', 'attachment; filename=data.csv');
+    			res.set('Content-Type', 'text/csv');
+    			res.status(200).send(csv);
+				});
+			}
 		}
 	});
 };
 
-exports.change_tag_team = function(req,res){
-	Team.findById(req.body.id,function(err,team){
-		if(err){
-			console.log(err);
-		}else{
-			team.tag = req.body.color;
-			team.save(function(err){
+exports.download_teams = function(req,res){
+	var gender = req.body.sort_gender;
+	var sport = req.body.sort_sports;
+		if(gender=="all"&&sport=="all"){
+			Team.find({}).sort({time: -1}).populate('leader').exec(function(err,teams){
 				if(err){
-					console.log(err);
+				  console.log(err);
+				}else{
+					if(req.session.email){
+						var fields = ['college','captain','contact','sport','gender','number_of_players','players'];
+						json2csv({ data: teams, fields: fields }, function(err, csv) {
+    					res.setHeader('Content-disposition', 'attachment; filename=data.csv');
+    					res.set('Content-Type', 'text/csv');
+    					res.status(200).send(csv);
+						});
+					}
+
 				}
-			});
+			});			
+		}else if(gender=="all"){
+				Team.find({sport:sport}).sort({time: -1}).populate('leader').exec(function(err,teams){
+				if(err){
+				  console.log(err);
+				}else{
+					if(req.session.email){
+						var fields = ['college','captain','contact','sport','gender','number_of_players','players'];
+						json2csv({ data: teams, fields: fields }, function(err, csv) {
+    					res.setHeader('Content-disposition', 'attachment; filename=data.csv');
+    					res.set('Content-Type', 'text/csv');
+    					res.status(200).send(csv);
+						});
+					}
+
+				}
+			});	
+		}else if(sport=="all"){
+			Team.find({gender:gender}).sort({time: -1}).populate('leader').exec(function(err,teams){
+				if(err){
+				  console.log(err);
+				}else{
+					if(req.session.email){
+						var fields = ['college','captain','contact','sport','gender','number_of_players','players'];
+						json2csv({ data: teams, fields: fields }, function(err, csv) {
+    					res.setHeader('Content-disposition', 'attachment; filename=data.csv');
+    					res.set('Content-Type', 'text/csv');
+    					res.status(200).send(csv);
+						});
+					}
+
+				}
+			});	
+		}else{
+			Team.find({gender:gender,sport:sport}).sort({time: -1}).populate('leader').exec(function(err,teams){
+				if(err){
+				  console.log(err);
+				}else{
+					if(req.session.email){
+						var fields = ['college','captain','contact','sport','gender','number_of_players','players'];
+						json2csv({ data: teams, fields: fields }, function(err, csv) {
+    					res.setHeader('Content-disposition', 'attachment; filename=data.csv');
+    					res.set('Content-Type', 'text/csv');
+    					res.status(200).send(csv);
+						});
+					}
+
+				}
+			});	
 		}
-	});
 };
 
 

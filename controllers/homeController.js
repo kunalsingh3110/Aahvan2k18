@@ -98,7 +98,7 @@ exports.post_register_teams = function(req,res){
 					break;
 			case 9: sports_name = "Powerlifting";
 					break;
-			case 10: sports_name = "Table Tennis";
+			case 10: sports_name = "TableTennis";
 					break;
 			case 11: sports_name = "Tennis";
 					break;
@@ -148,6 +148,7 @@ exports.post_register_sports = function(req,res){
 					 contact: req.body.captain_number,
 					 number_of_players: req.body.number_of_players,
 					 leader: teamLeader,
+					 gender: req.body.gender,
 					 players: players,
 					 sport: req.body.sports_name},function(err,team){
 						if(err){
