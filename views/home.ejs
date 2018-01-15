@@ -25,7 +25,7 @@
 			<div class="bottom">
 				<% if(username){ %>
 				<a href="/register"><button>Register Teams</button></a>
-				<a href="/login"><button><%= username %></button></a> <!-- change to logout -->
+				<a href="/logout"><button>Logout</button></a> <!-- change to logout -->
 				<% }else{ %>
 				<a href="/register"><button>Register Leader</button></a>
 				<a href="/login"><button>Log In</button></a>
@@ -127,6 +127,11 @@
 		</div>
 
 		</div>
+		<% if(username){ %>
+		<div class="top-right">
+				<button>Welcome, <%= username %></button>
+		</div>
+		<% } %>
 
 		<footer class="home-footer">
 			<div>

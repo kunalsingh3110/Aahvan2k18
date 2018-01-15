@@ -4,13 +4,13 @@
   "description": "Web app for the sports fest of DTU.",
   "main": "app.js",
   "engines": {
-    "node": "6.11.0",
-    "npm": "3.10.10"
+    "node": "9.3.0",
+    "npm": "5.6.0"
   },
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app.js",
-    "start": "node app.js"
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -36,7 +36,7 @@
     "jquery": "^3.2.1",
     "json2csv": "^3.11.5",
     "materialize-css": "^0.100.2",
-    "mongoose": "4.1.9",
+    "mongoose": "^4.1.9",
     "nodemailer": "^4.4.1",
     "nodemon": "^1.14.1"
   },
