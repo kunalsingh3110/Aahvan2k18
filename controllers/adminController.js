@@ -20,7 +20,7 @@ exports.index = function(req,res){
 exports.post_index = function(req,res){
 		var email = req.body.admin_email;
 		var password = req.body.admin_password;
-		if(email=="aahvaandtu@gmail.com"&&password==process.env.admin_password){
+		if(email=="aahvaandtu@gmail.com"&&password==process.env.ADMIN_PASSWORD){
 			req.session.email = email;
 		Team.find({}).sort({time: -1}).populate('leader').exec(function(err,teams){
 			if(err){

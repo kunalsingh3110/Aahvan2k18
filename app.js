@@ -8,7 +8,7 @@ var cookieParser = require('cookie-parser');
 //mongoose.connect("mongodb://localhost/aahvan2k18",{useMongoClient:true});
 
 global.mongoose = require('mongoose');
-var uri = 'mongodb://process.env.username:process.env.password@ds245287.mlab.com:45287/aahvaan2k18';
+var uri = process.env.DATABASE_URL;
 global.db = mongoose.connect(uri);
 global.Schema = mongoose.Schema;
 
