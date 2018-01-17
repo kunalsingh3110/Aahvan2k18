@@ -1,33 +1,14 @@
 <div id="showTabs">
-   <a class="form-control float-right" href="file.csv" style="max-width: 100px;margin-right: 30px" download>DOWNLOAD</a>
-<select class="form-control float-right" style="max-width: 100px;margin-right: 30px;" id="sort">
-  <option value="all">All</option>
-    <option value="grey">Grey</option>
-    <option value="#006400">Green</option>
-    <option value="#8B0000">Red</option>
-</select>
+  <a class="form-control float-right" href="/admin/download_ca" style="max-width: 100px;margin-right: 30px" download>DOWNLOAD</a>
 <br>
 <br>
 <% campusAmbassadors.forEach(function(campusAmbassador){ %>
 <br>
-<% var tagclass; %>
-<% if(campusAmbassador.tag!="grey"){ %>
-<%  tagclass = campusAmbassador.tag.substr(1); %>
-<% }else{ %>
-<% tagclass = "grey"; %>
-<% } %>
-<div class="card <%= tagclass %>">
-  <% var color = campusAmbassador.tag; %>
+<div class="card">
    <% var name = campusAmbassador.id+" CampusAmbassador" %>
-  <div class="card-header" style="background: <%= color %>;" name="<%= name %>">
+  <div class="card-header" name="<%= name %>">
     <%= campusAmbassador.time.getDate() %>/<%= campusAmbassador.time.getMonth() %>/<%= campusAmbassador.time.getFullYear() %>
     &nbsp <%= campusAmbassador.time.getHours() %>:<%= campusAmbassador.time.getMinutes() %>
-    <div class="circle-grey float-right" style="margin-left: 7px;margin-top: 5px;">
-    </div>
-     <div class="circle-green float-right" style="margin-left: 7px;margin-top: 5px;">
-    </div>
-     <div class="circle-red float-right" style="margin-left: 7px;margin-top: 5px;">
-    </div>
   </div>
   <div class="card-block">
   	<ul class="list-group list-group-flush">

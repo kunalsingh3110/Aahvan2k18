@@ -1,5 +1,5 @@
 <% var transparent = false; %>
-<% include partials/nav_aahvaan %>
+ <% include partials/nav_aahvaan %> 
 <% if(alert){ %>
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
   <strong>Wrong phone number!!!</strong>
@@ -30,6 +30,13 @@
                                 <div class="form__group">
                                     <input type="tel" name="captain_number" class="form__input" placeholder="Captains Contact Number(Eg. 8743080047)" id="contact" required minlength="10" maxlength="10">
                                     <label for="contact" class="form__label">Captain's Contact Number</label>
+                                </div>
+                                   <div class="form__group">
+                                    <select name="gender" class="form__input" id="gender">
+                                      <option value="Male">Male</option>
+                                      <option value="Female">Female</option>
+                                    </select>
+                                    <label for="gender" class="form__label">Gender</label>
                                 </div>
                                 <div class="form__group">
                                     <input type="number" name="number_of_players" class="form__input" placeholder="Enter number of players in the team" id="number" required>
