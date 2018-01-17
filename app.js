@@ -5,12 +5,14 @@ var session = require('express-session');
 var cookieParser = require('cookie-parser');
 
 
-//mongoose.connect("mongodb://localhost/aahvan2k18",{useMongoClient:true});
+var mongoose = require('mongoose');
 
-global.mongoose = require('mongoose');
-var uri = 'mongodb://process.env.username:process.env.password@ds245287.mlab.com:45287/aahvaan2k18';
-global.db = mongoose.connect(uri);
-global.Schema = mongoose.Schema;
+// global.mongoose = require('mongoose');
+mongoose.connect("mongodb://localhost/aahvan2k18",{useMongoClient:true});
+// var uri = 'mongodb://kunalsingh2:test1234@ds245287.mlab.com:45287/aahvaan2k18';
+// global.db = mongoose.connect(uri);
+// global.Schema = mongoose.Schema;
+
 
 
 app.set("view engine", "ejs");
