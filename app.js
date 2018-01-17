@@ -5,7 +5,7 @@ var session = require('express-session');
 var cookieParser = require('cookie-parser');
 
 
-//mongoose.connect("mongodb://localhost/aahvan2k18",{useMongoClient:true});
+// mongoose.connect("mongodb://localhost/aahvan2k18",{useMongoClient:true});
 
 global.mongoose = require('mongoose');
 var uri = 'mongodb://kunalsingh2:test1234@ds245287.mlab.com:45287/aahvaan2k18';

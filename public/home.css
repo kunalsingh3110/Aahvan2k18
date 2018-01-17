@@ -145,7 +145,7 @@
 }
 
 .fadeIn1{
-  animation: 2s fadeInAnim1 0.1s forwards;
+  animation: 0.5s fadeInAnim1 0.1s forwards;
 }
 @keyframes fadeInAnim1 {
   100%{
@@ -226,6 +226,7 @@
   color: gold;
   padding:10px 25px;
   box-shadow: 0px 1px gold;
+  width: 100px;
 }
 
 .home-footer div{
@@ -250,6 +251,7 @@
   margin: 1px 0;
   background: rgba(41, 61, 61,1);
   padding: 6px 4px;
+  box-shadow: 1.5px 0;
 }
 
 .home-nav button:hover,.home-footer button:hover{
@@ -554,10 +556,7 @@ i.fa.fa-search{
   }
   
   .top-right button{
-    background:#e92020;
-    color: #FFFFFF;
     padding:1px 5px;
-    box-shadow: 0px 1px white;
     font-size: 8px;
   }
 
