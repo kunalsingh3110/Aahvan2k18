@@ -98,7 +98,7 @@ exports.post_register_teams = function(req,res){
 					break;
 			case 9: sports_name = "Powerlifting";
 					break;
-			case 10: sports_name = "TableTennis";
+			case 10: sports_name = "Table Tennis";
 					break;
 			case 11: sports_name = "Tennis";
 					break;
@@ -148,7 +148,6 @@ exports.post_register_sports = function(req,res){
 					 contact: req.body.captain_number,
 					 number_of_players: req.body.number_of_players,
 					 leader: teamLeader,
-					 gender: req.body.gender,
 					 players: players,
 					 sport: req.body.sports_name},function(err,team){
 						if(err){
@@ -386,6 +385,14 @@ exports.thankyou_ca = function(req,res){
 exports.live = function(req,res){
 	res.render("../views/live" , {username: req.session.username , userid: req.session.userid});
 };
+
+
+exports.carousel = function(req, res) {
+	res.render("../views/carousel", {
+    username: req.session.username,
+    userid: req.session.userid
+  });
+}
 
 
 

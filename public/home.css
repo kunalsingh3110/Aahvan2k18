@@ -287,8 +287,8 @@
 }
 
 .navbar-brand img{
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   filter: brightness(200%);
   box-shadow: 5px 5px 10px black;
 }
@@ -567,3 +567,22 @@ i.fa.fa-search{
 }
 
 
+.butn-text:link, .butn-text:visited {
+  font-size: 1rem;
+  color: #55c57a;
+  display: inline-block;
+  text-decoration: none;
+  border: 1px solid #55c57a;
+  border-radius: 2px;
+  padding: 3px;
+  transition: all .2s; }
+
+.butn-text:hover {
+  background-color: #55c57a;
+  color: #fff;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px); }
+
+.butn-text:active {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  transform: translateY(0); }
