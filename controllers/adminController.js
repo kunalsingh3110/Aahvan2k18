@@ -1,6 +1,7 @@
 var Team = require("../models/team");
 var CampusAmbassador = require("../models/campusAmbassador");
 var TeamLeader = require("../models/teamLeader");
+var Feed = require("../models/feed");
 var fs = require('fs');
 var json2csv = require('json2csv');
 exports.index = function(req,res){
@@ -20,7 +21,7 @@ exports.index = function(req,res){
 exports.post_index = function(req,res){
 		var email = req.body.admin_email;
 		var password = req.body.admin_password;
-		if(email=="aahvaandtu@gmail.com"&&password==process.env.admin_password){
+		if(email=="aahvaandtu@gmail.com"&&password==process.env.ADMIN_PASSWORD){
 			req.session.email = email;
 		Team.find({}).sort({time: -1}).populate('leader').exec(function(err,teams){
 			if(err){
@@ -119,7 +120,20 @@ exports.scores = function(req,res){
 	}
 };
 
+exports.feeds = function(req,res){
+	Feed.find({}).sort({time:-1}).exec(function(err,feeds){
+		if(err){
+			console.log(err);
+		}else{
+			if(req.session.email){
+				res.render("../views/details",{id:5 , feeds:feeds});
+			}else{
+				res.render("../views/admin",{alert: false});
+			}
 
+		}
+		});		
+};
 
 exports.download_ca = function(req,res){
 	CampusAmbassador.find({}).sort({time: -1}).exec(function(err,campusAmbassadors){

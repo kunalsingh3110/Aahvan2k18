@@ -3,14 +3,15 @@ var express = require("express");
 var app = express();
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
-
+var multer = require('multer');
 
 var mongoose = require('mongoose');
 
 global.mongoose = require('mongoose');
-var uri = 'mongodb://process.env.username:process.env.password@ds245287.mlab.com:45287/aahvaan2k18';
+var uri = process.env.DATABASE_URL;
 global.db = mongoose.connect(uri);
 global.Schema = mongoose.Schema;
+
 
 
 app.set("view engine", "ejs");
@@ -24,6 +25,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
+
 
 
 var home = require('./routes/home');

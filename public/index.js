@@ -193,6 +193,7 @@ $('#number').on('input',function(){
 }
 });
 
+<<<<<<< HEAD
 // $('.circle-grey').on('click',function(){
 //   $(this).parent().css("background","grey");
 //     var name = $(this).parent().attr('name');
@@ -279,6 +280,22 @@ $('#sort_sports').on('change',function(){
     $('.'+gender+'.'+sports).show();
 });
 
+=======
+$('#sort_gender').on('change',function(){
+     var gender = $(this).val();
+     var sports = $('#sort_sports').val();
+     $('.card').hide();
+     $('.'+gender+'.'+sports).show();
+ });
+
+$('#sort_sports').on('change',function(){
+     var sports = $(this).val();
+     var gender = $('#sort_gender').val();
+     $('.card').hide();
+     $('.'+gender+'.'+sports).show();
+});
+
+>>>>>>> d143d4bca81ecd38400fad76115766cf6d7bba2c
 // particlesJS("particles-js", {
 //   "particles": {
 //     "number": {
