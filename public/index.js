@@ -206,4 +206,37 @@ $('#sort_sports').on('change',function(){
      $('.card').hide();
      $('.'+gender+'.'+sports).show();
 });
+
+  $(".owl-carousel").owlCarousel({
+    loop: true,
+    responsiveClass: true,
+    autoHeight: false,
+    autoplay: true,
+    autoplayHoverPause: true,
+    autoWidth: false,
+    margin: 10,
+    nav: true,
+    navText: [
+      "<i class='fa fa-caret-left'></i>",
+      "<i class='fa fa-caret-right'></i>"
+    ],
+    responsive: {
+      0: {
+        items: 1,
+        nav: true
+      },
+      600: {
+        items: 1,
+        nav: false
+      },
+      1000: {
+        items: 1,
+        nav: true,
+        loop: false
+      }
+    }
+  });
+
 });
+
+

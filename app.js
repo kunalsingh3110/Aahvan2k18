@@ -7,6 +7,8 @@ var multer = require('multer');
 
 var mongoose = require('mongoose');
 
+// mongoose.connect("mongodb://localhost/aahvan2k18", { useMongoClient: true });
+
 global.mongoose = require('mongoose');
 var uri = process.env.DATABASE_URL;
 global.db = mongoose.connect(uri);
