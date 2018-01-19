@@ -3,7 +3,7 @@ var express = require("express");
 var app = express();
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
-
+var multer = require('multer');
 
 //mongoose.connect("mongodb://localhost/aahvan2k18",{useMongoClient:true});
 
@@ -24,6 +24,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
+
 
 
 var home = require('./routes/home');

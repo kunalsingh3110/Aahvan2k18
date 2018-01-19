@@ -35,8 +35,12 @@
       <% } %> 
           <a class="nav-link" id="showTeamLeaders" href="/admin/showTeamLeaders">Team Leaders</a>
         </li>
-        <li>
-        <a class="nav-link" id="showFeeds" href="">Feed</a>
+        <% if (data==5) { %>
+        <li class="nav-item active">
+        <% }else{ %>
+         <li class="nav-item">
+        <% } %>
+        <a class="nav-link" id="showFeeds" href="/admin/showFeeds">Feed</a>
         </li>
       </ul>
         <ul class="navbar-nav ml-auto">
