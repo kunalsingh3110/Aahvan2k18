@@ -5,12 +5,13 @@ var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var multer = require('multer');
 
-//mongoose.connect("mongodb://localhost/aahvan2k18",{useMongoClient:true});
+var mongoose = require('mongoose');
 
 global.mongoose = require('mongoose');
 var uri = process.env.DATABASE_URL;
 global.db = mongoose.connect(uri);
 global.Schema = mongoose.Schema;
+
 
 
 app.set("view engine", "ejs");

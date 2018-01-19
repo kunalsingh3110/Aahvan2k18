@@ -388,6 +388,14 @@ exports.live = function(req,res){
 };
 
 
+exports.carousel = function(req, res) {
+	res.render("../views/carousel", {
+    username: req.session.username,
+    userid: req.session.userid
+  });
+}
+
+
 
 
 
