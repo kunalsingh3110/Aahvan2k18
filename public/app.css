@@ -291,8 +291,24 @@ html {
   background-image: linear-gradient(to right bottom, #7ed56f, #28b485); 
 }
 
+#showTabs {
+  padding-top: 5rem;
+}
+
+.creds-main {
+  text-align: center;
+  font-size: 1.34rem;
+  margin-bottom: 0;
+}
+
+.creds {
+  margin: 0 auto;
+  text-transform: uppercase;
+}
+
 .main-form {
   width: 100%;
+  padding-bottom: 0rem;
   position: relative;
   box-sizing: border-box;
 }
