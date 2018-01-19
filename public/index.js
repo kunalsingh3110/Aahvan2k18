@@ -193,7 +193,6 @@ $('#number').on('input',function(){
 }
 });
 
-<<<<<<< HEAD
 // $('.circle-grey').on('click',function(){
 //   $(this).parent().css("background","grey");
 //     var name = $(this).parent().attr('name');
@@ -280,22 +279,6 @@ $('#sort_sports').on('change',function(){
     $('.'+gender+'.'+sports).show();
 });
 
-=======
-$('#sort_gender').on('change',function(){
-     var gender = $(this).val();
-     var sports = $('#sort_sports').val();
-     $('.card').hide();
-     $('.'+gender+'.'+sports).show();
- });
-
-$('#sort_sports').on('change',function(){
-     var sports = $(this).val();
-     var gender = $('#sort_gender').val();
-     $('.card').hide();
-     $('.'+gender+'.'+sports).show();
-});
-
->>>>>>> d143d4bca81ecd38400fad76115766cf6d7bba2c
 // particlesJS("particles-js", {
 //   "particles": {
 //     "number": {
@@ -411,4 +394,37 @@ $('#sort_sports').on('change',function(){
 //   duration: 600,
 // });
 
+  $(".owl-carousel").owlCarousel({
+    loop: true,
+    responsiveClass: true,
+    autoHeight: false,
+    autoplay: true,
+    autoplayHoverPause: true,
+    autoWidth: false,
+    margin: 10,
+    nav: true,
+    navText: [
+      "<i class='fa fa-caret-left'></i>",
+      "<i class='fa fa-caret-right'></i>"
+    ],
+    responsive: {
+      0: {
+        items: 1,
+        nav: true
+      },
+      600: {
+        items: 1,
+        nav: false
+      },
+      1000: {
+        items: 1,
+        nav: true,
+        loop: false
+      }
+    }
+  });
+
 });
+
+
+
