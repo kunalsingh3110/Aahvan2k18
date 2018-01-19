@@ -23,15 +23,17 @@ images.forEach((img)=> {
   });
 });
 
+ 
 
-var center=document.querySelector('.center span');
-center.classList.add('fadeInOnLoad');
 
 function changeHeading(newHeader) {
+  var center=document.querySelector('.center span');
   center.innerText=newHeader.innerText;
 }
 
 $('#home').scroll(()=>{
+  var center=document.querySelector('.center span');
+  center.classList.add('fadeInOnLoad');
   // console.log($('#home').scrollTop());
   if($('#home').scrollTop()>140 && $('#home').scrollTop()<1000) {
     var landingText=document.querySelector('.landing-text h2');
@@ -191,102 +193,91 @@ $('#number').on('input',function(){
 }
 });
 
-$('.circle-grey').on('click',function(){
-  $(this).parent().css("background","grey");
-    var name = $(this).parent().attr('name');
-    var type = name.split(' ').slice(-1).join(' ');
-    var route = '';
-    if(type=="TeamLeader"){
-      route = "change_tag_teamLeader";
-    }else if(type=="Team"){
-      route = "change_tag_team";
-    }else if(type=="CampusAmbassador"){
-      route = "change_tag_ca";
-    }
-       $.ajax({
-      url: '/admin/'+route,
-      type: 'POST',
-      data: {id: name.split(' ').slice(0, -1).join(' ') , color: "grey"},
-      success: function(data){
-      },
-      error: function(err){
-      }
-    });
+// $('.circle-grey').on('click',function(){
+//   $(this).parent().css("background","grey");
+//     var name = $(this).parent().attr('name');
+//     var type = name.split(' ').slice(-1).join(' ');
+//     var route = '';
+//     if(type=="TeamLeader"){
+//       route = "change_tag_teamLeader";
+//     }else if(type=="Team"){
+//       route = "change_tag_team";
+//     }else if(type=="CampusAmbassador"){
+//       route = "change_tag_ca";
+//     }
+//        $.ajax({
+//       url: '/admin/'+route,
+//       type: 'POST',
+//       data: {id: name.split(' ').slice(0, -1).join(' ') , color: "grey"},
+//       success: function(data){
+//       },
+//       error: function(err){
+//       }
+//     });
    
-});
+// });
 
-$('.circle-green').on('click',function(){
-    $(this).parent().css("background","#006400");
-    var name = $(this).parent().attr('name');
-    var type = name.split(' ').slice(-1).join(' ');
-    var route = '';
-    if(type=="TeamLeader"){
-      route = "change_tag_teamLeader";
-    }else if(type=="Team"){
-      route = "change_tag_team";
-    }else if(type=="CampusAmbassador"){
-      route = "change_tag_ca";
-    }
-       $.ajax({
-      url: '/admin/'+route,
-      type: 'POST',
-      data: {id: name.split(' ').slice(0, -1).join(' ') , color: "#006400"},
-      success: function(data){
-      },
-      error: function(err){
-      }
-    });
-});
+// $('.circle-green').on('click',function(){
+//     $(this).parent().css("background","#006400");
+//     var name = $(this).parent().attr('name');
+//     var type = name.split(' ').slice(-1).join(' ');
+//     var route = '';
+//     if(type=="TeamLeader"){
+//       route = "change_tag_teamLeader";
+//     }else if(type=="Team"){
+//       route = "change_tag_team";
+//     }else if(type=="CampusAmbassador"){
+//       route = "change_tag_ca";
+//     }
+//        $.ajax({
+//       url: '/admin/'+route,
+//       type: 'POST',
+//       data: {id: name.split(' ').slice(0, -1).join(' ') , color: "#006400"},
+//       success: function(data){
+//       },
+//       error: function(err){
+//       }
+//     });
+// });
 
-$('.circle-red').on('click',function(){
-    $(this).parent().css("background","#8B0000");
-    var name = $(this).parent().attr('name');
-    var type = name.split(' ').slice(-1).join(' ');
-    var route = '';
-    if(type=="TeamLeader"){
-      route = "change_tag_teamLeader";
-    }else if(type=="Team"){
-      route = "change_tag_team";
-    }else if(type=="CampusAmbassador"){
-      route = "change_tag_ca";
-    }
-       $.ajax({
-      url: '/admin/'+route,
-      type: 'POST',
-      data: {id: name.split(' ').slice(0, -1).join(' ') , color: "#8B0000"},
-      success: function(data){
-      },
-      error: function(err){
-      }
-    });
-});
+// $('.circle-red').on('click',function(){
+//     $(this).parent().css("background","#8B0000");
+//     var name = $(this).parent().attr('name');
+//     var type = name.split(' ').slice(-1).join(' ');
+//     var route = '';
+//     if(type=="TeamLeader"){
+//       route = "change_tag_teamLeader";
+//     }else if(type=="Team"){
+//       route = "change_tag_team";
+//     }else if(type=="CampusAmbassador"){
+//       route = "change_tag_ca";
+//     }
+//        $.ajax({
+//       url: '/admin/'+route,
+//       type: 'POST',
+//       data: {id: name.split(' ').slice(0, -1).join(' ') , color: "#8B0000"},
+//       success: function(data){
+//       },
+//       error: function(err){
+//       }
+//     });
+// });
 
   
 
-$('#sort').on('change',function(){
-    var option = $(this).val();
-    if(option=="all"){
-      $(".grey").show();
-      $(".006400").show();
-      $(".8B0000").show();
-    }else if(option=="#006400"){
-      $(".006400").show();
-      $(".grey").hide();
-      $(".8B0000").hide();
-    }else if(option=="#8B0000"){
-      $(".8B0000").show();
-      $(".grey").hide();
-      $(".006400").hide();
-    }else if(option=="grey"){
-      $(".grey").show();
-      $(".8B0000").hide();
-      $(".006400").hide();
-    }
-
+$('#sort_gender').on('change',function(){
+    var gender = $(this).val();
+    var sports = $('#sort_sports').val();
+    $('.card').hide();
+    $('.'+gender+'.'+sports).show();
 });
 
-
-
+$('#sort_sports').on('change',function(){
+    var sports = $(this).val();
+    var gender = $('#sort_gender').val();
+    $('.card').hide();
+    $('.'+gender+'.'+sports).show();
+});
 
 // particlesJS("particles-js", {
 //   "particles": {
@@ -403,34 +394,4 @@ $('#sort').on('change',function(){
 //   duration: 600,
 // });
 
-});
-
-$(".owl-carousel").owlCarousel({
-  loop: true,
-  responsiveClass: true,
-  autoHeight: false,
-  autoplay: true,
-  autoplayHoverPause: true,
-  autoWidth: false,
-  margin: 10,
-  nav: true,
-  navText: [
-    "<i class='fa fa-caret-left'></i>",
-    "<i class='fa fa-caret-right'></i>"
-  ],
-  responsive: {
-    0: {
-      items: 1,
-      nav: true
-    },
-    600: {
-      items: 1,
-      nav: false
-    },
-    1000: {
-      items: 1,
-      nav: true,
-      loop: false
-    }
-  }
 });
