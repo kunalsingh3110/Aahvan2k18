@@ -4,6 +4,7 @@ var router = express.Router();
 var home_controller = require('../controllers/homeController');
 
 router.get("/",home_controller.index);
+router.get("/home_two",home_controller.home_two);
 router.get("/register",home_controller.register);
 router.get("/login",home_controller.login);
 router.get("/logout",home_controller.logout);

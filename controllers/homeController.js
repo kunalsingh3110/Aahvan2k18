@@ -9,6 +9,10 @@ exports.index = function(req,res){
 	res.render("../views/home",{username: req.session.username , userid: req.session.userid});
 };
 
+exports.home_two = function(req,res){
+	res.render("../views/home+two");
+}
+
 exports.register = function(req,res){
 	if(req.session.username){
 		res.render("../views/register_teams",{username: req.session.username , userid: req.session.userid});
