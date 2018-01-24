@@ -1,0 +1,294 @@
+
+#nav_three{
+	position: fixed;
+    top: 0;
+    left: 0;
+    height: 40px;
+    z-index: 70;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+.main{
+height: 100vh;
+}
+
+.section{
+	animation: 1s linear;
+}
+
+video {
+  object-fit: cover;
+  top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.about{
+	margin-top: 150px;
+}
+.ca{
+	margin-top:150px;
+}
+.theme{
+	margin-top:150px;
+}
+.live{
+	margin-top:150px;
+}
+.event{
+	margin-top:150px;
+}
+.lookback{
+	margin-top: 100px;
+}
+.register{
+	margin-top: 150px;
+}
+.header {
+    color: #FFFFFF;
+    text-align: center;
+    font-weight: 500;
+}
+
+.about-para {
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 1.5em;
+}
+
+
+	
+
+
+#section_about{
+	background-image: url("images/about_us_image.jpg");
+	height: 100%;
+	overflow: hidden;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #464646;
+  	
+
+}
+
+#section_events{
+	background-image: url("images/sport1.jpg");
+	height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #464646;
+
+}
+
+#section_ca{
+	background-image: url("images/ca_image.jpg");
+	height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #464646;
+}
+
+#section_theme{
+	background-image: url("images/second.jpg");
+	height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #464646;
+}
+#section_lookback{
+	height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #464646;
+}
+#section_live{
+	background-image: url("images/live_image.jpg");
+	height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #464646;
+}
+#section_register{
+	background-image: url("images/register_image.jpg");
+	height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #464646;
+}
+
+#slide_one{
+	background-image: url("images/cricket_three.jpg");
+	height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #464646;
+}
+
+#slide_two{
+	background-image: url("images/tennis_one.jpg");
+	height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #464646;
+}
+
+#slide_three{
+	background-image: url("images/volley_one.jpg");
+	height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #464646;
+}
+
+#slide_four{
+	background-image: url("images/volley_two.jpg");
+	height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #464646;
+}
+
+#slide_five{
+	background-image: url("images/foot_one.jpg");
+	height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #464646;
+}
+
+#slide_six{
+	background-image: url("images/foot_two.jpg");
+	height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #464646;
+}
+
+#slide_seven{
+	background-image: url("images/color_run_five.jpg");
+	height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #464646;
+}
+
+#slide_eight{
+	background-image: url("images/color_run_for.jpg");
+	height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #464646;
+}
+
+#slide_nine{
+	background-image: url("images/color_run_one.jpg");
+	height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #464646;
+}
+
+#slide_ten{
+	background-image: url("images/color_run_three.jpg");
+	height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #464646;
+}
+
+#slide_eleven{
+	height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #464646;
+}
+
+
+./*section.active{
+  transform:translateY(-20vh);
+	transition: all 5s cubic-bezier(0.22, 0.44, 0, 1) !important;
+}
+.section.fp-completely{
+	transform:translateY(20vh);
+	transition: all 5s cubic-bezier(0.22, 0.44, 0, 1) !important;
+}
+.section.fp-completely.active{
+	margin-top: 0;
+	transform:translateY(0);
+	position: relative;
+}
+.section.prev.down{
+	animation-name: toup;
+}
+.section.active.up{
+	animation-name: fromup;
+}
+.section.active.down{
+	animation-name: fromdown;
+	z-index: 12;
+}
+.section.next.up{
+	animation-name: todown;
+	z-index: 12;
+}
+
+
+@keyframes fromdown {
+  from {
+  	transform:translateY(50%);
+  }
+  100% {
+  	transform:translateY(0%);
+  }
+}
+
+@keyframes toup {
+  from {
+		z-index: 20;
+  	transform:translateY(0%);
+  }
+  100% {
+		z-index: 20;
+  	transform:translateY(-100%);
+  }
+}
+
+@keyframes fromup {
+  from {
+		z-index: 20;
+  	transform:translateY(-100%);
+  }
+  100% {
+		z-index: 20;
+  	transform:translateY(0%);
+  }
+}
+@keyframes todown {
+  from {
+  	transform:translateY(0%);
+  }
+  100% {
+  	transform:translateY(50%);
+  }
+}
+
+*/

@@ -39,6 +39,6 @@ app.use('/admin',admin);
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT,process.env.IP,function(){
+app.listen(PORT,'0.0.0.0',function(){
 	console.log("SERVER STARTED ON:",PORT);
 });

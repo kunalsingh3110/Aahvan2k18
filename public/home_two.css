@@ -1,0 +1,144 @@
+body {
+    font-family: roboto;
+}
+
+nav {
+    background: white;
+    padding: 0 20px;
+}
+
+nav ul a {
+    color: black;
+}
+
+nav .brand-logo {
+    color: black;
+}
+
+nav .button-collapse i {
+    color: black;
+}
+
+@media only screen and (max-width: 992px) {
+    nav {
+        padding: none;
+    }
+    nav .brand-logo {
+        left: 100%;
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+    }
+}
+
+
+
+.parallax-image {
+    width: 100%;
+    min-width: 100%;
+}
+
+.header {
+    color: #4a4a4a;
+    /* text-transform: uppercase; */
+    text-align: center;
+    font-weight: 500;
+}
+
+.about-para {
+    text-align: center;
+    color: #959595;
+    font-size: 1em;
+}
+
+.campus {
+    margin-top: 100px;
+    /* margin-left: 4.1666667%; */
+    /* border: 2px solid black; */
+    border-radius: 1.5em;
+    -webkit-box-shadow: 7px 11px 30px 1px rgba(0, 0, 0, 0.38);
+    -moz-box-shadow: 7px 11px 30px 1px rgba(0, 0, 0, 0.38);
+    box-shadow: 7px 11px 30px 1px rgba(0, 0, 0, 0.38);
+    Copy Text
+}
+
+.campus-a {
+    color: orange;
+}
+
+.events {
+    margin-top: 20px;
+    /* border: 2px solid black; */
+    /* margin-left: 8.3333334%; */
+    border-radius: 1.5em;
+    -webkit-box-shadow: 7px 11px 30px 1px rgba(0, 0, 0, 0.38);
+    -moz-box-shadow: 7px 11px 30px 1px rgba(0, 0, 0, 0.38);
+    box-shadow: 7px 11px 30px 1px rgba(0, 0, 0, 0.38);
+}
+
+.events-a {
+    margin: 5px auto;
+    border-radius: 2em;
+}
+
+.divided-para {
+    text-align: center;
+    color: #959595;
+    font-size: 1.1em;
+}
+
+.reach-panel {
+    text-align: center;
+    margin-top: 50px;;
+    background: #222;
+}
+
+.reach-header {
+    color: white;
+}
+
+.reach-para {
+    color: #909090;
+}
+
+.video-panel {
+    background: url("../images/color1.jpg");
+    padding-top: 20px;
+    padding-bottom: 50px;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    background-size:cover;
+    -o-background-size:cover;
+    /* background-attachment: fixed; */
+}
+
+.header-white {
+    color: #e0e0e0;
+    /* text-transform: uppercase; */
+    text-align: center;
+    font-weight: 500;
+}
+
+.aftermovie-vid {
+    display: block;
+    margin: 5px auto;
+    background: black;
+    width: 100%;
+}
+
+.google-maps {
+    width: 100%;
+}
+
+.contact {
+    color: #959595;
+    font-size: 1.1em;
+    text-align: justify;
+}
+
+.page-footer {
+    background: rgba(60, 60, 60, 0.75);
+}
+
+.page-footer .footer-copyright {
+    background-image: rgba(51, 51, 51, 0.2);
+}

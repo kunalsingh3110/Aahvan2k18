@@ -9,9 +9,13 @@ exports.index = function(req,res){
 	res.render("../views/home",{username: req.session.username , userid: req.session.userid});
 };
 
-exports.home_two = function(req,res){
-	res.render("../views/home+two");
-}
+// exports.home_two = function(req,res){
+// 	res.render("../views/home_two",{username: req.session.username , userid: req.session.userid});
+// }
+
+// exports.home_three = function(req,res){
+// 	res.render("../views/home_three",{username: req.session.username , userid: req.session.userid});
+// }
 
 exports.register = function(req,res){
 	if(req.session.username){
@@ -70,17 +74,10 @@ exports.post_register = function(req,res){
 };
 
 exports.register_teams = function(req,res){
-	if(req.session.username){
 		res.render("../views/register_teams",{username: req.session.username , userid: req.session.userid});
-	}else{
-		res.render("../views/login",{alert:false , username: req.session.username , userid: req.session.userid});
-	}
 };
 
 exports.post_register_teams = function(req,res){
-		if(!req.session.username){
-			res.render("../views/login",{alert: false , username: req.session.username , userid: req.session.userid});
-	}else{
 		var sports_number = Number(req.body.sport);
 		var sports_name=' ';
 		switch(sports_number){
@@ -110,34 +107,43 @@ exports.post_register_teams = function(req,res){
 					break;	
 			default: sports_name=" ";																				
 		}
-		if(req.session.username){
-				res.render("../views/register_sports",{alert:false , sports_name:sports_name , username: req.session.username , userid: req.session.userid});
-		}else{
-			res.render("../views/login",{alert:false , username: req.session.username , userid: req.session.userid});
-		}
-	}
+	res.render("../views/register_sports",{alert:false , sports_name:sports_name , username: req.session.username , userid: req.session.userid});
 };
 
 
 exports.register_sports = function(req,res){
 		var sports_name = "Athletics";
-		if(req.session.username){
 		res.render("../views/register_sports",{alert:false , sports_name:sports_name , username: req.session.username , userid: req.session.userid});
-	}else{
-		res.render("../views/login",{alert:false , username: req.session.username , userid: req.session.userid});
-	}
 };
 
 exports.post_register_sports = function(req,res){
-	if(!req.session.username){
-			res.render("../views/login",{alert: false , username: req.session.username , userid: req.session.userid});
-	}else{
 		var Team = require("../models/team");
 		var cap_phone = Number(req.body.captain_number);
 		if(isNaN(cap_phone)){
 					res.render("../views/register_sports",{alert:true , sports_name:req.body.sports_name, username: req.session.username , userid: req.session.userid});
 		}else{
-			TeamLeader.findById(req.session.userid , function(err,teamLeader){
+			if(!req.session.username){
+					var players = [];
+					for(var i=0;i<req.body.number_of_players;i++){
+						var player_name = "player_name"+(i);
+						players.push(req.body[player_name]);
+					}
+					Team.create(
+					{captain: req.body.captain_name,
+					 contact: req.body.captain_number,
+					 number_of_players: req.body.number_of_players,
+					 gender: req.body.gender,
+					 players: players,
+					 sport: req.body.sports_name},function(err,team){
+						if(err){
+							console.log(err);
+						}else{
+							res.render("../views/thankyou",{username:req.session.username,userid:req.session.userid});
+						}
+					});
+
+			}else{
+					TeamLeader.findById(req.session.userid , function(err,teamLeader){
 				if(err){
 					console.log(err);
 				}else{
@@ -165,6 +171,8 @@ exports.post_register_sports = function(req,res){
 			});
 		}
 	}
+	
+		
 };
 
 exports.login = function(req,res){
@@ -387,16 +395,16 @@ exports.thankyou_ca = function(req,res){
 	res.render("../views/home",{username: req.session.username , userid: req.session.userid});
 };
 
-exports.live = function(req,res){
-	res.render("../views/live" , {username: req.session.username , userid: req.session.userid});
-};
+// exports.live = function(req,res){
+// 	res.render("../views/live" , {username: req.session.username , userid: req.session.userid});
+// };
 
 
-exports.carousel = function(req, res) {
-	res.render("../views/carousel", {
-    username: req.session.username,
-    userid: req.session.userid
-  });
+// exports.carousel = function(req, res) {
+// 	res.render("../views/carousel", {
+//     username: req.session.username,
+//     userid: req.session.userid
+//   });
 }
 
 

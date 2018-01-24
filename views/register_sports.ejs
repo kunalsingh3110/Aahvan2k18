@@ -17,7 +17,11 @@
                             <form action="/register_sports" class="form" method="POST" id="register_sports">
                                 <div class="u-margin-bottom-medium">
                                     <h2 class="heading-secondary-main">
-                                       <%= sports_name %>&nbsp;Team Information %>
+                                      <% if(username){ %>
+                                       <%= sports_name %>&nbsp;Team Information(Contingent) %>
+                                      <% }else{ %>
+                                         <%= sports_name %>&nbsp;Team Information(Individual) %>
+                                      <% } %>
                                     </h2>
                                 </div>
                                 <div class="form__group">

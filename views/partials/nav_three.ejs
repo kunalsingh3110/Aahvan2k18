@@ -1,0 +1,67 @@
+<% include header_three %>
+<div class="navbar-fixed" id="nav_three">
+    <nav class="transparent z-depth-0" id="nav">
+            <div class="nav-wrapper">
+                <a href="/" class="brand-logo">Aahvaan</a>
+                <a  data-activates="mobile-demo" class="button-collapse">
+                    <i class="material-icons">menu</i>
+                </a>
+                <ul class="right hide-on-med-and-down" id="menu">
+                	  <li class="li">
+                        <a data-menuanchor="about" id="about_us">About Us</a>
+                    </li>	
+                    <li class="liv">
+                        <a  data-menuanchor="events" id="event">Events</a>
+                    </li>
+                    <li class="liv">
+                        <a data-menuanchor="ca" id="ca2">Campus Ambassador</a>
+                    </li>
+                    <li class="liv">
+                        <a data-menuanchor="theme" id="theme2">Theme</a>
+                    </li>
+                     <li class="liv">
+                        <a  data-menuanchor="lookback" id="lookback2">Lookback</a>
+                    </li>
+                     <li class="liv">
+                        <a  data-menuanchor="live" id="live2">Live</a>
+                    </li>
+                    <li class="liv">
+                        <a  data-menuanchor="register" id="register2">Register</a>
+                    </li>
+                    <li class="liv">
+                        <% if(username){ %>
+                        <a href="/logout">Log Out</a>
+                        <% }else{ %> 
+                        <a href="/login">Log In</a>
+                        <% } %>
+                    </li>
+                </ul>
+                <ul class="side-nav" id="mobile-demo">
+                	  <li class="li">
+                        <a data-menuanchor="about" id="about_us">About Us</a>
+                    </li>   
+                    <li class="liv">
+                        <a  data-menuanchor="events" id="event">Events</a>
+                    </li>
+                    <li class="liv">
+                        <a data-menuanchor="ca" id="ca2">Campus Ambassador</a>
+                    </li>
+                    <li class="liv">
+                        <a data-menuanchor="theme" id="theme2">Theme</a>
+                    </li>
+                     <li class="liv">
+                        <a  data-menuanchor="lookback" id="lookback2">Lookback</a>
+                    </li>
+                     <li class="liv">
+                        <a  data-menuanchor="live" id="live2">Live</a>
+                    </li>
+                    <li class="liv">
+                        <a  data-menuanchor="register" id="register2">Register</a>
+                    </li>
+                    <li class="liv">
+                        <a href="/login">Log In</a>
+                    </li>
+                </ul>
+            </div>
+    </nav>
+</div>

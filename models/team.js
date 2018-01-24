@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var TeamSchema = new Schema({
 	captain: {type: String , required: true},
-	college: {type: String, required: true},
+	college: {type: String},
 	contact: {type: Number , required: true},
 	number_of_players: {type: String , required: true},
 	leader: {type: Schema.Types.ObjectId , ref: 'TeamLeader'},
