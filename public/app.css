@@ -307,6 +307,7 @@ html {
 
 .main-form {
   width: 100%;
+  height: 100%;
   padding-bottom: 0rem;
   position: relative;
   box-sizing: border-box;
@@ -316,7 +317,7 @@ html {
   padding: 6.81rem 0;
   padding-top: 5rem;
 
-  background-image: linear-gradient(to right bottom, #7ed56f, #28b485); 
+  background-color: #CE6A67; 
   height: 100%;
  
 }
@@ -447,7 +448,6 @@ html {
   /*transform: skewY(2deg) skewX(15deg) scale(1.1);*/
   text-shadow: 0.3rem 0.6rem 1.25rem rgba(0, 0, 0, 0.2); 
 }
-
 
 .form__input {
   font-size: 0.9rem;

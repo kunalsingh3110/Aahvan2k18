@@ -1,6 +1,5 @@
 <% var transparent = false; %>
  <% include partials/nav_aahvaan %> 
- <div id="showTabs">
 <% if(alert){ %>
 <div class="alert alert-warning alert-dismissible fade show creds-main" role="alert">
   <strong class="creds">Wrong phone number!!!</strong>
@@ -37,11 +36,10 @@
                                     <label for="contact" class="form__label">Captain's Contact Number</label>
                                 </div>
                                    <div class="form__group">
-                                    <select name="gender" class="form__input" id="gender">
+                                    <select name="gender"  id="gender" class="gender_form">
                                       <option value="Male">Male</option>
                                       <option value="Female">Female</option>
                                     </select>
-                                    <label for="gender" class="form__label">Gender</label>
                                 </div>
                                 <div class="form__group">
                                     <input type="number" name="number_of_players" class="form__input" placeholder="Enter number of players in the team" id="number" required>
@@ -57,4 +55,4 @@
                      </div>
                  </div>
              </section>
-           </div>
+           <% include partials/footer %>

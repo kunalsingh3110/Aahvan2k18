@@ -164,6 +164,7 @@ exports.post_register_sports = function(req,res){
 						if(err){
 							console.log(err);
 						}else{
+							
 							res.render("../views/thankyou",{username:req.session.username,userid:req.session.userid});
 						}
 					});

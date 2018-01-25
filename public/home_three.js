@@ -1,9 +1,9 @@
  $(document).ready(function () {
- 	$(".button-collapse").sideNav();
  	 $('#fullpage').fullpage({
  	 	 scrollingSpeed: 1000,
             autoScrolling: true,
             fitToSection: true,
+            loopHorizontal: false,
             fitToSectionDelay: 2000,
     				anchors: ['about', 'events', 'ca', 'theme','lookback','live','register'],
     				menu: '#menu',
@@ -14,6 +14,7 @@
     				navigationTooltips: ['About Us', 'Events', 'Campus Ambassador','Theme','Lookback','Live','Register'],
     				lazyLoading: true,
     				scrollOverflow: true,
+
  	 	});
 
  	$('#about_us').click(function() {
@@ -37,4 +38,5 @@
 	$('#register2').click(function() {
     $.fn.fullpage.moveTo('register', 1);
 	});
+    $(".button-collapse").sideNav();
  });

@@ -342,11 +342,11 @@
     }
 }
 
-::-webkit-scrollbar {
+/*::-webkit-scrollbar {
     height: 12px;
     width: 12px;
     background: rgba(41, 61, 61,1);
-    /*display: none;*/
+    display: none;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -357,7 +357,7 @@
 
 ::-webkit-scrollbar-corner {
     background: rgba(41, 61, 61,1);
-}
+}*/
 
 
 /*lookback gallery*/
