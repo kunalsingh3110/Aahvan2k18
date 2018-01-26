@@ -35,12 +35,25 @@
                                     <input type="tel" name="captain_number" class="form__input" placeholder="Captains Contact Number(Eg. 8743080047)" id="contact" required minlength="10" maxlength="10">
                                     <label for="contact" class="form__label">Captain's Contact Number</label>
                                 </div>
-                                   <div class="form__group">
-                                    <select name="gender"  id="gender" class="gender_form">
-                                      <option value="Male">Male</option>
-                                      <option value="Female">Female</option>
-                                    </select>
+                                  <div class="form__group u-margin-bottom-small">
+                                    <div class="form__check-group">
+                                      <input type="checkbox" name="showPassword" class="form__check-input" id="male">
+                                        <label for="male" class="form__check-label">
+                                            <span class="form__check-button"></span>                
+                                             Male
+                                        </label>
+                                    </div>
+
+                                  
+                                    <div class="form__check-group">
+                                      <input type="checkbox" name="showPassword" id="female" class="form__check-input" id="female">
+                                        <label for="female" class="form__check-label">
+                                            <span class="form__check-button"></span>                
+                                             Female
+                                        </label>
+                                    </div>
                                 </div>
+                                   
                                 <div class="form__group">
                                     <input type="number" name="number_of_players" class="form__input" placeholder="Enter number of players in the team" id="number" required>
                                     <label for="number" class="form__label">Number of Players</label>

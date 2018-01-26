@@ -10,6 +10,7 @@
 html {
   font-size: 100%;
   height: 100%;
+  box-sizing: border-box;
 }
 
   @media (max-width: 75em) {
@@ -21,6 +22,12 @@ html {
       font-size: 80%; }
 
   } 
+
+  @media (max-width: 420px) {
+    html {
+      font-size: 75%;
+    }
+  }
 
 
 #showTabs{
@@ -56,53 +63,61 @@ html {
 
 .sports-1 {
   margin-top: 0;
-  background-image: linear-gradient(to right bottom, #8e8e3d, #afaf36), url(images/athletics.jpg);
+  background-image: linear-gradient(to right bottom, #8e8e3d, #afaf36), url(https://s3.ap-south-1.amazonaws.com/aahvaan/images/athletics.jpg);
 }
 
 .sports-2 {
-  background-image: linear-gradient(to right bottom, #7ed56f, #28b485), url(images/badminton.jpg);
+  background-image: linear-gradient(to right bottom, #7ed56f, #28b485), url(https://s3.ap-south-1.amazonaws.com/aahvaan/images/badminton.jpg);
 }
 
 .sports-3 {
-  background-image: linear-gradient(to right bottom, #4BC0C8, #267871), url(images/basketball.jpg);
+  background-image: linear-gradient(to right bottom, #4BC0C8, #267871), url(https://s3.ap-south-1.amazonaws.com/aahvaan/images/basketball.jpg);
 }
 
 .sports-4{
-    background-image: linear-gradient(to right bottom,  #eaeaea, #ADA996), url(images/chess.jpg);
+    background-image: linear-gradient(to right bottom,  #eaeaea, #ADA996), url(https://s3.ap-south-1.amazonaws.com/aahvaan/images/chess.jpg);
 }
 .sports-5{
-    background-image: linear-gradient(to right bottom, #BBD2C5, #536976, #BBD2C5), url(images/cricket.jpg);
+    background-image: linear-gradient(to right bottom, #BBD2C5, #536976, #BBD2C5), url(https://s3.ap-south-1.amazonaws.com/aahvaan/images/cricket.jpg);
 }
 .sports-6{
-    background-image: linear-gradient(to right bottom, #DBD5A4, #649173), url(images/football.jpg);
+    background-image: linear-gradient(to right bottom, #DBD5A4, #649173), url(https://s3.ap-south-1.amazonaws.com/aahvaan/images/football.jpg);
 }
 .sports-7{
-    background-image: linear-gradient(to right bottom, #304352, #d7d2cc), url(images/handball.jpg);
+    background-image: linear-gradient(to right bottom, #304352, #d7d2cc), url(https://s3.ap-south-1.amazonaws.com/aahvaan/images/handball.jpg);
 }
 .sports-8{
-    background-image: linear-gradient(to right bottom,#abbaab, #ffffff), url(images/kabbadi.jpg);
+    background-image: linear-gradient(to right bottom,#abbaab, #ffffff), url(https://s3.ap-south-1.amazonaws.com/aahvaan/images/kabbadi.jpg);
 }
 .sports-9{
-    background-image: linear-gradient(to right bottom,#EFEFBB, #D4D3DD), url(images/powerlifting.jpg);
+    background-image: linear-gradient(to right bottom,#EFEFBB, #D4D3DD), url(https://s3.ap-south-1.amazonaws.com/aahvaan/images/powerlifting.jpg);
 }
 .sports-10{
-    background-image: linear-gradient(to right, #eaeaea, #ADA996), url(images/tabletennis.jpg);
+    background-image: linear-gradient(to right, #eaeaea, #ADA996), url(https://s3.ap-south-1.amazonaws.com/aahvaan/images/tabletennis.jpg);
 }
 .sports-11{
-    background-image: linear-gradient(to right bottom, #304352, #d7d2cc), url(images/tennis.jpg);
+    background-image: linear-gradient(to right bottom, #304352, #d7d2cc), url(https://s3.ap-south-1.amazonaws.com/aahvaan/images/tennis.jpg);
 }
 .sports-12{
-    background-image: linear-gradient(to right bottom, #304352, #d7d2cc), url(images/volleyball.jpg);
+    background-image: linear-gradient(to right bottom, #304352, #d7d2cc), url(https://s3.ap-south-1.amazonaws.com/aahvaan/images/volleyball.jpg);
 }
 
 .heading-primary {
+  width: 100%;
   text-align: center;
   margin-top: 1.4rem;
   text-shadow: 0 1.3rem 3.5rem rgba(0,0,0,.5);
   text-transform: uppercase;
-  letter-spacing: 0.5rem;
+  letter-spacing: 0.2rem;
 
+}
 
+#heading__power {
+  letter-spacing: 3px;
+}
+
+.heading-text {
+  display: block;
 }
 
 .heading-secondary {
@@ -175,54 +190,54 @@ html {
 
 
 .rectangle-1 {
-  background-image: url(images/athletics.jpg);
+  background-image: url(https://s3.ap-south-1.amazonaws.com/aahvaan/images/athletics.jpg);
   background-size: cover;
 }
 
 .rectangle-2 {
-  background-image: url(images/badminton.jpg);
+  background-image: url(https://s3.ap-south-1.amazonaws.com/aahvaan/images/badminton.jpg);
   background-size: cover;
 }
 
 .rectangle-3 {
-  background-image: url(images/basketball.jpg);
+  background-image: url(https://s3.ap-south-1.amazonaws.com/aahvaan/images/basketball.jpg);
   background-size: cover;
 }
 
 .rectangle-4{
-    background-image: url(images/chess.jpg);
+    background-image: url(https://s3.ap-south-1.amazonaws.com/aahvaan/images/chess.jpg);
     background-size: cover;
 }
 .rectangle-5{
-    background-image: url(images/cricket.jpg);
+    background-image: url(https://s3.ap-south-1.amazonaws.com/aahvaan/images/cricket.jpg);
     background-size: cover;
 }
 .rectangle-6{
-    background-image: url(images/football.jpg);
+    background-image: url(https://s3.ap-south-1.amazonaws.com/aahvaan/images/football.jpg);
     background-size: cover;
 }
 .rectangle-7{
-    background-image: url(images/handball.jpg);
+    background-image: url(https://s3.ap-south-1.amazonaws.com/aahvaan/images/handball.jpg);
     background-size: cover;
 }
 .rectangle-8{
-    background-image: url(images/kabbadi.jpg);
+    background-image: url(https://s3.ap-south-1.amazonaws.com/aahvaan/images/kabbadi.jpg);
     background-size: cover;
 }
 .rectangle-9{
-    background-image: url(images/powerlifting.jpg);
+    background-image: url(https://s3.ap-south-1.amazonaws.com/aahvaan/images/powerlifting.jpg);
     background-size: cover;
 }
 .rectangle-10{
-    background-image: url(images/tabletennis.jpg);
+    background-image: url(https://s3.ap-south-1.amazonaws.com/aahvaan/images/tabletennis.jpg);
     background-size: cover;
 }
 .rectangle-11{
-    background-image: url(images/tennis.jpg);
+    background-image: url(https://s3.ap-south-1.amazonaws.com/aahvaan/images/tennis.jpg);
     background-size: cover;
 }
 .rectangle-12{
-    background-image: url(images/volleyball.jpg);
+    background-image: url(https://s3.ap-south-1.amazonaws.com/aahvaan/images/volleyball.jpg);
     background-size: cover;
 }
 
@@ -316,7 +331,7 @@ html {
 .section-book {
   padding: 6.81rem 0;
   padding-top: 5rem;
-
+  box-sizing: inherit;
   background-color: #CE6A67; 
   height: 100%;
  
@@ -329,7 +344,7 @@ html {
   padding-bottom: 40vh;
   height: 100%;
   box-shadow: .5rem 1rem 2rem rgba(0,0,0, .2);
-  background-image: linear-gradient(to right bottom, rgba(126,213,111, .7), rgba(40,180,133, .7)), url(images/sportmain2.jpg);
+  background-image: linear-gradient(to right bottom, rgba(126,213,111, .7), rgba(40,180,133, .7)), url(https://s3.ap-south-1.amazonaws.com/aahvaan/images/sportmain2.jpg);
   background-size: cover;
   background-repeat: no-repeat; 
 }
@@ -372,7 +387,7 @@ html {
 }
 
 .book {
-  background-image: linear-gradient(95deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, transparent 50%), url(/images/sportmain1.jpg);
+  background-image: linear-gradient(95deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, transparent 50%), url(https://s3.ap-south-1.amazonaws.com/aahvaan/images/sportmain1.jpg);
   background-size: cover;
   border-radius: 3px;
   box-shadow: 0 0.9rem 2.5rem rgba(0, 0, 0, 0.2);
@@ -383,11 +398,11 @@ html {
 
 @media (max-width: 75em) {
     .book {
-      background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 65%, transparent 65%), url(/images/sportmain1.jpg);
+      background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 65%, transparent 65%), url(https://s3.ap-south-1.amazonaws.com/aahvaan/images/sportmain1.jpg);
       background-size: cover; } }
   @media (max-width: 56.25em) {
     .book {
-      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%), url(/images/sportmain1.jpg); } }
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%), url(https://s3.ap-south-1.amazonaws.com/aahvaan/images/sportmain1.jpg); } }
 
 .book__form {
   width: 50%;

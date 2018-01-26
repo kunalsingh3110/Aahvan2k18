@@ -65,7 +65,7 @@ video {
     font-size: 1.5em;
 }
 #section_about{
-	background-image: url("images/about_us_image_new.jpg");
+	background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/about_us_image_new.jpg");
 	height: 100%;
 	overflow: hidden;
     background-position: center center;
@@ -76,7 +76,7 @@ video {
 }
 
 #section_events{
-	background-image: url("images/sport_1_new.jpg");
+	background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/sport_1_new.jpg");
 	height: 100%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -86,7 +86,7 @@ video {
 }
 
 #section_ca{
-	background-image: url("images/ca_image_new.jpg");
+	background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/ca_image_new.jpg");
 	height: 100%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -95,7 +95,7 @@ video {
 }
 
 #section_theme{
-	background-image: url("images/second_new.jpg");
+	background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/second_new.jpg");
 	height: 100%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -110,7 +110,7 @@ video {
     background-color: #464646;
 }
 #section_live{
-	background-image: url("images/live_image_new.jpg");
+	background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/live_image_new.jpg");
 	height: 100%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -118,7 +118,7 @@ video {
     background-color: #464646;
 }
 #section_register{
-	background-image: url("images/register_image_new.jpg");
+	background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/register_image_new.jpg");
 	height: 100%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -127,7 +127,7 @@ video {
 }
 
 #slide_one{
-	background-image: url("images/cricket_three.jpg");
+	background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/cricket_three.jpg");
 	height: 100%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -136,7 +136,7 @@ video {
 }
 
 #slide_two{
-	background-image: url("images/tennis_one.jpg");
+	background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/tennis_one.jpg");
 	height: 100%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -145,7 +145,7 @@ video {
 }
 
 #slide_three{
-	background-image: url("images/volley_one.jpg");
+	background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/volley_one.jpg");
 	height: 100%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -154,7 +154,7 @@ video {
 }
 
 #slide_four{
-	background-image: url("images/volley_two.jpg");
+	background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/volley_two.jpg");
 	height: 100%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -163,7 +163,7 @@ video {
 }
 
 #slide_five{
-	background-image: url("images/foot_one.jpg");
+	background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/foot_one.jpg");
 	height: 100%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -172,7 +172,7 @@ video {
 }
 
 #slide_six{
-	background-image: url("images/foot_two.jpg");
+	background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/foot_two.jpg");
 	height: 100%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -181,7 +181,7 @@ video {
 }
 
 #slide_seven{
-	background-image: url("images/athletics_one.jpg");
+	background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/athletics_one.jpg");
 	height: 100%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -190,7 +190,7 @@ video {
 }
 
 #slide_eight{
-	background-image: url("images/26.jpeg");
+	background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/26.jpeg");
 	height: 100%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -199,7 +199,7 @@ video {
 }
 
 #slide_nine{
-	background-image: url("images/color_run_one_new.jpg");
+	background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/color_run_one_new.jpg");
 	height: 100%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -208,7 +208,7 @@ video {
 }
 
 #slide_ten{
-	background-image: url("images/color_run_two.jpg");
+	background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/color_run_two.jpg");
 	height: 100%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -217,7 +217,7 @@ video {
 }
 
 #slide_eleven{
-    background-image: url("images/color_run_three.jpg");
+    background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/color_run_three.jpg");
   height: 100%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -227,7 +227,7 @@ video {
 
 
 #slide_twelve{
-   background-image: url("images/color_run_for_new.jpg");
+   background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/color_run_for_new.jpg");
 	height: 100%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -235,7 +235,7 @@ video {
     background-color: #464646;
 }
 #slide_thirteen{
-   background-image: url("images/color_run_five.jpg");
+   background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/color_run_five.jpg");
   height: 100%;
     background-position: center center;
     background-repeat: no-repeat;
