@@ -9,6 +9,7 @@
 </div>
 <% alert = false %>
 <% } %>
+
 <section class="section-book">
                 <div class="row1">
                     <div class="book">
@@ -23,9 +24,14 @@
                                       <% } %>
                                     </h2>
                                 </div>
+                                 <div class="u-margin-bottom-medium">
+                                    <h2 class="heading-secondary-main">
+                                      Amount:&nbsp;&#x20b9;<p id="amount_para" class="heading-secondary-main">0</p>
+                                    </h2>
+                                </div>
                                 <div class="form__group">
-                                    <input type="hidden"  name="sports_name" class="form__input" value='<%= sports_name %>'>
-                              
+                                    <input type="hidden"  name="sports_name" class="form__input" value='<%= sports_name %>' id="sports_name">
+                                    <input type="hidden" name="amount" id="amount">
                                 </div>
                                 <div class="form__group">
                                     <input type="text" name="captain_name" class="form__input" placeholder="Enter Captain Name" id="captain" required>
@@ -37,10 +43,15 @@
                                 </div>
                                 <% if(!username){ %>
                                 <div class="form__group">
+                                    <input type="email" name="team_email" class="form__input" placeholder="Enter Email" id="email" required>
+                                    <label for="email" class="form__label">Enter Email</label>
+                                </div> 
+                                <div class="form__group">
                                     <input type="text" name="college_name" class="form__input" placeholder="Enter College Name" id="college" required>
                                     <label for="college" class="form__label">College Name</label>
                                 </div>
                                 <% } %>
+                                <% if(sports_name!="Chess"){ %>
                                   <div class="form__group u-margin-bottom-small">
                                     <div class="form__check-group">
                                       <input type="checkbox" name="gender" value="Male" class="form__check-input" id="male">
@@ -50,7 +61,7 @@
                                         </label>
                                     </div>
 
-                                  
+                                  <% if(sports_name!="Handball"&&sports_name!="Cricket"&&sports_name!="Kabaddi"&&sports_name!="Powerlifting"){ %>
                                     <div class="form__check-group">
                                       <input type="checkbox" name="gender" value ="Female" id="female" class="form__check-input" id="female">
                                         <label for="female" class="form__check-label">
@@ -58,8 +69,35 @@
                                              Female
                                         </label>
                                     </div>
+                                    <% } %>
                                 </div>
-                                   
+                                <% } %>
+                                 <div class="form__group u-margin-bottom-small">
+                                    <div class="form__check-group">
+                                      <input type="checkbox" name="accomodation" class="form__check-input" id="accomodation" value="true">
+                      
+                                        <label for="accomodation" class="form__check-label">
+                                            <span class="form__check-button"></span>                
+                                             Accomodation <a data-toggle="modal" data-target="#accomodationModal">?</a>
+                                        </label>
+                                    </div>
+                                </div>
+                                      <div class="modal fade" id="accomodationModal">
+                                               <div class="modal-dialog">
+                                                 <div class="modal-content">
+                                                  <div class="modal-body">
+                                                    <ul>
+                                                      <li>
+                                                        Accomodation Cost is Rs. 1500/player which includes registration cost.
+                                                      </li>
+                                                      <li>
+                                                        Rs. 300 is of security and is refundable.
+                                                      </li>
+                                                    </ul>
+                                                  </div>
+                                                 </div>
+                                               </div>
+                                             </div>
                                 <div class="form__group">
                                     <input type="number" name="number_of_players" class="form__input" placeholder="Enter number of players in the team" id="number" required>
                                     <label for="number" class="form__label">Number of Players</label>

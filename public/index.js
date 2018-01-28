@@ -23,22 +23,247 @@ images.forEach((img)=> {
   });
 });
 
-  $('#male').prop('checked', true);
- 
+$('#male').prop('checked', true);
+var gender="male";
 $('#male').on('change',function(){
     if($(this).is(':checked')){
       $('#female').prop('checked', false);
+      gender="male";
+
     }else{
       $('#female').prop('checked', true);
+      gender="female";
     }
+     var players = Number($('#number').val());
+  var sports_name = $("#sports_name").val();
+  var max=0;
+  var min=0;
+  var amount = 0;
+  if(gender=="male"){
+    if(sports_name=="Athletics"){
+      max=100;
+      min=1;
+      amount = players*100;
+    }else if(sports_name=="Badminton"){
+      max=6;
+      min=4;
+      amount = 900;
+    }else if(sports_name=="Basketball"){
+      max=12;
+      min=5;
+      amount = 1200;
+    }else if(sports_name=="Chess"){
+      max=5;
+      min=4;
+      amount = 1000;
+    }else if(sports_name=="Cricket"){
+      max=20;
+      min=11;
+      amount = 4000;
+    }else if(sports_name=="Football"){
+      max=16;
+      min=11;
+      amount = 1900;
+    }else if(sports_name=="Handball"){
+      max=10;
+      min=7;
+      amount = 1000;
+    }else if(sports_name=="Kabaddi"){
+      max=12;
+      min=7;
+      amount = 1000;
+    }else if(sports_name=="Powerlifting"){
+      max=100;
+      min=1;
+      amount = 100*players;
+    }else if(sports_name=="TableTennis"){
+      max=4;
+      min=3;
+      amount = 600;
+    }else if(sports_name=="Tennis"){
+      max=4;
+      min=3;
+      amount = 600;
+    }else if(sports_name=="Volleyball"){
+      max=10;
+      min=6;
+      amount = 1000;
+    }else{
+      max=0;
+      min=0;
+    }
+  }else{
+    if(sports_name=="Athletics"){
+      max=100;
+      min=1;
+      amount = 100*players;
+    }else if(sports_name=="Badminton"){
+      max=4;
+      min=3;
+       amount = 600;
+    }else if(sports_name=="Basketball"){
+      max=12;
+      min=5;
+      amount = 1200;
+    }else if(sports_name=="Chess"){
+      max=5;
+      min=4;
+      amount = 1000;
+    }else if(sports_name=="Football"){
+      max=12;
+      min=7;
+      amount = 1000;
+    }else if(sports_name=="TableTennis"){
+      max=4;
+      min=3;
+      amount = 600;
+    }else if(sports_name=="Tennis"){
+      max=4;
+      min=2;
+      amount = 500;
+    }else if(sports_name=="Volleyball"){
+      max=10;
+      min=6;
+      amount = 1000;
+    }else{
+      max=0;
+      min=0;
+    }
+  } 
+     $("#number").attr({
+       "max" : max, 
+       "min" : min          
+    });
+  if(players>=min&&players<=max){
+        if($('#accomodation').is(':checked')){
+      amount = 1500*players;
+      $('#amount_para').text(amount);
+      $('#amount').val(amount);
+    }else{
+    $('#amount_para').text(amount);
+     $('#amount').val(amount);
+   }
+ }
 });
 
 $('#female').on('change',function(){
     if($(this).is(':checked')){
       $('#male').prop('checked', false);
+      gender="female";
     }else{
       $('#male').prop('checked', true);
+      gender="male";
     }
+     var players = Number($('#number').val());
+  var sports_name = $("#sports_name").val();
+  var max=0;
+  var min=0;
+  var amount = 0;
+  if(gender=="male"){
+    if(sports_name=="Athletics"){
+      max=100;
+      min=1;
+      amount = players*100;
+    }else if(sports_name=="Badminton"){
+      max=6;
+      min=4;
+      amount = 900;
+    }else if(sports_name=="Basketball"){
+      max=12;
+      min=5;
+      amount = 1200;
+    }else if(sports_name=="Chess"){
+      max=5;
+      min=4;
+      amount = 1000;
+    }else if(sports_name=="Cricket"){
+      max=20;
+      min=11;
+      amount = 4000;
+    }else if(sports_name=="Football"){
+      max=16;
+      min=11;
+      amount = 1900;
+    }else if(sports_name=="Handball"){
+      max=10;
+      min=7;
+      amount = 1000;
+    }else if(sports_name=="Kabaddi"){
+      max=12;
+      min=7;
+      amount = 1000;
+    }else if(sports_name=="Powerlifting"){
+      max=100;
+      min=1;
+      amount = 100*players;
+    }else if(sports_name=="TableTennis"){
+      max=4;
+      min=3;
+      amount = 600;
+    }else if(sports_name=="Tennis"){
+      max=4;
+      min=3;
+      amount = 600;
+    }else if(sports_name=="Volleyball"){
+      max=10;
+      min=6;
+      amount = 1000;
+    }else{
+      max=0;
+      min=0;
+    }
+  }else{
+    if(sports_name=="Athletics"){
+      max=100;
+      min=1;
+      amount = 100*players;
+    }else if(sports_name=="Badminton"){
+      max=4;
+      min=3;
+       amount = 600;
+    }else if(sports_name=="Basketball"){
+      max=12;
+      min=5;
+      amount = 1200;
+    }else if(sports_name=="Chess"){
+      max=5;
+      min=4;
+      amount = 1000;
+    }else if(sports_name=="Football"){
+      max=12;
+      min=7;
+      amount = 1000;
+    }else if(sports_name=="TableTennis"){
+      max=4;
+      min=3;
+      amount = 600;
+    }else if(sports_name=="Tennis"){
+      max=4;
+      min=2;
+      amount = 500;
+    }else if(sports_name=="Volleyball"){
+      max=10;
+      min=6;
+      amount = 1000;
+    }else{
+      max=0;
+      min=0;
+    }
+  } 
+     $("#number").attr({
+       "max" : max, 
+       "min" : min          
+    });
+  if(players>=min&&players<=max){
+      if($('#accomodation').is(':checked')){
+      amount = 1500*players;
+      $('#amount_para').text(amount);
+      $('#amount').val(amount);
+    }else{
+    $('#amount_para').text(amount);
+     $('#amount').val(amount);
+   }
+ }
 });
 
 
@@ -201,11 +426,234 @@ $('#Lookback').on("click",function() {
     $(this).toggleClass('scale-up');
   });
 
+$('#accomodation').on('change',function(){
+   var players = Number($('#number').val());
+  var sports_name = $("#sports_name").val();
+  var max=0;
+  var min=0;
+  var amount = 0;
+  if(gender=="male"){
+    if(sports_name=="Athletics"){
+      max=100;
+      min=1;
+      amount = players*100;
+    }else if(sports_name=="Badminton"){
+      max=6;
+      min=4;
+      amount = 900;
+    }else if(sports_name=="Basketball"){
+      max=12;
+      min=5;
+      amount = 1200;
+    }else if(sports_name=="Chess"){
+      max=5;
+      min=4;
+      amount = 1000;
+    }else if(sports_name=="Cricket"){
+      max=20;
+      min=11;
+      amount = 4000;
+    }else if(sports_name=="Football"){
+      max=16;
+      min=11;
+      amount = 1900;
+    }else if(sports_name=="Handball"){
+      max=10;
+      min=7;
+      amount = 1000;
+    }else if(sports_name=="Kabaddi"){
+      max=12;
+      min=7;
+      amount = 1000;
+    }else if(sports_name=="Powerlifting"){
+      max=100;
+      min=1;
+      amount = 100*players;
+    }else if(sports_name=="TableTennis"){
+      max=4;
+      min=3;
+      amount = 600;
+    }else if(sports_name=="Tennis"){
+      max=4;
+      min=3;
+      amount = 600;
+    }else if(sports_name=="Volleyball"){
+      max=10;
+      min=6;
+      amount = 1000;
+    }else{
+      max=0;
+      min=0;
+    }
+  }else{
+    if(sports_name=="Athletics"){
+      max=100;
+      min=1;
+      amount = 100*players;
+    }else if(sports_name=="Badminton"){
+      max=4;
+      min=3;
+       amount = 600;
+    }else if(sports_name=="Basketball"){
+      max=12;
+      min=5;
+      amount = 1200;
+    }else if(sports_name=="Chess"){
+      max=5;
+      min=4;
+      amount = 1000;
+    }else if(sports_name=="Football"){
+      max=12;
+      min=7;
+      amount = 1000;
+    }else if(sports_name=="TableTennis"){
+      max=4;
+      min=3;
+      amount = 600;
+    }else if(sports_name=="Tennis"){
+      max=4;
+      min=2;
+      amount = 500;
+    }else if(sports_name=="Volleyball"){
+      max=10;
+      min=6;
+      amount = 1000;
+    }else{
+      max=0;
+      min=0;
+    }
+  } 
+     $("#number").attr({
+       "max" : max, 
+       "min" : min          
+    });
+  if(players>=min&&players<=max){
+     if($('#accomodation').is(':checked')){
+      amount = 1500*players;
+     $('#amount_para').text(amount);
+     $('#amount').val(amount);
+    }else{
+    $('#amount_para').text(amount);
+    $('#amount').val(amount);
+   }
+ }
+});
+
 $('#number').on('input',function(){
   $('.team-players').empty();
-  var players = $(this).val();
+  var players = Number($(this).val());
+  var sports_name = $("#sports_name").val();
+  var max=0;
+  var min=0;
+  var amount = 0;
+  if(gender=="male"){
+    if(sports_name=="Athletics"){
+      max=100;
+      min=1;
+      amount = players*100;
+    }else if(sports_name=="Badminton"){
+      max=6;
+      min=4;
+      amount = 900;
+    }else if(sports_name=="Basketball"){
+      max=12;
+      min=5;
+      amount = 1200;
+    }else if(sports_name=="Chess"){
+      max=5;
+      min=4;
+      amount = 1000;
+    }else if(sports_name=="Cricket"){
+      max=20;
+      min=11;
+      amount = 4000;
+    }else if(sports_name=="Football"){
+      max=16;
+      min=11;
+      amount = 1900;
+    }else if(sports_name=="Handball"){
+      max=10;
+      min=7;
+      amount = 1000;
+    }else if(sports_name=="Kabaddi"){
+      max=12;
+      min=7;
+      amount = 1000;
+    }else if(sports_name=="Powerlifting"){
+      max=100;
+      min=1;
+      amount = 100*players;
+    }else if(sports_name=="TableTennis"){
+      max=4;
+      min=3;
+      amount = 600;
+    }else if(sports_name=="Tennis"){
+      max=4;
+      min=3;
+      amount = 600;
+    }else if(sports_name=="Volleyball"){
+      max=10;
+      min=6;
+      amount = 1000;
+    }else{
+      max=0;
+      min=0;
+    }
+  }else{
+    if(sports_name=="Athletics"){
+      max=100;
+      min=1;
+      amount = 100*players;
+    }else if(sports_name=="Badminton"){
+      max=4;
+      min=3;
+       amount = 600;
+    }else if(sports_name=="Basketball"){
+      max=12;
+      min=5;
+      amount = 1200;
+    }else if(sports_name=="Chess"){
+      max=5;
+      min=4;
+      amount = 1000;
+    }else if(sports_name=="Football"){
+      max=12;
+      min=7;
+      amount = 1000;
+    }else if(sports_name=="TableTennis"){
+      max=4;
+      min=3;
+      amount = 600;
+    }else if(sports_name=="Tennis"){
+      max=4;
+      min=2;
+      amount = 500;
+    }else if(sports_name=="Volleyball"){
+      max=10;
+      min=6;
+      amount = 1000;
+    }else{
+      max=0;
+      min=0;
+    }
+  } 
+   if($('#accomodation').is(':checked')){
+    amount = players*1500; 
+  }
+   $("#number").attr({
+       "max" : max, 
+       "min" : min          
+    });
+  if(players>=min&&players<=max){
+    $('#amount_para').text(amount);
+    $('#amount').val(amount);
   for(var i=0;i<players;i++){
     $('.team-players').append("<input type='text' class='form__input' id='player"+(i)+"' name='player_name"+(i)+"' placeholder='Enter Player "+(i+1)+" Name' required='true'><label for='number' class='form__label'>Enter Player "+(i+1)+" Name</label>");
+}
+}else{
+  amount = 0;
+  $('#amount_para').text(amount);
+  $('#amount').val(amount);
 }
 });
 

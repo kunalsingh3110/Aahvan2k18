@@ -28,12 +28,17 @@
                     <li class="liv">
                         <a  data-menuanchor="register" id="register2" class="nav_element">Register</a>
                     </li>
+                    <% if(username){ %>
                     <li class="liv">
-                        <% if(username){ %>
-                        <a href="/logout" class="nav_element">Log Out</a>
-                        <% }else{ %> 
-                        <a href="/login" class="nav_element">Log In</a>
-                        <% } %>
+                         <a  data-menuanchor="teams" id="teams" class="nav_element">Teams</a>
+                    </li>
+                    <li class="liv">
+                     <a href="/logout" class="nav_element">Log Out</a>
+                    </li>
+                    <% }else{ %>
+                    <li class="liv"> 
+                    <a href="/login" class="nav_element">Log In</a>
+                    <% } %>
                     </li>
                 </ul>
             </div>
@@ -61,11 +66,16 @@
                     <li class="liv">
                         <a  href="#register" data-menuanchor="register" id="register2">Register</a>
                     </li>
-                    <li class="liv">
                         <% if(username){ %>
-                        <a href="/logout">Log Out</a>
-                        <% }else{ %> 
-                        <a href="/login">Log In</a>
+                        <li class="liv">
+                         <a  href="#teams" data-menuanchor="temas" id="teams">Teams</a>
+                        </li>
+                        <li class="liv">
+                         <a href="/logout">Log Out</a>
+                        </li>
+                        <% }else{ %>
+                        <li class="liv"> 
+                         <a href="/login">Log In</a>
+                        </li>
                         <% } %>
-                    </li>
                 </ul>

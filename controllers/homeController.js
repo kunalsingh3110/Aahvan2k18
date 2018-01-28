@@ -5,6 +5,13 @@ var nodemailer = require('nodemailer');
 var crypto = require('crypto');
 var bcrypt = require('bcrypt');
 const saltRounds = 10;
+var smtpTransport = nodemailer.createTransport({
+						service: 'Gmail',
+						auth:{
+							user: 'aahvaandtu@gmail.com',
+							pass: process.env.PASSWORD 
+						}
+					});
 exports.index = function(req,res){
 	res.render("../views/home",{username: req.session.username , userid: req.session.userid});
 };
@@ -122,6 +129,10 @@ exports.post_register_sports = function(req,res){
 		if(isNaN(cap_phone)){
 					res.render("../views/register_sports",{alert:true , sports_name:req.body.sports_name, username: req.session.username , userid: req.session.userid});
 		}else{
+			var accomodation = false;
+					if(req.body.accomodation){
+						accomodation = true;
+					}
 			if(!req.session.username){
 					var players = [];
 					for(var i=0;i<req.body.number_of_players;i++){
@@ -130,21 +141,42 @@ exports.post_register_sports = function(req,res){
 					}
 					Team.create(
 					{captain: req.body.captain_name,
-						college:req.body.college_name,
+					 college:req.body.college_name,
 					 contact: req.body.captain_number,
+					 email: req.body.team_email,
 					 number_of_players: req.body.number_of_players,
 					 gender: req.body.gender,
 					 players: players,
+					 accomodation: accomodation,
+					 amount: req.body.amount,
 					 sport: req.body.sports_name},function(err,team){
 						if(err){
 							console.log(err);
 						}else{
+						var mailOptions = {
+						to: team.email,
+						from: 'aahvaandtu@gmail.com',
+						subject: 'Aahvaan 2k18 Team Registration',
+						text: 'Thank you for registering team for Aahvaan 2k18.'+'\n'+
+						'Sport: '+team.sport+'\n'+
+						'Captain: '+team.captain+'\n'+
+						'Players: '+team.players+'\n'+
+						'Amount: Rs. ' + team.amount +'.'+'\n'+
+						'Further instructions for payment will be provided to you.'+'\n'+
+						'Regards,'+'\n'+
+						'Team Aahvaan' 
+					};
+					smtpTransport.sendMail(mailOptions,function(err){
+						if(err){
+							console.log(err);
+						}
+					});
 							res.render("../views/thankyou",{username:req.session.username,userid:req.session.userid});
 						}
 					});
 
 			}else{
-					TeamLeader.findById(req.session.userid , function(err,teamLeader){
+				TeamLeader.findById(req.session.userid , function(err,teamLeader){
 				if(err){
 					console.log(err);
 				}else{
@@ -157,15 +189,17 @@ exports.post_register_sports = function(req,res){
 					{captain: req.body.captain_name,
 					college: teamLeader.college,
 					 contact: req.body.captain_number,
+					 email: teamLeader.email,
 					 number_of_players: req.body.number_of_players,
 					 leader: teamLeader,
 					 gender: req.body.gender,
+					 accomodation:accomodation,
+					 amount: req.body.amount,
 					 players: players,
 					 sport: req.body.sports_name},function(err,team){
 						if(err){
 							console.log(err);
 						}else{
-							
 							res.render("../views/thankyou",{username:req.session.username,userid:req.session.userid});
 						}
 					});
@@ -249,7 +283,21 @@ exports.post_campus_ambassador = function(req,res){
 				 				if(err){
 				 					res.render("../views/campus_ambassador_form",{alert:1 , username: req.session.username , userid: req.session.userid});
 				 				}else{
-				 					res.render("../views/thankyou_campus_ambassador" , {username: req.session.username , userid: req.session.userid});
+				 		var mailOptions = {
+						to: CampusAmbassador.email,
+						from: 'aahvaandtu@gmail.com',
+						subject: 'Aahvaan 2k18 Campus Ambassador',
+						text: 'Thank you for applying for Campus Ambassador.'+'\n'+
+						'Looking forward on working with you.'+'\n'+
+						'Regards,'+'\n'+
+						'Team Aahvaan' 
+					};
+					smtpTransport.sendMail(mailOptions,function(err){
+						if(err){
+							console.log(err);
+						}
+					});
+				 		res.render("../views/thankyou_campus_ambassador" , {username: req.session.username , userid: req.session.userid});
 				 				}
 				 			}
 						);
@@ -293,13 +341,7 @@ exports.post_send_token = function(req,res){
 						}
 					});
 
-					var smtpTransport = nodemailer.createTransport({
-						service: 'Gmail',
-						auth:{
-							user: 'aahvaandtu@gmail.com',
-							pass: process.env.PASSWORD 
-						}
-					});
+					
 
 					var mailOptions = {
 						to: teamLeader.email,

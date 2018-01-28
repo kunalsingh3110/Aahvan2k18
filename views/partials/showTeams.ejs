@@ -33,16 +33,16 @@
   <div class="card-block">
   	<ul class="list-group list-group-flush">
       <% if(team.leader){ %>
-    <li class="list-group-item">Contingent Leader Name:&nbsp<strong><a href="/admin/showTeamLeaders#<%= team.leader.id %>" id="teamLeaderLink"><%= team.leader.name %></strong></li></a>
+    <li class="list-group-item">Contingent Leader Name:&nbsp;<strong><a href="/admin/showTeamLeaders#<%= team.leader.id %>" id="teamLeaderLink"><%= team.leader.name %></strong></li></a>
     <% } %>
-     <li class="list-group-item">Team Captain Name:&nbsp<strong><%= team.captain %></strong></li>
-      <li class="list-group-item">Contact:&nbsp<%= team.contact %></li>
-    <li class="list-group-item">College:&nbsp<%= team.college %></li>
-     <li class="list-group-item">Sport:&nbsp<%= team.sport %></li>
-      <li class="list-group-item">Gender:&nbsp<%= team.gender %></li>
-     <li class="list-group-item">Number of Players:&nbsp<%= team.number_of_players %></li>
+     <li class="list-group-item">Team Captain Name:&nbsp;<strong><%= team.captain %></strong></li>
+      <li class="list-group-item">Contact:&nbsp;<%= team.contact %></li>
+    <li class="list-group-item">College:&nbsp;<%= team.college %></li>
+     <li class="list-group-item">Sport:&nbsp;<%= team.sport %></li>
+      <li class="list-group-item">Gender:&nbsp;<%= team.gender %></li>
+     <li class="list-group-item">Number of Players:&nbsp;<%= team.number_of_players %></li>
     <% for(var i=0;i<team.number_of_players;i++){ %>
-     <li class="list-group-item">Player&nbsp<%= (i+1) %>&nbsp Name:&nbsp<%= team.players[i] %></li>
+     <li class="list-group-item">Player&nbsp;<%= (i+1) %>&nbsp; Name:&nbsp;<%= team.players[i] %></li>
     <% } %>
   </ul>
   </div>
