@@ -11,6 +11,7 @@ var TeamSchema = new Schema({
 	gender:{type:String},
 	sport: {type:String , required: true},
 	time: {type: Date , default: Date.now},
+	amount:{type: Number , default: 0},
 	tag:{type: String , default: "grey"}
 });
 

@@ -10,6 +10,7 @@ var TeamLeaderSchema = new Schema({
 	time:{type:Date , default: Date.now},
 	tag:{type: String , default: "grey"},
 	teams: [{type: Schema.Types.ObjectId , ref: 'Team'}],
+	amount:{type: Number , default: 0},
 	resetPasswordToken:{type: String},
 	resetPasswordExpires:{type: Date}
 	});

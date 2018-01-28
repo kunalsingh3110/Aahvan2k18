@@ -23,7 +23,23 @@ images.forEach((img)=> {
   });
 });
 
+  $('#male').prop('checked', true);
  
+$('#male').on('change',function(){
+    if($(this).is(':checked')){
+      $('#female').prop('checked', false);
+    }else{
+      $('#female').prop('checked', true);
+    }
+});
+
+$('#female').on('change',function(){
+    if($(this).is(':checked')){
+      $('#male').prop('checked', false);
+    }else{
+      $('#male').prop('checked', true);
+    }
+});
 
 
 function changeHeading(newHeader) {

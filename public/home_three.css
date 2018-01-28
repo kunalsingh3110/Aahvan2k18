@@ -11,6 +11,13 @@ font-family: 'Raleway', sans-serif;
     padding: 0;
     margin: 0;
 }
+
+#fb-video{
+    
+  left: 50%;
+  top: 50%;
+}
+
 .main{
 height: 100vh;
 }
