@@ -35,6 +35,12 @@
                                     <input type="tel" name="captain_number" class="form__input" placeholder="Captains Contact Number(Eg. 8743080047)" id="contact" required minlength="10" maxlength="10">
                                     <label for="contact" class="form__label">Captain's Contact Number</label>
                                 </div>
+                                <% if(!username){ %>
+                                <div class="form__group">
+                                    <input type="text" name="college_name" class="form__input" placeholder="Enter College Name" id="college" required>
+                                    <label for="college" class="form__label">College Name</label>
+                                </div>
+                                <% } %>
                                   <div class="form__group u-margin-bottom-small">
                                     <div class="form__check-group">
                                       <input type="checkbox" name="gender" value="Male" class="form__check-input" id="male">

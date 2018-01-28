@@ -130,6 +130,7 @@ exports.post_register_sports = function(req,res){
 					}
 					Team.create(
 					{captain: req.body.captain_name,
+						college:req.body.college_name,
 					 contact: req.body.captain_number,
 					 number_of_players: req.body.number_of_players,
 					 gender: req.body.gender,
