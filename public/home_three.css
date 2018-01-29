@@ -308,7 +308,18 @@ video {
     background-color: #464646;
 }
 
-./*section.active{
+#slide_one_events{
+   background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/lookback_ten.jpg");
+  height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#slide_two_events{
+
+}
+/*section.active{
   transform:translateY(-20vh);
 	transition: all 5s cubic-bezier(0.22, 0.44, 0, 1) !important;
 }
