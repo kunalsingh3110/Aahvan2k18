@@ -78,26 +78,29 @@
                       
                                         <label for="accomodation" class="form__check-label">
                                             <span class="form__check-button"></span>                
-                                             Accomodation <a data-toggle="modal" data-target="#accomodationModal">?</a>
+                                             Accomodation <a href="#popUp" id="openPopUp">?</a>
                                         </label>
                                     </div>
                                 </div>
-                                      <div class="modal fade" id="accomodationModal">
-                                               <div class="modal-dialog">
-                                                 <div class="modal-content">
-                                                  <div class="modal-body">
-                                                    <ul>
-                                                      <li>
-                                                        Accomodation Cost is Rs. 1500/player which includes registration cost.
-                                                      </li>
-                                                      <li>
-                                                        Rs. 300 is of security and is refundable.
-                                                      </li>
-                                                    </ul>
-                                                  </div>
-                                                 </div>
-                                               </div>
-                                             </div>
+                                <aside id="popUp" class="popup">
+                                    <div class="popUpContainer">
+                                       <header>
+                                        <a href="#!" class="closePopUp">X</a>
+                                        <h2>Note</h2>
+                                       </header>
+                                      <article>
+                                        <ul class="tooltip__list">
+                                            <li class="tooltip__item">
+                                              Accomodation Cost is Rs. 1500/player which includes registration cost.
+                                            </li>
+                                            <li class="tooltip__item">
+                                              Rs. 300 is of security and is refundable.
+                                            </li>
+                                          </ul>
+                                      </article>
+                                   </div>        
+                                   <a href="#!" class="closePopUpOutSide"></a>    
+                                </aside>
                                 <div class="form__group">
                                     <input type="number" name="number_of_players" class="form__input" placeholder="Enter number of players in the team" id="number" required>
                                     <label for="number" class="form__label">Number of Players</label>
