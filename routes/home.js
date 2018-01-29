@@ -27,6 +27,9 @@ router.post("/login",home_controller.post_login);
 router.post("/send_token",home_controller.post_send_token);
 router.get("/my_teams",home_controller.my_teams);
 router.post("/contingent_submit",home_controller.contingent_submit);
+router.get("/register_events",home_controller.get_register_events);
+router.post("/register_events",home_controller.register_events);
+router.post("/register_events_teams",home_controller.register_events_teams);
 // router.get("/img", home_controller.carousel);
 
 

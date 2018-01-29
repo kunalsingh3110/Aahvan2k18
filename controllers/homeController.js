@@ -49,6 +49,20 @@ exports.my_teams = function(req,res){
 	}
 };
 
+exports.get_register_events = function(req,res){
+	res.render("../views/home",{username: req.session.username , userid:req.session.userid});
+}
+
+exports.register_events = function(req,res){
+	res.render("../views/register_events",{alert: false , username:req.session.username , userid: req.session.userid , event: req.body.event});
+};
+
+exports.register_events_teams = function(req,res){
+
+	
+
+
+};
 
 exports.register = function(req,res){
 	if(req.session.username){
