@@ -648,7 +648,7 @@ $('#number').on('input',function(){
     $('#amount_para').text(amount);
     $('#amount').val(amount);
   for(var i=0;i<players;i++){
-    $('.team-players').append("<input type='text' class='form__input' id='player"+(i)+"' name='player_name"+(i)+"' placeholder='Enter Player "+(i+1)+" Name' required='true'><label for='number' class='form__label'>Enter Player "+(i+1)+" Name</label>");
+    $('.team-players').append("<input type='text' class='form__input' id='player"+(i)+"' name='player_name"+(i)+"'placeholder='Enter Player "+(i+1)+" Name' required='true'><label for='number' class='form__label'>Enter Player "+(i+1)+" Name</label>"+" <div class='form__check-group'><input type='checkbox' name='gender' value ='Female' id='female' class='form__check-input' id='female'><label for='female' class='form__check-label'><span class='form__check-button'></span>One</label></div>");
 }
 }else{
   amount = 0;
