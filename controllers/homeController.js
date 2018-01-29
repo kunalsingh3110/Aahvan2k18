@@ -1,5 +1,6 @@
 
 var TeamLeader = require("../models/teamLeader");
+var Team = require("../models/team");
 var async = require('async');
 var nodemailer = require('nodemailer');
 var crypto = require('crypto');
@@ -23,6 +24,31 @@ exports.index = function(req,res){
 // exports.home_three = function(req,res){
 // 	res.render("../views/home_three",{username: req.session.username , userid: req.session.userid});
 // }
+
+exports.my_teams = function(req,res){
+	if(req.session.username){
+		var amount = 0;
+		TeamLeader.findById(req.session.userid,function(err,teamLeader){
+			if(err){
+				console.log(err);
+			}else{
+		Team.find({leader: teamLeader}).sort({time: -1}).exec(function(err,teams){
+			if(err){
+			console.log(err);
+			}else{
+				teams.forEach(function(team){
+					amount = amount + team.amount;
+				});
+			res.render("../views/my_teams",{username: req.session.username , userid: req.session.userid , teams:teams , amount: amount});	
+		}
+		});
+		}
+		});
+	}else{
+		res.render("../views/login",{alert: 0 , username: req.session.username , userid: req.session.userid});
+	}
+};
+
 
 exports.register = function(req,res){
 	if(req.session.username){
@@ -200,7 +226,7 @@ exports.post_register_sports = function(req,res){
 						if(err){
 							console.log(err);
 						}else{
-							res.render("../views/thankyou",{username:req.session.username,userid:req.session.userid});
+							res.render("../views/home",{username:req.session.username,userid:req.session.userid});
 						}
 					});
 				}
@@ -437,6 +463,43 @@ exports.thankyou = function(req,res){
 
 exports.thankyou_ca = function(req,res){
 	res.render("../views/home",{username: req.session.username , userid: req.session.userid});
+};
+
+exports.contingent_submit = function(req,res){
+		var amount = 0;
+		var sports = [];
+		TeamLeader.findById(req.session.userid,function(err,teamLeader){
+			if(err){
+				console.log(err);
+			}else{
+		Team.find({leader: teamLeader}).sort({time: -1}).exec(function(err,teams){
+			if(err){
+			console.log(err);
+			}else{
+				teams.forEach(function(team){
+				amount = amount + team.amount;
+				sports.push(team.sport);
+				});
+			var mailOptions = {
+						to: teamLeader.email,
+						from: 'aahvaandtu@gmail.com',
+						subject: 'Aahvaan 2k18 Team Registration',
+						text: 'Thank you for registering your teams for Aahvaan 2k18.'+'\n'+
+						'Sports: '+sports+'\n'+
+						'Amount: Rs. ' + amount +'.'+'\n'+
+						'Further instructions for payment will be provided to you.'+'\n'+
+						'Regards,'+'\n'+
+						'Team Aahvaan' 
+					};
+					smtpTransport.sendMail(mailOptions,function(err){
+						if(err){
+							console.log(err);
+						}
+					});
+					res.render("../views/thankyou",{username:req.session.username,userid:req.session.userid});
+		}
+	});
+	}});				
 };
 
 // exports.live = function(req,res){

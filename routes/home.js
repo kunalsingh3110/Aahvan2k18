@@ -25,6 +25,8 @@ router.post("/campus_ambassador",home_controller.post_campus_ambassador);
 router.post("/register",home_controller.post_register);
 router.post("/login",home_controller.post_login);
 router.post("/send_token",home_controller.post_send_token);
+router.get("/my_teams",home_controller.my_teams);
+router.post("/contingent_submit",home_controller.contingent_submit);
 // router.get("/img", home_controller.carousel);
 
 
