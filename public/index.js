@@ -649,7 +649,8 @@ $('#number').on('input',function(){
     $('#amount').val(amount);
     if(sports_name=="Athletics"){
       for(var i=0;i<players;i++){
-    $(".team-players").append("<div><div class='form__group form__group-dis'><input type='text' class='form__input form__input-width' id='player" + (i) + "' name='player_name" + (i) + "'placeholder='Enter Player " + (i + 1) + " Name' required='true'><label for='number' class='form__label'>Enter Player " + (i + 1) + " Name</label></div><div class='form__group form__group-dis'><input type='number' name='number_of_events"+(i)+"' class='form__input form__input-width ' placeholder='No. of events' id='number_of_events"+(i)+"'  min='1' max='6' required><label for='number_of_events"+(i)+"' class='form__label'>No. of events</label></div></div>");
+         $('.team-players').append("<input type='text' class='form__input' id='player"+(i)+"' name='player_name"+(i)+"'placeholder='Enter Player "+(i+1)+" Name' required='true'><label for='number' class='form__label'>Enter Player "+(i+1)+" Name</label>");
+    // $(".team-players").append("<div><div class='form__group form__group-dis'><input type='text' class='form__input form__input-width' id='player" + (i) + "' name='player_name" + (i) + "'placeholder='Enter Player " + (i + 1) + " Name' required='true'><label for='number' class='form__label'>Enter Player " + (i + 1) + " Name</label></div><div class='form__group form__group-dis'><input type='number' name='number_of_events"+(i)+"' class='form__input form__input-width ' placeholder='No. of events' id='number_of_events"+(i)+"'  min='1' max='6' required><label for='number_of_events"+(i)+"' class='form__label'>No. of events</label></div></div>");
 }
     }else{
        for(var i=0;i<players;i++){
