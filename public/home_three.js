@@ -1,4 +1,5 @@
  $(document).ready(function () {
+    $('.modal').modal();
  	 $('#fullpage').fullpage({
  	 	 scrollingSpeed: 1000,
             autoScrolling: true,
@@ -39,4 +40,29 @@
     $.fn.fullpage.moveTo('register', 1);
 	});
     $(".button-collapse").sideNav();
+
  });
+
+function deleteTeam(id,amount_reduced){
+    $('.'+id).hide();
+    var amount = Number($('#total_amount').text().substr(10));
+    console.log($('#total_amount').text().substr(10));
+    amount = amount - Number(amount_reduced);
+    if(amount==0){
+        $('#pay_contingent').hide();
+    }
+    $('#total_amount').text("Total: "+"Rs. "+amount);
+
+    $.ajax({
+        url: "/delete_team",
+        type: "POST",
+        data:{id: id},
+        success: function(){
+            console.log("deleted");
+        },
+        error: function(err){
+            console.log(err);
+        }
+    });
+
+}

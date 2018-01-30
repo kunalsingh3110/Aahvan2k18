@@ -30,6 +30,7 @@ router.post("/contingent_submit",home_controller.contingent_submit);
 router.get("/register_events",home_controller.get_register_events);
 router.post("/register_events",home_controller.register_events);
 router.post("/register_events_teams",home_controller.register_events_teams);
+router.post("/delete_team",home_controller.delete_team);
 // router.get("/img", home_controller.carousel);
 
 

@@ -1,29 +1,44 @@
 <% include partials/header_three %>
-<h2>Total:&nbsp;&#x20b9;<%= amount %></h2>
+<h3 class="center-align" id="total_amount" >Total:&nbsp;Rs. <%= amount %></h3>
 <div class="container">
+  <% if(teams.length>0){ %>
 <% teams.forEach(function(team){ %>
-<div class="card <%= team.sport %> <%=team.gender %> all" style="position: relative; top: 120px;">
-   <% var name = team.id+" Team" %>
-  <div class="card-header" name="<%= name %>">
-    <%= team.time.getDate() %>/<%= team.time.getMonth()+1 %>/<%= team.time.getFullYear() %>
-    &nbsp; <%= team.time.getHours() %>:<%= team.time.getMinutes() %>
+<% var sport = team.sport.toLowerCase() %>
+<div class="card <%= team.id %>">
+  <div class="card-image waves-effect waves-block waves-light">
+    <img class="activator" src="https://s3.ap-south-1.amazonaws.com/aahvaan/images/<%= sport %>.jpg">
   </div>
-  <div class="card-block">
-  	<ul class="list-group list-group-flush">
-     <li class="list-group-item">Team Captain Name:&nbsp;<strong><%= team.captain %></strong></li>
-     <li class="list-group-item">Sport:&nbsp;<%= team.sport %></li>
-      <li class="list-group-item">Gender:&nbsp;<%= team.gender %></li>
-      <li class="list-group-item">Amount:&nbsp;&#x20b9;<%= team.amount %></li>
-     <li class="list-group-item">Number of Players:&nbsp;<%= team.number_of_players %></li>
+  <div class="card-content">
+  <span class="card-title"><%= team.sport %><a class="modal-trigger" href="#modal<%= team.id %>"><i class="material-icons right" style="color: red;">delete</i></a></span>
+   <div id="modal<%= team.id %>" class="modal">
+    <div class="modal-content">
+      <h4>Confirm Delete</h4>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">NO</a>
+      <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat" onclick="deleteTeam('<%=team.id %>','<%= team.amount %>')">YES</a>
+    </div>
+  </div>
+</div>
+  <div class="card-reveal">
+      <span class="card-title">Captain Name:&nbsp;<strong><%= team.captain %></strong><i class="material-icons right">close</i></span>
+  	<ul class="collection">
+     <li class="collection-item"></li>
+      <li class="collection-item">Gender:&nbsp;<%= team.gender %></li>
+      <li class="collection-item">Amount:&nbsp;&#x20b9;<%= team.amount %></li>
+     <li class="collection-item">Number of Players:&nbsp;<%= team.number_of_players %></li>
     <% for(var i=0;i<team.number_of_players;i++){ %>
-     <li class="list-group-item">Player&nbsp;<%= (i+1) %>&nbsp; Name:&nbsp;<%= team.players[i] %></li>
+     <li class="collection-item">Player&nbsp;<%= (i+1) %>&nbsp; Name:&nbsp;<%= team.players[i] %></li>
     <% } %>
   </ul>
   </div>
-</div>
+  </div>
 <br>
 <% }); %>
 </div>
-<form action="/contingent_submit" method="POST">
-<button class="waves-effect waves-light btn-large" style="background-color: #00b0ff;">Pay</button>
+<form class="submit__contingent" action="/contingent_submit" method="POST">
+<button class="waves-effect waves-light btn-large center-align" style="background-color: #00b0ff;" id="pay_contingent">Pay &rarr;</button>
 </form>
+<% }else{ %>
+<h3 class="header">No Teams to show</h3>
+<% } %>

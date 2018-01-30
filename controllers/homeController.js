@@ -516,6 +516,16 @@ exports.contingent_submit = function(req,res){
 	}});				
 };
 
+exports.delete_team = function(req,res){
+	Team.findById(req.body.id,function(err,team){
+		if(err){
+			console.log(err);
+		}else{
+			team.remove();
+		}
+	});
+};
+
 // exports.live = function(req,res){
 // 	res.render("../views/live" , {username: req.session.username , userid: req.session.userid});
 // };

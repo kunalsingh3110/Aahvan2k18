@@ -12,6 +12,7 @@ font-family: 'Raleway', sans-serif;
     margin: 0;
 }
 
+
 #fb-video{
     
   left: 50%;
@@ -143,7 +144,7 @@ video {
 }
 
 #slide_two{
-	background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/lookback_two.jpg");
+	background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/lookback_sixteen.jpg");
 	height: 100%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -152,7 +153,7 @@ video {
 }
 
 #slide_three{
-	background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/volley_one.jpg");
+	background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/lookback_three.jpg");
 	height: 100%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -161,7 +162,7 @@ video {
 }
 
 #slide_four{
-	background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/volley_two.jpg");
+	background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/lookback_four.jpg");
 	height: 100%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -170,7 +171,7 @@ video {
 }
 
 #slide_five{
-	background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/lookback_two.jpg");
+	background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/lookback_five.jpg");
 	height: 100%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -179,7 +180,7 @@ video {
 }
 
 #slide_six{
-	background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/lookback_three.jpg");
+	background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/lookback_six.jpg");
 	height: 100%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -251,7 +252,7 @@ video {
 }
 
 #slide_fourteen{
-   background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/lookback_four.jpg");
+   background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/lookback_seven.jpg");
   height: 100%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -259,23 +260,6 @@ video {
     background-color: #464646;
 }
 #slide_fifteen{
-   background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/lookback_five.jpg");
-  height: 100%;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-color: #464646;
-}
-#slide_sixteen{
-   background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/lookback_six.jpg");
-  height: 100%;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-color: #464646;
-}
-
-#slide_eightteen{
    background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/lookback_eight.jpg");
   height: 100%;
     background-position: center center;
@@ -283,7 +267,7 @@ video {
     background-size: cover;
     background-color: #464646;
 }
-#slide_nineteen{
+#slide_sixteen{
    background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/lookback_nine.jpg");
   height: 100%;
     background-position: center center;
@@ -291,7 +275,8 @@ video {
     background-size: cover;
     background-color: #464646;
 }
-#slide_twenty{
+
+#slide_seventeen{
    background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/lookback_ten.jpg");
   height: 100%;
     background-position: center center;
@@ -299,6 +284,32 @@ video {
     background-size: cover;
     background-color: #464646;
 }
+#slide_eightteen{
+   background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/lookback_eleven.jpg");
+  height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #464646;
+}
+#slide_nineteen{
+   background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/lookback_twelve.jpg");
+  height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #464646;
+}
+
+#slide_twenty{
+   background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/lookback_seventeen.jpg");
+  height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #464646;
+}
+
 
 #slide_twentyone{
   height: 100%;
@@ -308,17 +319,30 @@ video {
     background-color: #464646;
 }
 
-#slide_one_events{
+/*#slide_one_events{
    background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/lookback_ten.jpg");
   height: 100%;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
 }
+*/
+.submit__contingent {
+  text-align: center;
+  font-style: inherit;
+  margin-bottom: 4rem;
+}
+
+#total_amount {
+  text-transform: uppercase;
+  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+}
 
 #slide_two_events{
 
 }
+
+
 /*section.active{
   transform:translateY(-20vh);
 	transition: all 5s cubic-bezier(0.22, 0.44, 0, 1) !important;
