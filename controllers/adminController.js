@@ -1,7 +1,7 @@
 var Team = require("../models/team");
 var CampusAmbassador = require("../models/campusAmbassador");
 var TeamLeader = require("../models/teamLeader");
-var Feed = require("../models/feed");
+var Event = require("../models/event");
 var fs = require('fs');
 var json2csv = require('json2csv');
 exports.index = function(req,res){
@@ -120,13 +120,13 @@ exports.scores = function(req,res){
 	}
 };
 
-exports.feeds = function(req,res){
-	Feed.find({}).sort({time:-1}).exec(function(err,feeds){
+exports.events = function(req,res){
+	Event.find({}).sort({time:-1}).exec(function(err,events){
 		if(err){
 			console.log(err);
 		}else{
 			if(req.session.email){
-				res.render("../views/details",{id:5 , feeds:feeds});
+				res.render("../views/details",{id:5 , events:events});
 			}else{
 				res.render("../views/admin",{alert: false});
 			}
