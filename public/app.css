@@ -505,6 +505,14 @@ html {
   transition: all .3s; 
 }
 
+.form__input-width {
+  width: 90%;
+}
+
+.form__group-dis {
+  display: inline-block;
+}
+
 .form__input:placeholder-shown + .form__label {
   opacity: 0;
   visibility: hidden;

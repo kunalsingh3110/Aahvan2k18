@@ -655,7 +655,7 @@ $('#number').on('input',function(){
 
 //     }else{
   for(var i=0;i<players;i++){
-    $('.team-players').append("<input type='text' class='form__input' id='player"+(i)+"' name='player_name"+(i)+"'placeholder='Enter Player "+(i+1)+" Name' required='true'><label for='number' class='form__label'>Enter Player "+(i+1)+" Name</label>");
+    $(".team-players").append("<div class='form__group form__group-dis'><input type='text' class='form__input form__input-width' id='player" + i + "' name='player_name" + i + "'placeholder='Enter Player " + (i + 1) + " Name' required='true'><label for='number' class='form__label'>Enter Player " + (i + 1) + " Name</label></div><div class='form__group form__group-dis'><input type='number' name='number_of_players'class='form__input form__input-width' placeholder='No. of events' id='number' required><label for='number' class='form__label'>No. of events</label></div>");
 }
 }else{
   amount = 0;
