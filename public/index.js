@@ -75,7 +75,7 @@ $('#male').on('change',function(){
     }else if(sports_name=="Powerlifting"){
       max=100;
       min=1;
-      amount = 100*players;
+      amount = 200*players;
     }else if(sports_name=="TableTennis"){
       max=4;
       min=3;
@@ -195,7 +195,7 @@ $('#female').on('change',function(){
     }else if(sports_name=="Powerlifting"){
       max=100;
       min=1;
-      amount = 100*players;
+      amount = 200*players;
     }else if(sports_name=="TableTennis"){
       max=4;
       min=3;
@@ -468,7 +468,7 @@ $('#accomodation').on('change',function(){
     }else if(sports_name=="Powerlifting"){
       max=100;
       min=1;
-      amount = 100*players;
+      amount = 200*players;
     }else if(sports_name=="TableTennis"){
       max=4;
       min=3;
@@ -582,7 +582,7 @@ $('#number').on('input',function(){
     }else if(sports_name=="Powerlifting"){
       max=100;
       min=1;
-      amount = 100*players;
+      amount = 200*players;
     }else if(sports_name=="TableTennis"){
       max=4;
       min=3;
@@ -647,15 +647,14 @@ $('#number').on('input',function(){
   if(players>=min&&players<=max){
     $('#amount_para').text(amount);
     $('#amount').val(amount);
-//     if(sports_name=="Athletics"||sports_name=="Powerlifting"){
-
-//       for(var i=0;i<players;i++){
-//     $('.team-players').append("<input type='text' class='form__input' id='player"+(i)+"' name='player_name"+(i)+"'placeholder='Enter Player "+(i+1)+" Name' required='true'><label for='number' class='form__label'>Enter Player "+(i+1)+" Name</label>"+"<div class='form__group u-margin-bottom-small'><div class='form__check-group'><input type='checkbox' name='one' value='One' class='form__check-input' id='player_one"+(i)+"><label for='player_one"+(i)+" class='form__check-label'><span class='form__check-button'></span>One</label></div>"+" <div class='form__check-group'><input type='checkbox' name='two' value ='Two' id='player_two"+(i)+"class='form__check-input'><label for='player_two"+(i)+" class='form__check-label'><span class='form__check-button'></span>Two</label></div></div>");
-// }
-
-//     }else{
-  for(var i=0;i<players;i++){
-    $(".team-players").append("<div class='form__group form__group-dis'><input type='text' class='form__input form__input-width' id='player" + i + "' name='player_name" + i + "'placeholder='Enter Player " + (i + 1) + " Name' required='true'><label for='number' class='form__label'>Enter Player " + (i + 1) + " Name</label></div><div class='form__group form__group-dis'><input type='number' name='number_of_players'class='form__input form__input-width' placeholder='No. of events' id='number' required><label for='number' class='form__label'>No. of events</label></div>");
+    if(sports_name=="Athletics"){
+      for(var i=0;i<players;i++){
+    $(".team-players").append("<div><div class='form__group form__group-dis'><input type='text' class='form__input form__input-width' id='player" + (i) + "' name='player_name" + (i) + "'placeholder='Enter Player " + (i + 1) + " Name' required='true'><label for='number' class='form__label'>Enter Player " + (i + 1) + " Name</label></div><div class='form__group form__group-dis'><input type='number' name='number_of_events"+(i)+"' class='form__input form__input-width ' placeholder='No. of events' id='number_of_events"+(i)+"'  min='1' max='6' required><label for='number_of_events"+(i)+"' class='form__label'>No. of events</label></div></div>");
+}
+    }else{
+       for(var i=0;i<players;i++){
+    $('.team-players').append("<input type='text' class='form__input' id='player"+(i)+"' name='player_name"+(i)+"'placeholder='Enter Player "+(i+1)+" Name' required='true'><label for='number' class='form__label'>Enter Player "+(i+1)+" Name</label>");
+}
 }
 }else{
   amount = 0;
