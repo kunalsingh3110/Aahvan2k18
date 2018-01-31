@@ -1,7 +1,8 @@
 $(document).ready(function(){
-
+  var last_athletics_men = [];
+  var last_athletics_women = [];
+   amount = 0;
 var images=Array.from(document.querySelectorAll('.img-elem'));
-
 images.forEach((img)=> { 
   $(img).on('click',()=>{
     // console.log('add');
@@ -38,11 +39,29 @@ $('#male').on('change',function(){
   var sports_name = $("#sports_name").val();
   var max=0;
   var min=0;
-  var amount = 0;
+   amount = 0;
   if(gender=="male"){
     if(sports_name=="Athletics"){
       max=100;
       min=1;
+    for(var i=0;i<players;i++){
+      $('#select'+(i)).find('option').remove();
+      $('#select'+(i)).val([]);
+    $('<option>').val('100m').text('100m').appendTo('#select'+(i));
+    $('<option>').val('200m').text('200m').appendTo('#select'+(i));
+    $('<option>').val('400m').text('400m').appendTo('#select'+(i));
+    $('<option>').val('800m').text('800m').appendTo('#select'+(i));
+    $('<option>').val('1500m').text('1500m').appendTo('#select'+(i));
+    $('<option>').val('3000m').text('3000m').appendTo('#select'+(i));
+    $('<option>').val('4*100m Relay').text('4*100m Relay').appendTo('#select'+(i));
+    $('<option>').val('4*400m Relay').text('4*400m Relay').appendTo('#select'+(i));
+    $('<option>').val('Long Jump').text('Long Jump').appendTo('#select'+(i));
+    $('<option>').val('Shot Put').text('Shot Put').appendTo('#select'+(i));
+    $('<option>').val('Discus Throw').text('Discus Throw').appendTo('#select'+(i));
+    $('<option>').val('Triple Jump').text('Triple Jump').appendTo('#select'+(i));
+     last_athletics_men[i]=1;
+     last_athletics_women[i]=1;
+     }
       amount = players*100;
     }else if(sports_name=="Badminton"){
       max=6;
@@ -96,7 +115,25 @@ $('#male').on('change',function(){
     if(sports_name=="Athletics"){
       max=100;
       min=1;
-      amount = 100*players;
+    for(var i=0;i<players;i++){
+      $('#select'+(i)).find('option').remove();
+     $('#select'+(i)).val([]);
+    $('<option>').val('100m').text('100m').appendTo('#select'+(i));
+    $('<option>').val('200m').text('200m').appendTo('#select'+(i));
+    $('<option>').val('400m').text('400m').appendTo('#select'+(i));
+    $('<option>').val('800m').text('800m').appendTo('#select'+(i));
+    $('<option>').val('1500m').text('1500m').appendTo('#select'+(i));
+    $('<option>').val('3000m').text('3000m').appendTo('#select'+(i));
+    $('<option>').val('5000m').text('5000m').appendTo('#select'+(i));
+    $('<option>').val('4*100m Relay').text('4*100m Relay').appendTo('#select'+(i));
+    $('<option>').val('4*400m Relay').text('4*400m Relay').appendTo('#select'+(i));
+    $('<option>').val('Long Jump').text('Long Jump').appendTo('#select'+(i));
+    $('<option>').val('Shot Put').text('Shot Put').appendTo('#select'+(i));
+    $('<option>').val('Discus Throw').text('Discus Throw').appendTo('#select'+(i));
+    last_athletics_women[i]=1;
+    last_athletics_men[i]=1;
+     }
+        amount = players*100;
     }else if(sports_name=="Badminton"){
       max=4;
       min=3;
@@ -137,12 +174,9 @@ $('#male').on('change',function(){
   if(players>=min&&players<=max){
         if($('#accomodation').is(':checked')){
       amount = 1500*players;
-      $('#amount_para').text(amount);
-      $('#amount').val(amount);
-    }else{
+    }
     $('#amount_para').text(amount);
      $('#amount').val(amount);
-   }
  }
 });
 
@@ -154,16 +188,34 @@ $('#female').on('change',function(){
       $('#male').prop('checked', true);
       gender="male";
     }
-     var players = Number($('#number').val());
+  var players = Number($('#number').val());
   var sports_name = $("#sports_name").val();
   var max=0;
   var min=0;
-  var amount = 0;
+   amount = 0;
   if(gender=="male"){
     if(sports_name=="Athletics"){
       max=100;
       min=1;
-      amount = players*100;
+    for(var i=0;i<players;i++){
+    $('#select'+(i)).find('option').remove();
+    $('#select'+(i)).val([]);
+    $('<option>').val('100m').text('100m').appendTo('#select'+(i));
+    $('<option>').val('200m').text('200m').appendTo('#select'+(i));
+    $('<option>').val('400m').text('400m').appendTo('#select'+(i));
+    $('<option>').val('800m').text('800m').appendTo('#select'+(i));
+    $('<option>').val('1500m').text('1500m').appendTo('#select'+(i));
+    $('<option>').val('3000m').text('3000m').appendTo('#select'+(i));
+    $('<option>').val('4*100m Relay').text('4*100m Relay').appendTo('#select'+(i));
+    $('<option>').val('4*400m Relay').text('4*400m Relay').appendTo('#select'+(i));
+    $('<option>').val('Long Jump').text('Long Jump').appendTo('#select'+(i));
+    $('<option>').val('Shot Put').text('Shot Put').appendTo('#select'+(i));
+    $('<option>').val('Discus Throw').text('Discus Throw').appendTo('#select'+(i));
+    $('<option>').val('Triple Jump').text('Triple Jump').appendTo('#select'+(i));
+    last_athletics_men[i]=1;
+    last_athletics_women[i]=1;
+     }
+     amount = players*100;
     }else if(sports_name=="Badminton"){
       max=6;
       min=4;
@@ -216,7 +268,25 @@ $('#female').on('change',function(){
     if(sports_name=="Athletics"){
       max=100;
       min=1;
-      amount = 100*players;
+    for(var i=0;i<players;i++){
+    $('#select'+(i)).find('option').remove();
+   $('#select'+(i)).val([]);
+    $('<option>').val('100m').text('100m').appendTo('#select'+(i));
+    $('<option>').val('200m').text('200m').appendTo('#select'+(i));
+    $('<option>').val('400m').text('400m').appendTo('#select'+(i));
+    $('<option>').val('800m').text('800m').appendTo('#select'+(i));
+    $('<option>').val('1500m').text('1500m').appendTo('#select'+(i));
+    $('<option>').val('3000m').text('3000m').appendTo('#select'+(i));
+    $('<option>').val('5000m').text('5000m').appendTo('#select'+(i));
+    $('<option>').val('4*100m Relay').text('4*100m Relay').appendTo('#select'+(i));
+    $('<option>').val('4*400m Relay').text('4*400m Relay').appendTo('#select'+(i));
+    $('<option>').val('Long Jump').text('Long Jump').appendTo('#select'+(i));
+    $('<option>').val('Shot Put').text('Shot Put').appendTo('#select'+(i));
+    $('<option>').val('Discus Throw').text('Discus Throw').appendTo('#select'+(i));
+    last_athletics_women[i] = 1;
+    last_athletics_men[i]=1;
+     }
+      amount = players*100;
     }else if(sports_name=="Badminton"){
       max=4;
       min=3;
@@ -257,12 +327,9 @@ $('#female').on('change',function(){
   if(players>=min&&players<=max){
       if($('#accomodation').is(':checked')){
       amount = 1500*players;
+    }
       $('#amount_para').text(amount);
       $('#amount').val(amount);
-    }else{
-    $('#amount_para').text(amount);
-     $('#amount').val(amount);
-   }
  }
 });
 
@@ -431,12 +498,14 @@ $('#accomodation').on('change',function(){
   var sports_name = $("#sports_name").val();
   var max=0;
   var min=0;
-  var amount = 0;
+   amount = 0;
   if(gender=="male"){
     if(sports_name=="Athletics"){
       max=100;
       min=1;
-      amount = players*100;
+      for(var i=0;i<players;i++){
+        amount = amount + 100*last_athletics_men[i];
+      }
     }else if(sports_name=="Badminton"){
       max=6;
       min=4;
@@ -489,7 +558,9 @@ $('#accomodation').on('change',function(){
     if(sports_name=="Athletics"){
       max=100;
       min=1;
-      amount = 100*players;
+      for(var i=0;i<players;i++){
+        amount = amount + 100*last_athletics_women[i];
+      }
     }else if(sports_name=="Badminton"){
       max=4;
       min=3;
@@ -545,7 +616,7 @@ $('#number').on('input',function(){
   var sports_name = $("#sports_name").val();
   var max=0;
   var min=0;
-  var amount = 0;
+   amount = 0;
   if(gender=="male"){
     if(sports_name=="Athletics"){
       max=100;
@@ -645,14 +716,70 @@ $('#number').on('input',function(){
        "min" : min          
     });
   if(players>=min&&players<=max){
-    $('#amount_para').text(amount);
-    $('#amount').val(amount);
     if(sports_name=="Athletics"){
       for(var i=0;i<players;i++){
-         $('.team-players').append("<input type='text' class='form__input' id='player"+(i)+"' name='player_name"+(i)+"'placeholder='Enter Player "+(i+1)+" Name' required='true'><label for='number' class='form__label'>Enter Player "+(i+1)+" Name</label>");
+          $(".team-players").append("<div><div class='form__group form__group-dis'><input type='text' class='form__input form__input-width' id='player" + (i) + "' name='player_name" + (i) + "'placeholder='Enter Player " + (i + 1) + " Name' required='true'><label for='number' class='form__label'>Enter Player " + (i + 1) + " Name</label></div><div class='form__group form__group-dis'><select name='select_events"+(i)+"' id='select"+(i)+"' multiple></select></div></div>");
     // $(".team-players").append("<div><div class='form__group form__group-dis'><input type='text' class='form__input form__input-width' id='player" + (i) + "' name='player_name" + (i) + "'placeholder='Enter Player " + (i + 1) + " Name' required='true'><label for='number' class='form__label'>Enter Player " + (i + 1) + " Name</label></div><div class='form__group form__group-dis'><input type='number' name='number_of_events"+(i)+"' class='form__input form__input-width ' placeholder='No. of events' id='number_of_events"+(i)+"'  min='1' max='6' required><label for='number_of_events"+(i)+"' class='form__label'>No. of events</label></div></div>");
-}
+    last_athletics_men.push(1);
+    last_athletics_women.push(1);
+    $('#select'+(i)).on('change',function(){
+      var number_of_events = $(this).val().length;
+       var id = $(this).attr('id').substr(6);
+    if($('#accomodation').is(':checked')){
+    amount = players*1500; 
     }else{
+      amount = amount - (100*last_athletics_men[id])+(number_of_events*100);
+    } 
+      last_athletics_men[id] = number_of_events;
+       $('#amount_para').text(amount);
+       $('#amount').val(amount);
+
+});
+    } 
+if(gender=="male"){
+  for(var i=0;i<players;i++){
+    $('<option>').val('100m').text('100m').appendTo('#select'+(i));
+    $('<option>').val('200m').text('200m').appendTo('#select'+(i));
+    $('<option>').val('400m').text('400m').appendTo('#select'+(i));
+    $('<option>').val('800m').text('800m').appendTo('#select'+(i));
+    $('<option>').val('1500m').text('1500m').appendTo('#select'+(i));
+    $('<option>').val('3000m').text('3000m').appendTo('#select'+(i));
+    $('<option>').val('4*100m Relay').text('4*100m Relay').appendTo('#select'+(i));
+    $('<option>').val('4*400m Relay').text('4*400m Relay').appendTo('#select'+(i));
+    $('<option>').val('Long Jump').text('Long Jump').appendTo('#select'+(i));
+    $('<option>').val('Shot Put').text('Shot Put').appendTo('#select'+(i));
+    $('<option>').val('Discus Throw').text('Discus Throw').appendTo('#select'+(i));
+    $('<option>').val('Triple Jump').text('Triple Jump').appendTo('#select'+(i));
+     }
+}else {
+     for(var i=0;i<players;i++){
+    $('<option>').val('100m').text('100m').appendTo('#select'+(i));
+    $('<option>').val('200m').text('200m').appendTo('#select'+(i));
+    $('<option>').val('400m').text('400m').appendTo('#select'+(i));
+    $('<option>').val('800m').text('800m').appendTo('#select'+(i));
+    $('<option>').val('1500m').text('1500m').appendTo('#select'+(i));
+    $('<option>').val('3000m').text('3000m').appendTo('#select'+(i));
+    $('<option>').val('5000m').text('5000m').appendTo('#select'+(i));
+    $('<option>').val('4*100m Relay').text('4*100m Relay').appendTo('#select'+(i));
+    $('<option>').val('4*400m Relay').text('4*400m Relay').appendTo('#select'+(i));
+    $('<option>').val('Long Jump').text('Long Jump').appendTo('#select'+(i));
+    $('<option>').val('Shot Put').text('Shot Put').appendTo('#select'+(i));
+    $('<option>').val('Discus Throw').text('Discus Throw').appendTo('#select'+(i));
+     }
+}
+    }else if(sports_name=="Powerlifting"){
+          for(var i=0;i<players;i++){
+        // $('.team-players').append("<input type='text' class='form__input' id='player"+(i)+"' name='player_name"+(i)+"'placeholder='Enter Player "+(i+1)+" Name' required='true'><label for='number' class='form__label'>Enter Player "+(i+1)+" Name</label>");
+     $(".team-players").append("<div><div class='form__group form__group-dis'><input type='text' class='form__input form__input-width' id='player" + (i) + "' name='player_name" + (i) + "'placeholder='Enter Player " + (i + 1) + " Name' required='true'><label for='number' class='form__label'>Enter Player " + (i + 1) + " Name</label></div><div class='form__group form__group-dis'><select name='select_category"+(i)+"' id='select"+(i)+"'></select></div></div>");
+  }
+  for(var i=0;i<players;i++){
+    $('<option>').val('55-65kg').text('55-65kg').appendTo('#select'+(i));
+    $('<option>').val('65-75kg').text('65-75kg').appendTo('#select'+(i));
+    $('<option>').val('75-85kg').text('75-85kg').appendTo('#select'+(i));
+    $('<option>').val('85+kg').text('85+kg').appendTo('#select'+(i));
+     }
+    
+  }else{
        for(var i=0;i<players;i++){
     $('.team-players').append("<input type='text' class='form__input' id='player"+(i)+"' name='player_name"+(i)+"'placeholder='Enter Player "+(i+1)+" Name' required='true'><label for='number' class='form__label'>Enter Player "+(i+1)+" Name</label>");
 }
@@ -663,6 +790,9 @@ $('#number').on('input',function(){
   $('#amount').val(amount);
 }
 });
+
+
+
 
 $('#sort_gender').on('change',function(){
      var gender = $(this).val();

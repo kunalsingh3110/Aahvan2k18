@@ -8,7 +8,10 @@ var TeamSchema = new Schema({
 	number_of_players: {type: String , required: true},
 	leader: {type: Schema.Types.ObjectId , ref: 'TeamLeader'},
 	email:{type:String , required: true},
-	players: [{type:String}],
+	players: [{
+		name:{type:String},
+		events:[{type:String}]
+	}],
 	gender:{type:String},
 	sport: {type:String , required: true},
 	time: {type: Date , default: Date.now},

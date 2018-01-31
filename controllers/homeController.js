@@ -154,20 +154,22 @@ exports.post_register_teams = function(req,res){
 					break;	
 			default: sports_name=" ";																				
 		}
-	res.render("../views/register_sports",{alert:false , sports_name:sports_name , username: req.session.username , userid: req.session.userid});
+	res.render("../views/register_sports",{alert:0 , sports_name:sports_name , username: req.session.username , userid: req.session.userid});
 };
 
 
 exports.register_sports = function(req,res){
 		var sports_name = "Athletics";
-		res.render("../views/register_sports",{alert:false , sports_name:sports_name , username: req.session.username , userid: req.session.userid});
+		res.render("../views/register_sports",{alert:0 , sports_name:sports_name , username: req.session.username , userid: req.session.userid});
 };
 
 exports.post_register_sports = function(req,res){
 		var Team = require("../models/team");
 		var cap_phone = Number(req.body.captain_number);
+		var number = Number(req.body.number_of_players);
+		var sports_name = req.body.sports_name;
 		if(isNaN(cap_phone)){
-					res.render("../views/register_sports",{alert:true , sports_name:req.body.sports_name, username: req.session.username , userid: req.session.userid});
+					res.render("../views/register_sports",{alert:1 , sports_name:req.body.sports_name, username: req.session.username , userid: req.session.userid});
 		}else{
 			var accomodation = false;
 					if(req.body.accomodation){
@@ -177,7 +179,13 @@ exports.post_register_sports = function(req,res){
 					var players = [];
 					for(var i=0;i<req.body.number_of_players;i++){
 						var player_name = "player_name"+(i);
-						players.push(req.body[player_name]);
+						var select='';
+						if(sports_name=="Athletics"){
+						 select = "select_events"+(i);
+					}else if(sports_name="Powerlifting"){
+						select = "select_category"+(i);
+					}
+						players.push({name: req.body[player_name],events:req.body[select]});
 					}
 					Team.create(
 					{captain: req.body.captain_name,
@@ -223,7 +231,13 @@ exports.post_register_sports = function(req,res){
 					var players = [];
 					for(var i=0;i<req.body.number_of_players;i++){
 						var player_name = "player_name"+(i);
-						players.push(req.body[player_name]);
+						var select='';
+						if(sports_name=="Athletics"){
+						 select = "select_events"+(i);
+					}else if(sports_name="Powerlifting"){
+						select = "select_category"+(i);
+					}
+						players.push({name: req.body[player_name],events:req.body[select]});
 					}
 					Team.create(
 					{captain: req.body.captain_name,

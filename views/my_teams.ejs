@@ -28,7 +28,10 @@
       <li class="collection-item">Amount:&nbsp;&#x20b9;<%= team.amount %></li>
      <li class="collection-item">Number of Players:&nbsp;<%= team.number_of_players %></li>
     <% for(var i=0;i<team.number_of_players;i++){ %>
-     <li class="collection-item">Player&nbsp;<%= (i+1) %>&nbsp; Name:&nbsp;<%= team.players[i] %></li>
+         <li class="collection-item">Player&nbsp;<%= (i+1) %>&nbsp; Name:&nbsp;<%= team.players[i].name %></li>
+    <% if(team.sport=="Powerlifting"||team.sport=="Athletics"){  %>
+            <li class="collection-item">Event:&nbsp;<%= team.players[i].events %></li>
+    <% } %>
     <% } %>
   </ul>
   </div>
