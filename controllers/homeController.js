@@ -201,6 +201,10 @@ exports.post_register_sports = function(req,res){
 						if(err){
 							console.log(err);
 						}else{
+							var players_name = [];
+							team.players.forEach(function(player){
+								players_name.push(player.name);
+							});
 						var mailOptions = {
 						to: team.email,
 						from: 'aahvaandtu@gmail.com',
@@ -208,7 +212,7 @@ exports.post_register_sports = function(req,res){
 						text: 'Thank you for registering team for Aahvaan 2k18.'+'\n'+
 						'Sport: '+team.sport+'\n'+
 						'Captain: '+team.captain+'\n'+
-						'Players: '+team.players+'\n'+
+						'Players: '+players_name+'\n'+
 						'Amount: Rs. ' + team.amount +'.'+'\n'+
 						'Further instructions for payment will be provided to you.'+'\n'+
 						'Regards,'+'\n'+

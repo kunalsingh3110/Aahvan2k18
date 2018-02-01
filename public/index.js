@@ -784,6 +784,8 @@ if(gender=="male"){
     $('.team-players').append("<input type='text' class='form__input' id='player"+(i)+"' name='player_name"+(i)+"'placeholder='Enter Player "+(i+1)+" Name' required='true'><label for='number' class='form__label'>Enter Player "+(i+1)+" Name</label>");
 }
 }
+     $('#amount_para').text(amount);
+       $('#amount').val(amount);
 }else{
   amount = 0;
   $('#amount_para').text(amount);
