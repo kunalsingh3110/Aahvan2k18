@@ -30,7 +30,7 @@
                     </li>
                     <% if(username){ %>
                     <li class="liv">
-                         <a  href="my_teams" id="teams" class="nav_element">My Teams</a>
+                         <a  href="my_teams" id="teams" class="nav_element">My Teams<span class="new badge blue" data-badge-caption=""><%= number_of_teams %></span></a>
                     </li>
                     <li class="liv">
                      <a href="/logout" class="nav_element">Log Out</a>
@@ -68,7 +68,7 @@
                     </li>
                         <% if(username){ %>
                         <li class="liv">
-                         <a  href="/my_teams"  id="teams"> My Teams</a>
+                         <a  href="/my_teams"  id="teams"> My Teams<span class="new badge blue" data-badge-caption=""><%= number_of_teams %></span></a>
                         </li>
                         <li class="liv">
                          <a href="/logout">Log Out</a>

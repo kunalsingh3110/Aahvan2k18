@@ -14,7 +14,18 @@ var smtpTransport = nodemailer.createTransport({
 						}
 					});
 exports.index = function(req,res){
-	res.render("../views/home",{username: req.session.username , userid: req.session.userid});
+	var number_of_teams=0;
+	TeamLeader.findById(req.session.userid,function(err,teamLeader){
+		if(teamLeader){
+			Team.find({leader:teamLeader}).exec(function(err,teams){
+				number_of_teams = teams.length;
+				res.render("../views/home",{username: req.session.username , userid: req.session.userid , number_of_teams:number_of_teams});
+			});
+		}else{
+			res.render("../views/home",{username: req.session.username , userid: req.session.userid , number_of_teams:number_of_teams});
+		}
+	});
+	
 };
 
 // exports.home_two = function(req,res){
@@ -50,7 +61,18 @@ exports.my_teams = function(req,res){
 };
 
 exports.get_register_events = function(req,res){
-	res.render("../views/home",{username: req.session.username , userid:req.session.userid});
+		var number_of_teams=0;
+	TeamLeader.findById(req.session.userid,function(err,teamLeader){
+		if(teamLeader){
+			Team.find({leader:teamLeader}).exec(function(err,teams){
+				number_of_teams = teams.length;
+					res.render("../views/home",{username: req.session.username , userid: req.session.userid , number_of_teams:number_of_teams});
+			});
+		}else{
+			res.render("../views/home",{username: req.session.username , userid: req.session.userid , number_of_teams:number_of_teams});
+		}
+	});
+
 }
 
 exports.register_events = function(req,res){
@@ -104,7 +126,7 @@ exports.post_register = function(req,res){
 									}else{
 										req.session.username = teamLeader.name;
 										req.session.userid = teamLeader._id;
-										res.render("../views/home",{username: req.session.username , userid: req.session.userid});
+										res.render("../views/home",{username: req.session.username , userid: req.session.userid,number_of_teams:0});
 									}
 					   			}
 							);
@@ -258,7 +280,12 @@ exports.post_register_sports = function(req,res){
 						if(err){
 							console.log(err);
 						}else{
-							res.render("../views/home",{username:req.session.username,userid:req.session.userid});
+								var number_of_teams=0;
+								Team.find({leader:teamLeader}).exec(function(err,teams){
+								number_of_teams = teams.length;
+								res.render("../views/home",{username: req.session.username , userid: req.session.userid , number_of_teams:number_of_teams});
+								});
+								
 						}
 					});
 				}
@@ -271,7 +298,18 @@ exports.post_register_sports = function(req,res){
 
 exports.login = function(req,res){
 	if(req.session.username){
-			res.render("../views/home",{username: req.session.username , userid: req.session.userid});
+	var number_of_teams=0;
+	TeamLeader.findById(req.session.userid,function(err,teamLeader){
+		if(teamLeader){
+			Team.find({leader:teamLeader}).exec(function(err,teams){
+				number_of_teams = teams.length;
+					res.render("../views/home",{username: req.session.username , userid: req.session.userid , number_of_teams:number_of_teams});
+			});
+		}else{
+			res.render("../views/home",{username: req.session.username , userid: req.session.userid , number_of_teams:number_of_teams});
+		}
+	});
+
 		}else{
 	res.render("../views/login",{alert: 0 , username: req.session.username , userid: req.session.userid});
 	}
@@ -279,7 +317,18 @@ exports.login = function(req,res){
 
 exports.post_login = function(req,res){
 	if(req.session.username){
-			res.render("../views/home",{username: req.session.username , userid: req.session.userid});
+				var number_of_teams=0;
+	TeamLeader.findById(req.session.userid,function(err,teamLeader){
+		if(teamLeader){
+			Team.find({leader:teamLeader}).exec(function(err,teams){
+				number_of_teams = teams.length;
+					res.render("../views/home",{username: req.session.username , userid: req.session.userid , number_of_teams:number_of_teams});
+			});
+		}else{
+			res.render("../views/home",{username: req.session.username , userid: req.session.userid , number_of_teams:number_of_teams});
+		}
+	});
+
 		}else{
 	TeamLeader.findOne({email: req.body.leader_email} , function(err,teamLeader){
 			if(err){
@@ -290,7 +339,12 @@ exports.post_login = function(req,res){
 						if(check){
 							req.session.username = teamLeader.name;
 							req.session.userid = teamLeader._id;
-							res.render("../views/home",{username: req.session.username , userid: req.session.userid});
+								var number_of_teams=0;
+			Team.find({leader:teamLeader}).exec(function(err,teams){
+				number_of_teams = teams.length;
+					res.render("../views/home",{username: req.session.username , userid: req.session.userid , number_of_teams:number_of_teams});
+			});
+
 						}else{
 							res.render("../views/login",{alert:1 , username: req.session.username , userid: req.session.userid});
 						}
@@ -309,7 +363,7 @@ exports.logout = function(req,res){
 		req.session.username = null;
 		req.session.userid = null;	
 	}
-	res.render("../views/home",{username:req.session.username , userid: req.session.userid});
+	res.render("../views/home",{username:req.session.username , userid: req.session.userid,number_of_teams:0});
 };
 
 exports.campus_ambassador = function(req,res){
@@ -368,14 +422,36 @@ exports.post_campus_ambassador = function(req,res){
 
 exports.forgot_password = function(req,res){
 	if(req.session.username){
-		res.render("../views/home",{username: req.session.username , userid: req.session.userid});
+	var number_of_teams=0;
+	TeamLeader.findById(req.session.userid,function(err,teamLeader){
+		if(teamLeader){
+			Team.find({leader:teamLeader}).exec(function(err,teams){
+				number_of_teams = teams.length;
+					res.render("../views/home",{username: req.session.username , userid: req.session.userid , number_of_teams:number_of_teams});
+			});
+		}else{
+			res.render("../views/home",{username: req.session.username , userid: req.session.userid , number_of_teams:number_of_teams});
+		}
+	});
+
 	}else{
 		res.render("../views/forgot_password",{alert: 0 , username: req.session.username , userid: req.session.userid});
 	}
 };
 
 exports.send_token = function(req,res){
-	res.render("../views/home",{username: req.session.username , userid: req.session.userid});
+	var number_of_teams=0;
+	TeamLeader.findById(req.session.userid,function(err,teamLeader){
+		if(teamLeader){
+			Team.find({leader:teamLeader}).exec(function(err,teams){
+				number_of_teams = teams.length;
+					res.render("../views/home",{username: req.session.username , userid: req.session.userid , number_of_teams:number_of_teams});
+			});
+		}else{
+			res.render("../views/home",{username: req.session.username , userid: req.session.userid , number_of_teams:number_of_teams});
+		}
+	});
+
 }
 
 exports.post_send_token = function(req,res){
@@ -490,11 +566,33 @@ exports.post_reset_password = function(req,res){
 
 
 exports.thankyou = function(req,res){
-	res.render("../views/home",{username: req.session.username , userid: req.session.userid});
+		var number_of_teams=0;
+	TeamLeader.findById(req.session.userid,function(err,teamLeader){
+		if(teamLeader){
+			Team.find({leader:teamLeader}).exec(function(err,teams){
+				number_of_teams = teams.length;
+					res.render("../views/home",{username: req.session.username , userid: req.session.userid , number_of_teams:number_of_teams});
+			});
+		}else{
+			res.render("../views/home",{username: req.session.username , userid: req.session.userid , number_of_teams:number_of_teams});
+		}
+	});
+
 };
 
 exports.thankyou_ca = function(req,res){
-	res.render("../views/home",{username: req.session.username , userid: req.session.userid});
+		var number_of_teams=0;
+	TeamLeader.findById(req.session.userid,function(err,teamLeader){
+		if(teamLeader){
+			Team.find({leader:teamLeader}).exec(function(err,teams){
+				number_of_teams = teams.length;
+					res.render("../views/home",{username: req.session.username , userid: req.session.userid , number_of_teams:number_of_teams});
+			});
+		}else{
+			res.render("../views/home",{username: req.session.username , userid: req.session.userid , number_of_teams:number_of_teams});
+		}
+	});
+
 };
 
 exports.contingent_submit = function(req,res){
