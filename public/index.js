@@ -859,7 +859,7 @@ if(gender=="male"){
     $('<option>').val('85+kg').text('85+kg').appendTo('#select'+(i));
      }
     
-  }else if(sports_name="Taekwondo"){
+  }else if(sports_name=="Taekwondo"){
      for(var i=0;i<players;i++){
     $(".team-players").append("<div><div class='form__group form__group-dis'><input type='text' class='form__input form__input-width' id='player" + (i) + "' name='player_name" + (i) + "'placeholder='Enter Player " + (i + 1) + " Name' required='true'><label for='number' class='form__label'>Enter Player " + (i + 1) + " Name</label></div><div class='form__group form__group-dis'><select name='select_events"+(i)+"' id='select"+(i)+"'></select></div></div>");
   }
