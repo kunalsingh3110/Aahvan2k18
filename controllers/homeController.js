@@ -1,6 +1,7 @@
 
 var TeamLeader = require("../models/teamLeader");
 var Team = require("../models/team");
+var Event = require("../models/event");
 var async = require('async');
 var nodemailer = require('nodemailer');
 var crypto = require('crypto');
@@ -76,12 +77,73 @@ exports.get_register_events = function(req,res){
 }
 
 exports.register_events = function(req,res){
-	res.render("../views/register_events",{alert: false , username:req.session.username , userid: req.session.userid , event: req.body.event});
+	res.render("../views/register_events",{alert: false , username:req.session.username , userid: req.session.userid , event: req.body.event_name});
 };
 
 exports.register_events_teams = function(req,res){
 
-	
+		var cap_phone = Number(req.body.captain_number);
+		var number = Number(req.body.number_of_players);
+		var events_name = req.body.events_name;
+		if(isNaN(cap_phone)){
+					res.render("../views/register_sports",{alert:1 , event:req.body.event_name, username: req.session.username , userid: req.session.userid});
+		}else{
+			var accomodation = false;
+					if(req.body.accomodation){
+						accomodation = true;
+					}
+					var players = [];
+					for(var i=0;i<req.body.number_of_players;i++){
+						var player_name = "player_name"+(i);
+						var select='';
+						if(events_name="Taekwondo"){
+						select = "select_events"+(i);
+					}
+						players.push({name: req.body[player_name],events:req.body[select]});
+					}
+
+				Event.create(
+					{captain: req.body.captain_name,
+					 college:req.body.college_name,
+					 contact: req.body.captain_number,
+					 email: req.body.team_email,
+					 number_of_players: req.body.number_of_players,
+					 gender: req.body.gender,
+					 players: players,
+					 accomodation: accomodation,
+					 amount: req.body.amount,
+					 event: req.body.event_name},function(err,event){
+						if(err){
+							console.log(err);
+						}else{
+							var players_name = [];
+							event.players.forEach(function(player){
+								players_name.push(player.name);
+							});
+						var mailOptions = {
+						to: event.email,
+						from: 'aahvaandtu@gmail.com',
+						subject: 'Aahvaan\'18 Team Registration',
+						text: 'Thank you for registering your team in Aahvaan\'18.'+'\n'+
+						'Event: '+event.event+'\n'+
+						'Captain: '+event.captain+'\n'+
+						'Players: '+players_name+'\n'+
+						'Amount: Rs. ' + event.amount +'.'+'\n'+
+						'Further instructions for payment will be provided to you.'+'\n'+
+						'Regards,'+'\n'+
+						'Team Aahvaan' 
+					};
+					smtpTransport.sendMail(mailOptions,function(err){
+						if(err){
+							console.log(err);
+						}
+					});
+							res.render("../views/thankyou",{username:req.session.username,userid:req.session.userid});
+						}
+					});					
+
+				}
+
 
 
 };
@@ -230,8 +292,8 @@ exports.post_register_sports = function(req,res){
 						var mailOptions = {
 						to: team.email,
 						from: 'aahvaandtu@gmail.com',
-						subject: 'Aahvaan 2k18 Team Registration',
-						text: 'Thank you for registering team for Aahvaan 2k18.'+'\n'+
+						subject: 'Aahvaan\'18 Team Registration',
+						text: 'Thank you for registering your team in Aahvaan\'18.'+'\n'+
 						'Sport: '+team.sport+'\n'+
 						'Captain: '+team.captain+'\n'+
 						'Players: '+players_name+'\n'+
@@ -398,9 +460,9 @@ exports.post_campus_ambassador = function(req,res){
 				 		var mailOptions = {
 						to: CampusAmbassador.email,
 						from: 'aahvaandtu@gmail.com',
-						subject: 'Aahvaan 2k18 Campus Ambassador',
+						subject: 'Aahvaan\'18 Campus Ambassador',
 						text: 'Thank you for applying for Campus Ambassador.'+'\n'+
-						'Looking forward on working with you.'+'\n'+
+						'Looking forward to working with you.'+'\n'+
 						'Regards,'+'\n'+
 						'Team Aahvaan' 
 					};
@@ -480,7 +542,7 @@ exports.post_send_token = function(req,res){
 					var mailOptions = {
 						to: teamLeader.email,
 						from: 'aahvaandtu@gmail.com',
-						subject: 'Aahvaan 2k18 Contingent Leader Password Reset',
+						subject: 'Aahvaan\'18 Contingent Leader Password Reset',
 						text: 'You are receiving this because you (or someone else) has requested for the reset of the password.'+'\n'+
 						'Please click on the following link or paste into your browser to complete the process.'+'\n'+
 						'http://'+req.headers.host+'/reset_password/'+token+'\n\n'+
@@ -613,8 +675,8 @@ exports.contingent_submit = function(req,res){
 			var mailOptions = {
 						to: teamLeader.email,
 						from: 'aahvaandtu@gmail.com',
-						subject: 'Aahvaan 2k18 Team Registration',
-						text: 'Thank you for registering your teams for Aahvaan 2k18.'+'\n'+
+						subject: 'Aahvaan\'18 Team Registration',
+						text: 'Thank you for registering your teams in Aahvaan\'18.'+'\n'+
 						'Sports: '+sports+'\n'+
 						'Amount: Rs. ' + amount +'.'+'\n'+
 						'Further instructions for payment will be provided to you.'+'\n'+

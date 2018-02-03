@@ -107,6 +107,22 @@ $('#male').on('change',function(){
       max=10;
       min=6;
       amount = 1000;
+    }else if(sports_name=="FootSoul"){
+      max=10;
+      min=7;
+      amount=1500;
+    }else if(sports_name=="Taekwondo"){
+      min=1;
+      max=100;
+      for(var i=0;i<players;i++){
+      $('#select'+(i)).find('option').remove();
+      $('#select'+(i)).val([]);
+    $('<option>').val('under 58kg').text('under 58kg').appendTo('#select'+(i));
+    $('<option>').val('under 68kg').text('under 68kg').appendTo('#select'+(i));
+    $('<option>').val('under 80kg').text('under 80kg').appendTo('#select'+(i));
+    $('<option>').val('above 80kg').text('above 80kg').appendTo('#select'+(i));
+    }
+      amount = 900*players;
     }else{
       max=0;
       min=0;
@@ -162,6 +178,18 @@ $('#male').on('change',function(){
       max=10;
       min=6;
       amount = 1000;
+    }else if(sports_name="Taekwondo"){
+      max=100;
+      min=1;
+         for(var i=0;i<players;i++){
+      $('#select'+(i)).find('option').remove();
+      $('#select'+(i)).val([]);
+    $('<option>').val('under 49kg').text('under 49kg').appendTo('#select'+(i));
+    $('<option>').val('under 57kg').text('under 57kg').appendTo('#select'+(i));
+    $('<option>').val('under 67kg').text('under 67kg').appendTo('#select'+(i));
+    $('<option>').val('above 67kg').text('above 67kg').appendTo('#select'+(i));
+  }
+      amount = players*900;
     }else{
       max=0;
       min=0;
@@ -260,7 +288,23 @@ $('#female').on('change',function(){
       max=10;
       min=6;
       amount = 1000;
-    }else{
+    }else if(sports_name=="FootSoul"){
+      max=10;
+      min=7;
+      amount=1500;
+    }else if(sports_name="Taekwondo"){
+      max=100;
+      min=1;
+         for(var i=0;i<players;i++){
+         $('#select'+(i)).find('option').remove();
+      $('#select'+(i)).val([]);
+    $('<option>').val('under 58kg').text('under 58kg').appendTo('#select'+(i));
+    $('<option>').val('under 68kg').text('under 68kg').appendTo('#select'+(i));
+    $('<option>').val('under 80kg').text('under 80kg').appendTo('#select'+(i));
+    $('<option>').val('above 80kg').text('above 80kg').appendTo('#select'+(i));
+  }
+    amount = players*900;
+  }else{
       max=0;
       min=0;
     }
@@ -315,6 +359,18 @@ $('#female').on('change',function(){
       max=10;
       min=6;
       amount = 1000;
+    }else if(sports_name="Taekwondo"){
+      max=100;
+      min=1;
+         for(var i=0;i<players;i++){
+         $('#select'+(i)).find('option').remove();
+      $('#select'+(i)).val([]);
+    $('<option>').val('under 49kg').text('under 49kg').appendTo('#select'+(i));
+    $('<option>').val('under 57kg').text('under 57kg').appendTo('#select'+(i));
+    $('<option>').val('under 67kg').text('under 67kg').appendTo('#select'+(i));
+    $('<option>').val('above 67kg').text('above 67kg').appendTo('#select'+(i));
+  }
+      amount = 900*players;
     }else{
       max=0;
       min=0;
@@ -550,6 +606,14 @@ $('#accomodation').on('change',function(){
       max=10;
       min=6;
       amount = 1000;
+    }else if(sports_name=="FootSoul"){
+      max=10;
+      min=7;
+      amount=1500;
+    }else if(sports_name="Taekwondo"){
+      max=100;
+      min=1;
+      amount = players*900;
     }else{
       max=0;
       min=0;
@@ -589,6 +653,10 @@ $('#accomodation').on('change',function(){
       max=10;
       min=6;
       amount = 1000;
+    }else if(sports_name="Taekwondo"){
+      max=100;
+      min=1;
+      amount = players*900;
     }else{
       max=0;
       min=0;
@@ -666,6 +734,14 @@ $('#number').on('input',function(){
       max=10;
       min=6;
       amount = 1000;
+    }else if(sports_name=="FootSoul"){
+      max=10;
+      min=7;
+      amount=1500;
+    }else if(sports_name="Taekwondo"){
+      max=100;
+      min = 1;
+      amount = players*900;
     }else{
       max=0;
       min=0;
@@ -703,7 +779,11 @@ $('#number').on('input',function(){
       max=10;
       min=6;
       amount = 1000;
-    }else{
+    }else if(sports_name="Taekwondo"){
+      max=100;
+      min=1;
+      amount = players*900;
+    } else{
       max=0;
       min=0;
     }
@@ -779,7 +859,26 @@ if(gender=="male"){
     $('<option>').val('85+kg').text('85+kg').appendTo('#select'+(i));
      }
     
-  }else{
+  }else if(sports_name="Taekwondo"){
+     for(var i=0;i<players;i++){
+    $(".team-players").append("<div><div class='form__group form__group-dis'><input type='text' class='form__input form__input-width' id='player" + (i) + "' name='player_name" + (i) + "'placeholder='Enter Player " + (i + 1) + " Name' required='true'><label for='number' class='form__label'>Enter Player " + (i + 1) + " Name</label></div><div class='form__group form__group-dis'><select name='select_events"+(i)+"' id='select"+(i)+"'></select></div></div>");
+  }
+  if(gender=="male"){
+  for(var i=0;i<players;i++){
+    $('<option>').val('under 58kg').text('under 58kg').appendTo('#select'+(i));
+    $('<option>').val('under 68kg').text('under 68kg').appendTo('#select'+(i));
+    $('<option>').val('under 80kg').text('under 80kg').appendTo('#select'+(i));
+    $('<option>').val('above 80kg').text('above 80kg').appendTo('#select'+(i));
+     }
+}else {
+     for(var i=0;i<players;i++){
+    $('<option>').val('under 49kg').text('under 49kg').appendTo('#select'+(i));
+    $('<option>').val('under 57kg').text('under 57kg').appendTo('#select'+(i));
+    $('<option>').val('under 67kg').text('under 67kg').appendTo('#select'+(i));
+    $('<option>').val('above 67kg').text('above 67kg').appendTo('#select'+(i));
+     }
+  }
+}else{
        for(var i=0;i<players;i++){
     $('.team-players').append("<input type='text' class='form__input' id='player"+(i)+"' name='player_name"+(i)+"'placeholder='Enter Player "+(i+1)+" Name' required='true'><label for='number' class='form__label'>Enter Player "+(i+1)+" Name</label>");
 }
@@ -810,35 +909,51 @@ $('#sort_sports').on('change',function(){
      $('.'+gender+'.'+sports).show();
 });
 
-  $(".owl-carousel").owlCarousel({
-    loop: true,
-    responsiveClass: true,
-    autoHeight: false,
-    autoplay: true,
-    autoplayHoverPause: true,
-    autoWidth: false,
-    margin: 10,
-    nav: true,
-    navText: [
-      "<i class='fa fa-caret-left'></i>",
-      "<i class='fa fa-caret-right'></i>"
-    ],
-    responsive: {
-      0: {
-        items: 1,
-        nav: true
-      },
-      600: {
-        items: 1,
-        nav: false
-      },
-      1000: {
-        items: 1,
-        nav: true,
-        loop: false
-      }
-    }
-  });
+
+$('#sort_gender').on('change',function(){
+     var gender = $(this).val();
+     var sports = $('#sort_events').val();
+     $('.card').hide();
+     $('.'+gender+'.'+sports).show();
+ });
+
+$('#sort_events').on('change',function(){
+     var sports = $(this).val();
+     var gender = $('#sort_gender').val();
+     $('.card').hide();
+     $('.'+gender+'.'+sports).show();
+});
+
+
+  // $(".owl-carousel").owlCarousel({
+  //   loop: true,
+  //   responsiveClass: true,
+  //   autoHeight: false,
+  //   autoplay: true,
+  //   autoplayHoverPause: true,
+  //   autoWidth: false,
+  //   margin: 10,
+  //   nav: true,
+  //   navText: [
+  //     "<i class='fa fa-caret-left'></i>",
+  //     "<i class='fa fa-caret-right'></i>"
+  //   ],
+  //   responsive: {
+  //     0: {
+  //       items: 1,
+  //       nav: true
+  //     },
+  //     600: {
+  //       items: 1,
+  //       nav: false
+  //     },
+  //     1000: {
+  //       items: 1,
+  //       nav: true,
+  //       loop: false
+  //     }
+  //   }
+  // });
 
 });
 

@@ -83,6 +83,12 @@ video {
 .register{
 	margin-top: 150px;
 }
+.footsoul{
+  margin-top: 200px;
+}
+.taekwondo{
+  margin-top: 100px;
+}
 .header {
     color: #FFFFFF;
     text-align: center;
@@ -106,13 +112,30 @@ video {
 }
 
 #section_events{
-	background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/sport_1_new.jpg");
-	height: 100%;
+	  height: 100%;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-color: #464646;
+    background-color: #FFFFFF;
 
+}
+
+#slide_one_events{
+    background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/footsoul_events.jpg");
+    height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #FFFFFF;
+}
+
+#slide_two_events{
+    background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/taekwondo_events.jpg");
+    height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #FFFFFF;
 }
 
 #section_ca{

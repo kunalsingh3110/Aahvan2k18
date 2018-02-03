@@ -6,7 +6,7 @@
 <div class="card">
    <% var name = campusAmbassador.id+" CampusAmbassador" %>
   <div class="card-header" name="<%= name %>">
-    <%= campusAmbassador.time.getDate() %>/<%= campusAmbassador.time.getMonth() %>/<%= campusAmbassador.time.getFullYear() %>
+    <%= campusAmbassador.time.getDate() %>/<%= campusAmbassador.time.getMonth()+1 %>/<%= campusAmbassador.time.getFullYear() %>
     &nbsp; <%= campusAmbassador.time.getHours() %>:<%= campusAmbassador.time.getMinutes() %>
   </div>
   <div class="card-block">

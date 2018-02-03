@@ -14,7 +14,7 @@
                 <div class="row1">
                     <div class="book">
                         <div class="book__form">
-                            <form action="/register_events" class="form" method="POST" id="register_events">
+                            <form action="/register_events_teams" class="form" method="POST" id="register_events">
                                 <div class="u-margin-bottom-medium">
                                     <h2 class="heading-secondary-main">
                                        <%= event %>&nbsp;Team Information %>
@@ -26,7 +26,7 @@
                                     </h2>
                                 </div>
                                 <div class="form__group">
-                                    <input type="hidden"  name="event_name" class="form__input" value='<%= event %>' id="event">
+                                    <input type="hidden"  name="event_name" class="form__input" value='<%= event %>' id="sports_name">
                                     <input type="hidden" name="amount" id="amount">
                                 </div>
                                 <div class="form__group">
@@ -40,11 +40,13 @@
                                 <div class="form__group">
                                     <input type="email" name="team_email" class="form__input" placeholder="Enter Email" id="email" required>
                                     <label for="email" class="form__label">Enter Email</label>
-                                </div> 
+                                </div>
+                                <% if(event!="FootSoul"){ %> 
                                 <div class="form__group">
                                     <input type="text" name="college_name" class="form__input" placeholder="Enter College Name" id="college" required>
                                     <label for="college" class="form__label">College Name</label>
                                 </div>
+                                <% } %>
                                   <div class="form__group u-margin-bottom-small">
                                     <div class="form__check-group">
                                       <input type="checkbox" name="gender" value="Male" class="form__check-input" id="male">
@@ -53,6 +55,7 @@
                                              Male
                                         </label>
                                     </div>
+                                    <% if(event!="FootSoul"){ %>
                                     <div class="form__check-group">
                                       <input type="checkbox" name="gender" value ="Female" id="female" class="form__check-input" id="female">
                                         <label for="female" class="form__check-label">
@@ -60,6 +63,7 @@
                                              Female
                                         </label>
                                     </div>
+                                    <% } %>
                                 </div>
                                  <div class="form__group u-margin-bottom-small">
                                     <div class="form__check-group">

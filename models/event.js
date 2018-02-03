@@ -7,7 +7,10 @@ var EventSchema = new Schema({
 	contact: {type: Number , required: true},
 	number_of_players: {type: String , required: true},
 	email:{type:String , required: true},
-	players: [{type:String}],
+	players: [{
+	name:{type:String},
+	events:[{type:String}]
+	}],
 	gender:{type:String},
 	event: {type:String , required: true},
 	time: {type: Date , default: Date.now},

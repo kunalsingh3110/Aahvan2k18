@@ -1,0 +1,45 @@
+ <div class="container" style="position: absolute;">
+    <form action="/admin/download_events" method="POST" id="download_teams">
+  <input type="submit" class="form-control float-right" href="" style="max-width: 100px;margin-right: 30px" value="DOWNLOAD">
+  <select class="form-control float-right" style="max-width: 100px;margin-right: 30px;" id="sort_events" name="sort_events">
+  <option value="all">All</option>
+    <option value="FootSoul">FootSoul</option>
+    <option value="Taekwondo">Taekwondo</option>
+</select>
+<select class="form-control float-right" style="max-width: 100px;margin-right: 30px;" id="sort_gender" name="sort_gender">
+  <option value="all">All</option>
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+</select>
+</form>
+</div>
+<% events.forEach(function(event){ %>
+<div class="card <%= event.event %> <%= event.gender %> all" style="position: relative; top: 120px;">
+   <% var name = event.id+" Event" %>
+  <div class="card-header" name="<%= name %>">
+    <%= event.time.getDate() %>/<%= event.time.getMonth()+1 %>/<%= event.time.getFullYear() %>
+    &nbsp; <%= event.time.getHours() %>:<%= event.time.getMinutes() %>
+  </div>
+  <div class="card-block">
+  	<ul class="list-group list-group-flush">
+     <li class="list-group-item">Event Captain Name:&nbsp;<strong><%= event.captain %></strong></li>
+      <li class="list-group-item">Contact:&nbsp;<%= event.contact %></li>
+        <li class="list-group-item">Contact:&nbsp;<%= event.email %></li>
+    <li class="list-group-item">College:&nbsp;<%= event.college %></li>
+     <li class="list-group-item">Event:&nbsp;<%= event.event %></li>
+      <li class="list-group-item">Gender:&nbsp;<%= event.gender %></li>
+         <li class="list-group-item">Amount:&nbsp;<%= event.amount %></li>
+      <li class="list-group-item">Accomodation:&nbsp;<%= event.accomodation %></li>
+         <li class="list-group-item">Payment:&nbsp;<%= event.payment %></li>
+     <li class="list-group-item">Number of Players:&nbsp;<%= event.number_of_players %></li>
+    <% for(var i=0;i<event.number_of_players;i++){ %>
+     <li class="list-group-item">Player&nbsp;<%= (i+1) %>&nbsp; Name:&nbsp;<%= event.players[i].name %></li>
+     <% if(event.event=="Taekwondo"){ %>
+      <li class="list-group-item">Player&nbsp;<%= (i+1) %>&nbsp; Events:&nbsp;<%= event.players[i].events %></li>
+      <% } %>
+    <% } %>
+  </ul>
+  </div>
+</div>
+<br>
+<% }); %>

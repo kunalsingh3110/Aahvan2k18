@@ -6,7 +6,7 @@
 <div class="card" id="<%= teamLeader.id %>">
   <% var name = teamLeader.id+" TeamLeader" %>
   <div class="card-header" name="<%= name %>">
-    <%= teamLeader.time.getDate() %>/<%= teamLeader.time.getMonth() %>/<%= teamLeader.time.getFullYear() %>
+    <%= teamLeader.time.getDate() %>/<%= teamLeader.time.getMonth()+1 %>/<%= teamLeader.time.getFullYear() %>
     &nbsp; <%= teamLeader.time.getHours() %>:<%= teamLeader.time.getMinutes() %>
   </div>
   <div class="card-block">
