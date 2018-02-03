@@ -26,7 +26,7 @@
 
  	 	});
 
-
+//
 
  	$('#about_us').click(function() {
      $.fn.fullpage.moveTo('about', 1);
