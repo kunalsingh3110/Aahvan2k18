@@ -1,5 +1,13 @@
  $(document).ready(function () {
-    $('.modal').modal();
+    $('.modal').modal({
+        ready: function(){
+            $.fn.fullpage.setAllowScrolling(false);
+        },
+        complete: function(){
+            $.fn.fullpage.setAllowScrolling(true);
+        }
+    }
+        );
  	 $('#fullpage').fullpage({
  	 	 scrollingSpeed: 1000,
             autoScrolling: true,
@@ -17,6 +25,8 @@
     				scrollOverflow: true,
 
  	 	});
+
+
 
  	$('#about_us').click(function() {
      $.fn.fullpage.moveTo('about', 1);
