@@ -135,7 +135,7 @@
 </div>
     </div>
 </div>
-     <div id="modal_footsoul" class="modal">
+     <div id="modal_footsoul" class="modal modal-fixed-footer">
     <div class="modal-content">
       <h4 style="text-align: center;">RULES</h4>
       <p>A TEAM’S ROSTER SHOULD NOT HAVE MORE THAN 10 PLAYERS, WITH 7 PLAYERS FORMING THE STARTING LINEUP AND 3 PLAYERS AS SUBSTITUTES.<br>
@@ -164,14 +164,14 @@ ALL THE PLAYERS MUST BRING THEIR ID CARD, WITHOUT WHICH ENTRY INTO THE CAMPUS WI
 <strong>Note: The organizing committee has the right to make changes in the rules and notifying the affected teams if required, the final prize money awarded is subjected to the number of teams participating.</strong>
     </div>
     <div class="modal-footer">
-           <button  class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</button>>
            <form action="register_events" method="POST">
            <input type="hidden" name="event_name" value="FootSoul"> 
-            <button  class="modal-action modal-close waves-effect waves-green btn-flat">Register</button>>
+              <button  type="button" class="modal-action modal-close btn waves-effect waves-light" style="background-color: #00b0ff">Cancel<i class="material-icons right">cancel</i></button>
+            <button  class="modal-action modal-close btn waves-effect waves-light" style="background-color: #00b0ff">Register <i class="material-icons right">send</i></button>
            </form>
     </div>
   </div>
-   <div id="modal_taekwondo" class="modal">
+   <div id="modal_taekwondo" class="modal modal-fixed-footer">
     <div class="modal-content">
       <h4 style="text-align: center;">RULES</h4>
       <p>For seniors we are using the latest WT Competition rules<br>
@@ -216,11 +216,11 @@ Those documents are:<br>
 <p>NAKUL ARYA: 8800737707,7982089493</p>
     </div>
     <div class="modal-footer">
-           <button  class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</button>>
-     <form action="register_events" method="POST">
+         <form action="register_events" method="POST">
            <input type="hidden" name="event_name" value="Taekwondo"> 
-            <button class="modal-action modal-close waves-effect waves-green btn-flat">Register</button>>
-           </form>
+  <button  type="button" class="modal-action modal-close btn waves-effect waves-light" style="background-color: #00b0ff">Cancel<i class="material-icons right">cancel</i></button>
+            <button  class="modal-action modal-close btn waves-effect waves-light" style="background-color: #00b0ff">Register <i class="material-icons right">send</i></button>
+          </form> 
     </div>
   </div>
 </div>
