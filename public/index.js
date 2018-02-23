@@ -84,7 +84,7 @@ $('#male').on('change',function(){
       min=11;
       amount = 1900;
     }else if(sports_name=="Handball"){
-      max=10;
+      max=12;
       min=7;
       amount = 1000;
     }else if(sports_name=="Kabaddi"){
@@ -265,7 +265,7 @@ $('#female').on('change',function(){
       min=11;
       amount = 1900;
     }else if(sports_name=="Handball"){
-      max=10;
+      max=12;
       min=7;
       amount = 1000;
     }else if(sports_name=="Kabaddi"){
@@ -583,7 +583,7 @@ $('#accomodation').on('change',function(){
       min=11;
       amount = 1900;
     }else if(sports_name=="Handball"){
-      max=10;
+      max=12;
       min=7;
       amount = 1000;
     }else if(sports_name=="Kabaddi"){
@@ -711,7 +711,7 @@ $('#number').on('input',function(){
       min=11;
       amount = 1900;
     }else if(sports_name=="Handball"){
-      max=10;
+      max=12;
       min=7;
       amount = 1000;
     }else if(sports_name=="Kabaddi"){
