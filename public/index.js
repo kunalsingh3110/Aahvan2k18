@@ -24,6 +24,8 @@ images.forEach((img)=> {
   });
 });
 
+
+
 $('#male').prop('checked', true);
 var gender="male";
 $('#male').on('change',function(){
@@ -53,6 +55,7 @@ $('#male').on('change',function(){
     $('<option>').val('800m').text('800m').appendTo('#select'+(i));
     $('<option>').val('1500m').text('1500m').appendTo('#select'+(i));
     $('<option>').val('3000m').text('3000m').appendTo('#select'+(i));
+    $('<option>').val('5000m').text('5000m').appendTo('#select'+(i));
     $('<option>').val('4*100m Relay').text('4*100m Relay').appendTo('#select'+(i));
     $('<option>').val('4*400m Relay').text('4*400m Relay').appendTo('#select'+(i));
     $('<option>').val('Long Jump').text('Long Jump').appendTo('#select'+(i));
@@ -62,6 +65,17 @@ $('#male').on('change',function(){
      last_athletics_men[i]=1;
      last_athletics_women[i]=1;
      }
+//       $('option').mousedown(function(e) {
+//       e.preventDefault();
+//         var originalScrollTop = $(this).parent().scrollTop();
+//    // console.log(originalScrollTop);
+//     $(this).prop('selected', $(this).prop('selected') ? false : true);
+//     var self = this;
+//     $(this).parent().focus();
+//     setTimeout(function() {
+//         $(self).parent().scrollTop(originalScrollTop);
+//     }, 0);
+// });
       amount = players*100;
     }else if(sports_name=="Badminton"){
       max=6;
@@ -149,6 +163,17 @@ $('#male').on('change',function(){
     last_athletics_women[i]=1;
     last_athletics_men[i]=1;
      }
+//       $('option').mousedown(function(e) {
+//       e.preventDefault();
+//         var originalScrollTop = $(this).parent().scrollTop();
+//     //console.log(originalScrollTop);
+//     $(this).prop('selected', $(this).prop('selected') ? false : true);
+//     var self = this;
+//     $(this).parent().focus();
+//     setTimeout(function() {
+//         $(self).parent().scrollTop(originalScrollTop);
+//     }, 0);
+// });
         amount = players*100;
     }else if(sports_name=="Badminton"){
       max=4;
@@ -234,6 +259,7 @@ $('#female').on('change',function(){
     $('<option>').val('800m').text('800m').appendTo('#select'+(i));
     $('<option>').val('1500m').text('1500m').appendTo('#select'+(i));
     $('<option>').val('3000m').text('3000m').appendTo('#select'+(i));
+    $('<option>').val('5000m').text('5000m').appendTo('#select'+(i));
     $('<option>').val('4*100m Relay').text('4*100m Relay').appendTo('#select'+(i));
     $('<option>').val('4*400m Relay').text('4*400m Relay').appendTo('#select'+(i));
     $('<option>').val('Long Jump').text('Long Jump').appendTo('#select'+(i));
@@ -243,6 +269,17 @@ $('#female').on('change',function(){
     last_athletics_men[i]=1;
     last_athletics_women[i]=1;
      }
+//       $('option').mousedown(function(e) {
+//       e.preventDefault();
+//         var originalScrollTop = $(this).parent().scrollTop();
+//    // console.log(originalScrollTop);
+//     $(this).prop('selected', $(this).prop('selected') ? false : true);
+//     var self = this;
+//     $(this).parent().focus();
+//     setTimeout(function() {
+//         $(self).parent().scrollTop(originalScrollTop);
+//     }, 0);
+// });
      amount = players*100;
     }else if(sports_name=="Badminton"){
       max=6;
@@ -330,6 +367,17 @@ $('#female').on('change',function(){
     last_athletics_women[i] = 1;
     last_athletics_men[i]=1;
      }
+//       $('option').mousedown(function(e) {
+//       e.preventDefault();
+//         var originalScrollTop = $(this).parent().scrollTop();
+//     //console.log(originalScrollTop);
+//     $(this).prop('selected', $(this).prop('selected') ? false : true);
+//     var self = this;
+//     $(this).parent().focus();
+//     setTimeout(function() {
+//         $(self).parent().scrollTop(originalScrollTop);
+//     }, 0);
+// });
       amount = players*100;
     }else if(sports_name=="Badminton"){
       max=4;
@@ -824,6 +872,7 @@ if(gender=="male"){
     $('<option>').val('800m').text('800m').appendTo('#select'+(i));
     $('<option>').val('1500m').text('1500m').appendTo('#select'+(i));
     $('<option>').val('3000m').text('3000m').appendTo('#select'+(i));
+    $('<option>').val('5000m').text('5000m').appendTo('#select'+(i));
     $('<option>').val('4*100m Relay').text('4*100m Relay').appendTo('#select'+(i));
     $('<option>').val('4*400m Relay').text('4*400m Relay').appendTo('#select'+(i));
     $('<option>').val('Long Jump').text('Long Jump').appendTo('#select'+(i));
@@ -831,6 +880,17 @@ if(gender=="male"){
     $('<option>').val('Discus Throw').text('Discus Throw').appendTo('#select'+(i));
     $('<option>').val('Triple Jump').text('Triple Jump').appendTo('#select'+(i));
      }
+//     $('option').mousedown(function(e) {
+//       e.preventDefault();
+//         var originalScrollTop = $(this).parent().scrollTop();
+//    // console.log(originalScrollTop);
+//     $(this).prop('selected', $(this).prop('selected') ? false : true);
+//     var self = this;
+//     $(this).parent().focus();
+//     setTimeout(function() {
+//         $(self).parent().scrollTop(originalScrollTop);
+//     }, 0);
+// });
 }else {
      for(var i=0;i<players;i++){
     $('<option>').val('100m').text('100m').appendTo('#select'+(i));
@@ -846,6 +906,17 @@ if(gender=="male"){
     $('<option>').val('Shot Put').text('Shot Put').appendTo('#select'+(i));
     $('<option>').val('Discus Throw').text('Discus Throw').appendTo('#select'+(i));
      }
+//     $('option').mousedown(function(e) {
+//       e.preventDefault();
+//         var originalScrollTop = $(this).parent().scrollTop();
+//    // console.log(originalScrollTop);
+//     $(this).prop('selected', $(this).prop('selected') ? false : true);
+//     var self = this;
+//     $(this).parent().focus();
+//     setTimeout(function() {
+//         $(self).parent().scrollTop(originalScrollTop);
+//     }, 0);
+// });
 }
     }else if(sports_name=="Powerlifting"){
           for(var i=0;i<players;i++){
@@ -892,8 +963,9 @@ if(gender=="male"){
 }
 });
 
-
-
+$("select").on('change',function(){
+  console.log("ss");
+});
 
 $('#sort_gender').on('change',function(){
      var gender = $(this).val();
