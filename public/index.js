@@ -62,6 +62,7 @@ $('#male').on('change',function(){
     $('<option>').val('Shot Put').text('Shot Put').appendTo('#select'+(i));
     $('<option>').val('Discus Throw').text('Discus Throw').appendTo('#select'+(i));
     $('<option>').val('Triple Jump').text('Triple Jump').appendTo('#select'+(i));
+    $('<option>').val('High Jump').text('High Jump').appendTo('#select'+(i));
      last_athletics_men[i]=1;
      last_athletics_women[i]=1;
      }
@@ -160,6 +161,7 @@ $('#male').on('change',function(){
     $('<option>').val('Long Jump').text('Long Jump').appendTo('#select'+(i));
     $('<option>').val('Shot Put').text('Shot Put').appendTo('#select'+(i));
     $('<option>').val('Discus Throw').text('Discus Throw').appendTo('#select'+(i));
+    $('<option>').val('High Jump').text('High Jump').appendTo('#select'+(i));
     last_athletics_women[i]=1;
     last_athletics_men[i]=1;
      }
@@ -266,6 +268,7 @@ $('#female').on('change',function(){
     $('<option>').val('Shot Put').text('Shot Put').appendTo('#select'+(i));
     $('<option>').val('Discus Throw').text('Discus Throw').appendTo('#select'+(i));
     $('<option>').val('Triple Jump').text('Triple Jump').appendTo('#select'+(i));
+    $('<option>').val('High Jump').text('High Jump').appendTo('#select'+(i));
     last_athletics_men[i]=1;
     last_athletics_women[i]=1;
      }
@@ -364,6 +367,7 @@ $('#female').on('change',function(){
     $('<option>').val('Long Jump').text('Long Jump').appendTo('#select'+(i));
     $('<option>').val('Shot Put').text('Shot Put').appendTo('#select'+(i));
     $('<option>').val('Discus Throw').text('Discus Throw').appendTo('#select'+(i));
+    $('<option>').val('High Jump').text('High Jump').appendTo('#select'+(i));
     last_athletics_women[i] = 1;
     last_athletics_men[i]=1;
      }
@@ -879,6 +883,7 @@ if(gender=="male"){
     $('<option>').val('Shot Put').text('Shot Put').appendTo('#select'+(i));
     $('<option>').val('Discus Throw').text('Discus Throw').appendTo('#select'+(i));
     $('<option>').val('Triple Jump').text('Triple Jump').appendTo('#select'+(i));
+    $('<option>').val('High Jump').text('High Jump').appendTo('#select'+(i));
      }
 //     $('option').mousedown(function(e) {
 //       e.preventDefault();
@@ -905,6 +910,7 @@ if(gender=="male"){
     $('<option>').val('Long Jump').text('Long Jump').appendTo('#select'+(i));
     $('<option>').val('Shot Put').text('Shot Put').appendTo('#select'+(i));
     $('<option>').val('Discus Throw').text('Discus Throw').appendTo('#select'+(i));
+    $('<option>').val('High Jump').text('High Jump').appendTo('#select'+(i));
      }
 //     $('option').mousedown(function(e) {
 //       e.preventDefault();
