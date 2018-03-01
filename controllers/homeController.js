@@ -14,6 +14,42 @@ var smtpTransport = nodemailer.createTransport({
 							pass: process.env.PASSWORD 
 						}
 					});
+var payment_link = '';
+
+
+var payment_link_generator = function(name){
+	if(name=="Athletics"){
+		payment_link='https://www.goeventz.com/event/aahvaan-athletics/41860';
+	}else if(name=="Badminton"){
+		payment_link='https://www.goeventz.com/event/aahvaan-badminton/41836';
+	}else if(name=="Basketball"){
+		payment_link='https://www.goeventz.com/event/aahvaan-basketball/41837';
+	}else if(name=="Chess"){
+		payment_link='https://www.goeventz.com/event/chess-olympiad/41861';
+	}else if(name=="Cricket"){
+		payment_link='https://www.goeventz.com/event/aahvaan-cricket/41822';
+	}else if(name=="Football"){
+		payment_link='https://www.goeventz.com/event/aahvaan-football/41805';
+	}else if(name=="Handball"){
+		payment_link='https://www.goeventz.com/event/aahvaan-handball/64533';
+	}else if(name=="Kabaddi"){
+		payment_link='https://www.goeventz.com/event/aahvaan-kabaddi/41852';
+	}else if(name=="Powerlifting"){
+		payment_link='https://www.goeventz.com/event/powerlifting/41979';
+	}else if(name=="TableTennis"){
+		payment_link='https://www.goeventz.com/event/aahvaan-table-tennis/41839';
+	}else if(name=="Tennis"){
+		payment_link='https://www.goeventz.com/event/aahvaan-tennis/41859';
+	}else if(name=="Volleyball"){
+		payment_link='https://www.goeventz.com/event/aahvaan-volleyball/41853';
+	}else if(name=="FootSoul"){
+		payment_link='https://www.goeventz.com/event/footsoul/41862';
+	}else if(name=="Taekwondo"){
+		payment_link='https://www.goeventz.com/event/aahvaan-taekwondo/64421';
+	}
+
+}
+
 exports.index = function(req,res){
 	var number_of_teams=0;
 	TeamLeader.findById(req.session.userid,function(err,teamLeader){
@@ -91,7 +127,12 @@ exports.register_events_teams = function(req,res){
 			var accomodation = false;
 					if(req.body.accomodation){
 						accomodation = true;
+						payment_link = 'https://www.goeventz.com/event/aahvaan-dtu/41210';
+					}else{
+						payment_link_generator(events_name);						
 					}
+					var payment_links_array = [];
+					payment_links_array.push(payment_link);
 					var players = [];
 					for(var i=0;i<req.body.number_of_players;i++){
 						var player_name = "player_name"+(i);
@@ -129,7 +170,7 @@ exports.register_events_teams = function(req,res){
 						'Captain: '+event.captain+'\n'+
 						'Players: '+players_name+'\n'+
 						'Amount: Rs. ' + event.amount +'.'+'\n'+
-						'Further instructions for payment will be provided to you.'+'\n'+
+						'Payment Link: '+payment_link+'\n'+
 						'Regards,'+'\n'+
 						'Team Aahvaan' 
 					};
@@ -138,7 +179,7 @@ exports.register_events_teams = function(req,res){
 							console.log(err);
 						}
 					});
-							res.render("../views/thankyou",{username:req.session.username,userid:req.session.userid});
+							res.render("../views/thankyou",{username:req.session.username,userid:req.session.userid,links:payment_links_array});
 						}
 					});					
 
@@ -252,13 +293,19 @@ exports.post_register_sports = function(req,res){
 		var cap_phone = Number(req.body.captain_number);
 		var number = Number(req.body.number_of_players);
 		var sports_name = req.body.sports_name;
+
 		if(isNaN(cap_phone)){
 					res.render("../views/register_sports",{alert:1 , sports_name:req.body.sports_name, username: req.session.username , userid: req.session.userid});
 		}else{
 			var accomodation = false;
 					if(req.body.accomodation){
 						accomodation = true;
+						payment_link = 'https://www.goeventz.com/event/aahvaan-dtu/41210';
+					}else{
+						payment_link_generator(sports_name);
 					}
+					var payment_links_array = [];
+					payment_links_array.push(payment_link);
 			if(!req.session.username){
 					var players = [];
 					for(var i=0;i<req.body.number_of_players;i++){
@@ -298,7 +345,7 @@ exports.post_register_sports = function(req,res){
 						'Captain: '+team.captain+'\n'+
 						'Players: '+players_name+'\n'+
 						'Amount: Rs. ' + team.amount +'.'+'\n'+
-						'Further instructions for payment will be provided to you.'+'\n'+
+						'Payment Link: '+payment_link+'\n'+
 						'Regards,'+'\n'+
 						'Team Aahvaan' 
 					};
@@ -307,7 +354,7 @@ exports.post_register_sports = function(req,res){
 							console.log(err);
 						}
 					});
-							res.render("../views/thankyou",{username:req.session.username,userid:req.session.userid});
+							res.render("../views/thankyou",{username:req.session.username,userid:req.session.userid,links:payment_links_array});
 						}
 					});
 
@@ -660,7 +707,10 @@ exports.thankyou_ca = function(req,res){
 exports.contingent_submit = function(req,res){
 		var amount = 0;
 		var sports = [];
+		var payment_links = '';
+		var payment_links_array = [];
 		TeamLeader.findById(req.session.userid,function(err,teamLeader){
+		if(teamLeader){
 			if(err){
 				console.log(err);
 			}else{
@@ -671,6 +721,13 @@ exports.contingent_submit = function(req,res){
 				teams.forEach(function(team){
 				amount = amount + team.amount;
 				sports.push(team.sport);
+				if(team.accomodation){
+					payment_link = 'https://www.goeventz.com/event/aahvaan-dtu/41210';
+				}else{
+					payment_link_generator(team.sport);
+				}
+				payment_links = payment_links+'\n'+payment_link;
+				payment_links_array.push(payment_link);
 				});
 			var mailOptions = {
 						to: teamLeader.email,
@@ -679,7 +736,7 @@ exports.contingent_submit = function(req,res){
 						text: 'Thank you for registering your teams in Aahvaan\'18.'+'\n'+
 						'Sports: '+sports+'\n'+
 						'Amount: Rs. ' + amount +'.'+'\n'+
-						'Further instructions for payment will be provided to you.'+'\n'+
+						'Payment Links: '+payment_links+'\n'+
 						'Regards,'+'\n'+
 						'Team Aahvaan' 
 					};
@@ -688,10 +745,16 @@ exports.contingent_submit = function(req,res){
 							console.log(err);
 						}
 					});
-					res.render("../views/thankyou",{username:req.session.username,userid:req.session.userid});
+					res.render("../views/thankyou",{username:req.session.username,userid:req.session.userid,links:payment_links_array});
 		}
 	});
-	}});				
+	}
+	}else{
+		var number_of_teams=0;
+		res.render("../views/home",{username: req.session.username , userid: req.session.userid , number_of_teams:number_of_teams});
+	}
+	});	
+
 };
 
 exports.delete_team = function(req,res){

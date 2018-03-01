@@ -4,6 +4,48 @@ var TeamLeader = require("../models/teamLeader");
 var Event = require("../models/event");
 var fs = require('fs');
 var json2csv = require('json2csv');
+var async = require('async');
+var nodemailer = require('nodemailer');
+var smtpTransport = nodemailer.createTransport({
+						service: 'Gmail',
+						auth:{
+							user: 'aahvaandtu@gmail.com',
+							pass: process.env.PASSWORD 
+						}
+					});
+var payment_link = '';
+var payment_link_generator = function(name){
+	if(name=="Athletics"){
+		payment_link='https://www.goeventz.com/event/aahvaan-athletics/41860';
+	}else if(name=="Badminton"){
+		payment_link='https://www.goeventz.com/event/aahvaan-badminton/41836';
+	}else if(name=="Basketball"){
+		payment_link='https://www.goeventz.com/event/aahvaan-basketball/41837';
+	}else if(name=="Chess"){
+		payment_link='https://www.goeventz.com/event/chess-olympiad/41861';
+	}else if(name=="Cricket"){
+		payment_link='https://www.goeventz.com/event/aahvaan-cricket/41822';
+	}else if(name=="Football"){
+		payment_link='https://www.goeventz.com/event/aahvaan-football/41805';
+	}else if(name=="Handball"){
+		payment_link='https://www.goeventz.com/event/aahvaan-handball/64533';
+	}else if(name=="Kabaddi"){
+		payment_link='https://www.goeventz.com/event/aahvaan-kabaddi/41852';
+	}else if(name=="Powerlifting"){
+		payment_link='https://www.goeventz.com/event/powerlifting/41979';
+	}else if(name=="TableTennis"){
+		payment_link='https://www.goeventz.com/event/aahvaan-table-tennis/41839';
+	}else if(name=="Tennis"){
+		payment_link='https://www.goeventz.com/event/aahvaan-tennis/41859';
+	}else if(name=="Volleyball"){
+		payment_link='https://www.goeventz.com/event/aahvaan-volleyball/41853';
+	}else if(name=="FootSoul"){
+		payment_link='https://www.goeventz.com/event/footsoul/41862';
+	}else if(name=="Taekwondo"){
+		payment_link='https://www.goeventz.com/event/aahvaan-taekwondo/64421';
+	}
+
+}
 exports.index = function(req,res){
 	Team.find({}).sort({time: -1}).populate('leader').exec(function(err,teams){
 		if(err){
@@ -406,5 +448,137 @@ exports.download_events = function(req,res){
 			});	
 		}
 	
+};
+
+exports.send_mail = function(req,res){
+	success = true;
+	Event.find({}).exec(function(err,events){
+		if(err){
+			success = false;
+			console.log(err);
+		}else{
+			events.forEach(function(event){
+				if(event.accomodation){
+					payment_link = 'https://www.goeventz.com/event/aahvaan-dtu/41210';
+				}else{
+					payment_link_generator(event.event);
+				}
+				var players_name = [];
+							event.players.forEach(function(player){
+								players_name.push(player.name);
+							});
+						var mailOptions = {
+						to: event.email,
+						from: 'aahvaandtu@gmail.com',
+						subject: 'Aahvaan\'18 Team Registration',
+						text: 'Thank you for registering your team in Aahvaan\'18.'+'\n'+
+						'Event: '+event.event+'\n'+
+						'Captain: '+event.captain+'\n'+
+						'Players: '+players_name+'\n'+
+						'Amount: Rs. ' + event.amount +'.'+'\n'+
+						'Payment Link: '+payment_link+'\n'+
+						'Regards,'+'\n'+
+						'Team Aahvaan' 
+					};
+					if(event.amount!=0&&event.amount!=null){
+					smtpTransport.sendMail(mailOptions,function(err){
+						if(err){
+							console.log(err);
+						}
+					});
+				}
+		});
+		}
+		console.log("Events end");
+	});
+	Team.find({leader:null}).exec(function(err,teams){
+		if(err){
+			success = false;
+			console.log(err);
+		}else{
+			teams.forEach(function(team){
+			var players_name = [];
+			if(team.accomodation){
+					payment_link = 'https://www.goeventz.com/event/aahvaan-dtu/41210';
+				}else{
+					payment_link_generator(team.sport);
+				}
+			team.players.forEach(function(player){
+				players_name.push(player.name);
+			});
+						var mailOptions = {
+						to: team.email,
+						from: 'aahvaandtu@gmail.com',
+						subject: 'Aahvaan\'18 Team Registration',
+						text: 'Thank you for registering your team in Aahvaan\'18.'+'\n'+
+						'Sport: '+team.sport+'\n'+
+						'Captain: '+team.captain+'\n'+
+						'Players: '+players_name+'\n'+
+						'Amount: Rs. ' + team.amount +'.'+'\n'+
+						'Payment Link: '+payment_link+'\n'+
+						'Regards,'+'\n'+
+						'Team Aahvaan' 
+					};
+					if(team.amount!=0&&team.amount!=null){
+						smtpTransport.sendMail(mailOptions,function(err){
+						if(err){
+							success = false;
+							console.log(err);
+						}
+					});
+					}
+					
+						
+			});
+		}
+		console.log("Teams end");
+	});
+	TeamLeader.find({}).exec(function(err,teamLeaders){
+		if(err){
+			success = false;
+			console.log(err);
+		}else{
+			teamLeaders.forEach(function(teamLeader){
+			Team.find({leader: teamLeader}).exec(function(err,teams){
+			if(err){
+			console.log(err);
+			}else{
+				var sports = [];
+				var payment_links = '';
+				var amount = 0;
+				teams.forEach(function(team){
+				amount = amount + team.amount;
+				sports.push(team.sport);
+				if(team.accomodation){
+					payment_link = 'https://www.goeventz.com/event/aahvaan-dtu/41210';
+				}else{
+					payment_link_generator(team.sport);
+				}
+				payment_links = payment_links+'\n'+payment_link;
+			});
+			var mailOptions = {
+						to: teamLeader.email,
+						from: 'aahvaandtu@gmail.com',
+						subject: 'Aahvaan\'18 Team Registration',
+						text: 'Thank you for registering your teams in Aahvaan\'18.'+'\n'+
+						'Sports: '+sports+'\n'+
+						'Amount: Rs. ' + amount +'.'+'\n'+
+						'Payment Links: '+payment_links+'\n'+
+						'Regards,'+'\n'+
+						'Team Aahvaan' 
+					};
+					if(amount!=0){
+					smtpTransport.sendMail(mailOptions,function(err){
+						if(err){
+							console.log(err);
+						}
+					});
+				}
+				}
+				});
+				});
+				}
+		});
+	res.json({success:success});
 };
 

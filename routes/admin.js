@@ -17,5 +17,5 @@ router.get("/download_ca",admin_controller.download_ca);
 router.get("/download_teamLeader",admin_controller.download_teamLeader);
 router.post("/download_teams",admin_controller.download_teams);
 router.post("/download_events",admin_controller.download_events);
-
+router.post("/send_mail",admin_controller.send_mail);
 module.exports = router;

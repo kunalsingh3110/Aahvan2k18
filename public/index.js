@@ -1003,6 +1003,17 @@ $('#sort_events').on('change',function(){
 });
 
 
+$('#send_mail').on('click',function(){
+$.ajax({
+ url: '/admin/send_mail',
+ type: "POST",
+ success: function(response){
+  alert('Send mails successfully!!');
+ }
+}); 
+});
+
+
   // $(".owl-carousel").owlCarousel({
   //   loop: true,
   //   responsiveClass: true,

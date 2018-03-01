@@ -7,8 +7,19 @@
 	<div class="row1 green-space">
 		<h2 class="heading-tertiary heading-tertiary--mid">
 			Thank you for registration!<br>
-			Please check your mail for further instructions.
 		</h2>
+		<p>
+			<% if(links.length==1){ %>
+			Payment link:<a href='<%= links[0] %>' target="blank"><%= links[0] %></a>
+			<% }else{ %>
+			Following are the payment links :<br>
+			<ul>
+			<% links.forEach(function(link){ %>
+			<li><a href='<%= link %>' target="blank"><%= link %></a></li>
+		<% }) %>
+		</ul>
+			<% } %>
+		</p>
 	</div>
 </section>
 <% include partials/footer %>
