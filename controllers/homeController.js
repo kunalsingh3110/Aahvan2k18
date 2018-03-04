@@ -120,7 +120,7 @@ exports.register_events_teams = function(req,res){
 
 		var cap_phone = Number(req.body.captain_number);
 		var number = Number(req.body.number_of_players);
-		var events_name = req.body.events_name;
+		var events_name = req.body.event_name;
 		if(isNaN(cap_phone)){
 					res.render("../views/register_sports",{alert:1 , event:req.body.event_name, username: req.session.username , userid: req.session.userid});
 		}else{
