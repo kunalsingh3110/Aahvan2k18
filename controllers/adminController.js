@@ -231,10 +231,10 @@ exports.download_teams = function(req,res){
 							players_name.push(player.name);
 							players_event.push(player.events);
 						});
-						data.push({college:team.college,leader:leader_name,captain:team.captain,contact:team.contact,sport:team.sport,gender:team.gender,number_of_players:team.number_of_players,players_name:players_name,players_event:players_event,email:team.email,accomodation:team.accomodation});
+						data.push({college:team.college,leader:leader_name,captain:team.captain,contact:team.contact,sport:team.sport,gender:team.gender,number_of_players:team.number_of_players,players_name:players_name,players_event:players_event,email:team.email,accomodation:team.accomodation,time:team.time});
 					});
 					if(req.session.email){
-						var fields = ['college','leader','captain','contact','sport','gender','number_of_players','players_name','players_event','email','accomodation'];
+						var fields = ['college','leader','captain','contact','sport','gender','number_of_players','players_name','players_event','email','accomodation','time'];
 						json2csv({ data: data, fields: fields }, function(err, csv) {
     					res.setHeader('Content-disposition', 'attachment; filename=data.csv');
     					res.set('Content-Type', 'text/csv');
@@ -261,10 +261,10 @@ exports.download_teams = function(req,res){
 							players_name.push(player.name);
 							players_event.push(player.events);
 						});
-						data.push({college:team.college,leader:leader_name,captain:team.captain,contact:team.contact,sport:team.sport,gender:team.gender,number_of_players:team.number_of_players,players_name:players_name,players_event:players_event,email:team.email,accomodation:team.accomodation});
+						data.push({college:team.college,leader:leader_name,captain:team.captain,contact:team.contact,sport:team.sport,gender:team.gender,number_of_players:team.number_of_players,players_name:players_name,players_event:players_event,email:team.email,accomodation:team.accomodation,time:team.time});
 					});
 					if(req.session.email){
-					var fields = ['college','leader','captain','contact','sport','gender','number_of_players','players_name','players_event','email','accomodation'];
+						var fields = ['college','leader','captain','contact','sport','gender','number_of_players','players_name','players_event','email','accomodation','time'];
 						json2csv({ data: data, fields: fields }, function(err, csv) {
     					res.setHeader('Content-disposition', 'attachment; filename=data.csv');
     					res.set('Content-Type', 'text/csv');
@@ -291,10 +291,10 @@ exports.download_teams = function(req,res){
 							players_name.push(player.name);
 							players_event.push(player.events);
 						});
-						data.push({college:team.college,leader:leader_name,captain:team.captain,contact:team.contact,sport:team.sport,gender:team.gender,number_of_players:team.number_of_players,players_name:players_name,players_event:players_event,email:team.email,accomodation:team.accomodation});
+						data.push({college:team.college,leader:leader_name,captain:team.captain,contact:team.contact,sport:team.sport,gender:team.gender,number_of_players:team.number_of_players,players_name:players_name,players_event:players_event,email:team.email,accomodation:team.accomodation,time:team.time});
 					});
 					if(req.session.email){
-						var fields = ['college','leader','captain','contact','sport','gender','number_of_players','players_name','players_event','email','accomodation'];
+						var fields = ['college','leader','captain','contact','sport','gender','number_of_players','players_name','players_event','email','accomodation','time'];
 						json2csv({ data: data, fields: fields }, function(err, csv) {
     					res.setHeader('Content-disposition', 'attachment; filename=data.csv');
     					res.set('Content-Type', 'text/csv');
@@ -321,10 +321,10 @@ exports.download_teams = function(req,res){
 							players_name.push(player.name);
 							players_event.push(player.events);
 						});
-						data.push({college:team.college,leader:leader_name,captain:team.captain,contact:team.contact,sport:team.sport,gender:team.gender,number_of_players:team.number_of_players,players_name:players_name,players_event:players_event,email:team.email,accomodation:team.accomodation});
+						data.push({college:team.college,leader:leader_name,captain:team.captain,contact:team.contact,sport:team.sport,gender:team.gender,number_of_players:team.number_of_players,players_name:players_name,players_event:players_event,email:team.email,accomodation:team.accomodation,time:team.time});
 					});
 					if(req.session.email){
-						var fields = ['college','leader','captain','contact','sport','gender','number_of_players','players_name','players_event','email','accomodation'];
+						var fields = ['college','leader','captain','contact','sport','gender','number_of_players','players_name','players_event','email','accomodation','time'];
 						json2csv({ data: data, fields: fields }, function(err, csv) {
     					res.setHeader('Content-disposition', 'attachment; filename=data.csv');
     					res.set('Content-Type', 'text/csv');
@@ -355,10 +355,10 @@ exports.download_events = function(req,res){
 							players_name.push(player.name);
 							players_event.push(player.events);
 						});
-						data.push({college:team.college,captain:team.captain,contact:team.contact,event:team.event,gender:team.gender,number_of_players:team.number_of_players,players_name:players_name,players_event:players_event,email:team.email,accomodation:team.accomodation});
+						data.push({college:team.college,captain:team.captain,contact:team.contact,event:team.event,gender:team.gender,number_of_players:team.number_of_players,players_name:players_name,players_event:players_event,email:team.email,accomodation:team.accomodation,time:team.time});
 					});
 					if(req.session.email){
-						var fields = ['college','captain','contact','event','gender','number_of_players','players_name','players_event','email','accomodation'];
+						var fields = ['college','captain','contact','event','gender','number_of_players','players_name','players_event','email','accomodation','time'];
 						json2csv({ data: data, fields: fields }, function(err, csv) {
     					res.setHeader('Content-disposition', 'attachment; filename=data.csv');
     					res.set('Content-Type', 'text/csv');
@@ -381,10 +381,10 @@ exports.download_events = function(req,res){
 							players_name.push(player.name);
 							players_event.push(player.events);
 						});
-						data.push({college:team.college,captain:team.captain,contact:team.contact,event:team.event,gender:team.gender,number_of_players:team.number_of_players,players_name:players_name,players_event:players_event,email:team.email,accomodation:team.accomodation});
+						data.push({college:team.college,captain:team.captain,contact:team.contact,event:team.event,gender:team.gender,number_of_players:team.number_of_players,players_name:players_name,players_event:players_event,email:team.email,accomodation:team.accomodation,time:team.time});
 					});
 					if(req.session.email){
-						var fields = ['college','captain','contact','event','gender','number_of_players','players_name','players_event','email','accomodation'];
+						var fields = ['college','captain','contact','event','gender','number_of_players','players_name','players_event','email','accomodation','time'];
 						json2csv({ data: data, fields: fields }, function(err, csv) {
     					res.setHeader('Content-disposition', 'attachment; filename=data.csv');
     					res.set('Content-Type', 'text/csv');
@@ -407,10 +407,10 @@ exports.download_events = function(req,res){
 							players_name.push(player.name);
 							players_event.push(player.events);
 						});
-						data.push({college:team.college,captain:team.captain,contact:team.contact,event:team.event,gender:team.gender,number_of_players:team.number_of_players,players_name:players_name,players_event:players_event,email:team.email,accomodation:team.accomodation});
+						data.push({college:team.college,captain:team.captain,contact:team.contact,event:team.event,gender:team.gender,number_of_players:team.number_of_players,players_name:players_name,players_event:players_event,email:team.email,accomodation:team.accomodation,time:team.time});
 					});
 					if(req.session.email){
-						var fields = ['college','captain','contact','sport','gender','number_of_players','players','email','accomodation'];
+						var fields = ['college','captain','contact','event','gender','number_of_players','players_name','players_event','email','accomodation','time'];
 						json2csv({ data: data, fields: fields }, function(err, csv) {
     					res.setHeader('Content-disposition', 'attachment; filename=data.csv');
     					res.set('Content-Type', 'text/csv');
@@ -433,7 +433,7 @@ exports.download_events = function(req,res){
 							players_name.push(player.name);
 							players_event.push(player.events);
 						});
-						data.push({college:team.college,captain:team.captain,contact:team.contact,event:team.event,gender:team.gender,number_of_players:team.number_of_players,players_name:players_name,players_event:players_event,email:team.email,accomodation:team.accomodation});
+						data.push({college:team.college,captain:team.captain,contact:team.contact,event:team.event,gender:team.gender,number_of_players:team.number_of_players,players_name:players_name,players_event:players_event,email:team.email,accomodation:team.accomodation,time:team.time});
 					});
 					if(req.session.email){
 						var fields = ['college','captain','contact','event','gender','number_of_players','players_name','players_event','email','accomodation'];
