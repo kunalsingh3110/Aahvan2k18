@@ -62,6 +62,9 @@ video {
 .nav_element:active{
   background-color:  #00b0ff;
 }
+.zakir{
+  margin-top: 150px;
+}
 .about{
 	margin-top: 150px;
 }
@@ -102,6 +105,16 @@ video {
     text-align: center;
     color: #FFFFFF;
     font-size: 1.5em;
+}
+#section_zakir{
+    background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/zakir_bhai.jpg");
+  height: 100%;
+  overflow: hidden;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #464646;
+    
 }
 #section_about{
 	background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/about_us_image_new.jpg");

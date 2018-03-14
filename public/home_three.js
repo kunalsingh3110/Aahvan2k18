@@ -14,20 +14,22 @@
             fitToSection: true,
             loopHorizontal: false,
             fitToSectionDelay: 2000,
-    				anchors: ['about', 'events', 'ca', 'theme','lookback','live','register'],
+    				anchors: ['home','about', 'events', 'ca', 'theme','lookback','live','register'],
     				menu: '#menu',
     				sectionsColor: ['#f2f2f2', '#1BBC9B', '#7E8F7C', '#C63D0F'],
             verticalCentered: false,
     				navigation: true,
     				navigationPosition: 'right',
-    				navigationTooltips: ['About Us', 'Events', 'Campus Ambassador','Theme','Lookback','Live','Register'],
+    				navigationTooltips: ['Home','About Us', 'Events', 'Campus Ambassador','Theme','Lookback','Live','Register'],
     				lazyLoading: true,
     				scrollOverflow: true,
 
  	 	});
 
 //
-
+    $('#home').click(function() {
+     $.fn.fullpage.moveTo('home', 1);
+    });
  	$('#about_us').click(function() {
      $.fn.fullpage.moveTo('about', 1);
 	});
