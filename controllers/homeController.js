@@ -2,10 +2,19 @@
 var TeamLeader = require("../models/teamLeader");
 var Team = require("../models/team");
 var Event = require("../models/event");
+var Zakir = require("../models/zakir");
+var Count = require("../models/count");
 var async = require('async');
 var nodemailer = require('nodemailer');
 var crypto = require('crypto');
 var bcrypt = require('bcrypt');
+var multer = require('multer');
+var path = require('path');
+var multerS3 = require('multer-s3');
+var aws = require('aws-sdk'); 
+var PDFDocument = require('pdfkit');
+var fs = require('fs');
+var async = require('async');
 const saltRounds = 10;
 var smtpTransport = nodemailer.createTransport({
 						service: 'Gmail',
@@ -14,6 +23,48 @@ var smtpTransport = nodemailer.createTransport({
 							pass: process.env.PASSWORD 
 						}
 					});
+
+
+aws.config.update({
+	secretAccessKey: process.env.AMAZON_KEY,
+	accessKeyId: process.env.AMAZON_ID,
+	region: 'us-east-1',
+	acl: 'public-read'
+});
+
+var s3 = new aws.S3();
+
+const storage = multerS3({
+	s3:s3,
+	bucket: 'zakiraahvaannew',
+	key: function(req,file,cb){
+		cb(null,file.originalname+'-'+Date.now());
+	}
+});
+
+ const upload = multer({
+ 	storage: storage,
+ 	limits:{fileSize: 1000000},
+ 	fileFilter: function(req,file,cb){
+ 		checkFileType(file,cb);
+ 	}
+
+ }).single('screenshot');
+
+
+function checkFileType(file,cb){
+	const fileTypes = /jpeg|jpg|png|gif/;
+	const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
+	const mimetype = fileTypes.test(file.mimetype);
+
+	if(mimetype && extname){
+		return cb(null,true);
+	}else{
+		cb('Error in uploading images!!');
+	}
+}
+
+
 var payment_link = '';
 
 
@@ -766,6 +817,486 @@ exports.delete_team = function(req,res){
 		}
 	});
 };
+
+exports.register_zakir = function(req,res){
+
+	res.render("../views/register_zakir",{alert:0  , username: req.session.username , userid: req.session.userid});
+
+};
+
+exports.post_register_zakir = function(req,res){
+
+
+	Zakir.findOne({email:req.body.email}).exec(function(err,zakir){
+		if(zakir){
+			res.render("../views/register_zakir",{alert:3  , username: req.session.username , userid: req.session.userid});
+		}else{
+			var phone = Number(req.body.contact_number);
+			if(isNaN(phone)){
+				res.render("../views/register_zakir",{alert:1  , username: req.session.username , userid: req.session.userid});
+			}else{
+				Zakir.create({
+					name: req.body.name,
+					email: req.body.email,
+					college: req.body.college_name,
+					contact: phone,
+					gender: req.body.gender
+				},function(err,zakirnew){
+					if(err){
+						console.log(err);
+						res.render("../views/register_zakir",{alert:2 , username: req.session.username , userid: req.session.userid});
+					}else{
+
+						var link = 'http://'+req.headers.host+'/upload_screenshot';
+					var mailOptions = {
+						to: zakirnew.email,
+						from: 'aahvaandtu@gmail.com',
+						subject: 'Aahvaan\'18 Zakir Khan Registration',
+						text: 'Thank you for registration'+'\n'+
+								'Next Steps are:'+'\n'+
+								'1. Download and sign up on Viintro app using'+'\n'+
+								'Play Store: http://bit.ly/DTUdroid'+'\n'+
+								'Apple Store: http://apple.co/2BJdMBw'+'\n'+
+								'2. Make profile video expressing your love towards Zakir.'+'\n'+
+								'3. Take screenshot of your profile.'+'\n'+
+								'4. Upload screenshot on '+link+'\n'+
+								'5. Registration will be final only after the above mentioned steps are completed.'+'\n'+
+								'6. There are limited number of tickets available.'+'\n'+
+								'Thus please complete all the above mentioned steps as soon as possible.'+'\n'+
+							
+								'Regards,'+'\n'+
+								'Team Aahvaan' 
+					};
+					smtpTransport.sendMail(mailOptions,function(err){
+						if(err){
+							console.log(err);
+						}
+					});
+
+
+
+						res.render("../views/info_zakir",{username:req.session.username,userid:req.session.userid,link:link});
+					}
+				});
+			}
+		}
+	});
+
+};
+
+exports.upload_screenshot = function(req,res){
+
+	res.render("../views/upload_screenshot",{alert:0  , username: req.session.username , userid: req.session.userid});
+
+};
+
+exports.post_upload_screenshot = function(req,res){
+			var counts;
+			Count.findOne({check:1}).exec(function(err,count){
+				if(count){
+					counts = count;
+				}
+			});
+
+			upload(req,res,function(err){
+				if(err){
+					console.log(err);
+					res.render("../views/upload_screenshot",{alert:2  , username: req.session.username , userid: req.session.userid});
+				}else{
+					Zakir.findOne({email:req.body.user_email,status:false}).exec(function(err,zakirold){
+						if(err){
+							res.render("../views/upload_screenshot",{alert:2  , username: req.session.username , userid: req.session.userid});
+						}else{
+						if(zakirold){
+							Zakir.findOne({profileURL:req.body.profile_url}).exec(function(err,zakirprofile){
+								if(err){
+									console.log(err);
+									res.render("../views/upload_screenshot",{alert:2  , username: req.session.username , userid: req.session.userid});
+								}else{
+								if(zakirprofile){
+									res.render("../views/upload_screenshot",{alert:4  , username: req.session.username , userid: req.session.userid});
+								}else{
+			   				 var checkuid = false;
+
+							 async.whilst(function(){
+							 	return !checkuid;
+							 },
+							 function(next){
+							   var college = zakirold.college;
+							 	if(counts){
+							 		if(counts.dtu>2700||counts.other>550){
+							 			res.render("../views/upload_screenshot",{alert:3  , username: req.session.username , userid: req.session.userid});
+									}else{
+							 	var uid = Math.floor(100000 + Math.random() * 900000);
+							 		Zakir.findOne({uid:uid}).exec(function(err,zakir){
+							 		if(err){
+							 			res.render("../views/upload_screenshot",{alert:2 , username: req.session.username , userid: req.session.userid});
+							 			console.log(err);
+							 			
+							 		}else{
+							 			if(zakir){
+							 				next();
+							 			}else{
+							 				checkuid = true;
+							 				zakirold.uid = uid;
+							 				zakirold.profileURL = req.body.profile_url;
+											zakirold.screenshotURL = req.file.location;
+											zakirold.status = true;
+							 				zakirold.save(function(err){
+							 					if(err){
+							 						res.render("../views/upload_screenshot",{alert:2 , username: req.session.username , userid: req.session.userid});
+							 						console.log(err);
+							 						
+							 					}else{
+							 							if(college=="DTU"){
+							 								counts.dtu = counts.dtu + 1;
+							 							}else{
+							 								counts.other = counts.other + 1;
+							 							}
+							 							counts.save(function(err){
+							 								if(err){
+							 									console.log(err);
+							 									
+							 								}
+							 							});
+							 						res.render("../views/ticket",{alert:0  , username: req.session.username , userid: req.session.userid , email:zakirold.email});
+							 					}
+							 				});
+							 			}
+							 		}
+							 	});
+							 	}
+							 }else{
+		
+							 		res.render("../views/upload_screenshot",{alert:2 , username: req.session.username , userid: req.session.userid});
+									
+							 }
+							 },
+							 function(err){
+							 	res.render("../views/upload_screenshot",{alert:2 , username: req.session.username , userid: req.session.userid});
+							 	console.log(err);
+							 });
+							 	}
+							}
+							});
+							}else{
+								
+								res.render("../views/upload_screenshot",{alert:1 , username: req.session.username , userid: req.session.userid});
+							 }
+							}
+							 });
+							}
+						});
+};
+
+
+exports.zakir_dtu = function(req,res){
+		var counts;
+			Count.findOne({check:1}).exec(function(err,count){
+				if(count){
+					counts = count;
+				}
+			});
+
+
+		Zakir.findOne({email:req.body.email}).exec(function(err,zakir){
+			if(err){
+				console.log(err);
+				res.render("../views/upload_screenshot",{alert:0  , username: req.session.username , userid: req.session.userid});
+			}else{
+				if(zakir){
+					var name = zakir.name;
+					var email = zakir.email;
+					var profile_url = zakir.profileURL;
+					var gender = zakir.gender;
+					var college = zakir.college;
+					var status = 'Confirm';
+					var slot = '2:00-3:00 pm';
+					var uid = zakir.uid;
+					if(counts){
+						if(college=="DTU"){
+							if(counts.dtu>2100){
+								status = 'Waiting';
+								slot = '4:00-5:00 pm';
+							}else{
+								status = 'Confirm';
+								slot = '2:00-3:00 pm';
+							}
+						}else{
+							if(counts.other>400){
+								status = 'Waiting';
+								slot = '4:00-5:00 pm';
+							}else{
+								status = 'Confirm';
+								slot = '2:00-3:00 pm';
+							}
+						}
+					}
+
+
+				doc = new PDFDocument();
+				doc.pipe(res);
+				
+
+ 				doc.image('public/images/AV.png', {
+   					fit: [50, 50],
+   					align: 'center',
+   					valign: 'center'
+				});
+
+ 				doc.fontSize(25)
+  				   .text(uid,100,85,{
+  				   	align: 'right'
+  				   });
+
+  				doc.moveDown(2);
+
+  				 doc.fontSize(16)
+  				 	.text('Name: '+name,{
+  				 		align: 'left'
+  				 	});
+
+
+
+  				 doc.fontSize(20)
+  				 	.text(college,100,172,{
+  				 		align: 'right'
+  				 	});
+
+  				 doc.moveDown(1.5);
+
+
+  				 doc.fontSize(16)
+  				 	.text('Gender: '+gender,{
+  				 		align: 'left'
+  				 	});
+
+
+  				  doc.moveDown(1.5);
+  				 
+
+  				 doc.fontSize(16)
+  				 	.text('Email: '+email,{
+  				 		align: 'left'
+  				 	});
+
+  				  doc.moveDown(1.5);
+
+  				 doc.fontSize(16)
+  				 	.text('ProfileURL: '+profile_url,{
+  				 		align: 'left'
+  				 	});
+				 doc.moveDown(1.5);
+
+				  doc.fontSize(16)
+  				 	.fillColor('red')
+  				 	.text('Slot:  '+slot,{
+  				 		align: 'left'
+  				 	});
+
+  				 if(status=='Confirm'){
+
+  				  doc.fontSize(16)
+  				  	.fillColor('green')
+  				 	.text('Status: '+status,100,365,{
+  				 		align: 'right'
+  				 	});
+  				 }else{
+  				 	 doc.fontSize(16)
+  				  	.fillColor('red')
+  				 	.text('Status: '+status,100,365,{
+  				 		align: 'right'
+  				 	});
+  				 }
+  				 	
+  				 doc.addPage();
+
+  				 doc.fontSize(20)
+  				 	.fillColor('black')
+  				 	.text('INSTRUCTIONS',{
+  				 		align: 'center',
+  				 		underline: true
+  				 	});
+
+  				 doc.moveDown(2);
+
+
+  				 doc.fontSize(16)
+  				 	.text('1. Bring your ticket with government issued ID proof (College ID for DTU students) for verification at the above mentioned time slot.'
+  				 		+'If anyone fails to do so, his/her confirmed ticket will be passed on to the waiting ticket holders.',{
+  				 		align: 'justify'
+  				 	});
+
+  				 doc.moveDown(1);
+  				  
+  				 doc.fontSize(16)
+  				 	.text('2. It is mandatory to show Viintro app and profile video at the registration desk.'
+  				 	 +'If app is not installed or video is not as required, confirmed ticket will be cancelled and it will be passed on to the waiting ticket holders.'
+  				 	 +'Waiting ticket holders need to meet the same requirements.',{
+  				 		align: 'justify'
+  				 	});
+
+  				   doc.moveDown(1);
+
+  				 doc.fontSize(16)
+  				 	.text('3. Make sure you meet all the requirements before arriving at the registration desk. Otherwise, your ticket will be cancelled and excuses will not be entertained..',{
+  				 		align: 'justify'
+  				 	});
+
+  				 	 doc.moveDown(1);
+
+
+
+  				 doc.fontSize(16)
+  				 	.text('4. One pass will be issued against each validated ticket at the entrance gate of show\'s venue.',{
+  				 		align: 'justify'
+  				 	});
+
+  				 	doc.moveDown(1);
+
+  				 	 doc.fontSize(16)
+  				 	.text('5. It is compulsory to carry a print out of the ticket generated.',{
+  				 		align: 'justify'
+  				 	});
+
+  				 	 doc.moveDown(1);
+
+  				  doc.fontSize(16)
+  				 	.text('6. This ticket will be generated only once.'+
+  				 		'Please make sure to download it.',{
+  				 		align: 'justify'
+  				 	});	 
+
+				doc.end();
+			}else{
+				
+				res.render("../views/upload_screenshot",{alert:0  , username: req.session.username , userid: req.session.userid});
+			}
+			}
+		});
+};
+
+// exports.make_pdf_get = function(req,res){
+// 	res.render("../views/ticket",{alert:0 , username: req.session.username, userid: req.session.userid});
+// };
+// exports.make_pdf = function(req,res){
+// 	var uid = Math.floor(100000 + Math.random() * 900000);
+// 	var name ='Kunal Singh';
+// 	var email ='singh.kunal112@gmail.com';
+// 	var profile_url = 'https://www.fslncvsjlvjskclcka.com';
+// 	var slot = '2:00-3:00 pm';
+// 	var status = 'Confirm';
+// 	var gender = 'Male';
+// 	doc = new PDFDocument();
+// 				doc.pipe(res);
+// 				// doc.rect(doc.x, 0, 410, doc.y).stroke();
+ 				
+
+
+//  				doc.image('public/images/AV.png', {
+//    					fit: [50, 50],
+//    					align: 'center',
+//    					valign: 'center'
+// 				});
+
+//  				doc.fontSize(25)
+//   				   .text(uid,100,85,{
+//   				   	align: 'right'
+//   				   });
+
+//   				doc.moveDown(2);
+
+//   				 doc.fontSize(16)
+//   				 	.text('Name: '+name,{
+//   				 		align: 'left'
+//   				 	});
+
+
+
+//   				 doc.fontSize(20)
+//   				 	.text('DTU',100,172,{
+//   				 		align: 'right'
+//   				 	});
+
+//   				 doc.moveDown(1.5);
+
+
+//   				 doc.fontSize(16)
+//   				 	.text('Gender: '+gender,{
+//   				 		align: 'left'
+//   				 	});
+
+
+//   				  doc.moveDown(1.5);
+  				 
+
+//   				 doc.fontSize(16)
+//   				 	.text('Email: '+email,{
+//   				 		align: 'left'
+//   				 	});
+
+//   				  doc.moveDown(1.5);
+
+//   				 doc.fontSize(16)
+//   				 	.text('ProfileURL: '+profile_url,{
+//   				 		align: 'left'
+//   				 	});
+// 				 doc.moveDown(1.5);
+
+// 				  doc.fontSize(16)
+//   				 	.fillColor('red')
+//   				 	.text('Slot:  '+slot,{
+//   				 		align: 'left'
+//   				 	});
+
+//   				  doc.fontSize(16)
+//   				  	.fillColor('green')
+//   				 	.text('Status: '+status,100,365,{
+//   				 		align: 'right'
+//   				 	});
+  				 	
+//   				 doc.addPage();
+
+//   				 doc.fontSize(20)
+//   				 	.fillColor('black')
+//   				 	.text('INSTRUCTIONS',{
+//   				 		align: 'center',
+//   				 		underline: true
+//   				 	});
+
+//   				 doc.moveDown(2);
+
+
+//   				 doc.fontSize(16)
+//   				 	.text('1. Bring the ticket with your ID proof(College ID for DTU students)'+ 
+//   				 		' at the requested slot time.',{
+//   				 		align: 'justify'
+//   				 	});
+
+//   				 doc.moveDown(1);
+  				  
+//   				 doc.fontSize(16)
+//   				 	.text('2. If anyone fails to do so his/her ticket will be passed on to the waiting members.',{
+//   				 		align: 'justify'
+//   				 	});
+
+//   				   doc.moveDown(1);
+
+//   				 doc.fontSize(16)
+//   				 	.text('3. It is mandatory to show Winotro app and profile video at the entrance gate.',{
+//   				 		align: 'justify'
+//   				 	});
+
+//   				 	 doc.moveDown(1);
+
+//   				 doc.fontSize(16)
+//   				 	.text('4. If found that app is not installed or the profile video is not appropriate the ticket will be cancelled.',{
+//   				 		align: 'justify'
+//   				 	});
+
+
+// 				doc.end();
+// };	
 
 // exports.live = function(req,res){
 // 	res.render("../views/live" , {username: req.session.username , userid: req.session.userid});

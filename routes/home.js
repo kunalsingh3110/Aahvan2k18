@@ -31,6 +31,16 @@ router.get("/register_events",home_controller.get_register_events);
 router.post("/register_events",home_controller.register_events);
 router.post("/register_events_teams",home_controller.register_events_teams);
 router.post("/delete_team",home_controller.delete_team);
+router.get("/register_zakir",home_controller.register_zakir);
+router.get("/info_zakir",home_controller.register_zakir);
+router.post("/register_zakir",home_controller.post_register_zakir);
+router.get("/upload_screenshot",home_controller.upload_screenshot);
+router.post("/upload_screenshot",home_controller.post_upload_screenshot);
+router.get("/ticket",home_controller.upload_screenshot);
+router.get("/zakir_dtu",home_controller.upload_screenshot);
+router.post("/zakir_dtu",home_controller.zakir_dtu);
+// router.get("/make_pdf",home_controller.make_pdf_get);
+// router.post("/make_pdf",home_controller.make_pdf);
 // router.get("/img", home_controller.carousel);
 
 

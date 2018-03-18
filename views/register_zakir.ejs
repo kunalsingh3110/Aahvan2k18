@@ -1,0 +1,80 @@
+<% var transparent = false; %>
+ <% include partials/nav_aahvaan %> 
+ <% if(alert==1){ %>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Wrong credentials!!!</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <% alert=0 %>
+    <% }else if(alert==2){ %>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Error in registration!!</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <% alert=0 %>
+    <% }else if(alert==3) { %>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Email already registered!!</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <% alert=0 %>
+      <% } %>
+
+<section class="section-book">
+                <div class="row1">
+                    <div class="book">
+                        <div class="book__form">
+                            <form action="/register_zakir" class="form" method="POST" id="register_sports">
+                                <div class="u-margin-bottom-medium">
+                                    <h2 class="heading-secondary-main">
+                                      ZAKIR KHAN Registration
+                                    </h2>
+                                </div>
+                                <div class="form__group">
+                                    <input type="text" name="name" class="form__input" placeholder="Enter Your Name" id="name" required>
+                                    <label for="name" class="form__label">Name</label>
+                                </div>
+                                <div class="form__group">
+                                    <input type="tel" name="contact_number" class="form__input" placeholder="Enter Contact Number(Eg. 8743080047)" id="contact" required minlength="10" maxlength="10">
+                                    <label for="contact" class="form__label">Contact Number</label>
+                                </div>
+                                <div class="form__group">
+                                    <input type="email" name="email" class="form__input" placeholder="Enter Email" id="email" required>
+                                    <label for="email" class="form__label">Enter Email</label>
+                                </div> 
+                              <select class="form-control float-right" style="max-width: 100px;margin-right: 30px;" id="college" name="college_name">
+                                <option value="None">Select</option>
+                                <option value="DTU">DTU</option>
+                                <option value="Other">Others</option>
+                                </select>
+                                  <div class="form__group u-margin-bottom-small">
+                                    <div class="form__check-group">
+                                      <input type="checkbox" name="gender" value="Male" class="form__check-input" id="male">
+                                        <label for="male" class="form__check-label">
+                                            <span class="form__check-button"></span>                
+                                             Male
+                                        </label>
+                                    </div>
+                                    <div class="form__check-group">
+                                      <input type="checkbox" name="gender" value ="Female" id="female" class="form__check-input" id="female">
+                                        <label for="female" class="form__check-label">
+                                            <span class="form__check-button"></span>                
+                                             Female
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form__group">
+                                    <button class="butn butn--green">Submit &rarr;</button>
+                                </div>
+                             </form>
+                         </div>
+                     </div>
+                 </div>
+             </section>
+           <% include partials/footer %>

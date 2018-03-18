@@ -62,9 +62,7 @@ video {
 .nav_element:active{
   background-color:  #00b0ff;
 }
-.zakir{
-  margin-top: 150px;
-}
+
 .about{
 	margin-top: 150px;
 }
@@ -106,13 +104,40 @@ video {
     color: #FFFFFF;
     font-size: 1.5em;
 }
+
+
+.btn-margin {
+    position:relative;
+    margin-top:50%;
+}
+
+@media(max-width: 75em){
+    .btn-margin{
+        position:relative;
+        margin-top:100%;
+    }
+  }
+  
+  @media(max-width: 56.25em){
+    .btn-margin{
+        position:relative;
+        margin-top:110%;
+    }
+  }
+  
+  @media(max-width: 37.5em){
+    .btn-margin{
+        position:relative;
+        margin-top:130%;
+    }
+  }
+
 #section_zakir{
-    background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/zakir_bhai.jpg");
-  height: 100%;
-  overflow: hidden;
+    background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/zakir_bhai.jpg"), linear-gradient(to bottom right,#1f1e1e, #000000 ) ;
+  
     background-position: center center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100vw 100vh, cover;
     background-color: #464646;
     
 }

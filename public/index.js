@@ -1003,15 +1003,26 @@ $('#sort_events').on('change',function(){
 });
 
 
-$('#send_mail').on('click',function(){
-$.ajax({
- url: '/admin/send_mail',
- type: "POST",
- success: function(response){
-  alert('Send mails successfully!!');
- }
-}); 
+$('#search_zakir').on('keyup',function(){
+  var selector = $(this).val();
+  if(selector==''){
+    $('.card').show();
+  }else{
+  $('.card').hide();
+  $('.'+selector).show();
+}
 });
+
+
+// $('#send_mail').on('click',function(){
+// $.ajax({
+//  url: '/admin/send_mail',
+//  type: "POST",
+//  success: function(response){
+//   alert('Send mails successfully!!');
+//  }
+// }); 
+// });
 
 
   // $(".owl-carousel").owlCarousel({

@@ -1,0 +1,18 @@
+ <% var transparent = false ; %>
+<% include partials/nav_aahvaan %>
+<section class="card__view">
+	<div class="row1 space">
+		<i class="fa fa-thumbs-o-up feature-box__icon" aria-hidden="true"></i>
+	</div>
+	<div class="row1 green-space">
+		<h2 class="heading-tertiary heading-tertiary--mid">
+			Thank you for uploading!<br>
+		</h2>
+		<p>
+		<form action="/zakir_dtu" method="POST" id="download_ticket">
+			<input type="hidden" name="email" value='<%= email %>'>
+  		<input type="submit" class="form-control" value="DOWNLOAD TICKET">
+		</p>
+	</div>
+</section>
+<% include partials/footer %>

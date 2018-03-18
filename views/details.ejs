@@ -12,7 +12,9 @@
 	<%- include partials/showTeamLeaders %>
 	<% } else if(id==4) { %>
 	<%- include partials/showScores %>
-	<% } else{ %>
+	<% } else if(id==5){ %>
 	<%- include partials/showEvents %>
+	<% } else { %>
+	<%- include partials/showZakir %>
 	<% } %>
 </div>

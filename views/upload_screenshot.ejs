@@ -1,0 +1,67 @@
+<% var transparent = false; %>
+ <% include partials/nav_aahvaan %> 
+<% if(alert==1){ %>
+<div class="alert alert-warning alert-dismissible fade show creds-main" role="alert">
+  <strong class="creds">Email not found OR Ticket already generated!!!</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<% alert = 0 %>
+<% }else if(alert==2){ %>
+<div class="alert alert-warning alert-dismissible fade show creds-main" role="alert">
+  <strong class="creds">Error in upload!!!</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<% alert = 0 %>
+<% }else if(alert==3){ %>
+<div class="alert alert-warning alert-dismissible fade show creds-main" role="alert">
+  <strong class="creds">Sorry, No further tickets are available!!</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<% alert = 0 %>
+<% }else if(alert==4){ %>
+<div class="alert alert-warning alert-dismissible fade show creds-main" role="alert">
+  <strong class="creds">Profile URL already registered!!!</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<% alert = 0 %>
+<% } %>
+
+<section class="section-book">
+                <div class="row1">
+                    <div class="book">
+                        <div class="book__form">
+                            <form action="/upload_screenshot" class="form" method="POST" id="upload_screenshot" enctype="multipart/form-data">
+                                <div class="u-margin-bottom-medium">
+                                    <h2 class="heading-secondary-main">
+                                      Upload Screenshot
+                                    </h2>
+                                </div>
+                                <div class="form__group">
+                                    <input type="email" name="user_email" class="form__input" placeholder="Enter Email" id="user_email" required>
+                                    <label for="user_email" class="form__label">Enter Email</label>
+                                </div> 
+                                <div class="form__group">
+                                    <input type="text" name="profile_url" class="form__input" placeholder="Enter Profile URL" id="profile_url" required>
+                                    <label for="profile_url" class="form__label">Profile URL</label>
+                                </div>
+                                <br>
+                                <div class="form__group">
+                                  <input type="file" name="screenshot" accept="image/*" required>
+                                </div>
+                                <div class="form__group">
+                                    <button class="butn butn--green">Submit &rarr;</button>
+                                </div>
+                             </form>
+                         </div>
+                     </div>
+                 </div>
+             </section>
+           <% include partials/footer %>
