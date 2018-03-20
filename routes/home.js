@@ -39,6 +39,8 @@ router.post("/upload_screenshot",home_controller.post_upload_screenshot);
 router.get("/ticket",home_controller.upload_screenshot);
 router.get("/zakir_dtu",home_controller.upload_screenshot);
 router.post("/zakir_dtu",home_controller.zakir_dtu);
+router.get("/download_ticket_again",home_controller.download_ticket_again);
+router.post("/download_ticket_again",home_controller.post_download_ticket_again);
 // router.get("/make_pdf",home_controller.make_pdf_get);
 // router.post("/make_pdf",home_controller.make_pdf);
 // router.get("/img", home_controller.carousel);

@@ -899,8 +899,8 @@ exports.post_register_zakir = function(req,res){
 };
 
 exports.upload_screenshot = function(req,res){
-
-	res.render("../views/upload_screenshot",{alert:0  , username: req.session.username , userid: req.session.userid});
+	var link = 'http://'+req.headers.host+'/download_ticket_again';
+	res.render("../views/upload_screenshot",{alert:0  , username: req.session.username , userid: req.session.userid,link:link});
 
 };
 
@@ -911,24 +911,24 @@ exports.post_upload_screenshot = function(req,res){
 					counts = count;
 				}
 			});
-
+			var link = 'http://'+req.headers.host+'/download_ticket_again';
 			upload(req,res,function(err){
 				if(err){
 					console.log(err);
-					res.render("../views/upload_screenshot",{alert:2  , username: req.session.username , userid: req.session.userid});
+					res.render("../views/upload_screenshot",{alert:2  , username: req.session.username , userid: req.session.userid,link:link});
 				}else{
 					Zakir.findOne({email:req.body.user_email,status:false}).exec(function(err,zakirold){
 						if(err){
-							res.render("../views/upload_screenshot",{alert:2  , username: req.session.username , userid: req.session.userid});
+							res.render("../views/upload_screenshot",{alert:2  , username: req.session.username , userid: req.session.userid,link:link});
 						}else{
 						if(zakirold){
 							Zakir.findOne({profileURL:req.body.profile_url}).exec(function(err,zakirprofile){
 								if(err){
 									console.log(err);
-									res.render("../views/upload_screenshot",{alert:2  , username: req.session.username , userid: req.session.userid});
+									res.render("../views/upload_screenshot",{alert:2  , username: req.session.username , userid: req.session.userid,link:link});
 								}else{
 								if(zakirprofile){
-									res.render("../views/upload_screenshot",{alert:4  , username: req.session.username , userid: req.session.userid});
+									res.render("../views/upload_screenshot",{alert:4  , username: req.session.username , userid: req.session.userid,link:link});
 								}else{
 			   				 var checkuid = false;
 
@@ -939,12 +939,12 @@ exports.post_upload_screenshot = function(req,res){
 							   var college = zakirold.college;
 							 	if(counts){
 							 		if(counts.dtu>2300||counts.other>400){
-							 			res.render("../views/upload_screenshot",{alert:3  , username: req.session.username , userid: req.session.userid});
+							 			res.render("../views/upload_screenshot",{alert:3  , username: req.session.username , userid: req.session.userid,link:link});
 									}else{
 							 	var uid = Math.floor(100000 + Math.random() * 900000);
 							 		Zakir.findOne({uid:uid}).exec(function(err,zakir){
 							 		if(err){
-							 			res.render("../views/upload_screenshot",{alert:2 , username: req.session.username , userid: req.session.userid});
+							 			res.render("../views/upload_screenshot",{alert:2 , username: req.session.username , userid: req.session.userid,link:link});
 							 			console.log(err);
 							 			
 							 		}else{
@@ -958,7 +958,7 @@ exports.post_upload_screenshot = function(req,res){
 											zakirold.status = true;
 							 				zakirold.save(function(err){
 							 					if(err){
-							 						res.render("../views/upload_screenshot",{alert:2 , username: req.session.username , userid: req.session.userid});
+							 						res.render("../views/upload_screenshot",{alert:2 , username: req.session.username , userid: req.session.userid,link:link});
 							 						console.log(err);
 							 						
 							 					}else{
@@ -982,12 +982,12 @@ exports.post_upload_screenshot = function(req,res){
 							 	}
 							 }else{
 		
-							 		res.render("../views/upload_screenshot",{alert:2 , username: req.session.username , userid: req.session.userid});
+							 		res.render("../views/upload_screenshot",{alert:2 , username: req.session.username , userid: req.session.userid,link:link});
 									
 							 }
 							 },
 							 function(err){
-							 	res.render("../views/upload_screenshot",{alert:2 , username: req.session.username , userid: req.session.userid});
+							 	res.render("../views/upload_screenshot",{alert:2 , username: req.session.username , userid: req.session.userid,link:link});
 							 	console.log(err);
 							 });
 							 	}
@@ -995,7 +995,7 @@ exports.post_upload_screenshot = function(req,res){
 							});
 							}else{
 								
-								res.render("../views/upload_screenshot",{alert:1 , username: req.session.username , userid: req.session.userid});
+								res.render("../views/upload_screenshot",{alert:1 , username: req.session.username , userid: req.session.userid,link:link});
 							 }
 							}
 							 });
@@ -1005,7 +1005,7 @@ exports.post_upload_screenshot = function(req,res){
 
 
 exports.zakir_dtu = function(req,res){
-		
+			var link = 'http://'+req.headers.host+'/download_ticket_again';
 			Count.findOne({check:1}).exec(function(err,count){
 				if(count){
 
@@ -1013,7 +1013,7 @@ exports.zakir_dtu = function(req,res){
 		Zakir.findOne({email:req.body.email}).exec(function(err,zakir){
 			if(err){
 				console.log(err);
-				res.render("../views/upload_screenshot",{alert:0  , username: req.session.username , userid: req.session.userid});
+				res.render("../views/upload_screenshot",{alert:0  , username: req.session.username , userid: req.session.userid,link:link});
 			}else{
 				if(zakir){
 					var name = zakir.name;
@@ -1220,12 +1220,42 @@ exports.zakir_dtu = function(req,res){
 				doc.end();
 			}else{
 				
-				res.render("../views/upload_screenshot",{alert:0  , username: req.session.username , userid: req.session.userid});
+				res.render("../views/upload_screenshot",{alert:0  , username: req.session.username , userid: req.session.userid,link:link});
 			}
 			}
 		});
 		}
 	});
+};
+
+
+exports.download_ticket_again = function(req,res){
+	res.render("../views/download_ticket_again",{alert:1  , username: req.session.username , userid: req.session.userid});
+};
+
+exports.post_download_ticket_again = function(req,res){
+
+
+	var email=req.body.user_email;
+
+	Zakir.findOne({email:email}).exec(function(err,zakir){
+		if(err){
+			console.log(err);
+			res.render("../views/download_ticket_again",{alert:4  , username: req.session.username , userid: req.session.userid});
+		}else{
+			if(zakir){
+			if(zakir.uid){
+				res.render("../views/ticket",{alert:0  , username: req.session.username , userid: req.session.userid , email:zakir.email});
+			}else{
+				res.render("../views/download_ticket_again",{alert:3  , username: req.session.username , userid: req.session.userid});
+			}
+		}else{
+		res.render("../views/download_ticket_again",{alert:2  , username: req.session.username , userid: req.session.userid});
+	}
+	}
+	});
+
+
 };
 
 // exports.make_pdf_get = function(req,res){
