@@ -839,9 +839,6 @@ exports.post_register_zakir = function(req,res){
 
 		var count_dtu = req.body.count_dtu;
 		var count_other = req.body.count_other;
-			if(count_dtu>=2300||count_other>=400){
-				res.render("../views/register_zakir",{alert:4, username:req.session.username, userid: req.session.userid,count_dtu:count_dtu, count_other:count_other});
-			}else{
 
 	Zakir.findOne({email:req.body.email}).exec(function(err,zakir){
 		if(zakir){
@@ -898,7 +895,6 @@ exports.post_register_zakir = function(req,res){
 		}
 	});
 
-}
 
 };
 
