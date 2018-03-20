@@ -469,13 +469,14 @@ exports.download_events = function(req,res){
 
 
 exports.download_zakir = function(req,res){
-	Zakir.find({}).sort({time:-1}).exec(function(err,zakirs){
+	if(req.session.email){
+		Zakir.find({}).sort({time:-1}).exec(function(err,zakirs){
 		if(err){
 			console.log(err);
 		}else{
 			if(req.session.email){
 				var fields = ['uid','college','name','contact','email','gender','profileURL','screenshotURL','status'];
-				json2csv({ data: teamLeaders, fields: fields }, function(err, csv) {
+				json2csv({ data: zakirs, fields: fields }, function(err, csv) {
     			res.setHeader('Content-disposition', 'attachment; filename=data.csv');
     			res.set('Content-Type', 'text/csv');
     			res.status(200).send(csv);
@@ -483,6 +484,10 @@ exports.download_zakir = function(req,res){
 			}
 		}
 	});
+	}else{
+		res.render("../views/admin",{alert: false});
+	}
+	
 };
 
 exports.send_mail = function(req,res){

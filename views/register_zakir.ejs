@@ -10,7 +10,7 @@
       <% alert=0 %>
     <% }else if(alert==2){ %>
       <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>Error in registration!!</strong>
+        <strong>Error!!</strong>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -24,6 +24,14 @@
           </button>
       </div>
       <% alert=0 %>
+      <% }else if(alert==4){ %>
+       <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Sorry, No further tickets are available!!</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <% alert = 0 %>
       <% } %>
 
 <section class="section-book">
@@ -36,6 +44,8 @@
                                       ZAKIR KHAN Registration
                                     </h2>
                                 </div>
+                                <input type="hidden" name="count_dtu" value="<%= count_dtu %>">
+                                <input type="hidden" name="count_other" value="<%= count_other %>">
                                 <div class="form__group">
                                     <input type="text" name="name" class="form__input" placeholder="Enter Your Name" id="name" required>
                                     <label for="name" class="form__label">Name</label>

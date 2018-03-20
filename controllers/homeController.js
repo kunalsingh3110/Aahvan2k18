@@ -819,13 +819,29 @@ exports.delete_team = function(req,res){
 };
 
 exports.register_zakir = function(req,res){
+	
+			Count.findOne({check:1}).exec(function(err,count){
+				if(err){
+					console.log(err);
+				}
+				if(count){
+					res.render("../views/register_zakir",{alert:0  , username: req.session.username , userid: req.session.userid , count_dtu:count.dtu, count_other:count.other});
+				}else{
+					res.render("../views/register_zakir",{alert:2  , username: req.session.username , userid: req.session.userid , count_dtu:count.dtu, count_other:count.other});
+				}
+			});
 
-	res.render("../views/register_zakir",{alert:0  , username: req.session.username , userid: req.session.userid});
+	
 
 };
 
 exports.post_register_zakir = function(req,res){
 
+		var count_dtu = req.body.count_dtu;
+		var count_other = req.body.count_other;
+			if(count_dtu>2700||count_other>400){
+				res.render("../views/register_zakir",{alert:4, username:req.session.username, userid: req.session.userid});
+			}else{
 
 	Zakir.findOne({email:req.body.email}).exec(function(err,zakir){
 		if(zakir){
@@ -847,7 +863,7 @@ exports.post_register_zakir = function(req,res){
 						res.render("../views/register_zakir",{alert:2 , username: req.session.username , userid: req.session.userid});
 					}else{
 
-						var link = 'http://'+req.headers.host+'/upload_screenshot';
+					var link = 'http://'+req.headers.host+'/upload_screenshot';
 					var mailOptions = {
 						to: zakirnew.email,
 						from: 'aahvaandtu@gmail.com',
@@ -881,6 +897,8 @@ exports.post_register_zakir = function(req,res){
 			}
 		}
 	});
+
+}
 
 };
 
@@ -924,7 +942,7 @@ exports.post_upload_screenshot = function(req,res){
 							 function(next){
 							   var college = zakirold.college;
 							 	if(counts){
-							 		if(counts.dtu>2700||counts.other>550){
+							 		if(counts.dtu>2700||counts.other>400){
 							 			res.render("../views/upload_screenshot",{alert:3  , username: req.session.username , userid: req.session.userid});
 									}else{
 							 	var uid = Math.floor(100000 + Math.random() * 900000);
@@ -991,12 +1009,9 @@ exports.post_upload_screenshot = function(req,res){
 
 
 exports.zakir_dtu = function(req,res){
-		var counts;
+		
 			Count.findOne({check:1}).exec(function(err,count){
 				if(count){
-					counts = count;
-				}
-			});
 
 
 		Zakir.findOne({email:req.body.email}).exec(function(err,zakir){
@@ -1010,28 +1025,31 @@ exports.zakir_dtu = function(req,res){
 					var profile_url = zakir.profileURL;
 					var gender = zakir.gender;
 					var college = zakir.college;
-					var status = 'Confirm';
-					var slot = '2:00-3:00 pm';
+					var status = ' ';
+					var slot = ' ';
 					var uid = zakir.uid;
-					if(counts){
+					
 						if(college=="DTU"){
-							if(counts.dtu>2100){
+							if(count.dtu>2100){
 								status = 'Waiting';
-								slot = '4:00-5:00 pm';
-							}else{
+								slot = '26th March 02:00 pm - 03:00 pm';
+							}else if(count.dtu>2300){
+								status = 'Invalid';
+								slot = '24th March 2018 11:00 am - 02:00 pm';
+							}else if(count.dtu<=2100){
 								status = 'Confirm';
-								slot = '2:00-3:00 pm';
+								slot = '24th March 2018 11:00 am - 02:00 pm';
 							}
 						}else{
-							if(counts.other>400){
-								status = 'Waiting';
-								slot = '4:00-5:00 pm';
+							if(count.other>400){
+								status = 'Invalid';
+								slot = ' ';
 							}else{
 								status = 'Confirm';
-								slot = '2:00-3:00 pm';
+								slot = '26th March 12:00 pm - 01:30 pm';
 							}
 						}
-					}
+					
 
 
 				doc = new PDFDocument();
@@ -1109,6 +1127,26 @@ exports.zakir_dtu = function(req,res){
   				 	});
   				 }
   				 	
+
+  				doc.moveDown(8);
+
+  				doc.image('public/images/Sign.png', {
+   					fit: [50, 50],
+   					align: 'center',
+   					valign: 'center'
+				});
+
+				doc.moveDown(0.1);
+
+				 doc.fontSize(16)
+				 .fillColor('black')
+  				 	.text('Authorised Signatory',{
+  				 		align: 'left'
+  				 	});
+
+
+
+
   				 doc.addPage();
 
   				 doc.fontSize(20)
@@ -1167,6 +1205,22 @@ exports.zakir_dtu = function(req,res){
   				 		align: 'justify'
   				 	});	 
 
+  				 	doc.moveDown(3);
+
+  				 	doc.image('public/images/Sign.png', {
+   					fit: [50, 50],
+   					align: 'center',
+   					valign: 'center'
+				});
+
+
+				doc.moveDown(0.1);
+
+				 doc.fontSize(16)
+  				 	.text('Authorised Signatory',{
+  				 		align: 'left'
+  				 	});
+
 				doc.end();
 			}else{
 				
@@ -1174,10 +1228,12 @@ exports.zakir_dtu = function(req,res){
 			}
 			}
 		});
+		}
+	});
 };
 
 // exports.make_pdf_get = function(req,res){
-// 	res.render("../views/ticket",{alert:0 , username: req.session.username, userid: req.session.userid});
+// 	res.render("../views/ticket",{alert:0 , username: req.session.username, userid: req.session.userid,email:'123'});
 // };
 // exports.make_pdf = function(req,res){
 // 	var uid = Math.floor(100000 + Math.random() * 900000);
@@ -1255,6 +1311,13 @@ exports.zakir_dtu = function(req,res){
 //   				 		align: 'right'
 //   				 	});
   				 	
+
+//   				 	doc.moveDown(8);
+//   				 	doc.image('images/Sign.png', 320, 145, width: 200, height: 100)
+//    					.text('Stretch', 320, 130);
+
+
+
 //   				 doc.addPage();
 
 //   				 doc.fontSize(20)
@@ -1294,7 +1357,12 @@ exports.zakir_dtu = function(req,res){
 //   				 		align: 'justify'
 //   				 	});
 
-
+//   				 	doc.moveDown(4);
+//   				 	doc.image('public/images/Sign.png', {
+//    					fit: [50, 50],
+//    					align: 'center',
+//    					valign: 'center'
+// 				});
 // 				doc.end();
 // };	
 

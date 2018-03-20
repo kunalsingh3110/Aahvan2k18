@@ -14,20 +14,20 @@
             fitToSection: true,
             loopHorizontal: false,
             fitToSectionDelay: 2000,
-    				anchors: ['home','about', 'events', 'ca', 'theme','lookback','live','register'],
+    				anchors: ['home','about', 'events', 'ca', 'theme','lookback','sponsor','register'],
     				menu: '#menu',
     				sectionsColor: ['#f2f2f2', '#1BBC9B', '#7E8F7C', '#C63D0F'],
             verticalCentered: false,
     				navigation: true,
     				navigationPosition: 'right',
-    				navigationTooltips: ['Home','About Us', 'Events', 'Campus Ambassador','Theme','Lookback','Live','Register'],
+    				navigationTooltips: ['Home','About Us', 'Events', 'Campus Ambassador','Theme','Lookback','Sponsor','Register'],
     				lazyLoading: true,
     				scrollOverflow: true,
 
  	 	});
 
 //
-    $('#home').click(function() {
+    $('#home2').click(function() {
      $.fn.fullpage.moveTo('home', 1);
     });
  	$('#about_us').click(function() {
@@ -45,8 +45,8 @@
 	$('#lookback2').click(function() {
     $.fn.fullpage.moveTo('lookback', 1);
 	});
-	$('#live2').click(function() {
-    $.fn.fullpage.moveTo('live', 1);
+	$('#sponsor2').click(function() {
+    $.fn.fullpage.moveTo('sponsor', 1);
 	});
 	$('#register2').click(function() {
     $.fn.fullpage.moveTo('register', 1);

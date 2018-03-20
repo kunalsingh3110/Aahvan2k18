@@ -72,8 +72,8 @@ video {
 .theme{
 	margin-top:150px;
 }
-.live{
-	margin-top:150px;
+.sponsor{
+	margin-top:50px;
 }
 .event{
 	margin-top:150px;
@@ -133,7 +133,7 @@ video {
   }
 
 #section_zakir{
-    background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/zakir_bhai.jpg"), linear-gradient(to bottom right,#1f1e1e, #000000 ) ;
+    background-image: url("https://s3.amazonaws.com/aahvaannew/zakir_bhai.jpg"), linear-gradient(to bottom right,#1f1e1e, #000000 ) ;
   
     background-position: center center;
     background-repeat: no-repeat;
@@ -142,7 +142,7 @@ video {
     
 }
 #section_about{
-	background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/about_us_image_new.jpg");
+	background-image: url("https://s3.amazonaws.com/aahvaannew/about_us_image_new.jpg");
 	height: 100%;
 	overflow: hidden;
     background-position: center center;
@@ -162,7 +162,7 @@ video {
 }
 
 #slide_one_events{
-    background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/footsoul_events.jpg");
+    background-image: url("https://s3.amazonaws.com/aahvaannew/footsoul_events.jpg");
     height: 100%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -171,7 +171,7 @@ video {
 }
 
 #slide_two_events{
-    background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/taekwondo_events.jpg");
+    background-image: url("https://s3.amazonaws.com/aahvaannew/taekwondo_events.jpg");
     height: 100%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -180,7 +180,7 @@ video {
 }
 
 #slide_three_events{
-    background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/color_run_events.jpg");
+    background-image: url("https://s3.amazonaws.com/aahvaannew/color_run_events.jpg");
     height: 100%;
     background-position: center center;
     background-repeat: no-repeat;
@@ -212,7 +212,7 @@ video {
     background-size: cover;
     background-color: #464646;
 }
-#section_live{
+#section_sponsor{
 	background-image: url("https://s3.ap-south-1.amazonaws.com/aahvaan/images/live_image_new.jpg");
 	height: 100%;
     background-position: center center;
@@ -435,6 +435,10 @@ video {
 
 #slide_two_events{
 
+}
+
+.sponsor-img {
+  min-height: 4em;
 }
 
 
