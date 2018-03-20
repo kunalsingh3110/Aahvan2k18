@@ -839,17 +839,17 @@ exports.post_register_zakir = function(req,res){
 
 		var count_dtu = req.body.count_dtu;
 		var count_other = req.body.count_other;
-			if(count_dtu>2700||count_other>400){
-				res.render("../views/register_zakir",{alert:4, username:req.session.username, userid: req.session.userid});
+			if(count_dtu>=2300||count_other>=400){
+				res.render("../views/register_zakir",{alert:4, username:req.session.username, userid: req.session.userid,count_dtu:count_dtu, count_other:count_other});
 			}else{
 
 	Zakir.findOne({email:req.body.email}).exec(function(err,zakir){
 		if(zakir){
-			res.render("../views/register_zakir",{alert:3  , username: req.session.username , userid: req.session.userid});
+			res.render("../views/register_zakir",{alert:3  , username: req.session.username , userid: req.session.userid,count_dtu:count_dtu, count_other:count_other});
 		}else{
 			var phone = Number(req.body.contact_number);
 			if(isNaN(phone)){
-				res.render("../views/register_zakir",{alert:1  , username: req.session.username , userid: req.session.userid});
+				res.render("../views/register_zakir",{alert:1  , username: req.session.username , userid: req.session.userid,count_dtu:count_dtu, count_other:count_other});
 			}else{
 				Zakir.create({
 					name: req.body.name,
@@ -860,7 +860,7 @@ exports.post_register_zakir = function(req,res){
 				},function(err,zakirnew){
 					if(err){
 						console.log(err);
-						res.render("../views/register_zakir",{alert:2 , username: req.session.username , userid: req.session.userid});
+						res.render("../views/register_zakir",{alert:2 , username: req.session.username , userid: req.session.userid,count_dtu:count_dtu, count_other:count_other});
 					}else{
 
 					var link = 'http://'+req.headers.host+'/upload_screenshot';
@@ -942,7 +942,7 @@ exports.post_upload_screenshot = function(req,res){
 							 function(next){
 							   var college = zakirold.college;
 							 	if(counts){
-							 		if(counts.dtu>2700||counts.other>400){
+							 		if(counts.dtu>2300||counts.other>400){
 							 			res.render("../views/upload_screenshot",{alert:3  , username: req.session.username , userid: req.session.userid});
 									}else{
 							 	var uid = Math.floor(100000 + Math.random() * 900000);
@@ -1030,12 +1030,12 @@ exports.zakir_dtu = function(req,res){
 					var uid = zakir.uid;
 					
 						if(college=="DTU"){
-							if(count.dtu>2100){
-								status = 'Waiting';
-								slot = '26th March 02:00 pm - 03:00 pm';
-							}else if(count.dtu>2300){
+							if(count.dtu>2300){
 								status = 'Invalid';
-								slot = '24th March 2018 11:00 am - 02:00 pm';
+								slot = ' ';
+							}else if(count.dtu>2100){
+								status = 'Waiting';
+								slot = '26th March 02:00 pm - 03:00 pm';		
 							}else if(count.dtu<=2100){
 								status = 'Confirm';
 								slot = '24th March 2018 11:00 am - 02:00 pm';
