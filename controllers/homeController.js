@@ -938,9 +938,11 @@ exports.post_upload_screenshot = function(req,res){
 							 function(next){
 							   var college = zakirold.college;
 							 	if(counts){
-							 		if(counts.dtu>2300||counts.other>400){
+							 		if(college=="DTU"&&counts.dtu>2300){
 							 			res.render("../views/upload_screenshot",{alert:3  , username: req.session.username , userid: req.session.userid,link:link});
-									}else{
+							 		}else if((college=="Other"||college=="None")&&counts.other>400){
+							 			res.render("../views/upload_screenshot",{alert:3  , username: req.session.username , userid: req.session.userid,link:link});
+							 		}else{
 							 	var uid = Math.floor(100000 + Math.random() * 900000);
 							 		Zakir.findOne({uid:uid}).exec(function(err,zakir){
 							 		if(err){
