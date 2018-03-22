@@ -14,13 +14,13 @@
             fitToSection: true,
             loopHorizontal: false,
             fitToSectionDelay: 2000,
-    				anchors: ['home','about', 'events', 'ca', 'theme','lookback','sponsor','register'],
+    				anchors: ['home','about', 'events', 'ca', 'fixtures','lookback','sponsor','register'],
     				menu: '#menu',
     				sectionsColor: ['#f2f2f2', '#1BBC9B', '#7E8F7C', '#C63D0F'],
             verticalCentered: false,
     				navigation: true,
     				navigationPosition: 'right',
-    				navigationTooltips: ['Home','About Us', 'Events', 'Campus Ambassador','Theme','Lookback','Sponsor','Register'],
+    				navigationTooltips: ['Home','About Us', 'Events', 'Campus Ambassador','Fixtures','Lookback','Sponsor','Register'],
     				lazyLoading: true,
     				scrollOverflow: true,
 
@@ -40,7 +40,7 @@
     $.fn.fullpage.moveTo('ca', 1);
     });
 	$('#theme2').click(function() {
-    $.fn.fullpage.moveTo('theme', 1);
+    $.fn.fullpage.moveTo('fixtures', 1);
 	});
 	$('#lookback2').click(function() {
     $.fn.fullpage.moveTo('lookback', 1);
