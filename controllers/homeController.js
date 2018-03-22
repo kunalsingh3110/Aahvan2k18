@@ -938,7 +938,7 @@ exports.post_upload_screenshot = function(req,res){
 							 function(next){
 							   var college = zakirold.college;
 							 	if(counts){
-							 		if(college=="DTU"&&counts.dtu>2300){
+							 		if(college=="DTU"&&counts.dtu>500){
 							 			res.render("../views/upload_screenshot",{alert:3  , username: req.session.username , userid: req.session.userid,link:link});
 							 		}else if((college=="Other"||college=="None")&&counts.other>400){
 							 			res.render("../views/upload_screenshot",{alert:3  , username: req.session.username , userid: req.session.userid,link:link});
@@ -1028,15 +1028,15 @@ exports.zakir_dtu = function(req,res){
 					var uid = zakir.uid;
 					
 						if(college=="DTU"){
-							if(count.dtu>2300){
+							if(count.dtu>2100){
 								status = 'Invalid';
 								slot = ' ';
-							}else if(count.dtu>2100){
+							}else if(count.dtu>1800){
 								status = 'Waiting';
-								slot = '26th March 02:00 pm - 03:00 pm';		
-							}else if(count.dtu<=2100){
+								slot = '26th March 03:00 pm - 04:00 pm';		
+							}else if(count.dtu<=1800){
 								status = 'Confirm';
-								slot = '24th March 2018 11:00 am - 02:00 pm';
+								slot = '26th March 2018 12:00 am - 02:30 pm';
 							}
 						}else{
 							if(count.other>400){

@@ -180,7 +180,7 @@ exports.events = function(req,res){
 
 
 exports.zakir = function(req,res){
-	Zakir.find({}).sort({time:-1}).exec(function(err,zakirs){
+	Zakir.find({status:true}).sort({time:-1}).exec(function(err,zakirs){
 		if(err){
 			console.log(err);
 		}else{
