@@ -1059,6 +1059,12 @@ exports.zakir_dtu_new = function(req,res){
 							if(count.dtu>2100){
 								status = 'Invalid';
 								slot = ' ';
+								zakir.status = false;
+								zakir.save(function(err){
+									if(err){
+										console.log(err);
+									}
+								});
 							}else if(count.dtu>1800){
 								status = 'Waiting';
 								slot = '26th March 03:00 pm - 04:00 pm';		
