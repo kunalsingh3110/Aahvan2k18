@@ -1014,6 +1014,18 @@ $('#search_zakir').on('keyup',function(){
 });
 
 
+$('#search_zakir_roll').on('keyup',function(){
+  var selector = $(this).val();
+  console.log(selector);
+  if(selector==''){
+    $('.card').show();
+  }else{
+  $('.card').hide();
+  $('.'+selector).show();
+}
+});
+
+
 // $('#send_mail').on('click',function(){
 // $.ajax({
 //  url: '/admin/send_mail',

@@ -3,6 +3,7 @@ var TeamLeader = require("../models/teamLeader");
 var Team = require("../models/team");
 var Event = require("../models/event");
 var Zakir = require("../models/zakir");
+var ZakirNew = require("../models/zakir_new");
 var Count = require("../models/count");
 var async = require('async');
 var nodemailer = require('nodemailer');
@@ -49,7 +50,7 @@ const storage = multerS3({
  		checkFileType(file,cb);
  	}
 
- }).single('screenshot');
+ }).single('idcard');
 
 
 function checkFileType(file,cb){
@@ -825,6 +826,7 @@ exports.register_zakir = function(req,res){
 					console.log(err);
 				}
 				if(count){
+					console.log(count.dtu);
 					res.render("../views/register_zakir",{alert:0  , username: req.session.username , userid: req.session.userid , count_dtu:count.dtu, count_other:count.other});
 				}else{
 					res.render("../views/register_zakir",{alert:2  , username: req.session.username , userid: req.session.userid , count_dtu:count.dtu, count_other:count.other});
@@ -898,6 +900,347 @@ exports.post_register_zakir = function(req,res){
 
 };
 
+exports.register_zakir_new = function(req,res){
+	
+			Count.findOne({check:1}).exec(function(err,count){
+				if(count){
+						var link = 'http://'+req.headers.host+'/download_ticket_again';
+						res.render("../views/register_zakir_new",{alert:5,username:req.session.username,userid:req.session.userid,link:link,count_dtu:count.dtu});
+				
+				}
+			});
+			
+
+
+};
+
+exports.post_register_zakir_new = function(req,res){
+
+			var counts;
+			Count.findOne({check:1}).exec(function(err,count){
+				if(count){
+					counts = count;
+			var link = 'http://'+req.headers.host+'/download_ticket_again';
+			upload(req,res,function(err){
+				if(err){
+					console.log(err);
+					res.render("../views/register_zakir_new",{alert:2,username:req.session.username,userid:req.session.userid,link:link,count_dtu:counts.dtu});
+				}else{
+				if(counts.dtu<2100){
+					var name = req.body.name;
+					var email = req.body.user_email;
+					var phone = Number(req.body.contact_number);
+					var rollNumber = (req.body.roll_number).toUpperCase();
+
+					var roll = (Number(rollNumber.split('/')[2]));
+
+					if(isNaN(roll)){
+						res.render("../views/register_zakir_new",{alert:8  , username: req.session.username , userid: req.session.userid,link:link,count_dtu:counts.dtu});
+					}else{
+
+
+					rollNumber = rollNumber.split('/')[0]+'/'+rollNumber.split('/')[1]+'/'+roll;
+
+
+					if(isNaN(phone)){
+						res.render("../views/register_zakir_new",{alert:6  , username: req.session.username , userid: req.session.userid,link:link,count_dtu:counts.dtu});
+					}else{
+
+						Zakir.findOne({email:email,status:true}).exec(function(err,zakirold){
+
+							if(zakirold){
+								res.render("../views/register_zakir_new",{alert:4  , username: req.session.username , userid: req.session.userid,link:link,count_dtu:counts.dtu});
+							}else{
+						
+						ZakirNew.findOne({email:email}).exec(function(err,zakirnew){
+							if(err){
+								res.render("../views/register_zakir_new",{alert:2  , username: req.session.username , userid: req.session.userid,link:link,count_dtu:counts.dtu});
+							}else{
+								if(zakirnew){
+									res.render("../views/register_zakir_new",{alert:4  , username: req.session.username , userid: req.session.userid,link:link,count_dtu:counts.dtu});
+								}else{
+									ZakirNew.findOne({rollNumber:rollNumber}).exec(function(err,zakirnewtwo){
+										if(zakirnewtwo){
+											res.render("../views/register_zakir_new",{alert:7  , username: req.session.username , userid: req.session.userid,link:link,count_dtu:counts.dtu});
+										}else{
+											 var checkuid = false;
+
+							 				 async.whilst(function(){
+							 					return !checkuid;
+											},function(next){
+													if(counts){
+													if(counts.dtu>2100){
+														res.render("../views/register_zakir_new",{alert:3  , username: req.session.username , userid: req.session.userid,link:link,count_dtu:counts.dtu});
+													}else{
+														var uid = Math.floor(100000 + Math.random() * 900000);
+							 							ZakirNew.findOne({uid:uid}).exec(function(err,zakir){
+							 								if(err){
+							 									res.render("../views/register_zakir_new",{alert:2 , username: req.session.username , userid: req.session.userid,link:link,count_dtu:counts.dtu});
+							 									console.log(err);
+							 			
+							 								}else{
+							 									if(zakir){
+							 										next();
+							 									}else{
+							 										checkuid = true;
+							 										ZakirNew.create({
+							 											name:name,
+							 											email:email,
+							 											contact:phone,
+							 											rollNumber:rollNumber,
+							 											idURL:req.file.location,
+							 											uid:uid,
+							 											status:true
+							 										},function(err,zakircreate){
+							 											if(err){
+							 												res.render("../views/register_zakir_new",{alert:2 , username: req.session.username , userid: req.session.userid,link:link,count_dtu:counts.dtu});
+							 											}else{
+							 												
+							 												counts.dtu = counts.dtu + 1;
+							 												counts.save(function(err){
+							 													if(err){
+							 													console.log(err);
+							 												}else{
+							 													res.render("../views/ticket_new",{alert:0  , username: req.session.username , userid: req.session.userid , email:zakircreate.email});
+							 												}
+							 												});
+							 											}
+							 										});
+																}
+															}
+														});
+							 						}
+							 					}else{
+							 						res.render("../views/register_zakir_new",{alert:2 , username: req.session.username , userid: req.session.userid,link:link,count_dtu:counts.dtu});
+							 					}
+											},function(err){
+							 					res.render("../views/register_zakir_new",{alert:2 , username: req.session.username , userid: req.session.userid,link:link,count_dtu:counts.dtu});
+							 					console.log(err);
+							 				});
+										}
+									});
+								}
+							}
+						});
+					}
+
+						});
+
+					}
+				}
+			}else{
+				res.render("../views/register_zakir_new",{alert:3 , username: req.session.username , userid: req.session.userid,link:link,count_dtu:counts.dtu});
+			}
+			}
+		});
+}
+			});
+};
+
+exports.zakir_dtu_new = function(req,res){
+		var link = 'http://'+req.headers.host+'/download_ticket_again';
+			Count.findOne({check:1}).exec(function(err,count){
+				if(count){
+		ZakirNew.findOne({email:req.body.email}).exec(function(err,zakir){
+			if(err){
+				console.log(err);
+				res.render("../views/register_zakir_new",{alert:0  , username: req.session.username , userid: req.session.userid,link:link,count_dtu:count.dtu});
+			}else{
+				if(zakir){
+					var name = zakir.name;
+					var email = zakir.email;
+					var rollNumber = zakir.rollNumber;
+					var status = ' ';
+					var slot = ' ';
+					var uid = zakir.uid;
+					var college = "DTU";
+					
+						if(college=="DTU"){
+							if(count.dtu>2100){
+								status = 'Invalid';
+								slot = ' ';
+							}else if(count.dtu>1800){
+								status = 'Waiting';
+								slot = '26th March 03:00 pm - 04:00 pm';		
+							}else if(count.dtu<=1800){
+								status = 'Confirm';
+								slot = '26th March 2018 12:00 am - 02:30 pm';
+							}
+						}else{
+							if(count.other>400){
+								status = 'Invalid';
+								slot = ' ';
+							}else{
+								status = 'Confirm';
+								slot = '26th March 12:00 pm - 01:30 pm';
+							}
+						}
+					
+
+
+				doc = new PDFDocument();
+				doc.pipe(res);
+				
+
+ 				doc.image('public/images/AV.png', {
+   					fit: [50, 50],
+   					align: 'center',
+   					valign: 'center'
+				});
+
+ 				doc.fontSize(25)
+  				   .text(uid,100,85,{
+  				   	align: 'right'
+  				   });
+
+  				doc.moveDown(2);
+
+  				 doc.fontSize(16)
+  				 	.text('Name: '+name,{
+  				 		align: 'left'
+  				 	});
+
+
+
+  				 doc.fontSize(20)
+  				 	.text(college,100,172,{
+  				 		align: 'right'
+  				 	});
+
+
+  				  doc.moveDown(1.5);
+  				 
+
+  				 doc.fontSize(16)
+  				 	.text('Email: '+email,{
+  				 		align: 'left'
+  				 	});
+
+  				  doc.moveDown(1.5);
+
+  				 doc.fontSize(16)
+  				 	.text('Roll No. : '+rollNumber,{
+  				 		align: 'left'
+  				 	});
+				 doc.moveDown(1.5);
+
+				  doc.fontSize(16)
+  				 	.fillColor('red')
+  				 	.text('Slot:  '+slot,{
+  				 		align: 'left'
+  				 	});
+
+  				 if(status=='Confirm'){
+
+  				  doc.fontSize(16)
+  				  	.fillColor('green')
+  				 	.text('Status: '+status,100,365,{
+  				 		align: 'right'
+  				 	});
+  				 }else{
+  				 	 doc.fontSize(16)
+  				  	.fillColor('red')
+  				 	.text('Status: '+status,100,365,{
+  				 		align: 'right'
+  				 	});
+  				 }
+  				 	
+
+  				doc.moveDown(8);
+
+  				doc.image('public/images/Sign.png', {
+   					fit: [50, 50],
+   					align: 'center',
+   					valign: 'center'
+				});
+
+				doc.moveDown(0.1);
+
+				 doc.fontSize(16)
+				 .fillColor('black')
+  				 	.text('Authorised Signatory',{
+  				 		align: 'left'
+  				 	});
+
+
+
+
+  				 doc.addPage();
+
+  				 doc.fontSize(20)
+  				 	.fillColor('black')
+  				 	.text('INSTRUCTIONS',{
+  				 		align: 'center',
+  				 		underline: true
+  				 	});
+
+  				 doc.moveDown(2);
+
+
+  				 doc.fontSize(16)
+  				 	.text('1. Bring your ticket with government issued ID proof (College ID for DTU students) for verification at the above mentioned time slot.'
+  				 		+'If anyone fails to do so, his/her confirmed ticket will be passed on to the waiting ticket holders.',{
+  				 		align: 'justify'
+  				 	});
+
+  				   doc.moveDown(1);
+
+  				 doc.fontSize(16)
+  				 	.text('2. Make sure you meet all the requirements before arriving at the registration desk. Otherwise, your ticket will be cancelled and excuses will not be entertained..',{
+  				 		align: 'justify'
+  				 	});
+
+  				 	 doc.moveDown(1);
+
+
+
+  				 doc.fontSize(16)
+  				 	.text('3. One pass will be issued against each validated ticket at the entrance gate of show\'s venue.',{
+  				 		align: 'justify'
+  				 	});
+
+  				 	doc.moveDown(1);
+
+  				 	 doc.fontSize(16)
+  				 	.text('4. It is compulsory to carry a print out of the ticket generated.',{
+  				 		align: 'justify'
+  				 	});
+
+  				 	 doc.moveDown(1);
+
+  				  doc.fontSize(16)
+  				 	.text('5. This ticket will be generated only once.'+
+  				 		'Please make sure to download it.',{
+  				 		align: 'justify'
+  				 	});	 
+
+  				 	doc.moveDown(3);
+
+  				 	doc.image('public/images/Sign.png', {
+   					fit: [50, 50],
+   					align: 'center',
+   					valign: 'center'
+				});
+
+
+				doc.moveDown(0.1);
+
+				 doc.fontSize(16)
+  				 	.text('Authorised Signatory',{
+  				 		align: 'left'
+  				 	});
+
+				doc.end();
+			}else{
+				
+				res.render("../views/register_zakir_new",{alert:0  , username: req.session.username , userid: req.session.userid,link:link});
+			}
+			}
+		});
+		}
+	});
+};
+
 exports.upload_screenshot = function(req,res){
 	var link = 'http://'+req.headers.host+'/download_ticket_again';
 	res.render("../views/upload_screenshot",{alert:0  , username: req.session.username , userid: req.session.userid,link:link});
@@ -938,7 +1281,7 @@ exports.post_upload_screenshot = function(req,res){
 							 function(next){
 							   var college = zakirold.college;
 							 	if(counts){
-							 		if(college=="DTU"&&counts.dtu>500){
+							 		if(college=="DTU"&&counts.dtu>2100){
 							 			res.render("../views/upload_screenshot",{alert:3  , username: req.session.username , userid: req.session.userid,link:link});
 							 		}else if((college=="Other"||college=="None")&&counts.other>400){
 							 			res.render("../views/upload_screenshot",{alert:3  , username: req.session.username , userid: req.session.userid,link:link});
@@ -1240,7 +1583,7 @@ exports.post_download_ticket_again = function(req,res){
 
 	var email=req.body.user_email;
 
-	Zakir.findOne({email:email}).exec(function(err,zakir){
+	Zakir.findOne({email:email,status:true}).exec(function(err,zakir){
 		if(err){
 			console.log(err);
 			res.render("../views/download_ticket_again",{alert:4  , username: req.session.username , userid: req.session.userid});
@@ -1252,7 +1595,18 @@ exports.post_download_ticket_again = function(req,res){
 				res.render("../views/download_ticket_again",{alert:3  , username: req.session.username , userid: req.session.userid});
 			}
 		}else{
-		res.render("../views/download_ticket_again",{alert:2  , username: req.session.username , userid: req.session.userid});
+			ZakirNew.findOne({email:email}).exec(function(err,zakirnew){
+				if(zakirnew){
+					if(zakirnew.uid){
+				res.render("../views/ticket_new",{alert:0  , username: req.session.username , userid: req.session.userid , email:zakirnew.email});
+			}else{
+				res.render("../views/download_ticket_again",{alert:4  , username: req.session.username , userid: req.session.userid});
+			}
+				}else{
+					res.render("../views/download_ticket_again",{alert:2  , username: req.session.username , userid: req.session.userid});
+				}
+			});
+		
 	}
 	}
 	});

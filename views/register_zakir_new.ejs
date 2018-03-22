@@ -1,0 +1,112 @@
+<% var transparent = false; %>
+ <% include partials/nav_aahvaan %> 
+<% if(alert==1){ %>
+<div class="alert alert-warning alert-dismissible fade show creds-main" role="alert">
+  <strong class="creds">Email not found OR Ticket already generated!!!<br>
+    
+  </strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<% alert = 0 %>
+<% }else if(alert==2){ %>
+<div class="alert alert-warning alert-dismissible fade show creds-main" role="alert">
+  <strong class="creds">Error in upload!!!</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<% alert = 0 %>
+<% }else if(alert==3){ %>
+<div class="alert alert-warning alert-dismissible fade show creds-main" role="alert">
+  <strong class="creds">Sorry, No further tickets are available!!</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<% alert = 0 %>
+<% }else if(alert==4){ %>
+<div class="alert alert-warning alert-dismissible fade show creds-main" role="alert">
+  <strong class="creds">Email already registered!!!</strong><br>
+  <a href="<%= link %>">Click to download ticket again</a>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<% alert = 0 %>
+<% }else if(alert==5){ %>
+<div class="alert alert-warning alert-dismissible fade show creds-main" role="alert">
+  <strong class="creds">ID card image size should be less than 1MB!!!</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<% alert = 0 %>
+<% }else if(alert==6){ %>
+<div class="alert alert-warning alert-dismissible fade show creds-main" role="alert">
+  <strong class="creds">Wrong Phone Number!!</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<% alert = 0 %>
+<% }else if(alert==7){ %>
+<div class="alert alert-warning alert-dismissible fade show creds-main" role="alert">
+  <strong class="creds">Roll Number already registered!!!</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<% alert = 0 %>
+<% }else if(alert==8){ %>
+<div class="alert alert-warning alert-dismissible fade show creds-main" role="alert">
+  <strong class="creds">Wrong Roll Number!!!</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<% alert = 0 %>
+<% } %>
+
+
+<section class="section-book">
+                <div class="row1">
+                    <div class="book">
+                        <div class="book__form">
+                            <form action="/register_zakir_new" class="form" method="POST" id="register_zakir_new" enctype="multipart/form-data">
+                                <div class="u-margin-bottom-medium">
+                                    <h2 class="heading-secondary-main">
+                                      ZAKIR KHAN REGISTRATION
+                                    </h2>
+                                </div>
+                                <input type="hidden" name="count_dtu" value='<%= count_dtu %>'>
+                                 <div class="form__group">
+                                    <input type="text" name="name" class="form__input" placeholder="Enter Your Name" id="name" required>
+                                    <label for="name" class="form__label">Name</label>
+                                </div>
+                                <div class="form__group">
+                                    <input type="email" name="user_email" class="form__input" placeholder="Enter Email" id="user_email" required>
+                                    <label for="user_email" class="form__label">Enter Email</label>
+                                </div>
+                                 <div class="form__group">
+                                    <input type="tel" name="contact_number" class="form__input" placeholder="Enter Contact Number(Eg. 8743080047)" id="contact" required minlength="10" maxlength="10">
+                                    <label for="contact" class="form__label">Contact Number</label>
+                                </div> 
+                                <div class="form__group">
+                                    <input type="text" name="roll_number" class="form__input" placeholder="Roll Number(Eg. 2K15/AE/5, 2K15/MC/27, 2K15/EC/104)" id="roll_number" required>
+                                    <label for="roll_number" class="form__label">(Eg. 2K15/AE/5, 2K15/MC/27, 2K15/EC/104)</label>
+                                </div>
+                                <br>
+                                <div class="form__group">
+                                  <input type="file" name="idcard" accept="image/*" required>
+                                </div>
+                                <div class="form__group">
+                                    <button class="butn butn--green">Submit &rarr;</button>
+                                </div>
+                             </form>
+                         </div>
+                     </div>
+                 </div>
+             </section>
+           <% include partials/footer %>

@@ -3,6 +3,7 @@ var CampusAmbassador = require("../models/campusAmbassador");
 var TeamLeader = require("../models/teamLeader");
 var Event = require("../models/event");
 var Zakir = require("../models/zakir");
+var ZakirNew = require("../models/zakir_new");
 var fs = require('fs');
 var json2csv = require('json2csv');
 var async = require('async');
@@ -186,6 +187,21 @@ exports.zakir = function(req,res){
 		}else{
 			if(req.session.email){
 				res.render("../views/details",{id:6 , zakirs:zakirs});
+			}else{
+				res.render("../views/admin",{alert: false});
+			}
+
+		}
+		});		
+};
+
+exports.zakir_new = function(req,res){
+	ZakirNew.find({status:true}).sort({time:-1}).exec(function(err,zakirs){
+		if(err){
+			console.log(err);
+		}else{
+			if(req.session.email){
+				res.render("../views/details",{id:7 , zakirs:zakirs});
 			}else{
 				res.render("../views/admin",{alert: false});
 			}
@@ -476,6 +492,28 @@ exports.download_zakir = function(req,res){
 		}else{
 			if(req.session.email){
 				var fields = ['uid','college','name','contact','email','gender','profileURL','screenshotURL','status'];
+				json2csv({ data: zakirs, fields: fields }, function(err, csv) {
+    			res.setHeader('Content-disposition', 'attachment; filename=data.csv');
+    			res.set('Content-Type', 'text/csv');
+    			res.status(200).send(csv);
+				});
+			}
+		}
+	});
+	}else{
+		res.render("../views/admin",{alert: false});
+	}
+	
+};
+
+exports.download_zakir_new = function(req,res){
+	if(req.session.email){
+		ZakirNew.find({}).sort({time:-1}).exec(function(err,zakirs){
+		if(err){
+			console.log(err);
+		}else{
+			if(req.session.email){
+				var fields = ['uid','name','contact','email','rollNumber','idURL','status'];
 				json2csv({ data: zakirs, fields: fields }, function(err, csv) {
     			res.setHeader('Content-disposition', 'attachment; filename=data.csv');
     			res.set('Content-Type', 'text/csv');
