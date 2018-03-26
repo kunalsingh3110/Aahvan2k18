@@ -15,6 +15,8 @@ router.get("/showTeamLeaders",admin_controller.team_leaders);
 router.get("/showEvents",admin_controller.events);
 router.get("/showZakirs",admin_controller.zakir);
 router.get("/showZakirnew",admin_controller.zakir_new);
+router.get("/showUID",admin_controller.uid);
+router.post("/addUID",admin_controller.add_uid);
 router.get("/download_ca",admin_controller.download_ca);
 router.get("/download_teamLeader",admin_controller.download_teamLeader);
 router.post("/download_teams",admin_controller.download_teams);

@@ -1,0 +1,21 @@
+
+  <input type="text" placeholder="Search UID" style="max-width: 100px;margin-right: 30px;" id="search_uid">
+  <input type="text" placeholder="Enter UID" style="max-width: 100px;margin-right: 30px;" id="add_uid">
+  <button id="add_uid_ajax" style="max-width: 100px;margin-right: 30px;" >ADD</button>
+<br>
+<br>
+<div class="see">
+<% uids.forEach(function(uid){ %>
+
+<div class="card <%= uid.uid %>">
+  <div class="card-header">
+  <div class="card-block">
+  	<ul class="list-group list-group-flush">
+      <li class="list-group-item">UID:&nbsp;<strong><%= uid.uid %></strong></li>
+  </ul>
+  </div>
+</div>
+</div>
+<br>
+<% }); %>
+</div>

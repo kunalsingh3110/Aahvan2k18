@@ -4,6 +4,7 @@ var TeamLeader = require("../models/teamLeader");
 var Event = require("../models/event");
 var Zakir = require("../models/zakir");
 var ZakirNew = require("../models/zakir_new");
+var UID = require("../models/uid");
 var fs = require('fs');
 var json2csv = require('json2csv');
 var async = require('async');
@@ -196,7 +197,7 @@ exports.zakir = function(req,res){
 };
 
 exports.zakir_new = function(req,res){
-	ZakirNew.find({status:true}).sort({time:-1}).exec(function(err,zakirs){
+	ZakirNew.find({}).sort({time:-1}).exec(function(err,zakirs){
 		if(err){
 			console.log(err);
 		}else{
@@ -208,6 +209,41 @@ exports.zakir_new = function(req,res){
 
 		}
 		});		
+};
+
+
+exports.uid = function(req,res){
+	UID.find({}).sort({time:-1}).exec(function(err,uids){
+		if(err){
+			console.log(err);
+		}else{
+			if(req.session.email){
+				res.render("../views/details",{id:8 , uids:uids});
+			}else{
+				res.render("../views/admin",{alert: false});
+			}
+		}
+	});
+};
+
+exports.add_uid = function(req,res){
+	var uid = req.body.uid;
+	UID.findOne({uid:uid}).exec(function(err,uids){
+		if(uids){
+			res.send({uid:uid,status:false});
+		}else{
+		UID.create({
+			uid:uid
+		},function(err,uid){
+			if(err){
+				console.log(err);
+			}else{
+				res.send({uid:uid,status:true});
+			}
+	});
+		}
+	});
+	
 };
 
 exports.download_ca = function(req,res){

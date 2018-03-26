@@ -1626,6 +1626,12 @@ exports.post_download_ticket_again = function(req,res){
 
 };
 
+
+exports.download_fixtures = function(req,res){
+	res.render("../views/download_fixtures",{alert:0,username:req.session.username,userid:req.session.userid});
+};	
+
+
 // exports.make_pdf_get = function(req,res){
 // 	res.render("../views/ticket",{alert:0 , username: req.session.username, userid: req.session.userid,email:'123'});
 // };

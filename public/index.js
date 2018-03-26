@@ -1016,7 +1016,7 @@ $('#search_zakir').on('keyup',function(){
 
 $('#search_zakir_roll').on('keyup',function(){
   var selector = $(this).val();
-  console.log(selector);
+  //console.log(selector);
   if(selector==''){
     $('.card').show();
   }else{
@@ -1025,6 +1025,36 @@ $('#search_zakir_roll').on('keyup',function(){
 }
 });
 
+$('#search_uid').on('keyup',function(){
+    var selector = $(this).val();
+  //console.log(selector);
+  if(selector==''){
+    $('.card').show();
+  }else{
+  $('.card').hide();
+  $('.'+selector).show();
+}
+});
+
+$('#add_uid_ajax').on('click',function(){
+  var uid = $('#add_uid').val();
+  if(uid!=''&&uid.length==6){
+    $.ajax({
+      type:'POST',
+      url: 'addUID',
+      data:{uid:uid},
+      success: function(data){
+        console.log(data);
+        if(data.status){
+          $('#add_uid').val('');
+          $('.see').prepend("<div class='card "+data.uid.uid+"'><div class='card-header'><div class='card-block'><ul class='list-group list-group-flush'><li class='list-group-item'>UID:&nbsp;<strong>"+data.uid.uid+"</strong></li></ul></div></div></div><br>")
+        }else{
+          alert("UID already present");
+        }
+      }
+    });
+  }
+});
 
 // $('#send_mail').on('click',function(){
 // $.ajax({

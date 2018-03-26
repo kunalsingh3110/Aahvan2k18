@@ -46,6 +46,7 @@ router.get("/zakir_dtu_new",home_controller.register_zakir_new);
 router.post("/zakir_dtu_new",home_controller.zakir_dtu_new);
 router.get("/download_ticket_again",home_controller.download_ticket_again);
 router.post("/download_ticket_again",home_controller.post_download_ticket_again);
+router.get("/download_fixtures",home_controller.download_fixtures);
 // router.get("/make_pdf",home_controller.make_pdf_get);
 // router.post("/make_pdf",home_controller.make_pdf);
 // router.get("/img", home_controller.carousel);
