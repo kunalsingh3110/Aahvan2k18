@@ -1047,13 +1047,27 @@ $('#add_uid_ajax').on('click',function(){
         console.log(data);
         if(data.status){
           $('#add_uid').val('');
-          $('.see').prepend("<div class='card "+data.uid.uid+"'><div class='card-header'><div class='card-block'><ul class='list-group list-group-flush'><li class='list-group-item'>UID:&nbsp;<strong>"+data.uid.uid+"</strong></li></ul></div></div></div><br>")
+          $('.see').prepend("<div class='card "+data.uid.uid+" del'><div class='card-header'><div class='card-block'><ul class='list-group list-group-flush'><li class='list-group-item'>UID:&nbsp;<strong>"+data.uid.uid+"</strong></li></ul></div></div></div><br>")
         }else{
           alert("UID already present");
         }
       }
     });
   }
+});
+
+$('.del').on('click',function(){
+  console.log("ss");
+  var uid = $(this).attr('class').substr(4,8);
+  $.ajax({
+    type:'POST',
+    url:'deleteUID',
+    data:{uid:uid},
+    success:function(data){
+      $('.'+uid.trim()).remove();
+      alert("Successfully deleted "+data.uid);
+    }
+  });
 });
 
 // $('#send_mail').on('click',function(){

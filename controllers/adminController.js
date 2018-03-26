@@ -246,6 +246,19 @@ exports.add_uid = function(req,res){
 	
 };
 
+
+exports.delete_uid = function(req,res){
+	var uid = req.body.uid;
+	//console.log(uid);
+	UID.findOne({uid:uid}).remove().exec(function(err){
+		if(err){
+			console.log(err);
+		}else{
+			res.send({uid:uid});
+		}
+	});
+};
+
 exports.download_ca = function(req,res){
 	CampusAmbassador.find({}).sort({time: -1}).exec(function(err,campusAmbassadors){
 		if(err){
